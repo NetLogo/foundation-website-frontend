@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from "./Header";
-import { Announcement, AnnouncementObj } from "./Announcement";
+import { Announcement } from "./Announcement";
+import type { AnnouncementObj } from "./Announcement";
 import { endpoint } from "./endpoint";
 import { Intro } from "./Intro";
 import "./componentCSS/Body.css";

@@ -9,7 +9,6 @@ import "./componentCSS/Body.css";
 function Body() {
     const [announcementObj, setAnnouncementObj] = useState<AnnouncementObj | null>(null);
     const [showAnnouncement, setShowAnnouncement] = useState(false);
-    const [show2, setshow2] = useState(true);
     useEffect(() => {
         // fetchAnnouncement: fetches the announcement
         const fetchAnnouncement = async () => {

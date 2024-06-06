@@ -3,7 +3,7 @@ name: Deploy Astro to GitHub Pages2
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:

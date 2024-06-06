@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap");
+.root {
+    --Light-3: #EBEBF0;
+    --Light-2: #F2F2F5;
+    --Dark-2: #555770;
+}
+
+.netlogo-header {
+     width: 100%;
+     height: 5.505rem;
+     background-color: black;
+     flex-shrink: 0;
+     border-bottom: 1px solid var(--Light-3, #EBEBF0);
+     background: var(--Light-2, #F2F2F5);
+     overflow:hidden;
+}
+
+#netlogo-title {
+	font-family: Dosis;
+	font-weight: 650;
+}
+
+.header-action-bar {
+	box-sizing: border-box;
+    height: 3rem;
+/**    padding-top: 1.88rem; **/
+    margin-top: 1.88rem;
+    display: flex;
+    flex-direction: row;
+	align-items: center;
+	padding-left: 2.64rem;
+	padding-right: 2.64rem;
+	justify-content: space-between;
+}
+
+.header-action {
+	color: var(--Dark-2, #555770);
+	font-family: Inter;
+	font-size: 1.25rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 130%;
+	letter-spacing: 0.025rem;
+}
+
+.header-action-cont {
+    display: flex;
+    flex-direction: row;
+    gap: 0.62rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-action-cont:first-child {
+    gap: 0.63rem;
+}
+
+.netlogo-icon-cont {
+    position: relative;
+    height: 1.875rem;
+    width: 1.875rem;
+}
+
+.icon {
+    position: absolute;
+}
+
+.icon:first-child {
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.icon:last-child {
+    top: calc(47%);
+    left: calc(55%);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.dropdown-icon {
+    width: 1rem;
+    heigth: 1rem;
+}

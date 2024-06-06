@@ -1,0 +1,30 @@
+.search-bar {
+    display: flex;
+    width: 14rem; /** normally 15.75rem, looked unnaturally large **/
+    padding: 0.75rem 1.25rem;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+    border-radius: 3.125rem;
+    border: 1px solid var(--Light-3, #EBEBF0);
+    background: #FFF;
+}
+
+.search-bar-input  {
+    outline: none;
+    border: none;
+    color: var(--Dark-3, #8F90A6);
+    text-align: center;
+    /* txt/small/semi */
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 1.3125rem */
+    text-align: left;
+}
+
+.search-bar-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}

@@ -1,0 +1,45 @@
+.intro {
+    width: 100%;
+    padding-top: 7.245rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.intro-title {
+    width: 83.333%;
+    /* Heading 1 */
+    font-family: Inter;
+    font-size: 3.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 4.2rem */
+    letter-spacing: 0.07rem;
+    background: linear-gradient(89deg, #555770 47.66%, #FF5C5C 81.69%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: -3rem; /** THIS IS A HOTFIX, WE NEED TO REMOVE THIS LATER (weird margins with intro title that shouldn't be there **/
+}
+
+.intro-text {
+    margin-top: -3rem; /** padding hotfix one again **/
+    width: 83.333%;
+    color: var(--Dark-2, #555770);
+    text-align: center;
+    /* txt/medium/semi */
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 1.6875rem */
+}
+
+.intro-title-text-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+

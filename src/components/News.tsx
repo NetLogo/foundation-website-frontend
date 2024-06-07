@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'React';
+import React, { useState, useEffect } from 'react';
 import './componentCSS/News.css'
 
 const News = () => {

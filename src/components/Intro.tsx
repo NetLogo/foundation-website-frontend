@@ -17,6 +17,10 @@ const Intro = ({}) => {
             	</div>
             </div>
             <IntroAnimation/>
+            <div className="intro-btn-cont">
+                <button className="intro-btn intro-get-btn"> GET NETLOGO </button>
+                <button className="intro-btn intro-learn-btn"> LEARN MORE </button>
+            </div>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import { Announcement } from "./Announcement";
 import type { AnnouncementObj } from "./Announcement";
 import { endpoint } from "./endpoint";
 import { Intro } from "./Intro";
+import { News } from "./News";
 import "./componentCSS/Body.css";
 
 function Body() {
@@ -39,6 +40,7 @@ function Body() {
             <Header/>
             { (announcementObj && showAnnouncement) && <Announcement title={announcementObj.title} content={announcementObj.content} setShowAnnouncement={setShowAnnouncement} />}
             <Intro/>
+            <News/>
         </div>
     )
 }

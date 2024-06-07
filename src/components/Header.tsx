@@ -1,8 +1,8 @@
 import * as React from "react";
 import "./componentCSS/Header.css";
 import { Searchbar } from "./Searchbar";
-import blueEllipse from "../assets/blue-ellipse.svg";
-import netlogoIcon from "../assets/netlogo.svg";
+import blueEllipse from "./../assets/blue-ellipse.svg";
+import netlogoicon from "../assets/netlogo.svg";
 import dropdownIcon from "../assets/dropdown-icon.svg";
 
 const Header = ({}) => {
@@ -12,7 +12,7 @@ const Header = ({}) => {
                 <div className="header-action-cont">
                     <div className="netlogo-icon-cont"> 
                         <img className="icon" src={blueEllipse.src}/>
-                        <img className="icon" src={netlogoIcon.src}/>
+                        <img className="icon" src={netlogoicon.src}/>
                     </div>
                     <div id="netlogo-title" className="header-action"> NetLogo </div>
                 </div>

@@ -1,9 +1,8 @@
 import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
 
-import react from "@astrojs/react";
-
-// https://astro.build/config
 export default defineConfig({
+  base: '/NetLogo-redesign/',
   integrations: [react()],
-  site: 'https://coloshword.github.io/NetLogo-redesign/',
 });
+

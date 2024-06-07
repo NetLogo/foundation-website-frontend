@@ -17,8 +17,10 @@ const Announcement = ({ title, content, setShowAnnouncement}: AnnouncementObj) =
                     <span className="aTitle"> {title} </span>
                     <span className="aContent"> {content} </span>
                 </div>
-                <button className="a-learn-button a-button"> LEARN MORE </button>
-                <button className="a-close-button a-button" onClick={() => setShowAnnouncement(false)}> CLOSE </button>
+                <div className="a-button-cont">
+                    <button className="a-learn-button a-button"> LEARN MORE </button>
+                    <button className="a-close-button a-button" onClick={() => setShowAnnouncement(false)}> CLOSE </button>
+                </div>
             </div>
             
         </div>

@@ -80,3 +80,8 @@
     color: var(--Secondary-color, #0670ED);
 }
 
+.a-button-cont {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}

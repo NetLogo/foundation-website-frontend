@@ -10,5 +10,4 @@
 - React.js + Typescript
 
 ### Demo link
-https://coloshword.github.io/NetLogo-Website-Redesign/
-
+https://coloshword.github.io/NetLogo-redesign/

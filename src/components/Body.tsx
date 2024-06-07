@@ -13,7 +13,8 @@ function Body() {
         // fetchAnnouncement: fetches the announcement
         const fetchAnnouncement = async () => {
             try {
-                const response = await fetch(endpoint + "/items/announcements");
+                const url = endpoint + "/items/announcements";
+                const response = await fetch(url);
                 const data = await response.json();
                 if (!response.ok) {
                     return; 

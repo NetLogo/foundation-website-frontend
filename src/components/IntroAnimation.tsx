@@ -10,7 +10,6 @@ const IntroAnimation = () => {
     const [currentTab, setCurrentTab] = useState(0);
 
 	useEffect(() => {
-	  console.log('currentTab:', currentTab);
 	  const timer = setTimeout(() => {
 	    setCurrentTab((prevTab) => (prevTab + 1) % 4);
 	  }, 4000);

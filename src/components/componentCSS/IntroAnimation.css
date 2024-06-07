@@ -1,0 +1,69 @@
+.intro-anim-cont {
+    padding-top: 2.625rem; /** hotfix from character spacings **/
+    width: 83.333%;
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+}
+
+.intro-anim-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.56rem;
+}
+
+/** kind of like a card **/
+.intro-anim-option {
+    display: flex;
+    padding: 1.25rem 1.53125rem 1.25rem 1.46875rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    justify-content: flex-start;
+    cursor: pointer;
+    user-select: none;
+}
+
+.intro-anim-text-icon {
+    display: flex;
+    flex-direction: row;
+    gap: 1.88rem;
+    align-items: center;
+}
+
+.intro-anim-icon {
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 3.5rem;
+    background: var(--Primary-2, #FF867C);
+}
+
+.intro-anim-text {
+    color: var(--Dark-3, #8F90A6);
+    /* txt/title */
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 1.6875rem */
+}
+
+.current-tab {
+    border-radius: 1rem;
+    background: var(--Light-1, #FAFAFC);
+    box-shadow: 0px 20px 20px -15px rgba(143, 144, 166, 0.20);
+}
+
+.current-tab-icon {
+    background: var(--Primary-color, #FB6055);
+}
+
+.current-tab-text {
+    color: var(--Dark-2, #555770);
+}
+
+

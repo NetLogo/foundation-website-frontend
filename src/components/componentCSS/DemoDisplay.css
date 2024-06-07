@@ -1,0 +1,14 @@
+.demo-display {
+    flex: 1;
+    display: flex;
+    padding: 1.25rem 1.25rem 2.8125rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.375rem;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 1rem;
+    border: 2px solid var(--Light-1, #FAFAFC);
+    background: var(--Light-3, #EBEBF0);
+}
+

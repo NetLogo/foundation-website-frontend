@@ -1,4 +1,3 @@
-import React from 'react';
 import './componentCSS/DemoDisplay.css';
 
 const DemoDisplay = () => {

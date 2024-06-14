@@ -13,12 +13,6 @@ const EventsDisplay = ({ title = "Upcoming Events", events = [] }) => {
             
             {events.length > 0 && (
                 <div className="event-display-event">
-                    {events.map((event, index) => (
-                        <div key={index}>
-                            <span className="event-name">{event.title}</span>
-                            <span className="event-date">{event.date}</span>
-                        </div>
-                    ))}
                 </div>
             )}
         </div>

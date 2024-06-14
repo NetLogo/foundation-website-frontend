@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import "./componentCSS/Announcement.css"
 
 //Announcement: component to display a component, if it exists 

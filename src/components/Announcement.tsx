@@ -3,18 +3,23 @@ import "./componentCSS/Announcement.css"
 //Announcement: component to display a component, if it exists 
 
 interface AnnouncementObj {
-    title: string;
-    content: string;
-    setShowAnnouncement: Function 
+    id: number,
+    title: string,
+    content: string,
 }
 
-const Announcement = ({ title, content, setShowAnnouncement}: AnnouncementObj) => {
+interface AnnouncementProps {
+    announcement: AnnouncementObj,
+    setShowAnnouncement: Function,
+}
+
+const Announcement = ({ announcement, setShowAnnouncement } : AnnouncementProps ) => {
     return (
         <div className="aCont">
             <div className="aTextButtonCont"> 
                 <div className="aTextCont">
-                    <span className="aTitle"> {title} </span>
-                    <span className="aContent"> {content} </span>
+                    <span className="aTitle"> {announcement.title} </span>
+                    <span className="aContent"> {announcement.content} </span>
                 </div>
                 <div className="a-button-cont">
                     <button className="a-learn-button a-button"> LEARN MORE </button>

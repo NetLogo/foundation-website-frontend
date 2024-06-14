@@ -1,11 +1,16 @@
 ---
 import { Body } from "../components/Body.tsx";
+
+const response = await fetch('http://34.207.80.47:8055/items/announcements')
+const data = await response.json();
+const announcement = data.data;
 ---
 
 <html lang="en">
 	<head>
 	</head>
 	<body>
-        <Body client:load/>
+		<Body announcement={announcement}/>
 	</body>
 </html>
+

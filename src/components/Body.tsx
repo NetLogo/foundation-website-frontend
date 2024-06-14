@@ -7,38 +7,22 @@ import { Intro } from "./Intro";
 import { News } from "./News";
 import "./componentCSS/Body.css";
 
-function Body() {
-    const [announcementObj, setAnnouncementObj] = useState<AnnouncementObj | null>(null);
-    const [showAnnouncement, setShowAnnouncement] = useState(false);
-    useEffect(() => {
-        // fetchAnnouncement: fetches the announcement
-        const fetchAnnouncement = async () => {
-            try {
-                const url = endpoint + "/items/announcements";
-                const response = await fetch(url);
-                const data = await response.json();
-                if (!response.ok) {
-                    return; 
-                }
-             
-                const responseData = await data;
-                if(responseData.data.length != 0) {
-                   setAnnouncementObj(responseData.data[0]);
-                   setShowAnnouncement(true);
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        }
+interface BodyProps {
+    announcement?: AnnouncementObj
+}
 
-            
-        fetchAnnouncement();
-    }, []);
-
+function Body({announcement} : BodyProps) {
+    const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
     return (
         <div className="body">
             <Header/>
-            { (announcementObj && showAnnouncement) && <Announcement title={announcementObj.title} content={announcementObj.content} setShowAnnouncement={setShowAnnouncement} />}
+            {/* display announcement only if there is one */}
+            { showAnnouncement && announcement && ( 
+                <Announcement 
+                announcement={announcement}
+                setShowAnnouncement={setShowAnnouncement}
+                />
+            )}
             <Intro/>
             <News/>
         </div>

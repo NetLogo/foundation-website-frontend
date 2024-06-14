@@ -1,4 +1,54 @@
 .news {
     width: 100%;
-    height: 10rem;
+    display: flex;
+    padding: 3.75rem 0rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.news-title-text-cont {
+    width: 83.125%;
+    height: 9.375rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.25rem; /** its 1.25rem on figma but it looks a little closer **/
+}
+
+.news-title {
+    color: var(--Dark-2, #555770);
+    /* Heading 2 */
+    font-family: Inter;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 3.9rem */
+    letter-spacing: 0.06rem;
+}
+
+.news-text {
+    color: var(--Dark-3, #8F90A6);
+    /* txt/medium/semi */
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 1.6875rem */
+}
+
+.news-event-cont {
+    width: 83.333%;
+    display: flex;
+    flex-direction: row;
+    gap: 3.12rem;
+}
+
+.news-event-inner-cont {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 0.94rem;
 }

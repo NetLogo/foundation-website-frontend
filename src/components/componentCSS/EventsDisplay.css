@@ -1,0 +1,24 @@
+.event-display {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: space-between;
+    background: white;
+    padding: 1.25rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.event-title {
+    color: var(--Dark-1, #28293D);
+    /* Heading 6 */
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 1.625rem */
+    letter-spacing: 0.025rem;
+}

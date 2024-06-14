@@ -1,7 +1,7 @@
 // switch between endpoints before pdeploying 
 
 //prod
-const endpoint = 'https://130.245.173.208:81';
+const endpoint = 'http://localhost:8055'
 
 // local
 //const endpoint = 'http://130.245.173.208:8055';

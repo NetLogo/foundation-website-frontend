@@ -7,7 +7,7 @@
 - Fetch content: `http://130.245.173.208:8055/items/announcements`
 
 ### Proposed Frontend
-- React.js + Typescript
+- React + Typescript, with Astro for static site generation purposes
 
 ### Demo link
 https://coloshword.github.io/NetLogo-redesign/

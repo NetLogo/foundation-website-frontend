@@ -1,4 +1,3 @@
-import * as React from "react";
 import { IntroAnimation } from "./IntroAnimation";
 import "./componentCSS/Intro.css";
 

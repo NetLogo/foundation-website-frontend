@@ -1,4 +1,3 @@
-import * as React from "react";
 import "./componentCSS/Header.css";
 import { Searchbar } from "./Searchbar";
 import blueEllipse from "./../assets/blue-ellipse.svg";

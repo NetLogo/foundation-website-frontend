@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from 'react';
 import { EventsDisplay } from './EventsDisplay';
+import type { Event } from './EventsDisplay';
 import './componentCSS/News.css';
 
-const News = () => {
+interface NewsProps {
+    upcomingEvents: Event[];
+    competitions: Event[];
+    upcomingWorkshops: Event[];
+    publications: Event[];
+}
+
+const News = ( {upcomingEvents, competitions, upcomingWorkshops, publications} : NewsProps ) => {
     return (
         <div className="news">
             <div className="news-title-text-cont">
@@ -12,13 +19,13 @@ const News = () => {
 
             <div className="news-event-cont">
                 <div className="news-event-inner-cont">
-                    <EventsDisplay title="Upcoming Events"/>
-                    <EventsDisplay title="Competitions" />
+                    <EventsDisplay title="Upcoming Events" events={upcomingEvents}/>
+                    <EventsDisplay title="Competitions" events={competitions}/>
                 </div>
 
                 <div className="news-event-inner-cont">
-                    <EventsDisplay title="Upcoming Workshops" />
-                    <EventsDisplay title="Publications" />
+                    <EventsDisplay title="Upcoming Workshops" events={upcomingWorkshops}/>
+                    <EventsDisplay title="Publications" events={publications}/>
                 </div>
             </div>
         </div>

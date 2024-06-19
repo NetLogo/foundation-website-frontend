@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { DemoDisplay } from "./DemoDisplay";
 import "./componentCSS/IntroAnimation.css";
 import visualIcon from "../assets/visual.svg";

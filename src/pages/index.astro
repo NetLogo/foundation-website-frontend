@@ -1,16 +1,36 @@
 ---
 import { Body } from "../components/Body.tsx";
 
-const response = await fetch('http://34.207.80.47:8055/items/announcements')
-const data = await response.json();
+let response = await fetch('http://34.207.80.47:8055/items/announcements')
+let data = await response.json();
 const announcement = data.data;
+
+response = await fetch('http://34.207.80.47:8055/items/upcoming_events');
+data = await response.json();
+const upcomingEvents = data.data;
+
+response = await fetch('http://34.207.80.47:8055/items/upcoming_workshops');
+data = await response.json();
+const upcomingWorkshops = data.data;
+
+response = await fetch('http://34.207.80.47:8055/items/competitions');
+data = await response.json();
+const competitions = data.data;
+
+response = await fetch('http://34.207.80.47:8055/items/publications');
+data = await response.json();
+const publications = data.data;
 ---
 
 <html lang="en">
 	<head>
 	</head>
 	<body>
-		<Body client:load announcement={announcement}/>
+		<Body client:load announcement={announcement}
+        upcomingEvents={upcomingEvents}
+        upcomingWorkshops={upcomingWorkshops}
+        competitions={competitions}
+        publications={publications}/>
 	</body>
 </html>
 

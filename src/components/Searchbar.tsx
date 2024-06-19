@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import "./componentCSS/Searchbar.css";
 import searchIcon from "../assets/search-icon.svg"
 

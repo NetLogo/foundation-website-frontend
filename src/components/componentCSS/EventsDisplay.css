@@ -1,10 +1,13 @@
 .event-display-cont {
+    background: white;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 0rem 1.5rem;
     border-radius: 0.375rem;
     border: 1px solid var(--Light-3, #EBEBF0);
     background: var(--Light-1, #FAFAFC);
+    align-self: flex-start;
 }
 
 .event-cont {

@@ -18,11 +18,10 @@ const News = ( {upcomingEvents, competitions, upcomingWorkshops, publications} :
             </div>
 
             <div className="news-event-cont">
-                <div className="news-event-inner-cont">
+                <div className="news-event-inner-cont"> 
                     <EventsDisplay title="Upcoming Events" events={upcomingEvents}/>
                     <EventsDisplay title="Competitions" events={competitions}/>
                 </div>
-
                 <div className="news-event-inner-cont">
                     <EventsDisplay title="Upcoming Workshops" events={upcomingWorkshops}/>
                     <EventsDisplay title="Publications" events={publications}/>

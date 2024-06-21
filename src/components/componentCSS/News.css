@@ -18,6 +18,20 @@
     gap: 2.25rem; /** its 1.25rem on figma but it looks a little closer **/
 }
 
+.news-event-cont {
+    width: 83.333%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.94rem;
+}
+
+.news-event-inner-cont {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 3.12rem;
+}
+
 .news-title {
     color: var(--Dark-2, #555770);
     /* Heading 2 */
@@ -39,17 +53,3 @@
     line-height: 150%; /* 1.6875rem */
 }
 
-.news-event-cont {
-    width: 83.333%;
-    display: flex;
-    flex-direction: row;
-    gap: 3.12rem;
-}
-
-.news-event-inner-cont {
-    display: flex;
-    width: 100%;
-    flex-grow: 1;
-    flex-direction: column;
-    gap: 0.94rem;
-}

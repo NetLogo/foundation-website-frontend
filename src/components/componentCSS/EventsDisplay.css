@@ -20,6 +20,17 @@
     justify-content: space-between;
 }
 
+.event-more {
+    justify-content: center;
+    color: var(--Dark-2, #555770);
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 1.6875rem */
+    text-decoration-line: underline;
+    cursor: pointer;
+}
 .event-display-header{
     width: 100%;
     display: flex;

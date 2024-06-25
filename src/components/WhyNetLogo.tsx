@@ -37,6 +37,9 @@ const WhyNetLogo = () => {
                 sectionDescript="NetLogo powers everyone to learn and create."
                 sectionGap={1.88}
                 sectionPaddingBot={7.5}
+                backgroundColor="#F2F2F5"
+                borderRadius={0}
+                moreButton={false}
                 body={
                     <div className="why-netlogo-content">
                         <ForTab title="For Students" content="NetLogo provides students with many pre-made models of scientific phenomena they can explore. For those who want to learn to program or create models themselves, NetLogo is very easy to get started with." imagePath={student}/>

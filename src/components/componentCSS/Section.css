@@ -1,15 +1,19 @@
-
-.news-event-cont {
+.page-section {
+    padding-top: 3.75rem;
+    width: 83.333%;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 0.94rem;
 }
 
-.news-event-inner-cont {
-    width: 100%;
+.section-header {
+	width: 100%;
+    height: 9.375rem;
     display: flex;
     flex-direction: row;
-    gap: 3.12rem;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.25rem; /** its 1.25rem on figma but it looks a little closer **/
 }
 
 .section-title {
@@ -23,7 +27,7 @@
     letter-spacing: 0.06rem;
 }
 
-.section-text {
+.section-descript {
     color: var(--Dark-3, #8F90A6);
     /* txt/medium/semi */
     font-family: Inter;
@@ -31,5 +35,6 @@
     font-style: normal;
     font-weight: 600;
     line-height: 150%; /* 1.6875rem */
+    margin-top: 1.5rem;
 }
 

@@ -1,5 +1,6 @@
 import { EventsDisplay } from './EventsDisplay';
 import type { Event } from './EventsDisplay';
+import { Section } from "./Section";
 import './componentCSS/News.css';
 
 interface NewsProps {
@@ -11,22 +12,23 @@ interface NewsProps {
 
 const News = ( {upcomingEvents, competitions, upcomingWorkshops, publications} : NewsProps ) => {
     return (
-        <div className="news">
-            <div className="news-title-text-cont">
-                <span className="section-title"> News </span>
-                <span className="section-text"> Learn about latest news and upcoming events in NetLogo community. </span>
-            </div>
-
-            <div className="news-event-cont">
-                <div className="news-event-inner-cont"> 
-                    <EventsDisplay title="Upcoming Events" events={upcomingEvents}/>
-                    <EventsDisplay title="Competitions" events={competitions}/>
-                </div>
-                <div className="news-event-inner-cont">
-                    <EventsDisplay title="Upcoming Workshops" events={upcomingWorkshops}/>
-                    <EventsDisplay title="Publications" events={publications}/>
-                </div>
-            </div>
+        <div className="news-section">
+            <Section
+                sectionTitle="News"
+                sectionDescript="Learn about latest news and upcoming events in NetLogo community."
+                sectionGap={2.5}
+                sectionPaddingBot={2.5}
+                body = {
+                    <div className="news-event-cont">
+                         <div className="news-event-inner-cont"> 
+                             <EventsDisplay title="Upcoming Events" events={upcomingEvents}/>
+                             <EventsDisplay title="Competitions" events={competitions}/>
+                         </div>
+                         <div className="news-event-inner-cont">
+                             <EventsDisplay title="Upcoming Workshops" events={upcomingWorkshops}/>
+                             <EventsDisplay title="Publications" events={publications}/>
+                         </div>
+                     </div> }/>
         </div>
     );
 };

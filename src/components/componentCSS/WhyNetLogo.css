@@ -1,27 +1,6 @@
-.why-netlogo-cont {
-	width: 100%;
-	display: flex;
-	padding: 3.75rem 0rem;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 2.5rem;
-}
-
-.why-title-text-cont {
-    width: 83.125%;
-    height: 9.375rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2.25rem; /** its 1.25rem on figma but it looks a little closer **/
-}
-
 .why-netlogo-content {
     display: flex;
     flex-direction: row;
-    width: 83.333%;
     justify-content: space-between;
 }
 
@@ -36,6 +15,22 @@
 	border-radius: 0.75rem;
 	background: var(--Light-1, #FAFAFC);
 	padding: 1.5rem 0.94rem;
+}
+
+.for-tab-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3.5rem;
+    background: var(--Light-3, #EBEBF0);
+    width: 4rem;
+    aspect-ratio: 1/1;
+}
+
+
+.for-tab-icon-image {
+    position: absolute;
+    width: 2.1rem;
 }
 
 .for-tab-title-cont {

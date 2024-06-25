@@ -5,6 +5,7 @@ import type { AnnouncementObj } from "./Announcement";
 import { Intro } from "./Intro";
 import { News } from "./News";
 import { WhyNetLogo } from "./WhyNetLogo";
+import { GetNetLogo } from "./GetNetLogo";
 import type { Event } from "./EventsDisplay";
 import "./componentCSS/Body.css";
 
@@ -30,6 +31,7 @@ function Body({announcement, upcomingEvents, upcomingWorkshops, competitions, pu
             )}
             <Intro/>
             <WhyNetLogo/>
+            <GetNetLogo/>
             <News upcomingEvents={upcomingEvents}
             upcomingWorkshops={upcomingWorkshops}
             competitions={competitions}

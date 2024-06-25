@@ -18,6 +18,7 @@ const News = ( {upcomingEvents, competitions, upcomingWorkshops, publications} :
                 sectionDescript="Learn about latest news and upcoming events in NetLogo community."
                 sectionGap={2.5}
                 sectionPaddingBot={2.5}
+                moreButton={true}
                 body = {
                     <div className="news-event-cont">
                          <div className="news-event-inner-cont"> 

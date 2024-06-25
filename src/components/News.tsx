@@ -13,8 +13,8 @@ const News = ( {upcomingEvents, competitions, upcomingWorkshops, publications} :
     return (
         <div className="news">
             <div className="news-title-text-cont">
-                <span className="news-title"> News </span>
-                <span className="news-text"> Learn about latest news and upcoming events in NetLogo community. </span>
+                <span className="section-title"> News </span>
+                <span className="section-text"> Learn about latest news and upcoming events in NetLogo community. </span>
             </div>
 
             <div className="news-event-cont">

@@ -32,7 +32,7 @@
     gap: 3.12rem;
 }
 
-.news-title {
+.section-title {
     color: var(--Dark-2, #555770);
     /* Heading 2 */
     font-family: Inter;
@@ -43,7 +43,7 @@
     letter-spacing: 0.06rem;
 }
 
-.news-text {
+.section-text {
     color: var(--Dark-3, #8F90A6);
     /* txt/medium/semi */
     font-family: Inter;

@@ -15,7 +15,7 @@ interface EventsDisplayProps {
 }
 
 const EventsDisplay = ({ title, events }: EventsDisplayProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [showAll, setShowAll] = useState(false);
   
   function formatDate(date: string): string {

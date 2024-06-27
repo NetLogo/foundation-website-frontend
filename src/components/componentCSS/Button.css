@@ -1,0 +1,57 @@
+.button {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    border-radius: 0.375rem;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 1.6875rem */
+    letter-spacing: 0.0225rem;
+}
+
+.blue-button {
+    background: var(--Secondary-color, #0670ED);
+    color: var(--White, #FFF);
+    border: 2px solid transparent; 
+}
+
+.blue-button:hover {
+	background: var(--Primary-Main-Color, #37F);
+	box-shadow: 0px 10px 10px 0px rgba(0, 99, 247, 0.15);
+}
+
+.blue-button:active {
+    background: #5B8DEF;
+}
+
+.light-button {
+    border: 2px solid var(--Secondary-color, #0670ED);
+    color: var(--Secondary-color, #0670ED); 
+    background-color: transparent;
+}
+
+.light-button:hover {
+    border: 2px solid var(--Secondary-color, #0670ED);
+    background: var(--Primary-Main-Color, #37F);
+    box-shadow: 0px 10px 10px 0px rgba(0, 99, 247, 0.15);
+    color: #FFF;
+}
+
+.light-button:active {
+    background: #37F;
+    color: #FFF;
+}
+
+.button-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+    transition: fill 0.3s ease; /* Optional: adds a smooth transition effect */
+}

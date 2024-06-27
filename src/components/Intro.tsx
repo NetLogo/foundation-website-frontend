@@ -1,4 +1,5 @@
 import { IntroAnimation } from "./IntroAnimation";
+import { Button } from "./Button";
 import "./componentCSS/Intro.css";
 
 const Intro = ({}) => {
@@ -17,8 +18,16 @@ const Intro = ({}) => {
             </div>
             <IntroAnimation/>
             <div className="intro-btn-cont">
-                <button className="intro-btn intro-get-btn"> GET NETLOGO </button>
-                <button className="intro-btn intro-learn-btn"> LEARN MORE </button>
+                <Button
+                colorClass="blue-button"
+                padding="1rem 3rem"
+                fontSize="1.125rem"
+                text="GET NETLOGO"/> 
+                <Button
+                colorClass="light-button"
+                padding="1rem 3rem"
+                fontSize="1.125rem"
+                text="LEARN MORE"/>
             </div>
         </div>
     )

@@ -5,6 +5,7 @@ import type { AnnouncementObj } from "./Announcement";
 import { Intro } from "./Intro";
 import { News } from "./News";
 import { WhyNetLogo } from "./WhyNetLogo";
+import { Button } from "./Button";
 import { GetNetLogo } from "./GetNetLogo";
 import type { Event } from "./EventsDisplay";
 import "./componentCSS/Body.css";

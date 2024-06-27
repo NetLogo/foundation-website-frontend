@@ -1,5 +1,6 @@
 import "./componentCSS/WhyNetLogo.css";
 import { Section } from "./Section";
+import { Button } from "./Button";
 import student from "./../assets/student.svg";
 import researcher from "./../assets/researcher.svg";
 
@@ -22,7 +23,11 @@ const ForTab = ({ title, content, imagePath }: ForTabProps) => {
                         <span className="for-tab-title">{title}</span>
                     </div>
                     <span className="for-tab-text">{content}</span>
-                    <button className="learn-more-button"> LEARN MORE </button>    
+                    <Button
+                    colorClass="blue-button"
+                    padding="0.875rem 2rem"
+                    fontSize="1rem"
+                    text="LEARN MORE"/> 
                 </div>
             </div>
         </div>

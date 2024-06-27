@@ -1,6 +1,7 @@
 /**Section: Component that defines a section of a page (Why NetLogo, GetNetLogo, etc...
  * A section component takes in JSX as a prop, and can be defined by a parent component to define a "complete" section **/
 import "./componentCSS/Section.css";
+import { Button } from "./Button";
 import React from 'react';
 import moreIcon from "../assets/more-icon.svg";
 
@@ -25,10 +26,14 @@ const Section = ({ sectionTitle, sectionDescript, sectionGap, sectionPaddingBot,
                  </div>
                 { body } 
                 {moreButton &&
-                <button className="section-more-button">
-                    <span> MORE </span>
-                    <img src={moreIcon.src}/>
-                </button>
+                <div className="more-btn-cont">
+                    <Button
+                    colorClass="light-button"
+                    padding="1rem 3rem"
+                    fontSize="1.125rem"
+                    text="MORE"
+                    hasIcon={true}/>
+                </div>
                 }
             </div>
         </div>

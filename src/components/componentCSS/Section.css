@@ -65,3 +65,10 @@
 	width: 11.125rem;
 	margin: auto;
 }
+
+.more-btn-cont {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}

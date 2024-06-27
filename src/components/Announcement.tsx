@@ -1,4 +1,5 @@
-import "./componentCSS/Announcement.css"
+import "./componentCSS/Announcement.css";
+import { Button } from "./Button";
 
 //Announcement: component to display a component, if it exists 
 
@@ -22,8 +23,18 @@ const Announcement = ({ announcement, setShowAnnouncement } : AnnouncementProps 
                     <span className="aContent"> {announcement.content} </span>
                 </div>
                 <div className="a-button-cont">
-                    <button className="a-learn-button a-button"> LEARN MORE </button>
-                    <button className="a-close-button a-button" onClick={() => setShowAnnouncement(false)}> CLOSE </button>
+                    <Button 
+                    colorClass="blue-button"
+                    padding="0.75rem 1.5rem"
+                    fontSize="0.875rem"
+                    text="LEARN MORE"/>
+
+                    <Button
+                    colorClass="light-button"
+                    padding="0.75rem 1.5rem"
+                    fontSize="0.875rem"
+                    text="CLOSE"
+                    onClick={() => setShowAnnouncement(false)}/>
                 </div>
             </div>
             

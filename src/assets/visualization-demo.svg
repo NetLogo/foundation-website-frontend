@@ -1,0 +1,21 @@
+<svg width="740" height="270" viewBox="0 0 740 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="740" height="270" rx="14" fill="#FAFAFC"/>
+<line y1="37.5" x2="740" y2="37.5" stroke="#EBEBF0"/>
+<circle cx="25" cy="21" r="8" fill="#FB6055"/>
+<circle cx="49" cy="21" r="8" fill="#FFCC00"/>
+<circle cx="73" cy="21" r="8" fill="#06C270"/>
+<line x1="19.5" y1="78.5" x2="93.5" y2="78.5" stroke="#EBEBF0" stroke-width="5" stroke-linecap="round"/>
+<line x1="19.5" y1="101.5" x2="213.5" y2="101.5" stroke="#EBEBF0" stroke-width="5" stroke-linecap="round"/>
+<line x1="139.5" y1="78.5" x2="213.5" y2="78.5" stroke="#EBEBF0" stroke-width="5" stroke-linecap="round"/>
+<line x1="19.5" y1="125.5" x2="93.5" y2="125.5" stroke="#EBEBF0" stroke-width="5" stroke-linecap="round"/>
+<line x1="19.5" y1="153.5" x2="93.5" y2="153.5" stroke="#EBEBF0" stroke-width="5" stroke-linecap="round"/>
+<circle cx="35" cy="78" r="6" fill="#8F90A6"/>
+<circle cx="119" cy="101" r="6" fill="#8F90A6"/>
+<circle cx="199" cy="78" r="6" fill="#8F90A6"/>
+<circle cx="79" cy="125" r="6" fill="#8F90A6"/>
+<circle cx="79" cy="153" r="6" fill="#8F90A6"/>
+<rect x="137" y="115" width="79" height="20" rx="10" fill="#EBEBF0"/>
+<rect x="137" y="143" width="79" height="20" rx="10" fill="#EBEBF0"/>
+<rect x="63" y="197" width="55" height="20" rx="3" fill="#EBEBF0"/>
+<rect x="131" y="197" width="55" height="20" rx="3" fill="#EBEBF0"/>
+</svg>

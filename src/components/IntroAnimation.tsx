@@ -5,10 +5,14 @@ import visualIcon from "../assets/visual.svg";
 import easyIcon from "../assets/easy-learn.svg";
 import powerIcon from "../assets/power-extensible.svg";
 import crossPlatformIcon from "../assets/cross-platform.svg";
+import visualizationDemo from "../assets/visualization-demo.svg";
+import easyToLearnDemo from "../assets/easy-to-learn-demo.svg";
+import powerfulExtensibleDemo from "../assets/powerful-extensible-demo.svg";
+import crossPlatformDemo from "../assets/cross-platform-demo.svg";
+import visualizationImg1 from "../assets/visualization-img1.svg";
 
 const IntroAnimation = () => {
     const [currentTab, setCurrentTab] = useState(0);
-
 	useEffect(() => {
 	  const timer = setTimeout(() => {
 	    setCurrentTab((prevTab) => (prevTab + 1) % 4);
@@ -22,6 +26,58 @@ const IntroAnimation = () => {
     const handleTabClick = (tab: number) => {
         setCurrentTab(tab);
     };
+
+	const getDemoAndDescription = (tab) => {
+	    switch(tab) {
+	        case 0:
+	            return {
+	                demo: (
+	                    <div className="intro-demo">
+	                        <img src={visualizationDemo.src} alt="Visualization Demo"/>
+                            <img src={visualizationImg1.src} className="visualization-inner-img" alt="sheep demo"/>
+	                    </div>
+	                ),
+	                descript: "NetLogo visualizes agent-based models as they run in real time, which is very important both for learning from existing models and for debugging models as you code them. Above is the visualization of a model of __________ in which _____________"
+	            };
+
+	        case 1:
+	            return {
+	                demo: (
+	                    <div className="intro-demo">
+	                        <img src={easyToLearnDemo.src} alt="Visualization Demo"/>
+	                    </div>
+	                ),
+	                descript: "NetLogo code is designed to read similarly to English, making it easy for English speakers to understand even as novices."
+	            };
+
+            case 2:
+	            return {
+	                demo: (
+	                    <div className="intro-demo">
+	                        <img src={powerfulExtensibleDemo.src} alt="Visualization Demo"/>
+	                    </div>
+	                ),
+	                descript: "NetLogo models can run simulations with tens of thousands of agents and has many extensions to expand its capabilities, including being able to run Python code within a NetLogo model."
+	            };
+
+            case 3:
+	            return {
+	                demo: (
+	                    <div className="intro-demo">
+	                        <img src={crossPlatformDemo.src} alt="Visualization Demo"/>
+	                    </div>
+	                ),
+	                descript: "NetLogo Web runs in any web browser and traditional NetLogo runs on all major operating systems so anyone with a computer can use it. "
+	            };
+
+	        default:
+	            return {
+	                demo: null,
+	                descript: ""
+	            };
+	    }
+	};
+	const { demo, descript } = getDemoAndDescription(currentTab);
 
     return (
         <div className="intro-anim-cont">
@@ -91,7 +147,10 @@ const IntroAnimation = () => {
                     </div>
                 </div>
             </div>
-            <DemoDisplay/>
+            <DemoDisplay 
+                demo={demo}
+                descript={descript}
+            />
         </div>
     );
 };

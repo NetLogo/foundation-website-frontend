@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import buttonIcon from "../assets/more-icon.svg";
 import "./componentCSS/Button.css";
 
@@ -21,17 +21,29 @@ const Button = (props: ButtonProps) => {
         onClick = () => console.log(`${text} pressed`), // Set default value here
     } = props;
 
+    const [isHovered, setIsHovered] = useState(false);
+
     const style = {
         padding,
         fontSize,
     };
 
     return (
-        <button className={`button ${colorClass}`} style={style} onClick={onClick}>
+        <button
+            className={`button ${colorClass}`}
+            style={style}
+            onClick={onClick}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             <span> {text} </span>
-            { hasIcon &&
-                <img src={buttonIcon.src} className="button-icon"/>
-            }
+            {hasIcon && (
+                <img
+                    src={buttonIcon.src}
+                    className="button-icon"
+                    style={{ filter: isHovered ? "invert(1)" : "invert(34%) sepia(93%) saturate(3432%) hue-rotate(202deg) brightness(94%) contrast(98%)" }}
+                />
+            )}
         </button>
     );
 };

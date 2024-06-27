@@ -27,7 +27,7 @@ const IntroAnimation = () => {
         setCurrentTab(tab);
     };
 
-	const getDemoAndDescription = (tab) => {
+	const getDemoAndDescription = (tab: number) => {
 	    switch(tab) {
 	        case 0:
 	            return {

@@ -67,4 +67,7 @@
     color: var(--Dark-2, #555770);
 }
 
-
+.intro-demo {
+    position: relative;
+    height: 17.07rem;
+}

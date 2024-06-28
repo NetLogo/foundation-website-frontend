@@ -1,9 +1,11 @@
 .demo-display {
     display: flex;
-    padding: 1.25rem 1.25rem 2.8125rem 1.25rem;
+    padding: 1.25rem 1.25rem 1.63rem 1.25rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 2.375rem;
+    height: 28.174rem;
+    box-sizing: border-box;
     flex: 0 0 auto; 
     border-radius: 1rem;
     border: 2px solid var(--Light-1, #FAFAFC);
@@ -22,9 +24,7 @@
     text-align: left;
 }
 
-.intro-demo {
-    position: relative
-}
+
 .visualization-inner-img {
     position: absolute;
     right: 1rem;

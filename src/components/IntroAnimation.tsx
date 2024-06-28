@@ -10,74 +10,106 @@ import easyToLearnDemo from "../assets/easy-to-learn-demo.svg";
 import powerfulExtensibleDemo from "../assets/powerful-extensible-demo.svg";
 import crossPlatformDemo from "../assets/cross-platform-demo.svg";
 import visualizationImg1 from "../assets/visualization-img1.svg";
+import visualizationImg2 from "../assets/fire.gif";
 
 const IntroAnimation = () => {
     const [currentTab, setCurrentTab] = useState(0);
-	useEffect(() => {
-	  const timer = setTimeout(() => {
-	    setCurrentTab((prevTab) => (prevTab + 1) % 4);
-	  }, 4000);
-	
-	  return () => {
-	    clearTimeout(timer);
-	  };
-	}, [currentTab]);
+    const [showFirstImage, setShowFirstImage] = useState(true);
+    const [isFading, setIsFading] = useState(false);
 
-    const handleTabClick = (tab: number) => {
-        setCurrentTab(tab);
+    useEffect(() => {
+        const tabTimer = setTimeout(() => {
+            setIsFading(true); // Start fading out
+            setTimeout(() => {
+                setCurrentTab((prevTab) => (prevTab + 1) % 4);
+                setIsFading(false); // Fade in the new tab
+            }, 500); // Duration of the fade-out animation
+        }, 4000);
+
+        return () => {
+            clearTimeout(tabTimer);
+        };
+    }, [currentTab]);
+
+    useEffect(() => {
+        const imgTimer = setInterval(() => {
+            setShowFirstImage(prev => !prev);
+        }, 2500);
+
+        return () => {
+            clearInterval(imgTimer);
+        };
+    }, []);
+
+    const handleTabClick = (tab) => {
+        setIsFading(true);
+        setTimeout(() => {
+            setCurrentTab(tab);
+            setIsFading(false);
+        }, 500); // Duration of the fade-out animation
     };
 
-	const getDemoAndDescription = (tab: number) => {
-	    switch(tab) {
-	        case 0:
-	            return {
-	                demo: (
-	                    <div className="intro-demo">
-	                        <img src={visualizationDemo.src} alt="Visualization Demo"/>
-                            <img src={visualizationImg1.src} className="visualization-inner-img" alt="sheep demo"/>
-	                    </div>
-	                ),
-	                descript: "NetLogo visualizes agent-based models as they run in real time, which is very important both for learning from existing models and for debugging models as you code them. Above is the visualization of a model of __________ in which _____________"
-	            };
+    const getDemoAndDescription = (tab) => {
+        switch(tab) {
+            case 0:
+                return {
+                    demo: (
+                        <div className={`intro-demo ${isFading ? 'fade-exit' : 'fade-enter'}`}>
+                            <img src={visualizationDemo.src} alt="Visualization Demo" />
+                            <img 
+                                src={visualizationImg1.src} 
+                                className={`visualization-inner-img ${showFirstImage ? '' : 'hidden'}`} 
+                                alt="Visualization 1" 
+                            />
+                            <img 
+                                src={visualizationImg2.src} 
+                                className={`visualization-inner-img ${showFirstImage ? 'hidden' : ''}`} 
+                                alt="Visualization 2" 
+                            />
+                        </div>
+                    ),
+                    descript: "NetLogo visualizes agent-based models as they run in real time, which is very important both for learning from existing models and for debugging models as you code them. Above is the visualization of a model of __________ in which _____________"
+                };
 
-	        case 1:
-	            return {
-	                demo: (
-	                    <div className="intro-demo">
-	                        <img src={easyToLearnDemo.src} alt="Visualization Demo"/>
-	                    </div>
-	                ),
-	                descript: "NetLogo code is designed to read similarly to English, making it easy for English speakers to understand even as novices."
-	            };
+            case 1:
+                return {
+                    demo: (
+                        <div className={`intro-demo ${isFading ? 'fade-exit' : 'fade-enter'}`}>
+                            <img src={easyToLearnDemo.src} alt="Visualization Demo" />
+                        </div>
+                    ),
+                    descript: "NetLogo code is designed to read similarly to English, making it easy for English speakers to understand even as novices."
+                };
 
             case 2:
-	            return {
-	                demo: (
-	                    <div className="intro-demo">
-	                        <img src={powerfulExtensibleDemo.src} alt="Visualization Demo"/>
-	                    </div>
-	                ),
-	                descript: "NetLogo models can run simulations with tens of thousands of agents and has many extensions to expand its capabilities, including being able to run Python code within a NetLogo model."
-	            };
+                return {
+                    demo: (
+                        <div className={`intro-demo ${isFading ? 'fade-exit' : 'fade-enter'}`}>
+                            <img src={powerfulExtensibleDemo.src} alt="Visualization Demo" />
+                        </div>
+                    ),
+                    descript: "NetLogo models can run simulations with tens of thousands of agents and has many extensions to expand its capabilities, including being able to run Python code within a NetLogo model."
+                };
 
             case 3:
-	            return {
-	                demo: (
-	                    <div className="intro-demo">
-	                        <img src={crossPlatformDemo.src} alt="Visualization Demo"/>
-	                    </div>
-	                ),
-	                descript: "NetLogo Web runs in any web browser and traditional NetLogo runs on all major operating systems so anyone with a computer can use it. "
-	            };
+                return {
+                    demo: (
+                        <div className={`intro-demo ${isFading ? 'fade-exit' : 'fade-enter'}`}>
+                            <img src={crossPlatformDemo.src} alt="Visualization Demo" />
+                        </div>
+                    ),
+                    descript: "NetLogo Web runs in any web browser and traditional NetLogo runs on all major operating systems so anyone with a computer can use it. "
+                };
 
-	        default:
-	            return {
-	                demo: null,
-	                descript: ""
-	            };
-	    }
-	};
-	const { demo, descript } = getDemoAndDescription(currentTab);
+            default:
+                return {
+                    demo: null,
+                    descript: ""
+                };
+        }
+    };
+
+    const { demo, descript } = getDemoAndDescription(currentTab);
 
     return (
         <div className="intro-anim-cont">

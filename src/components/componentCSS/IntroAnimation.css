@@ -71,3 +71,13 @@
     position: relative;
     height: 17.07rem;
 }
+
+.visualization-inner-img {
+    width: 27.813rem;
+    height: 12.75rem;
+}
+
+
+.hidden {
+    display: none;
+}

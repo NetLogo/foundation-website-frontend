@@ -15,15 +15,11 @@ import visualizationImg2 from "../assets/fire.gif";
 const IntroAnimation = () => {
     const [currentTab, setCurrentTab] = useState(0);
     const [showFirstImage, setShowFirstImage] = useState(true);
-    const [isFading, setIsFading] = useState(false);
 
+    // Effect to handle tab switching
     useEffect(() => {
         const tabTimer = setTimeout(() => {
-            setIsFading(true); // Start fading out
-            setTimeout(() => {
-                setCurrentTab((prevTab) => (prevTab + 1) % 4);
-                setIsFading(false); // Fade in the new tab
-            }, 500); // Duration of the fade-out animation
+            setCurrentTab((prevTab) => (prevTab + 1) % 4);
         }, 4000);
 
         return () => {
@@ -31,30 +27,30 @@ const IntroAnimation = () => {
         };
     }, [currentTab]);
 
+    // Effect to handle image switching when currentTab is 0
     useEffect(() => {
-        const imgTimer = setInterval(() => {
-            setShowFirstImage(prev => !prev);
-        }, 2500);
+        let imgTimer: ReturnType<typeof setInterval>;
+        if (currentTab === 0) {
+            imgTimer = setInterval(() => {
+                setShowFirstImage(prev => !prev);
+            }, 2500);
+        }
 
         return () => {
-            clearInterval(imgTimer);
+            if (imgTimer) clearInterval(imgTimer); // Clear the interval when the tab changes
         };
-    }, []);
+    }, [currentTab]); // Dependence on currentTab to reset the timer when the tab changes
 
-    const handleTabClick = (tab) => {
-        setIsFading(true);
-        setTimeout(() => {
-            setCurrentTab(tab);
-            setIsFading(false);
-        }, 500); // Duration of the fade-out animation
+    const handleTabClick = (tab: number) => {
+        setCurrentTab(tab);
     };
 
-    const getDemoAndDescription = (tab) => {
+    const getDemoAndDescription = (tab: number) => {
         switch(tab) {
             case 0:
                 return {
                     demo: (
-                        <div className={`intro-demo ${isFading ? 'fade-exit' : 'fade-enter'}`}>
+                        <div className="intro-demo">
                             <img src={visualizationDemo.src} alt="Visualization Demo" />
                             <img 
                                 src={visualizationImg1.src} 
@@ -74,7 +70,7 @@ const IntroAnimation = () => {
             case 1:
                 return {
                     demo: (
-                        <div className={`intro-demo ${isFading ? 'fade-exit' : 'fade-enter'}`}>
+                        <div className="intro-demo">
                             <img src={easyToLearnDemo.src} alt="Visualization Demo" />
                         </div>
                     ),
@@ -84,7 +80,7 @@ const IntroAnimation = () => {
             case 2:
                 return {
                     demo: (
-                        <div className={`intro-demo ${isFading ? 'fade-exit' : 'fade-enter'}`}>
+                        <div className="intro-demo">
                             <img src={powerfulExtensibleDemo.src} alt="Visualization Demo" />
                         </div>
                     ),
@@ -94,7 +90,7 @@ const IntroAnimation = () => {
             case 3:
                 return {
                     demo: (
-                        <div className={`intro-demo ${isFading ? 'fade-exit' : 'fade-enter'}`}>
+                        <div className="intro-demo">
                             <img src={crossPlatformDemo.src} alt="Visualization Demo" />
                         </div>
                     ),
@@ -188,4 +184,3 @@ const IntroAnimation = () => {
 };
 
 export { IntroAnimation };
-

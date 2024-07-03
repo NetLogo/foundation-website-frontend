@@ -7,6 +7,8 @@ import { News } from "./News";
 import { WhyNetLogo } from "./WhyNetLogo";
 import { Button } from "./Button";
 import { GetNetLogo } from "./GetNetLogo";
+import { Community } from "./Community";
+import type { CommunityPost } from "./Community";
 import type { Event } from "./EventsDisplay";
 import "./componentCSS/Body.css";
 
@@ -16,9 +18,10 @@ interface BodyProps {
     competitions: Event[];
     upcomingWorkshops: Event[];
     publications: Event[];
+    communityContent: CommunityPost[];
 }
 
-function Body({announcement, upcomingEvents, upcomingWorkshops, competitions, publications} : BodyProps) {
+function Body({announcement, upcomingEvents, upcomingWorkshops, competitions, publications, communityContent} : BodyProps) {
     const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
     return (
         <div className="body">
@@ -33,6 +36,8 @@ function Body({announcement, upcomingEvents, upcomingWorkshops, competitions, pu
             <Intro/>
             <WhyNetLogo/>
             <GetNetLogo/>
+            <Community
+            communityPosts={communityContent}/>
             <News upcomingEvents={upcomingEvents}
             upcomingWorkshops={upcomingWorkshops}
             competitions={competitions}

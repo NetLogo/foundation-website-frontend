@@ -20,6 +20,14 @@ const competitions = data.data;
 response = await fetch('http://34.207.80.47:8055/items/publications');
 data = await response.json();
 const publications = data.data;
+
+{/* CHANGE THIS TO THE ACTUAL SOURCE FOR COMMUNITY, AND NOT SCRAPED CONTENT (PLACEHOLDER */}
+
+response = await fetch('http://34.207.80.47:8055/items/community');
+data = await response.json();
+const communityContent = data.data;
+console.log(communityContent);
+
 ---
 
 <html lang="en">
@@ -30,7 +38,9 @@ const publications = data.data;
         upcomingEvents={upcomingEvents}
         upcomingWorkshops={upcomingWorkshops}
         competitions={competitions}
-        publications={publications}/>
+        publications={publications}
+        communityContent={communityContent}
+        />
 	</body>
 </html>
 

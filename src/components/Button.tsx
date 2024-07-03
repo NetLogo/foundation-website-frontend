@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import buttonIcon from "../assets/more-icon.svg";
 import "./componentCSS/Button.css";
@@ -8,7 +9,8 @@ interface ButtonProps {
     fontSize: string, // css font size 
     text: string,
     hasIcon?: boolean,
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void; // Correct typing for onClick
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    style?: React.CSSProperties; // Add style prop
 }
 
 const Button = (props: ButtonProps) => {
@@ -18,12 +20,13 @@ const Button = (props: ButtonProps) => {
         fontSize,
         text,
         hasIcon = false,
-        onClick = () => console.log(`${text} pressed`), // Set default value here
+        onClick = () => console.log(`${text} pressed`),
+        style = {}, // Set default value here
     } = props;
 
     const [isHovered, setIsHovered] = useState(false);
 
-    const style = {
+    const defaultStyle = {
         padding,
         fontSize,
     };
@@ -31,7 +34,7 @@ const Button = (props: ButtonProps) => {
     return (
         <button
             className={`button ${colorClass}`}
-            style={style}
+            style={{ ...defaultStyle, ...style }} // Merge styles here
             onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -49,4 +52,3 @@ const Button = (props: ButtonProps) => {
 };
 
 export { Button };
-

@@ -1,0 +1,7 @@
+Left to do sheet
+
+07/01: start: 1:41 pm
+1) Add cross fade effect to animation
+    - content itself should be absolute and positioned over each other dd
+2) Add blue lines to powerful & extensible 
+3) 

@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from 'react';
 import './componentCSS/DemoDisplay.css';
-import visualizationDemo from "../assets/visualization-demo.svg";
 
 interface DemoDisplayProps {
     demo: React.ReactNode,
@@ -7,10 +7,29 @@ interface DemoDisplayProps {
 }
 
 const DemoDisplay = ({demo, descript}: DemoDisplayProps ) => {
+    const [isChanging, setIsChanging] = useState(false);
+    const [currentDemo, setCurrentDemo] = useState(demo);
+    const [currentDescript, setCurrentDescript] = useState(descript);
+
+    useEffect(() => {
+        if (demo !== currentDemo || descript !== currentDescript) {
+            setIsChanging(true);
+            const timer = setTimeout(() => {
+                setCurrentDemo(demo);
+                setCurrentDescript(descript);
+                setIsChanging(false);
+            }, 150); // Matches the duration of the fade-out animation
+
+            return () => clearTimeout(timer);
+        }
+    }, [demo, descript]);
+
     return (
         <div className="demo-display">
-            {demo}
-            <span className="demo-display-text"> {descript} </span>
+            <div className={`demo-content ${isChanging ? 'fade-out' : ''}`}>
+                {currentDemo}
+                <span className="demo-display-text">{currentDescript}</span>
+            </div>
         </div>
     )
 }

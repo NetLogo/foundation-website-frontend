@@ -21,9 +21,22 @@
     font-weight: 600;
     line-height: 150%; /* 1.6875rem */
     width: 46.25rem;
-    text-align: left;
+    display: block;
+    margin-top: 1rem;   text-align: left;
+    position: relative;
 }
 
+.demo-content {
+    transition: opacity 0.15s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 2.375rem;
+    opacity: 1;
+}
+
+.demo-content.fade-out {
+    opacity: 0;
+}
 
 .visualization-inner-img {
     position: absolute;

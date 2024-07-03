@@ -10,13 +10,12 @@ interface CommunityPost {
     link: string
 }
 
-interface CommunityProps {
-    communityPosts: communityPost[]
+interface communityProps {
+    communityPosts: CommunityPost[]
 }
 
 /** Community: defines the Community section in the landing page **/
-const Community = ({communityPosts}: communityPost ) => {
-    console.log(communityPosts);
+const Community = ({communityPosts}: communityProps ) => {
     return(
         <div className="community-section">
             <Section 
@@ -25,6 +24,7 @@ const Community = ({communityPosts}: communityPost ) => {
                 sectionGap={1.88}
                 sectionPaddingBot={3.75}
                 backgroundColor="#F2F2F5"
+                borderRadius={0}
                 moreButton={false}
                 body={
                   <div className="community-content">

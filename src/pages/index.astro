@@ -1,8 +1,10 @@
 ---
 import { Body } from "../components/Body.tsx";
+import fetch from 'node-fetch';
+import cheerio from 'cheerio';
 
 let response = await fetch('http://34.207.80.47:8055/items/announcements')
-let data = await response.json();
+let data: any = await response.json();
 const announcement = data.data;
 
 response = await fetch('http://34.207.80.47:8055/items/upcoming_events');
@@ -23,11 +25,65 @@ const publications = data.data;
 
 {/* CHANGE THIS TO THE ACTUAL SOURCE FOR COMMUNITY, AND NOT SCRAPED CONTENT (PLACEHOLDER */}
 
-response = await fetch('http://34.207.80.47:8055/items/community');
-data = await response.json();
-const communityContent = data.data;
-console.log(communityContent);
+const fetchImageFromLink = async (url: string) => {
+    try {
+        const response = await fetch(url);
+        const body = await response.text();
+        const $ = cheerio.load(body);
+        const image = $('tr').eq(1).find('td').eq(1).find('img').first().attr('src');       
+        return image ? `https://ccl.northwestern.edu/netlogo/${image}` : null;
+    } catch (error) {
+        console.error(`Error fetching image from ${url}:`, error);
+        return null;
+    }
+};
 
+const splitProjectAndAuthor = (inputString: string) => {
+  const separator = " by ";
+  const separatorIndex = inputString.indexOf(separator);
+
+  if (separatorIndex === -1) {
+    return {
+      project: inputString.trim(),
+      author: ""
+    };
+  }
+
+  const project = inputString.substring(0, separatorIndex).trim();
+  const author = inputString.substring(separatorIndex + separator.length).trim();
+
+  return { project, author };
+};
+
+const fetchCommunityData = async () => {
+    const response = await fetch('https://ccl.northwestern.edu/netlogo/models/community/');
+    const body = await response.text();
+    const $ = cheerio.load(body);
+    
+    const communityDataPromises: any[] = [];
+    $('#modelEntry').each((index, element) => {
+        if (index >= 5) {
+            return false;
+        }
+        
+        const linkModifier = $(element).find('td').eq(1).find('a').attr('href')?.trim() ?? '';
+        const fullLink = `https://ccl.northwestern.edu/netlogo/${linkModifier}`; 
+
+        const titleAuthor = $(element).find('td').eq(2).text();
+        const { project, author } = splitProjectAndAuthor(titleAuthor);
+        const fetchImagePromise = fetchImageFromLink(fullLink).then((imageUrl) => {
+            return { project: project, author: author, link: fullLink, image: imageUrl, date: 'May, 2024'};
+        });
+
+        communityDataPromises.push(fetchImagePromise);
+    });
+    
+    const communityData = await Promise.all<any>(communityDataPromises);
+    return communityData;
+};
+
+const communityContent2 = await fetchCommunityData();
+console.log(communityContent2);
 ---
 
 <html lang="en">
@@ -39,7 +95,7 @@ console.log(communityContent);
         upcomingWorkshops={upcomingWorkshops}
         competitions={competitions}
         publications={publications}
-        communityContent={communityContent}
+        communityContent={communityContent2}
         />
 	</body>
 </html>

@@ -1,0 +1,92 @@
+.mailing-list-section {
+    padding-top: 6.81rem;
+    padding-bottom: 4.19rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.mailing-list-body {
+    width: 83.333%;
+    margin: auto;
+}
+
+.mailing-list-content {
+    width: 100%;
+    display: flex;
+    padding: 2.5rem 4rem;
+    align-items: center;
+    gap: 10rem;
+    flex: 1 0 0;
+}
+
+.mailing-list-text-cont {
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.mailing-list-title {
+    color: var(--Dark-2, #555770);
+
+    /* Heading 3 */
+    font-family: Inter;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 3.25rem */
+    letter-spacing: 0.05rem;
+}
+
+.mailing-list-descript {
+    color: var(--Dark-2, #555770);
+    width: 26.1875rem;
+    /* txt/title */
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 1.6875rem */
+}
+
+.mailing-list-input-cont {
+    display: flex;
+    flex-direction: row;
+    padding: 0.75rem 1.25rem;
+    height: 4.3125rem;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    border: 1px solid var(--Light-3, #EBEBF0);
+    background: #FFF;
+    gap: 1.5625rem;
+}
+
+.mailing-list-input-text {
+    color: var(--Dark-3, #8F90A6);
+    text-align: center;
+    
+    /* txt/small/semi */
+    font-family: Inter;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 1.3125rem */
+}
+
+.mailing-list-input-input {
+    width: 15.0625rem;
+    outline: none;
+    border: none;
+    color: black;
+    text-align: center;
+    /* txt/small/semi */
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 300%; /* 1.3125rem */
+    text-align: left;
+}

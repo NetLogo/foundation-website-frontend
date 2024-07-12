@@ -8,6 +8,9 @@ import { WhyNetLogo } from "./WhyNetLogo";
 import { Button } from "./Button";
 import { GetNetLogo } from "./GetNetLogo";
 import { Community } from "./Community";
+import { FeaturedPartners } from "./FeaturedPartners";
+import { MailingList } from "./MailingList";
+import { Footer } from "./Footer";
 import type { CommunityPost } from "./Community";
 import type { Event } from "./EventsDisplay";
 import "./componentCSS/Body.css";
@@ -42,6 +45,9 @@ function Body({announcement, upcomingEvents, upcomingWorkshops, competitions, pu
             upcomingWorkshops={upcomingWorkshops}
             competitions={competitions}
             publications={publications}/>
+            <FeaturedPartners/>
+            <MailingList/>
+            <Footer/>
         </div>
     )
 }

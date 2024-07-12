@@ -1,0 +1,124 @@
+.footer-section {
+    background-color: #fff;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    border-radius: 7.5rem 7.5rem 0rem 0rem;
+    width: 100%;
+}
+
+.footer-body {
+    width: 85%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.footer-get-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-get-text {
+    color: var(--Dark-1, #28293D);
+    /* txt/title */
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; 
+    text-align: left;
+    width: 71.25%;
+}
+
+.footer-line {
+    width: 95%;
+    margin: auto;
+    background: var(--Dark-3, #8F90A6);
+    height: 0.0625rem; 
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.footer-content-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.875rem;
+    align-self: stretch;
+}
+
+.footer-row-front {
+    display: flex;
+    width: 15.4375rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.footer-row-front-title {
+    color: var(--Dark-1, #28293D);
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 1.875rem */
+    letter-spacing: -0.0275rem;
+    text-align: left;
+}
+
+.footer-row-front-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-content-row-back {
+    display: flex;
+    align-items: flex-start;
+    gap: 3.125rem;
+    flex: 1 0 0;
+}
+
+.footer-content-row-vert-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    flex: 1 0 0;
+}
+
+.footer-content-row-vert-header {
+    color: var(--Dark-1, #28293D);
+    font-family: Inter;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    text-align: left;
+}
+
+.footer-content-row-vert-content {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--Dark-1, #28293D);
+    /* txt/normal/rg */
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 1.5rem */
+}
+
+.footer-content-end-cont {
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+}

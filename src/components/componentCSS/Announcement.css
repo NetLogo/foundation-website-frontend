@@ -7,7 +7,9 @@
 	align-items: center;
 	gap: 0.31rem;
 	background: var(--Light-1, #FAFAFC);
+    top: calc(5.505rem + 1px); /* account for header border */
     position: absolute;
+    z-index: 0; /** make it show below the expanded content of the header */
 }
 
 .aTextButtonCont {

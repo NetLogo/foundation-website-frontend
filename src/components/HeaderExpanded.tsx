@@ -82,6 +82,9 @@ const DocsExpanded: Record<string, string>[] = [
         "OpenMOLE": "",
         "MEME": "",
         "RNetLogo": "",
+    },
+    {   
+        "": "",
         "NetLogo-LaTeX": "",
         "BODNetLogo": "",
         "NetLogo Obfuscator": "",
@@ -107,7 +110,7 @@ const ModelsExpanded: Record<string, string>[] = [
         "Newest Updates": "",
     },
     {
-        "MODELING COMMONS": "",
+        "MODELING COMS": "",
         "Share & View": "",
     }
 ]
@@ -123,9 +126,13 @@ const HeaderActionColumn = ({columnContent}: HeaderActionColumnProps) => {
     const [title, ...rest] = Object.entries(columnContent); // destructure title from the rest 
     return (
         <div className="header-action-column">
-            <div className="header-action-title">
-                <span>{title[0]}</span>
-                <img src={headerActionIcon.src} className="header-action-icon" alt="Header action icon" />
+            <div className={`header-action-title ${title[0] ? '' : 'not-visible'}`} >
+                <span>{title[0]}</span>            
+                <img 
+                    src={headerActionIcon.src} 
+                    className={`header-action-icon ${title[0] ? '' : 'not-viVsible'}`} 
+                    alt="Header action icon" 
+            />
             </div>
             {rest.map(([key, value]) => (
                 <span key={key} className="header-action-content">{key}</span>

@@ -4,6 +4,8 @@ import React, { useState, useCallback, useMemo, Suspense } from 'react';
 import blueEllipse from "./../assets/blue-ellipse.svg";
 import netlogoicon from "../assets/netlogo.svg";
 import dropdownIcon from "../assets/dropdown-icon.svg";
+import hoverDropdownIcon from "../assets/hover-dropdown-icon.svg";
+
 const LazyHeaderExpanded = React.lazy(() => import("./HeaderExpanded"));
 
 const headerSections: string[] = [
@@ -23,7 +25,7 @@ const HeaderAction = React.memo(({ title, isHovered, onMouseEnter }: HeaderActio
         onMouseEnter={onMouseEnter}
     >
         <div className={`header-action ${isHovered ? 'header-action-hovered' : ''}`}>{title}</div>
-        <img className="dropdown-icon" src={dropdownIcon.src} alt="dropdown"/>
+        <img className="dropdown-icon" src={isHovered ? hoverDropdownIcon.src : dropdownIcon.src} alt="dropdown"/>
     </div>
 ));
 

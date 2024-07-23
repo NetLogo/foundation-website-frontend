@@ -14,7 +14,6 @@
     border-bottom: 1px solid var(--Light-3, #EBEBF0);
     background: var(--Light-2, #F2F2F5);
     overflow:hidden;
-    transition: height 0.3s ease-out;
 }
 
 #netlogo-title {
@@ -103,7 +102,6 @@
     z-index: 1;
     justify-content: center;
     padding-bottom: 1.88rem;
-    grid-column: 2 / -1;
 }
 
 .header-expanded.expanded {
@@ -112,15 +110,11 @@
     opacity: 1;
 }
 
-.header-expanded > *:first-child {
-  grid-column: 2;
-}
-
 .header-expanded-content {
     display: flex;
     flex-direction: row;
     gap: 2.5rem;
-    margin-left: 11.1rem;
+    margin-left: 12.8%;
     width: 100%;
 }
 
@@ -168,4 +162,9 @@
     width: 95.7%;
     margin: auto;
     margin-bottom: 0.81rem;
+}
+
+.not-visible {
+    visibility: hidden;
+    cursor: default !important;
 }

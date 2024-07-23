@@ -135,9 +135,8 @@ const HeaderActionColumn = ({columnContent}: HeaderActionColumnProps) => {
 }
 const HeaderExpanded = React.memo(({ headerIndex }: HeaderExpandedProps) => {
     const expandedContent = headerIndex >= 0 ? headerExpandedSections[headerIndex] : ProductExpanded;
-
     return (
-        <div className={`header-expanded ${headerIndex >= 0 ? "expanded" : ""}`}>
+        <div className={`header-expanded ${(headerIndex >= 0 && expandedContent.length > 0)? "expanded" : ""}`}>
             <div className="header-expanded-line"></div>
             <div className="header-expanded-content">
                 {Object.entries(expandedContent).map(([key, value], i) => (

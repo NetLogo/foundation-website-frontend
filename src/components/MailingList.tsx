@@ -2,6 +2,7 @@ import "./componentCSS/MailingList.css";
 import { Section } from "./Section";
 import { Button } from "./Button";
 import React, { useState } from 'react';
+/** force commit */
 
 const MailingList = () => {
     const [email, setEmail] = useState("");

@@ -1,6 +1,7 @@
 import { Section } from "./Section.tsx";
 import { Button } from "./Button";
-import getNetLogo from "../assets/get-netlogo.svg";
+import getNetLogoIcon  from "../assets/get-netlogo.svg";
+import netlogoWebIcon from "../assets/netlogo-web.svg"
 import TU from "../assets/TU.svg";
 import "./componentCSS/GetNetLogo.css";
 
@@ -19,7 +20,7 @@ const GetNetLogo = () => {
                     <div className="get-netlogo-content">
                         <div className="get-item"> 
                             <div className="get-item-header">
-                                <img className="get-item-img" src={ getNetLogo.src }/>
+                                <img className="get-item-img" src={ getNetLogoIcon.src }/>
                                 <Button 
                                 colorClass="blue-button"
                                 padding="0.75rem 1.5rem"
@@ -27,11 +28,11 @@ const GetNetLogo = () => {
                     text="GET"/>
                             </div>
                             <span className="get-item-title"> NetLogo Desktop </span>
-                            <span className="get-item-descript"> Agent-based modeling environment for simulating natural and social phenomena. </span>
+                            <span className="get-item-descript"> A  programmable modeling environment for simulating natural and social phenomena that runs on Mac, Windows, and Linux. This is the most powerful version of NetLogo. </span>
                         </div>
                         <div className="get-item"> 
                             <div className="get-item-header">
-                                <img className="get-item-img" src={ getNetLogo.src }/>
+                                <img className="get-item-img" src={ netlogoWebIcon.src }/>
                                 <Button 
                                 colorClass="blue-button"
                                 padding="0.75rem 1.5rem"
@@ -39,7 +40,7 @@ const GetNetLogo = () => {
                     text="GET"/>
                             </div>
                             <span className="get-item-title"> NetLogo Web </span>
-                            <span className="get-item-descript"> Includes the same core features as NetLogo but runs in a web browser, making it easy to incorporate into educational materials. </span>
+                            <span className="get-item-descript"> A version of NetLogo that runs in all modern web browsers, without any need for installation. Very useful for embedding in online educational materials.  </span>
                         </div>
                         <div className="get-item"> 
                             <div className="get-item-header">
@@ -51,7 +52,7 @@ const GetNetLogo = () => {
                     text="GET"/>
                             </div>
                             <span className="get-item-title"> Turtle Universe </span>
-                            <span className="get-item-descript"> Brings the limitless power of computational modeling to smartphones and tablets of young students and educators. </span>
+                            <span className="get-item-descript"> Powered by the NetLogo engine but with its own unique interface, Turtle Universe brings the limitless power of computational modeling to smartphones and tablets of young students and educators. </span>
                         </div>
                     </div>
 

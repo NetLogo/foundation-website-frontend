@@ -7,14 +7,14 @@ import powerIcon from "../assets/power-extensible.svg";
 import crossPlatformIcon from "../assets/cross-platform.svg";
 import visualizationDemo from "../assets/visualization-demo.svg";
 import easyToLearnDemo from "../assets/easy-to-learn-demo.svg";
-import powerfulExtensibleDemo from "../assets/powerful-extensible-demo.svg";
-import crossPlatformDemo from "../assets/cross-platform-demo.svg";
+import crossPlatform from "../assets/cross-platform.png";
 import visualizationImg1 from "../assets/visualization-img1.svg";
 import visualizationImg2 from "../assets/fire.gif";
+import visualization from "../assets/visualization.png";
+import powerfulExtensible from "../assets/powerful-extensible.png";
 
 const IntroAnimation = () => {
     const [currentTab, setCurrentTab] = useState(0);
-    const [showFirstImage, setShowFirstImage] = useState(true);
 
     // Effect to handle tab switching
     useEffect(() => {
@@ -27,19 +27,6 @@ const IntroAnimation = () => {
         };
     }, [currentTab]);
 
-    // Effect to handle image switching when currentTab is 0
-    useEffect(() => {
-        let imgTimer: ReturnType<typeof setInterval>;
-        if (currentTab === 0) {
-            imgTimer = setInterval(() => {
-                setShowFirstImage(prev => !prev);
-            }, 2500);
-        }
-
-        return () => {
-            if (imgTimer) clearInterval(imgTimer); // Clear the interval when the tab changes
-        };
-    }, [currentTab]); // Dependence on currentTab to reset the timer when the tab changes
 
     const handleTabClick = (tab: number) => {
         setCurrentTab(tab);
@@ -51,37 +38,32 @@ const IntroAnimation = () => {
                 return {
                     demo: (
                         <div className="intro-demo">
-                            <img src={visualizationDemo.src} alt="Visualization Demo" />
-                            <img 
-                                src={visualizationImg1.src} 
-                                className={`visualization-inner-img ${showFirstImage ? '' : 'hidden'}`} 
-                                alt="Visualization 1" 
-                            />
-                            <img 
-                                src={visualizationImg2.src} 
-                                className={`visualization-inner-img ${showFirstImage ? 'hidden' : ''}`} 
-                                alt="Visualization 2" 
-                            />
+                            <img className="demo-img" src={visualization.src} alt="Visualization Demo" />
                         </div>
                     ),
-                    descript: "NetLogo visualizes agent-based models as they run in real time, which is very important both for learning from existing models and for debugging models as you code them. Above is the visualization of a model of __________ in which _____________"
+                    descript: "NetLogo visualizes agent-based models as they run in real time, which is very important both for learning from existing models and for debugging models as you code them. Above is the visualization of a model of birds following a few simple rules from which flocking behavior emerges."
                 };
 
             case 1:
                 return {
                     demo: (
-                        <div className="intro-demo">
-                            <img src={easyToLearnDemo.src} alt="Visualization Demo" />
+                            <div className="intro-demo">
+                                <img src={visualizationDemo.src} alt="Visualization Demo" />
+                                <img 
+                                    src={visualizationImg2.src} 
+                                    className={`visualization-inner-img`} 
+                                    alt="Visualization 1" 
+                                />
                         </div>
                     ),
-                    descript: "NetLogo code is designed to read similarly to English, making it easy for English speakers to understand even as novices."
+                    descript: "NetLogo code is designed to read similarly to English, making it easy for English speakers to understand even as novices. In the above forest fire model, the code asks the fire agents (red patches) to ask their neighboring trees (green patches) to light on fire (turn red) and then burn out (darken color). "
                 };
 
             case 2:
                 return {
                     demo: (
                         <div className="intro-demo">
-                            <img src={powerfulExtensibleDemo.src} alt="Visualization Demo" />
+                            <img className="demo-img" src={powerfulExtensible.src} alt="Visualization Demo" />
                         </div>
                     ),
                     descript: "NetLogo models can run simulations with tens of thousands of agents and has many extensions to expand its capabilities, including being able to run Python code within a NetLogo model."
@@ -91,7 +73,7 @@ const IntroAnimation = () => {
                 return {
                     demo: (
                         <div className="intro-demo">
-                            <img src={crossPlatformDemo.src} alt="Visualization Demo" />
+                            <img className="demo-img" src={crossPlatform.src} alt="Visualization Demo" />
                         </div>
                     ),
                     descript: "NetLogo Web runs in any web browser and traditional NetLogo runs on all major operating systems so anyone with a computer can use it. "

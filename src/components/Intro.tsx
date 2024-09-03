@@ -13,7 +13,7 @@ const Intro = ({}) => {
                 	</pre>
             	</div>
             	<div className="intro-text">
-                	<p>Agent-based modeling (ABM) is a powerful tool for understanding complex systems in which large-scale patterns emerge from the{'\n'}interactions of many simple parts. NetLogo is an ABM environment with a "low threshold" for learning yet "high ceiling" capabilities. This{'\n'} combination is why NetLogo is used widely both in educational settings and by professional scientists doing cutting edge research.</p>
+                	<p>NetLogo is a multi-agent programmable modeling environment. It is used by many hundreds of thousands of students, teachers, and{'\n'}researchers worldwide. It also powers HubNet participatory simulations. It is authored by Uri Wilensky and developed at the CCL.</p>
             	</div>
             </div>
             <IntroAnimation/>

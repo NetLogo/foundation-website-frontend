@@ -3,23 +3,23 @@ import { Body } from "../components/Body.tsx";
 import fetch from 'node-fetch';
 import cheerio from 'cheerio';
 
-let response = await fetch('http://34.207.80.47:8055/items/announcements')
+let response = await fetch('http://54.83.70.155:8055/items/announcements')
 let data: any = await response.json();
 const announcement = data.data;
 
-response = await fetch('http://34.207.80.47:8055/items/upcoming_events');
+response = await fetch('http://54.83.70.155:8055/items/upcoming_events');
 data = await response.json();
 const upcomingEvents = data.data;
 
-response = await fetch('http://34.207.80.47:8055/items/upcoming_workshops');
+response = await fetch('http://54.83.70.155:8055/items/upcoming_workshops');
 data = await response.json();
 const upcomingWorkshops = data.data;
 
-response = await fetch('http://34.207.80.47:8055/items/competitions');
+response = await fetch('http://54.83.70.155:8055/items/competitions');
 data = await response.json();
 const competitions = data.data;
 
-response = await fetch('http://34.207.80.47:8055/items/publications');
+response = await fetch('http://54.83.70.155:8055/items/publications');
 data = await response.json();
 const publications = data.data;
 

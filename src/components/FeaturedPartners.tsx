@@ -1,5 +1,5 @@
 import "./componentCSS/FeaturedPartners.css";
-import getNetLogo from "../assets/get-netlogo.svg";
+import partnersIcon from "../assets/partner-logo.svg";
 import { Section } from "./Section";
 
 interface PartnerProps {
@@ -39,31 +39,31 @@ const FeaturedPartners = () => {
                         <div className="partners-row">
                             <Partner
                             partnerName="Partner Name"
-                            partnerImage={getNetLogo}
+                            partnerImage={partnersIcon}
                             />
                             
                             <Partner
                             partnerName="Partner Name"
-                            partnerImage={getNetLogo}
+                            partnerImage={partnersIcon}
                             />
                             <Partner
                             partnerName="Partner Name"
-                            partnerImage={getNetLogo}
+                            partnerImage={partnersIcon}
                             />
                         </div>
 
                         <div className="partners-row">
                             <Partner
                             partnerName="Partner Name"
-                            partnerImage={getNetLogo}
+                            partnerImage={partnersIcon}
                             />
                             <Partner
                             partnerName="Partner Name"
-                            partnerImage={getNetLogo}
+                            partnerImage={partnersIcon}
                             />
                             <Partner
                             partnerName="Partner Name"
-                            partnerImage={getNetLogo}
+                            partnerImage={partnersIcon}
                             />
                         </div>
                     </div>

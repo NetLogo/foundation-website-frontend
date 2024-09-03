@@ -30,7 +30,7 @@ const FeaturedPartners = () => {
                 sectionTitle="Featured Partners"
                 sectionDescript="Trusted by the world’s leading universities and research institutes"
                 sectionGap={2.5}
-                sectionPaddingBot={3.75}
+                sectionPaddingBot={6}
                 backgroundColor="white"
                 borderRadius={0}
                 moreButton={false}

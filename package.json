@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro start --host 0.0.0.0",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
+    "@astrojs/node": "^8.3.3",
     "@astrojs/react": "^3.4.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

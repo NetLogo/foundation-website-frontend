@@ -1,4 +1,9 @@
 ## NetLogo Website Redesign
+### Build 
+```
+docker build -t netlogo-website .
+docker run -p 3000:3000 netlogo-website
+```
 
 ### Proposed CMS:
 - We can use a self-hosted headless CMS to handle the backend content. Specifically we can use *directus*

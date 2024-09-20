@@ -3,28 +3,34 @@ import { Body } from "../components/Body.tsx";
 import fetch from 'node-fetch';
 import cheerio from 'cheerio';
 
-let base = 'http://34.201.111.2'
-let port = 8055
-let response = await fetch(base + ':' + port + '/items/announcements')
+let base = 'https://backend.netlogo.org';
+
+let response = await fetch(base + '/items/announcements')
 let data: any = await response.json();
 const announcement = data.data;
 
-response = await fetch(base + ':' + port + '/items/upcoming_events');
+response = await fetch('https://backend.netlogo.org/items/upcoming_events');
 data = await response.json();
+console.log(data)
 const upcomingEvents = data.data;
 
-response = await fetch(base + ':' + port + '/items/upcoming_workshops');
+response = await fetch(base + '/items/upcoming_workshops');
 data = await response.json();
 const upcomingWorkshops = data.data;
 
-response = await fetch(base + ':' + port + '/items/competitions');
+response = await fetch(base  + '/items/competitions');
 data = await response.json();
 const competitions = data.data;
 
-response = await fetch(base + ':' + port + '/items/publications');
+response = await fetch(base + '/items/publications');
 data = await response.json();
 const publications = data.data;
 
+console.log(announcement)
+console.log(upcomingEvents)
+console.log(upcomingWorkshops)
+console.log(competitions)
+console.log(publications)
 {/* CHANGE THIS TO THE ACTUAL SOURCE FOR COMMUNITY, AND NOT SCRAPED CONTENT (PLACEHOLDER */}
 
 const fetchImageFromLink = async (url: string) => {

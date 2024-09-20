@@ -24,7 +24,7 @@ const EventsDisplay = ({ title, events }: EventsDisplayProps) => {
       return `${dateComponents[1]}/${dateComponents[2]}/${dateComponents[0]}`;
   }
 
-  const topThreeEvents = events.slice(0, 3);
+  const visibleEvents = showAll ? events : events.slice(0, 3);
 
   const handleHeaderClick = () => {
     if (isOpen) {
@@ -44,7 +44,7 @@ const EventsDisplay = ({ title, events }: EventsDisplayProps) => {
       </div>
       {isOpen && (
         <div>
-          {(showAll ? events : topThreeEvents).map((event: Event, index: number) => (
+          {visibleEvents.map((event: Event, index: number) => (
             <div className="event-cont" key={index}>
               <span className="event-date">{formatDate(event.date)}</span>
               <span className="event-title">{event.event_title}</span>
@@ -63,4 +63,3 @@ const EventsDisplay = ({ title, events }: EventsDisplayProps) => {
 
 export { EventsDisplay };
 export type { Event };
-

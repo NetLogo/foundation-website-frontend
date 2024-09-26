@@ -11,9 +11,9 @@ const announcement = data.data;
 
 response = await fetch('https://backend.netlogo.org/items/upcoming_events');
 data = await response.json();
-console.log(data)
 const upcomingEvents = data.data;
 
+// reupload, 
 response = await fetch(base + '/items/upcoming_workshops');
 data = await response.json();
 const upcomingWorkshops = data.data;
@@ -25,13 +25,6 @@ const competitions = data.data;
 response = await fetch(base + '/items/publications');
 data = await response.json();
 const publications = data.data;
-
-console.log(announcement)
-console.log(upcomingEvents)
-console.log(upcomingWorkshops)
-console.log(competitions)
-console.log(publications)
-{/* CHANGE THIS TO THE ACTUAL SOURCE FOR COMMUNITY, AND NOT SCRAPED CONTENT (PLACEHOLDER */}
 
 const fetchImageFromLink = async (url: string) => {
     try {

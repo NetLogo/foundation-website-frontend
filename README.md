@@ -1,18 +1,12 @@
-## NetLogo Website Redesign
-### Build 
-```
-docker build -t netlogo-website .
-docker run -p 3000:3000 netlogo-website
-```
+## NetLogo Website Frontend
+This is the frontend repository of the new NetLogo website.
+Currently, the demo is deployed at https://netlogo.github.io/foundation-website-frontend/
+The backend is hosted at https://backend.netlogo.org/
 
-### Proposed CMS:
-- We can use a self-hosted headless CMS to handle the backend content. Specifically we can use *directus*
-- We can host the directus backend on a server. 
-- http://130.245.173.208:8055/admin/settings/data-model
-- Fetch content: `http://130.245.173.208:8055/items/announcements`
+### Architecture
+We use [Astro](https://astro.build/) to enable generate a static website from this repository.
+This enables us to use React features, while keeping the website entirely static.
 
-### Proposed Frontend
-- React + Typescript, with Astro for static site generation purposes
-
-### Demo link
-https://coloshword.github.io/NetLogo-redesign/
+### Related Documentation
+* How to create more static or dynamic pages?
+https://docs.astro.build/en/guides/routing/

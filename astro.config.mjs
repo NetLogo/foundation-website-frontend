@@ -4,6 +4,5 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [react()],
   site: 'https://netlogo.org',
-  base: '/',
+  base: '/'
 });
-

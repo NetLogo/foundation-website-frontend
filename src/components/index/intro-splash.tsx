@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import { DemoDisplay } from "./DemoDisplay";
-import "./componentCSS/IntroAnimation.css";
-import visualIcon from "../assets/visual.svg";
-import easyIcon from "../assets/easy-learn.svg";
-import powerIcon from "../assets/power-extensible.svg";
-import crossPlatformIcon from "../assets/cross-platform.svg";
-import visualizationDemo from "../assets/visualization-demo.svg";
-import easyToLearnDemo from "../assets/easy-to-learn-demo.svg";
-import crossPlatform from "../assets/cross-platform.png";
-import visualizationImg1 from "../assets/visualization-img1.svg";
-import visualizationImg2 from "../assets/fire.gif";
-import visualization from "../assets/visualization.png";
-import powerfulExtensible from "../assets/powerful-extensible.png";
+import { DemoDisplay } from "./demo-display";
+import "./styles/intro-splash.css";
+import visualIcon from "../../assets/visual.svg";
+import easyIcon from "../../assets/easy-learn.svg";
+import powerIcon from "../../assets/power-extensible.svg";
+import crossPlatformIcon from "../../assets/cross-platform.svg";
+import visualizationDemo from "../../assets/visualization-demo.svg";
+import easyToLearnDemo from "../../assets/easy-to-learn-demo.svg";
+import crossPlatform from "../../assets/cross-platform.png";
+import visualizationImg1 from "../../assets/visualization-img1.svg";
+import visualizationImg2 from "../../assets/fire.gif";
+import visualization from "../../assets/visualization.png";
+import powerfulExtensible from "../../assets/powerful-extensible.png";
 
 const IntroAnimation = () => {
     const [currentTab, setCurrentTab] = useState(0);

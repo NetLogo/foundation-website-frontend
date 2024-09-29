@@ -1,6 +1,5 @@
-import "./componentCSS/MailingList.css";
-import { Section } from "./Section";
-import { Button } from "./Button";
+import "./styles/mailing-list.css";
+import { Button } from "./button";
 import React, { useState } from 'react';
 /** force commit */
 

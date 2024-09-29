@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import "./componentCSS/Community.css";
-import { Section } from "./Section";
-import { Button } from "./Button";
-import communityIcon from "../assets/community-icon.svg";
+import { useState, useEffect } from 'react';
+import "./styles/community.css";
+import { Section } from "../shared/section";
+import { Button } from "../shared/button";
+import communityIcon from "../../assets/community-icon.svg";
 
 interface CommunityPost {
     project: string,

@@ -1,8 +1,8 @@
-import "./componentCSS/Footer.css";
-import { Button } from "./Button";
-import lofiTextLg from "../assets/lofi-text-l.svg";
-import lofiTextMed from "../assets/lofi-text-m.svg";
-import lofiTextSm from "../assets/lofi-text-s.svg";
+import "./styles/footer.css";
+import { Button } from "../shared/button";
+import lofiTextLg from "../../assets/lofi-text-l.svg";
+import lofiTextMed from "../../assets/lofi-text-m.svg";
+import lofiTextSm from "../../assets/lofi-text-s.svg";
 
 const Footer = () => {
     return (

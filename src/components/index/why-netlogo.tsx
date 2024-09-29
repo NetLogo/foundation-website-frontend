@@ -1,8 +1,8 @@
-import "./componentCSS/WhyNetLogo.css";
-import { Section } from "./Section";
-import { Button } from "./Button";
-import student from "./../assets/student.svg";
-import researcher from "./../assets/researcher.svg";
+import "./styles/why-netlogo.css";
+import { Section } from "../shared/section";
+import { Button } from "../shared/button";
+import student from "../../assets/student.svg";
+import researcher from "../../assets/researcher.svg";
 
 /** Inner component for X tab **/
 interface ForTabProps {

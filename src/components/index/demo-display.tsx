@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './componentCSS/DemoDisplay.css';
+import { useState, useEffect } from 'react';
+import './styles/demo-display.css';
 
 interface DemoDisplayProps {
     demo: React.ReactNode,

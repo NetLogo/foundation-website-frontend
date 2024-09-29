@@ -1,12 +1,12 @@
-import "./componentCSS/Header.css";
-import { Searchbar } from "./Searchbar";
+import "./styles/header.css";
+import { Searchbar } from "../shared/search-bar";
 import React, { useState, useCallback, useMemo, Suspense } from 'react';
-import blueEllipse from "./../assets/blue-ellipse.svg";
-import netlogoicon from "../assets/netlogo.svg";
-import dropdownIcon from "../assets/dropdown-icon.svg";
-import hoverDropdownIcon from "../assets/hover-dropdown-icon.svg";
+import blueEllipse from "../../assets/blue-ellipse.svg";
+import netlogoicon from "../../assets/netlogo.svg";
+import dropdownIcon from "../../assets/dropdown-icon.svg";
+import hoverDropdownIcon from "../../assets/hover-dropdown-icon.svg";
 
-const LazyHeaderExpanded = React.lazy(() => import("./HeaderExpanded"));
+const LazyHeaderExpanded = React.lazy(() => import("./header-expanded"));
 
 const headerSections: string[] = [
     "Products", "Learning", "Docs", "Models", "News", "Community", "About"

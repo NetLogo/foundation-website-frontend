@@ -1,7 +1,7 @@
 
-import React, { useState } from "react";
-import buttonIcon from "../assets/more-icon.svg";
-import "./componentCSS/Button.css";
+import { useState } from "react";
+import buttonIcon from "../../assets/more-icon.svg";
+import "./styles/button.css";
 
 interface ButtonProps {
     colorClass: string, /** one of blue-button or light-button **/

@@ -1,19 +1,18 @@
 import { useState } from 'react';
-import { Header } from "./Header";
-import { Announcement } from "./Announcement";
-import type { AnnouncementObj } from "./Announcement";
-import { Intro } from "./Intro";
-import { News } from "./News";
-import { WhyNetLogo } from "./WhyNetLogo";
-import { Button } from "./Button";
-import { GetNetLogo } from "./GetNetLogo";
-import { Community } from "./Community";
-import { FeaturedPartners } from "./FeaturedPartners";
-import { MailingList } from "./MailingList";
-import { Footer } from "./Footer";
-import type { CommunityPost } from "./Community";
-import type { Event } from "./EventsDisplay";
-import "./componentCSS/Body.css";
+import { Header } from "../layout/header";
+import { Announcement } from "../layout/announcement";
+import type { AnnouncementObj } from "../layout/announcement";
+import { Intro } from "./intro";
+import { News } from "./news";
+import { WhyNetLogo } from "./why-netlogo";
+import { GetNetLogo } from "./get-netlogo";
+import { Community } from "./community";
+import { FeaturedPartners } from "./featured-partners";
+import { MailingList } from "../shared/mailing-list";
+import { Footer } from "../layout/footer";
+import type { CommunityPost } from "./community";
+import type { Event } from "./event-display";
+import "./styles/body.css";
 
 interface BodyProps {
     announcement?: AnnouncementObj

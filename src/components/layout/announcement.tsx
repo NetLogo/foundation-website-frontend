@@ -1,7 +1,7 @@
-import "./componentCSS/Announcement.css";
-import { Button } from "./Button";
+import "./styles/announcement.css";
+import { Button } from "../shared/button";
 
-//Announcement: component to display a component, if it exists 
+// Announcement: component to display a component, if it exists 
 
 interface AnnouncementObj {
     id: number,

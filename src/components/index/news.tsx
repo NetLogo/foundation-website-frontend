@@ -1,7 +1,7 @@
-import { EventsDisplay } from './EventsDisplay';
-import type { Event } from './EventsDisplay';
-import { Section } from "./Section";
-import './componentCSS/News.css';
+import { EventsDisplay } from './event-display';
+import type { Event } from './event-display';
+import { Section } from "../shared/section";
+import './styles/news.css';
 
 interface NewsProps {
     upcomingEvents: Event[];

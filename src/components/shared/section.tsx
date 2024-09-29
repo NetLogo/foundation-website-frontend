@@ -1,9 +1,8 @@
 /**Section: Component that defines a section of a page (Why NetLogo, GetNetLogo, etc...
  * A section component takes in JSX as a prop, and can be defined by a parent component to define a "complete" section **/
-import "./componentCSS/Section.css";
-import { Button } from "./Button";
-import React from 'react';
-import moreIcon from "../assets/more-icon.svg";
+import "./styles/Section.css";
+import { Button } from "./button";
+import moreIcon from "../../assets/more-icon.svg";
 
 interface SectionProps {
     sectionTitle: string,

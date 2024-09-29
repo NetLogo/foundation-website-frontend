@@ -1,6 +1,6 @@
-import { IntroAnimation } from "./IntroAnimation";
-import { Button } from "./Button";
-import "./componentCSS/Intro.css";
+import { IntroAnimation } from "./intro-splash";
+import { Button } from "../shared/button";
+import "./styles/intro.css";
 
 const Intro = ({}) => {
     return (

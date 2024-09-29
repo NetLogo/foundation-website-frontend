@@ -1,9 +1,9 @@
-import { Section } from "./Section.tsx";
-import { Button } from "./Button";
-import getNetLogoIcon  from "../assets/get-netlogo.svg";
-import netlogoWebIcon from "../assets/netlogo-web.svg"
-import TU from "../assets/TU.svg";
-import "./componentCSS/GetNetLogo.css";
+import { Section } from "../shared/section.js";
+import { Button } from "../shared/button.js";
+import getNetLogoIcon  from "../../assets/get-netlogo.svg";
+import netlogoWebIcon from "../../assets/netlogo-web.svg"
+import TU from "../../assets/turtle-universe.svg";
+import "./styles/get-netlogo.css";
 
 const GetNetLogo = () => {
     return (

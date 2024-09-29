@@ -1,5 +1,5 @@
 ---
-import { Body } from "../components/Body.tsx";
+import { Body } from "../components/index/body.tsx";
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 
@@ -7,7 +7,7 @@ let base = 'https://backend.netlogo.org';
 
 let response = await fetch(base + '/items/announcements')
 let data: any = await response.json();
-const announcement = data.data;
+const announcement = data.data;0
 
 response = await fetch('https://backend.netlogo.org/items/upcoming_events');
 data = await response.json();

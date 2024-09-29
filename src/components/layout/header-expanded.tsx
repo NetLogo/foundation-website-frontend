@@ -1,4 +1,4 @@
-import headerActionIcon from "../assets/header-action-icon.svg";
+import headerActionIcon from "../../assets/header-action-icon.svg";
 import React, { useState, useMemo } from 'react';
 
 interface HeaderExpandedProps {

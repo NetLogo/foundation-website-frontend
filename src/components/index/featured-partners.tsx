@@ -1,6 +1,6 @@
-import "./componentCSS/FeaturedPartners.css";
-import partnersIcon from "../assets/partner-logo.svg";
-import { Section } from "./Section";
+import "./styles/featured-partners.css";
+import partnersIcon from "../../assets/partner-logo.svg";
+import { Section } from "../shared/section";
 
 interface PartnerProps {
     partnerName: string,

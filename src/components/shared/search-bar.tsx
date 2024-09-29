@@ -1,5 +1,5 @@
-import "./componentCSS/Searchbar.css";
-import searchIcon from "../assets/search-icon.svg"
+import "./styles/search-bar.css";
+import searchIcon from "../../assets/search-icon.svg"
 
 const Searchbar = ({}) => {
     return (
@@ -9,6 +9,5 @@ const Searchbar = ({}) => {
         </div>
     )
 }
-
 
 export { Searchbar };

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './componentCSS/EventsDisplay.css';
-import dropDownDown from "./../assets/news-dropdown.svg";
-import dropDownUp from "./../assets/news-dropdown-up.svg";
+import './styles/event-display.css';
+import dropDownDown from "../../assets/news-dropdown.svg";
+import dropDownUp from "../../assets/news-dropdown-up.svg";
 
 interface Event {
     id: number,

@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - deployment-test-branch
   repository_dispatch:
     types: [build_trigger]
 
@@ -18,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x'  # Ensure you use a compatible version
+          node-version: '18.x'  #
 
       - name: Install dependencies
         run: npm install

@@ -5,6 +5,12 @@ on:
     branches:
       - master
       - deployment-test-branch
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual trigger'
+        required: false
+        default: 'Directus build trigger'
   repository_dispatch:
     types: [build_trigger]
 
@@ -19,13 +25,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x'  #
+          node-version: '18.x'  # Ensure you use a compatible version
 
       - name: Install dependencies
         run: npm install
 
       - name: Build project
         run: npm run build
+
+        env:
+          DIRECTUS_URL: ${{ secrets.DIRECTUS_URL }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

@@ -7,10 +7,10 @@ const Intro = ({}) => {
         <div className="intro">
             <div className="intro-title-text-cont">
             	<div className="intro-title">
-                	<pre>
+                	<p>
 	Understanding Complex Systems with{'\n'}
 			Agent-Based Modeling
-                	</pre>
+                	</p>
             	</div>
             	<div className="intro-text">
                 	<p>NetLogo is a multi-agent programmable modeling environment. It is used by many hundreds of thousands of students, teachers, and{'\n'}researchers worldwide. It also powers HubNet participatory simulations. It is authored by Uri Wilensky and developed at the CCL.</p>

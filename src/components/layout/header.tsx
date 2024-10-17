@@ -5,6 +5,7 @@ import blueEllipse from "../../assets/blue-ellipse.svg";
 import netlogoicon from "../../assets/netlogo.svg";
 import dropdownIcon from "../../assets/dropdown-icon.svg";
 import hoverDropdownIcon from "../../assets/hover-dropdown-icon.svg";
+import { useRef } from 'react';
 
 const LazyHeaderExpanded = React.lazy(() => import("./header-expanded"));
 
@@ -17,9 +18,10 @@ interface HeaderActionProps {
     title: string;
     isHovered: boolean;
     onMouseEnter: () => void;
+    isCompact: boolean
 }
 
-const HeaderAction = React.memo(({ title, isHovered, onMouseEnter }: HeaderActionProps) => (
+const HeaderAction = React.memo(({ title, isHovered, onMouseEnter, isCompact }: HeaderActionProps) => (
     <div 
         className="header-action-cont"
         onMouseEnter={onMouseEnter}
@@ -30,6 +32,8 @@ const HeaderAction = React.memo(({ title, isHovered, onMouseEnter }: HeaderActio
 ));
 
 const Header = () => {
+    const headerRef = useRef(null);
+    const [isCompact, setIsCompact] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const handleMouseEnter = useCallback((index: number) => {
         setHoveredIndex(index);
@@ -46,12 +50,13 @@ const Header = () => {
                 title={title} 
                 isHovered={hoveredIndex === index}
                 onMouseEnter={() => handleMouseEnter(index)}
+                isCompact={isCompact}
             />
         ))
     , [hoveredIndex, handleMouseEnter]);
 
     return (
-        <div className="netlogo-header" onMouseLeave={handleHeaderMouseLeave}>
+        <div ref={headerRef} className="netlogo-header" onMouseLeave={handleHeaderMouseLeave}>
             <div className="header-action-bar">
                 <div className="header-action-cont">
                     <div className="netlogo-icon-cont"> 
@@ -61,7 +66,10 @@ const Header = () => {
                     <div id="netlogo-title" className="header-action">NetLogo</div>
                 </div>
                 {memoizedHeaderActions}
-                <Searchbar/>
+                <Searchbar headerRef={headerRef}
+                isCompact={isCompact}
+                setIsCompact={setIsCompact}
+                />
             </div>
             <LazyHeaderExpanded headerIndex={hoveredIndex !== null ? hoveredIndex : -1} />
         </div>

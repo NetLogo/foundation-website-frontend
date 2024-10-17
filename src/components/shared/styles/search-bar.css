@@ -1,6 +1,6 @@
 .search-bar {
     display: flex;
-    width: 14rem; /** normally 15.75rem, looked unnaturally large **/
+    width: 14rem;
     padding: 0.75rem 1.25rem;
     align-items: center;
     gap: 1.25rem;
@@ -8,23 +8,37 @@
     border-radius: 3.125rem;
     border: 1px solid var(--Light-3, #EBEBF0);
     background: #FFF;
+    transition: all 0.3s ease;
 }
 
-.search-bar-input  {
+.search-bar.compact {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    margin-right: 5rem;
+    padding: 0.75rem;
+    justify-content: center;
+}
+
+.search-bar.compact:hover {
+    border-color: #0670ED;
+}
+
+.search-bar-input {
     outline: none;
     border: none;
     color: var(--Dark-3, #8F90A6);
-    text-align: center;
-    /* txt/small/semi */
     font-family: Inter;
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 600;
-    line-height: 150%; /* 1.3125rem */
+    line-height: 150%;
     text-align: left;
+    flex-grow: 1;
 }
 
 .search-bar-icon {
     width: 1.5rem;
     height: 1.5rem;
+    flex-shrink: 0;
 }

@@ -28,7 +28,7 @@ function Body({announcement, upcomingEvents, upcomingWorkshops, competitions, pu
     return (
         <div className="body">
             <Header/>
-            {/* display announcement only if there is one */}
+
             { showAnnouncement && announcement && ( 
                 <Announcement 
                 announcement={announcement}

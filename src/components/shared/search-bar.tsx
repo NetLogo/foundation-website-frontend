@@ -1,43 +1,58 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import "./styles/search-bar.css";
-import searchIcon from "../../assets/search-icon.svg"
+import searchIcon from "../../assets/search-icon.svg";
 
 interface SearchbarProps {
     headerRef: React.RefObject<HTMLDivElement>;
-    isCompact: boolean,
-    setIsCompact: Function
 }
 
-const Searchbar: React.FC<SearchbarProps> = ({ headerRef, isCompact, setIsCompact }) => {
-    const [isExpanded, setIsExpanded] = useState(false)
+const Searchbar: React.FC<SearchbarProps> = ({ headerRef }) => {
+    const [isCompact, setIsCompact] = useState(false)
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
     const searchBarRef = useRef<HTMLDivElement>(null);
     const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    var headerWidth = 0
-    var searchBarRight = 0
+    const overlayRef = useRef<HTMLDivElement>(null);
 
     const checkSize = useCallback(() => {
         if (searchBarRef.current && headerRef.current) {
-            headerWidth = headerRef.current.offsetWidth;
-            searchBarRight = searchBarRef.current.getBoundingClientRect().right;
+            const headerWidth = headerRef.current.offsetWidth;
+            let searchBarRight = searchBarRef.current.getBoundingClientRect().right;
             
             if (isCompact) {
-                searchBarRight += 5 * 16; 
+                searchBarRight += 5 * 16; // puts the search bar in the location with margin-right 5 rem
+            }
+
+            const shouldBeCompact = searchBarRight > headerWidth;
+            if (shouldBeCompact !== isCompact) {
+                setIsCompact(shouldBeCompact);
             }
         }
-
-        const shouldBeCompact = searchBarRight > headerWidth;
-        if (shouldBeCompact !== isCompact) {
-            setIsCompact(shouldBeCompact);
-        }
     }, [headerRef, isCompact, setIsCompact]);
-    
-    // when you press the searchbar, while compact, it shoudl expand it
+
     const handleSearchBarClick = () => {
         if (isCompact) {
             setIsExpanded(true); 
-            console.log(isExpanded)
+            console.log('Search bar expanded:', isExpanded);
         }
     };
+
+    const closeExpanded = () => {
+        if (resizeTimeoutRef.current) {
+            clearTimeout(resizeTimeoutRef.current);
+        }
+        setIsClosing(true);
+        setIsExpanded(false); // want the compact header to already "appear" there
+        setTimeout(() => {
+            setIsClosing(false);
+        }, 300); // match with the animation time 
+    };
+
+    const handleOverlayClick = useCallback((e: MouseEvent) => {
+        if (overlayRef.current && !overlayRef.current.contains(e.target as Node)) {
+            closeExpanded();
+        }
+    }, []);
 
     const debouncedCheckSize = useCallback(() => {
         if (resizeTimeoutRef.current) {
@@ -57,11 +72,56 @@ const Searchbar: React.FC<SearchbarProps> = ({ headerRef, isCompact, setIsCompac
         };
     }, [checkSize, debouncedCheckSize]);
 
+    // close expanded searchbar when you click out of it
+    useEffect(() => {
+        if (isExpanded) {
+            document.addEventListener('mousedown', handleOverlayClick);
+        } else {
+            document.removeEventListener('mousedown', handleOverlayClick);
+        }
+        return () => {
+            document.removeEventListener('mousedown', handleOverlayClick);
+        };
+    }, [isExpanded, handleOverlayClick]);
+
+    // when isCompact becomes false, doesn't make sense to still be expanded
+    useEffect(() => {
+        if (!isCompact && isExpanded) {
+            closeExpanded();
+        }
+    }, [isCompact]);
+
     return (
-        <div ref={searchBarRef} className={`search-bar ${isCompact ? 'compact' : ''}`} onClick={handleSearchBarClick}>
-            <img className="search-bar-icon" src={searchIcon.src} alt="search-icon"/>
-            {!isCompact && (
-                <input className="search-bar-input" type="text" placeholder="SEARCH"/>
+        <div className="searchbar-container" style={{ position: 'relative' }}>
+
+            {isExpanded && (
+                <div className="placeholder-search-bar">
+                </div>
+            )}
+            <div 
+                ref={searchBarRef} 
+                className={`search-bar ${isCompact ? 'compact' : ''} ${isExpanded ? 'hidden' : ''}`} 
+                onClick={handleSearchBarClick}
+            >
+                <img className="search-bar-icon" src={searchIcon.src} alt="search-icon"/>
+                {!isCompact && (
+                    <input className="search-bar-input" type="text" placeholder="SEARCH"/>
+                )}
+            </div>
+            { (isExpanded || isClosing) && (
+                <div 
+                    ref={overlayRef} 
+                    className={`search-bar-overlay ${isClosing ? 'fade-out' : 'fade-in'}`}
+                >
+                    <img className="search-bar-icon" src={searchIcon.src} alt="search-icon"/>
+                    <input 
+                        className="search-bar-input" 
+                        type="text" 
+                        placeholder="SEARCH" 
+                        autoFocus
+                        onBlur={closeExpanded}
+                    />
+                </div>
             )}
         </div>
     );

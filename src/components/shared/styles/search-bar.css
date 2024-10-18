@@ -9,6 +9,8 @@
     border: 1px solid var(--Light-3, #EBEBF0);
     background: #FFF;
     transition: all 0.3s ease;
+    position: relative; 
+    z-index: 1;
 }
 
 .search-bar.compact {
@@ -20,6 +22,21 @@
     justify-content: center;
 }
 
+.placeholder-search-bar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 3.125rem;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-right: 5rem;
+    padding: 0.75rem;
+}
+
+.search-bar.compact.hidden {
+    visibility: hidden;
+    pointer-events: none;
+}
+
 .search-bar.compact:hover {
     border-color: #0670ED;
 }
@@ -28,9 +45,8 @@
     outline: none;
     border: none;
     color: var(--Dark-3, #8F90A6);
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-size: 0.875rem;
-    font-style: normal;
     font-weight: 600;
     line-height: 150%;
     text-align: left;
@@ -41,4 +57,56 @@
     width: 1.5rem;
     height: 1.5rem;
     flex-shrink: 0;
+    user-select: none;
+}
+
+.search-bar-overlay {
+    position: absolute;
+    top: 50%; 
+    right: 5rem; 
+    display: flex;
+    transform: translateY(-50%);
+    align-items: center;
+    gap: 1.25rem;
+    border-radius: 3.125rem;
+    border: 1px solid var(--Light-3, #EBEBF0);
+    background: #FFF;
+    padding: 0.75rem 1.25rem;
+    width: 14rem;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    opacity: 0; 
+}
+
+/* fadeIn animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* fadeOut animation */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.95);
+    }
+}
+
+.search-bar-overlay.fade-in {
+    animation: fadeIn 0.3s forwards;
+}
+
+.search-bar-overlay.fade-out {
+    animation: fadeOut 0.3s forwards;
 }

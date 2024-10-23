@@ -33,6 +33,9 @@ function Body({
 }: BodyProps) {
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
 
+  // Reference for the GetNetLogo section
+  const getNetLogoSection = useRef<HTMLDivElement | null>(null);
+
   return (
     <div className="body">
       <Header />
@@ -43,9 +46,9 @@ function Body({
           setShowAnnouncement={setShowAnnouncement}
         />
       )}
-      <Intro />
+      <Intro getNetLogoSection={getNetLogoSection}/>
       <WhyNetLogo />
-      <GetNetLogo />
+      <GetNetLogo sectionRef = {getNetLogoSection}/>
       <Community communityPosts={communityContent} />
       {/* <News upcomingEvents={upcomingEvents}
             upcomingWorkshops={upcomingWorkshops}

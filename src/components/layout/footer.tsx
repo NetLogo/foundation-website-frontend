@@ -74,7 +74,7 @@ const Footer = () => {
 
                                 <div className="footer-content-row-vert-content">
                                     <span> Courses & Tutorials </span>
-                                    <span> Beginners’ Dictionary </span>
+                                    <span> {"Beginners' Dictionary"} </span>
                                     <span> Learning Websites </span>
                                     <span> FAQ </span>
                                 </div>

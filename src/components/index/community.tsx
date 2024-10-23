@@ -62,7 +62,7 @@ const Community = ({ communityPosts }: communityProps ) => {
                                             <span> {post.author} </span>
                                             <span> {post.date} </span>
                                         </div>
-                                        <span className="community-post-title"> New model:&nbsp;
+                                        <span className="community-post-title"> {"New model: "}
                                             <a href={post.link} className="community-post-link">{post.project}</a>
                                         </span> </div>
                                 </div>

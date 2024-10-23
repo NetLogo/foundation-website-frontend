@@ -6,11 +6,10 @@ interface IntroProps {
   getNetLogoSection: React.RefObject<HTMLDivElement>;
 }
 
-const Intro: React.FC<IntroProps> = ({getNetLogoSection}) => {
-
-    const scrollToGetNetLogo = () => {
-        getNetLogoSection.current?.scrollIntoView({behavior: "smooth"});
-    }
+const Intro: React.FC<IntroProps> = ({ getNetLogoSection }) => {
+  const scrollToGetNetLogo = () => {
+    getNetLogoSection.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="intro">
@@ -38,8 +37,7 @@ const Intro: React.FC<IntroProps> = ({getNetLogoSection}) => {
           padding="1rem 3rem"
           fontSize="1.125rem"
           text="GET NETLOGO"
-          onClick={scrollToGetNetLogo
-          }
+          onClick={scrollToGetNetLogo}
         />
         {/* <Button
                 colorClass="light-button"

@@ -1,155 +1,51 @@
 import headerActionIcon from "../../assets/header-action-icon.svg";
 import React, { useState, useMemo } from 'react';
+import {links} from "../../utils/links";
 
 interface HeaderExpandedProps {
     headerIndex: number
+    headerSections: string[]
 }
 
 interface HeaderActionColumnProps {
-    columnContent: Record<string, string>;
+    columnContent: { [key: string]: string };
+    columnTitle: string;
 }
 
-const ProductExpanded: Record<string, string>[] = [
-    {
-    "FOR EDUCATORS": "",
-    "NetLogo APP" : "",
-    "Curricula & Classroom Resources" : "",
-    "NetLogo in Science, Education, and Policy": "", 
-    },
-
-    {
-        "FOR RESEARCHERS": "",
-        "NetLogo APP": "",
-        "Features": "",
-        "Extensions": "",
-        "FAQ": "",
-    },
-
-    { 
-        "FOR STUDENTS": "", 
-        "Turtle Universe": "",
-        "IODA for NetLogo": "",
-        "OpenMOLE": "",
-        "MEME": "",
-    }
-
-]
-
-const LearningExpanded: Record<string, string>[] = [
-    {
-        "TUTORIALS": "",
-        "Models": "",
-        "Commands": "",
-        "Procedures": "",
-    },
-    
-    {
-        "VIDEO TUTORIALS": "",
-        "Disease Model from Scratch": "",
-        "Forest Fire Model from Scratch": "",
-        "Exploring the Model Library": "",
-    },
-
-    {
-        "ARTICLES & GUIDES": "",
-        "Getting Started" : "",
-        "Common Error Messages": "",
-        "Color Indication": "",
-        "Shapes & Colors": "",
-        "The Dictionary": "",
-    }
-]
-
-const DocsExpanded: Record<string, string>[] = [
-    {
-        "GENERAL": "",
-        "NetLogo Source Code": "",
-        "Curricula & Classroom Resources": "",
-        "NetLogo in Science, Education, and Policy": ""
-    },
-
-    {
-        "USER MANUAL": "",
-        "Features": "",
-        "Extensions": "",
-        "FAQ": "",
-    },
-    
-    { 
-        "TOOLS": "",
-        "BehaviorSearch": "",
-        "IODA for NetLogo": "",
-        "OpenMOLE": "",
-        "MEME": "",
-        "RNetLogo": "",
-    },
-    {   
-        "": "",
-        "NetLogo-LaTeX": "",
-        "BODNetLogo": "",
-        "NetLogo Obfuscator": "",
-        "NetLogo Clusters": "",
-        "Fruit Fly Simulation":"",
-    },
-
-    {
-        "EDITOR SUPORT": "",
-        "NetLogo VIM Syntax File": "",
-        "Atom Editor Package for NetLogo": "",
-    }
-        
-]
-
-const ModelsExpanded: Record<string, string>[] = [
-    {
-        "LIBRARY": "",
-        "Models": "",
-    },
-    {
-        "COMMUNITY": "",
-        "Newest Updates": "",
-    },
-    {
-        "MODELING COMS": "",
-        "Share & View": "",
-    }
-]
-
-
-const headerExpandedSections: Record<string, string>[][] = [
-    ProductExpanded, LearningExpanded, DocsExpanded, ModelsExpanded, [], [], []
-]
+const headerColumns = links.Header;
 
 
 /** defines one section of a action */
-const HeaderActionColumn = ({columnContent}: HeaderActionColumnProps) => {
-    const [title, ...rest] = Object.entries(columnContent); // destructure title from the rest 
+const HeaderActionColumn = ({columnTitle, columnContent}: HeaderActionColumnProps) => {
+    const title = columnTitle == "No Title" ? "" : columnTitle;
     return (
         <div className="header-action-column">
-            <div className={`header-action-title ${title[0] ? '' : 'not-visible'}`} >
-                <span>{title[0]}</span>            
+            <div className={`header-action-title ${title ? '' : 'not-visible'}`} >
+                <span>{title}</span>            
                 <img 
                     src={headerActionIcon.src} 
-                    className={`header-action-icon ${title[0] ? '' : 'not-viVsible'}`} 
+                    className={`header-action-icon ${title ? '' : 'not-viVsible'}`} 
                     alt="Header action icon" 
             />
             </div>
-            {rest.map(([key, value]) => (
-                <span key={key} className="header-action-content">{key}</span>
+            {Object.entries(columnContent).map(([key, value]) => (
+                <a href={value} className="header-link"><span key={key} className="header-action-content">{key}</span></a>
             ))}
         </div>
     )
 }
-const HeaderExpanded = React.memo(({ headerIndex }: HeaderExpandedProps) => {
-    const expandedContent = headerIndex >= 0 ? headerExpandedSections[headerIndex] : ProductExpanded;
+const HeaderExpanded = React.memo(({ headerSections, headerIndex }: HeaderExpandedProps) => {
+    const expandedContent:string = headerIndex >= 0 ? headerSections[headerIndex] : "Products";
+    const currentColumn = headerColumns[expandedContent] as { [key: string]: { [key: string]: string } };
     return (
         <div className={`header-expanded ${(headerIndex >= 0 && expandedContent.length > 0)? "expanded" : ""}`}>
             <div className="header-expanded-line"></div>
             <div className="header-expanded-content">
-                {Object.entries(expandedContent).map(([key, value], i) => (
-                    <HeaderActionColumn 
-                        key={key}
+                {Object.entries(currentColumn).map(([key, value], i) => (
+                    <HeaderActionColumn
+                        columnTitle={key}
                         columnContent={value}
+                        key = {key}
                     />
                 ))}
             </div>

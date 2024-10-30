@@ -6,12 +6,15 @@ import netlogoicon from "../../assets/netlogo.svg";
 import dropdownIcon from "../../assets/dropdown-icon.svg";
 import hoverDropdownIcon from "../../assets/hover-dropdown-icon.svg";
 import { useRef } from 'react';
+import {links} from "../../utils/links";
 
 const LazyHeaderExpanded = React.lazy(() => import("./header-expanded"));
 
-const headerSections: string[] = [
-    "Products", "Learning", "Docs", "Models", "News", "Community", "About"
-];
+// const headerSections: string[] = [
+//     "Products", "Learning", "Docs", "Models", "News", "Community", "About"
+// ];
+
+let headerSections: string[] = Object.keys(links.Header);
 
 
 interface HeaderActionProps {
@@ -71,7 +74,7 @@ const Header = () => {
                 setIsCompact={setIsCompact}
                 />
             </div>
-            <LazyHeaderExpanded headerIndex={hoveredIndex !== null ? hoveredIndex : -1} />
+            <LazyHeaderExpanded headerSections = {headerSections} headerIndex={hoveredIndex !== null ? hoveredIndex : -1} />
         </div>
     );
 }

@@ -10,7 +10,7 @@ interface GetNetLogoProps {
   sectionRef: React.RefObject<HTMLDivElement>;
 }
 
-const GetNetLogo: React.FC<GetNetLogoProps> = ({ sectionRef }) => {
+const GetNetLogo = ({ sectionRef }:GetNetLogoProps) => {
   return (
     <div ref={sectionRef} className="get-section">
       <Section
@@ -57,6 +57,44 @@ const GetNetLogo: React.FC<GetNetLogoProps> = ({ sectionRef }) => {
                 A version of NetLogo that runs in all modern web browsers,
                 without any need for installation. Very useful for embedding in
                 online educational materials.{" "}
+              </span>
+            </div>
+            <div className="get-item">
+              <div className="get-item-header">
+                <img className="get-item-img" src={TU.src} />
+                <Button
+                  colorClass="blue-button"
+                  padding="0.75rem 1.5rem"
+                  fontSize="0.875rem"
+                  text="GET"
+                />
+              </div>
+              <span className="get-item-title"> Turtle Universe </span>
+              <span className="get-item-descript">
+                {" "}
+                Powered by the NetLogo engine but with its own unique interface,
+                Turtle Universe brings the limitless power of computational
+                modeling to smartphones and tablets of young students and
+                educators.{" "}
+              </span>
+            </div>
+            <div className="get-item">
+              <div className="get-item-header">
+                <img className="get-item-img" src={TU.src} />
+                <Button
+                  colorClass="blue-button"
+                  padding="0.75rem 1.5rem"
+                  fontSize="0.875rem"
+                  text="GET"
+                />
+              </div>
+              <span className="get-item-title"> Turtle Universe </span>
+              <span className="get-item-descript">
+                {" "}
+                Powered by the NetLogo engine but with its own unique interface,
+                Turtle Universe brings the limitless power of computational
+                modeling to smartphones and tablets of young students and
+                educators.{" "}
               </span>
             </div>
             <div className="get-item">

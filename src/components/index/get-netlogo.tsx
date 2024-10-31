@@ -18,8 +18,6 @@ const GetNetLogo = ({ sectionRef }: GetNetLogoProps) => {
 
   const softwareLinks = links.Body["Get NetLogo"];
 
-  console.log(softwareLinks);
-
   return (
     <div ref={sectionRef} className="get-section">
       <Section

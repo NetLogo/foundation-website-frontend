@@ -29,7 +29,7 @@ const HeaderActionColumn = ({columnTitle, columnContent}: HeaderActionColumnProp
             />
             </div>
             {Object.entries(columnContent).map(([key, value]) => (
-                <a href={value} className="header-link"><span key={key} className="header-action-content">{key}</span></a>
+                <a key = {`link-${key}`} href={value} className="header-link"><span key={key} className="header-action-content">{key}</span></a>
             ))}
         </div>
     )

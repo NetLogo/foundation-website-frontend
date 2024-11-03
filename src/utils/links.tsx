@@ -89,6 +89,32 @@ export const links: links = {
   Footer: {
     "Buttons":{
       "Donate": "https://secure.ard.northwestern.edu/s/1479/282-giving/basic-page-nonav-campaign.aspx?sid=1479&gid=282&pgid=19841&cid=31575"
+    },
+    "Products": {
+      "NetLogo Desktop": "https://ccl.northwestern.edu/netlogo/download.shtml",
+      "NetLogo Web": "https://www.netlogoweb.org/launch",
+      "Turtle Universe": "https://turtlesim.com/products/turtle-universe/",
+      "NetTango": "https://netlogoweb.org/nettango-builder",
+      "HubNet Web": "https://hubnetweb.org/",
+      "Modelling Commons": "https://modelingcommons.org/",
+    },
+    "Learning": {
+      "Official Tutorials Intro" : "https://ccl.northwestern.edu/netlogo/docs/sample.html",
+      "Beginners' Interactive NetLogo Dictionary" : "https://ccl.northwestern.edu/netlogo/bind/",
+      "An Introduction to Agent-Based Modeling by Uri Wilensky (author of NetLogo) and Bill Rand" : "https://www.intro-to-abm.com/"
+    },
+    "Docs":{
+      "NetLogo User Manual": "https://ccl.northwestern.edu/netlogo/docs/",
+      "NetLogo Dictionary":"https://ccl.northwestern.edu/netlogo/docs/dictionary.html",
+      "Beginner’s Interactive NetLogo Dictionary":"https://ccl.northwestern.edu/netlogo/docs/dictionary.html",
+      "NetLogo Source Code": "https://github.com/NetLogo/",
+    },
+    "Community": {
+      "NetLogo Forum": "https://forum.netlogo.org/",
+      "NetLogo Google Group": "https://groups.google.com/g/netlogo-users",
+      "Modeling Commons": "https://modelingcommons.org/",
+      "NetLogo on X (formerly Twitter)": "https://x.com/netlogo",
+      "GitHub": "https://github.com/NetLogo/NetLogo",
     }
   },
 };

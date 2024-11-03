@@ -127,3 +127,8 @@
     display: flex;
     justify-content: flex-start;
 }
+
+.footer-link {
+    text-decoration: none;
+    color: black;
+}

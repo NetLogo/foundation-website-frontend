@@ -86,5 +86,9 @@ export const links: links = {
       "Modeling Commons": "https://modelingcommons.org/",
     },
   },
-  Footer: {},
+  Footer: {
+    "Buttons":{
+      "Donate": "https://secure.ard.northwestern.edu/s/1479/282-giving/basic-page-nonav-campaign.aspx?sid=1479&gid=282&pgid=19841&cid=31575"
+    }
+  },
 };

@@ -17,9 +17,14 @@
 
 .footer-get-cont {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
 }
+
+.footer-get-cont > div{
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5rem;
+} 
 
 .footer-get-text {
     color: var(--Dark-1, #28293D);

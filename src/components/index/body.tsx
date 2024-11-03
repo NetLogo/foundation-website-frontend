@@ -56,7 +56,7 @@ function Body({
             publications={publications}/> */}
       {/* <FeaturedPartners/> */}
       <MailingList />
-      <Footer />
+      <Footer getNetLogoSection={getNetLogoSection}/>
     </div>
   );
 }

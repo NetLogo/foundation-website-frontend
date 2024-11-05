@@ -158,6 +158,11 @@
     font-weight: 700;
     line-height: 150%; 
     cursor: pointer;
+    text-decoration: none;
+}
+
+.header-link{
+    text-decoration: none;
 }
 
 .header-expanded-line {

@@ -20,7 +20,7 @@ const MailingList = () => {
                              Join our mailing list! 
                          </span>
                          <span className="mailing-list-descript">
-                             Join the NetLogo mailing list to keep up-to-date with what’s happening in the NetLogo Community!
+                             {"Join the NetLogo mailing list to keep up-to-date with what's happening in the NetLogo Community!"}
                          </span>
                      </div>
 

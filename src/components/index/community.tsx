@@ -17,16 +17,37 @@ interface communityProps {
   communityPosts: CommunityPost[];
 }
 
+interface communityCardProps {
+  title: string;
+  link: string;
+}
+
+const CommunityCard = ({ link, title }: communityCardProps) => {
+  const pageRedirect = (url: string) => {
+    window.open(url, "_blank");
+  };
+  return (
+    <div className="get-item" style={{ backgroundColor: "white" }}>
+      <span className="get-item-title"> {title} </span>
+      <div className="get-item-header">
+        <Button
+          colorClass="blue-button"
+          padding="0.75rem 1.5rem"
+          fontSize="0.875rem"
+          text="GO"
+          onClick={() => pageRedirect(link)}
+        />
+      </div>
+    </div>
+  );
+};
+
 /** Community: defines the Community section in the landing page **/
 const Community = ({ communityPosts }: communityProps) => {
   // Initialize previewImage with the first image if available
   const [previewImage, setPreviewImage] = useState<string | null>(
     communityPosts.length > 0 ? communityPosts[0].image : null
   );
-
-  const pageRedirect = (url: string) => {
-    window.open(url, "_blank");
-  };
 
   const communityLinks = links.Body["Community"];
 
@@ -86,48 +107,18 @@ const Community = ({ communityPosts }: communityProps) => {
               }}
               className="get-netlogo-content"
             >
-              <div className="get-item" style={{backgroundColor:"white"}}>
-                <span className="get-item-title"> NetLogo Forum </span>
-                <div className="get-item-header">
-                  <Button
-                    colorClass="blue-button"
-                    padding="0.75rem 1.5rem"
-                    fontSize="0.875rem"
-                    text="GO"
-                    onClick={() =>
-                      pageRedirect(communityLinks["NetLogo Forum"])
-                    }
-                  />
-                </div>
-              </div>
-              <div className="get-item" style={{backgroundColor:"white"}}>
-                <span className="get-item-title"> NetLogo Google Group </span>
-                <div className="get-item-header">
-                  <Button
-                    colorClass="blue-button"
-                    padding="0.75rem 1.5rem"
-                    fontSize="0.875rem"
-                    text="GO"
-                    onClick={() =>
-                      pageRedirect(communityLinks["NetLogo Google Group"])
-                    }
-                  />
-                </div>
-              </div>
-              <div className="get-item" style={{backgroundColor:"white"}}>
-                <span className="get-item-title"> Modeling Commons </span>
-                <div className="get-item-header">
-                  <Button
-                    colorClass="blue-button"
-                    padding="0.75rem 1.5rem"
-                    fontSize="0.875rem"
-                    text="GO"
-                    onClick={() =>
-                      pageRedirect(communityLinks["Modeling Commons"])
-                    }
-                  />
-                </div>
-              </div>
+              <CommunityCard
+                title="NetLogo Forum"
+                link={communityLinks["NetLogo Forum"]}
+              />
+              <CommunityCard
+                title="NetLogo Google Group"
+                link={communityLinks["NetLogo Google Group"]}
+              />
+              <CommunityCard
+                title="Modeling Commons"
+                link={communityLinks["Modeling Commons"]}
+              />
             </div>
           </div>
         }

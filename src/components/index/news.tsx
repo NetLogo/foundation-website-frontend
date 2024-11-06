@@ -19,7 +19,6 @@ const News = ( {upcomingEvents, competitions, upcomingWorkshops, publications} :
                 sectionGap={2.5}
                 sectionPaddingBot={2.5}
                 backgroundColor="#F2F2F5"
-                borderRadius={0}
                 moreButton={true}
                 body = {
                     <div className="news-event-cont">

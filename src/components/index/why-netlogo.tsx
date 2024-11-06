@@ -43,7 +43,6 @@ const WhyNetLogo = () => {
                 sectionGap={1.88}
                 sectionPaddingBot={7.5}
                 backgroundColor="#F2F2F5"
-                borderRadius={0}
                 moreButton={false}
                 body={
                     <div className="why-netlogo-content">

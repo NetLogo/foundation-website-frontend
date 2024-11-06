@@ -59,7 +59,6 @@ const Community = ({ communityPosts }: communityProps) => {
         sectionGap={1.88}
         sectionPaddingBot={3.75}
         backgroundColor="#F2F2F5"
-        borderRadius={0}
         moreButton={false}
         body={
           //   <div className="community-content">

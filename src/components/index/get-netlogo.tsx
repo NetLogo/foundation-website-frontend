@@ -52,11 +52,10 @@ const GetNetLogo = ({ sectionRef }: GetNetLogoProps) => {
     <div ref={sectionRef} className="get-section">
       <Section
         sectionTitle="Get NetLogo"
-        sectionDescript="There are over xxx products in NetLogo. Find the one that suits your need."
+        sectionDescript="There are five different products in NetLogo. Find the one suits your need."
         sectionGap={2.5}
         sectionPaddingBot={3.75}
         backgroundColor="white"
-        borderRadius={5}
         moreButton={false}
         body={
           <div>

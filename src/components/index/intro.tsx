@@ -16,7 +16,7 @@ const Intro: React.FC<IntroProps> = ({ getNetLogoSection }) => {
       <div className="intro-title-text-cont">
         <div className="intro-title">
           <p>
-            Understanding Complex Systems with{"\n"}
+            Understanding hi Systems with{"\n"}
             Agent-Based Modeling
           </p>
         </div>

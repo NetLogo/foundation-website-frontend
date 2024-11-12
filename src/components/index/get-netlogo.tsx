@@ -27,16 +27,18 @@ const ItemCard = ({ title, description, icon, link }: ItemCardProps) => {
     <div className="get-item">
       <div className="get-item-header">
         <img className="get-item-img" src={icon} />
+        <span className="get-item-title"> {title} </span>
+      </div>
+      <span className="get-item-descript"> {description} </span>
+      <div className="button-container">
         <Button
           colorClass="blue-button"
-          padding="0.75rem 1.5rem"
+          padding="0.75rem 2.5rem"
           fontSize="0.875rem"
           text="GET"
           onClick={() => pageRedirect(link)}
         />
       </div>
-      <span className="get-item-title"> {title} </span>
-      <span className="get-item-descript"> {description} </span>
     </div>
   );
 };

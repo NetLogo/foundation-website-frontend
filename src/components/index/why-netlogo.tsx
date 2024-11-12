@@ -1,8 +1,9 @@
 import "./styles/why-netlogo.css";
 import { Section } from "../shared/section";
 import { Button } from "../shared/button";
-import student from "../../assets/student.svg";
-import researcher from "../../assets/researcher.svg";
+import student from "../../assets/students_icon.svg";
+import researcher from "../../assets/research_icon.svg";
+import educator from "../../assets/educators_icon.svg";
 
 /** Inner component for X tab **/
 interface ForTabProps {
@@ -56,7 +57,7 @@ const WhyNetLogo = () => {
             <ForTab
               title="For Educators"
               content="NetLogo provides educators with an easy-to-use modeling platform that includes many built-in models to engage students in learning science."
-              imagePath={student}
+              imagePath={educator}
             />
           </div>
         }

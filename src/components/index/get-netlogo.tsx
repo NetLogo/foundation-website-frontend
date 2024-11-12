@@ -108,7 +108,7 @@ const GetNetLogo = ({ sectionRef }: GetNetLogoProps) => {
                 description="An online platform for creating and running participatory
                   simulations in which people can play the role of agents in a
                   NetLogo model."
-                icon="src\assets\HubNetLogo.png"
+                icon= {TU.src}
                 link={softwareLinks["HubNet Web"]}
               />
             </div>

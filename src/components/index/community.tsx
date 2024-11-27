@@ -17,22 +17,57 @@ interface communityProps {
   communityPosts: CommunityPost[];
 }
 
+interface communityCard {
+  title: string;
+  description : string;
+  link: string;
+  icon: string;
+}
+
 interface communityCardProps {
   title: string;
   link: string;
+  description: string;
 }
 
-const CommunityCard = ({ link, title }: communityCardProps) => {
+const communityLinks = links.Footer["Community"] as { [key: string]: string };
+
+const communityCardData: Array<communityCard> = [
+  {
+    title: "NetLogo Forum",
+    description: "The NetLogo Forum provides a place for the NetLogo community to ask and answer questions, share resources and more.",
+    link: communityLinks["NetLogo Forum"],
+    icon: communityIcon.src,
+  },
+  {
+    title: "NetLogo Google Group",
+    description: "The netlogo-users google group is a mailing list where NetLogo users can ask and answer questions. ",
+    link: communityLinks["NetLogo Google Group"],
+    icon: communityIcon.src,
+  },
+  {
+    title: "Modeling Commons",
+    description: "NetLogo provides educators with an easy-to-use modeling platform that includes many built-in models to engage students in learning science.",
+    link: communityLinks["Modeling Commons"],
+    icon: communityIcon.src,
+  },
+]
+
+const CommunityCard = ({ link, title, description }: communityCardProps) => {
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");
   };
   return (
-    <div className="get-item" style={{ backgroundColor: "white" }}>
-      <span className="get-item-title"> {title} </span>
-      <div className="get-item-header">
+    <div className="community-item">
+      <div className="community-item-header">
+        {/* <img className="community-item-img" src={icon} /> */}
+        <span className="community-item-title"> {title} </span>
+      </div>
+      <span className="community-item-descript"> {description} </span>
+      <div className="button-container">
         <Button
           colorClass="blue-button"
-          padding="0.75rem 1.5rem"
+          padding="0.75rem 2.5rem"
           fontSize="0.875rem"
           text="GO"
           onClick={() => pageRedirect(link)}
@@ -49,7 +84,6 @@ const Community = ({ communityPosts }: communityProps) => {
     communityPosts.length > 0 ? communityPosts[0].image : null
   );
 
-  const communityLinks = links.Body["Community"];
 
   return (
     <div className="community-section">
@@ -104,9 +138,10 @@ const Community = ({ communityPosts }: communityProps) => {
                 justifyContent: "center",
                 gap: "2%",
               }}
-              className="get-netlogo-content"
+              className="community-netlogo-content"
             >
-              <CommunityCard
+              {communityCardData.map((card: communityCard, index: number) => ( <CommunityCard title={card.title} link={card.link} description={card.description} />))}
+              {/* <CommunityCard
                 title="NetLogo Forum"
                 link={communityLinks["NetLogo Forum"]}
               />
@@ -117,7 +152,7 @@ const Community = ({ communityPosts }: communityProps) => {
               <CommunityCard
                 title="Modeling Commons"
                 link={communityLinks["Modeling Commons"]}
-              />
+              /> */}
             </div>
           </div>
         }

@@ -4,6 +4,9 @@ import { Section } from "../shared/section";
 import { Button } from "../shared/button";
 import communityIcon from "../../assets/community-icon.svg";
 import { links } from "../../utils/links.js";
+import forumIcon from "../../assets/netlogo-forum.png";
+import googleGroupIcon from "../../assets/google-group.png";
+import modelingCommonsIcon from "../../assets/modeling-commons.png";
 
 interface CommunityPost {
   project: string;
@@ -22,12 +25,15 @@ interface communityCard {
   description : string;
   link: string;
   icon: string;
+  bordered: boolean;
 }
 
 interface communityCardProps {
   title: string;
   link: string;
   description: string;
+  icon: string;
+  bordered: boolean;
 }
 
 const communityLinks = links.Footer["Community"] as { [key: string]: string };
@@ -37,30 +43,36 @@ const communityCardData: Array<communityCard> = [
     title: "NetLogo Forum",
     description: "The NetLogo Forum provides a place for the NetLogo community to ask and answer questions, share resources and more.",
     link: communityLinks["NetLogo Forum"],
-    icon: communityIcon.src,
+    icon: forumIcon.src,
+    bordered: false
   },
   {
     title: "NetLogo Google Group",
     description: "The netlogo-users google group is a mailing list where NetLogo users can ask and answer questions. ",
     link: communityLinks["NetLogo Google Group"],
-    icon: communityIcon.src,
+    icon: googleGroupIcon.src,
+    bordered: true
   },
   {
     title: "Modeling Commons",
     description: "NetLogo provides educators with an easy-to-use modeling platform that includes many built-in models to engage students in learning science.",
     link: communityLinks["Modeling Commons"],
-    icon: communityIcon.src,
+    icon: modelingCommonsIcon.src,
+    bordered: false
   },
 ]
 
-const CommunityCard = ({ link, title, description }: communityCardProps) => {
+const CommunityCard = ({ link, title, description, icon, bordered }: communityCardProps) => {
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");
   };
+
+  const imageClass = "community-item-img" + (bordered ? " bordered" : "");
+
   return (
     <div className="community-item">
       <div className="community-item-header">
-        {/* <img className="community-item-img" src={icon} /> */}
+        <img className={imageClass} src={icon} />
         <span className="community-item-title"> {title} </span>
       </div>
       <span className="community-item-descript"> {description} </span>
@@ -140,7 +152,7 @@ const Community = ({ communityPosts }: communityProps) => {
               }}
               className="community-netlogo-content"
             >
-              {communityCardData.map((card: communityCard, index: number) => ( <CommunityCard title={card.title} link={card.link} description={card.description} />))}
+              {communityCardData.map((card: communityCard, index: number) => ( <CommunityCard title={card.title} link={card.link} description={card.description} icon={card.icon} bordered={card.bordered} />))}
               {/* <CommunityCard
                 title="NetLogo Forum"
                 link={communityLinks["NetLogo Forum"]}

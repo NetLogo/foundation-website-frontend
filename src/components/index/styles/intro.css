@@ -13,12 +13,12 @@
     width: 83.333%;
     /* Heading 1 */
     font-family: Inter;
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: 120%; /* 4.2rem */
     letter-spacing: 0.07rem;
-    background: linear-gradient(89deg, #555770 47.66%, #FF5C5C 81.69%);
+    background: #555770;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

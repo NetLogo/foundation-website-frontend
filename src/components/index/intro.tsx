@@ -16,17 +16,19 @@ const Intro: React.FC<IntroProps> = ({ getNetLogoSection }) => {
       <div className="intro-title-text-cont">
         <div className="intro-title">
           <p>
-            Understanding Complex Systems with{"\n"}
+            Complex Systems with{"\n"}
             Agent-Based Modeling
           </p>
         </div>
         <div className="intro-text">
           <p>
-          Agent-based modeling (ABM) is a powerful tool for understanding complex 
-          systems in which large-scale patterns emerge from the interactions of many simple parts.
-          NetLogo is an ABM environment with a "low threshold" for learning yet "high ceiling" capabilities. 
-          This combination is why NetLogo is used widely both in educational settings and by professional scientists 
-          doing cutting edge research.{"\n"}
+            Agent-based modeling (ABM) is a powerful tool for understanding
+            complex systems in which large-scale patterns emerge from the
+            interactions of many simple parts. NetLogo is an ABM environment
+            with a "low threshold" for learning yet "high ceiling" capabilities.
+            This combination is why NetLogo is used widely both in educational
+            settings and by professional scientists doing cutting edge research.
+            {"\n"}
           </p>
         </div>
       </div>

@@ -1,13 +1,14 @@
 .why-netlogo-content {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2%;
 }
 
 .for-tab-inner {
   border-radius: 1rem;
   background: var(--Light-1, #fafafc);
-  padding: 1.3rem 1.3rem;
+  padding: 2.1rem;
 }
 
 .for-tab-icon {
@@ -30,7 +31,6 @@
   flex-direction: row;
   align-items: center;
   gap: 0.88rem;
-  
 }
 
 .for-tab-content {

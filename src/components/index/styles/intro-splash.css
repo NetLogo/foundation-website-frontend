@@ -4,13 +4,15 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 5rem;
+    
 }
 
 .intro-anim-options {
     display: flex;
     flex-direction: column;
     gap: 1.56rem;
+    height: 28.174rem;
+    justify-content: space-between;
 }
 
 /** kind of like a card **/
@@ -23,6 +25,7 @@
     justify-content: flex-start;
     cursor: pointer;
     user-select: none;
+    width: 70%;
 }
 
 .intro-anim-text-icon {
@@ -54,9 +57,8 @@
 }
 
 .current-tab {
-    border-radius: 1rem;
-    background: var(--Light-1, #FAFAFC);
-    box-shadow: 0px 20px 20px -15px rgba(143, 144, 166, 0.20);
+    border-radius: 1rem 0 0 1rem;
+    background: var(--Light-1, #EBEBF0);
 }
 
 .current-tab-icon {

@@ -8,8 +8,8 @@
     box-sizing: border-box;
     flex: 0 0 auto; 
     border-radius: 1rem;
-    border: 2px solid var(--Light-1, #FAFAFC);
     background: var(--Light-3, #EBEBF0);
+    
 }
 
 .demo-display-text {

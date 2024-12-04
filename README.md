@@ -12,34 +12,30 @@ This enables us to use React features, while keeping the website entirely static
 https://docs.astro.build/en/guides/routing/
 
 ## How to Run Locally
+This section assumes that you have already cloned this project to your machine.
 
-This section assumes that you have already cloned this project to your machine
+### Requirements
+To run the project, you must have Node.js and npm installed on your computer. Installing Node.js will automatically install npm. You can download Node.js from the following link:
 
-### Requiremnts
-To be able to run the project you must have npm and node.js installed on your computer. Installing Node.js should satisfy both requirements. This can be downloaded here:
+[Node.js Downloads](https://nodejs.org/en/download/package-manager)
 
-https://nodejs.org/en/download/package-manager
-
-To verify that node and npm isntalled successfully, run the following command, which should output a software version
-
+To verify that Node.js and npm are installed successfully, run the following commands in your terminal. They should output version numbers:
 ```
-npm -v
 node -v
+npm -v
 ```
-
-### Installing dependencies
-Before trying to run locally, it's necessary to install all the required npm packages for the website. To do this, cd into the project folder and run the following command
+### Installing Dependencies
+Before running the project locally, you need to install the required npm packages. Navigate to the project folder using the terminal and run:
 
 ```
-npm i
+npm install
 ```
+This command will install all the dependencies specified in the package.json file.
 
-This command ensures that all the required dependencies for the website are installed.
+### Running the Project Locally
+Once the requirements are installed and dependencies are set up, you can run the project locally by executing the following command in the project folder:
 
-### Runnning Locally
-After gettig all the requirements and installing dependencies, all we need to do to run our project locally is execute the following command in the project folder
 ```
 npm run dev
-```  
-
-This will output all the local links that will lead you to your project. You can click on any of the links and you will be directed to your local instance of the website. 
+```
+This will start the development server and provide local links where you can access the project in your browser. Simply click one of the links to view your local instance of the website.

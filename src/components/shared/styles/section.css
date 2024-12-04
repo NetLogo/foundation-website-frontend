@@ -3,7 +3,7 @@
 }
 
 .page-section {
-    padding-top: 1.5rem;
+    padding-top: 5rem;
     width: 83.333%;
     margin: auto;
     display: flex;
@@ -14,11 +14,16 @@
 	width: 100%;
     height: 9.375rem;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2.25rem; /** its 1.25rem on figma but it looks a little closer **/
+    flex-direction: column;
+    align-items: flex-start;
 }
+
+/* display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    max-width: 600px; 
+    margin: 0 auto;
+    padding: 1rem; Add padding around the container */
 
 .section-title {
     color: var(--Dark-2, #555770);
@@ -39,7 +44,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 150%; /* 1.6875rem */
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 .section-more-button {

@@ -10,14 +10,14 @@ interface SectionProps {
     sectionGap: number, /* the gap between elements in this section */
     sectionPaddingBot: number, /* the bottom padding of this section */
     backgroundColor: string, /* the background color of the page section */
-    borderRadius: number, /* the border radius of the page section */
+    borderRadius?: number, /* the border radius of the page section */
     moreButton: boolean, /* whether or not this section has a more button at the bottom */
     body: React.ReactNode,
 }
 
 const Section = ({ sectionTitle, sectionDescript, sectionGap, sectionPaddingBot, backgroundColor="transparent", borderRadius=0, moreButton=false, body }: SectionProps) => {
     return (
-        <div className="page-section-cont" style={{ backgroundColor: `${backgroundColor}`, borderRadius: `${borderRadius}rem` }}>
+        <div className="page-section-cont" style={{ backgroundColor: `${backgroundColor}`}}>
             <div className="page-section" style={{ gap: `${sectionGap}rem`, paddingBottom: `${sectionPaddingBot}rem` }} >
                 <div className="section-header">
                     <span className="section-title"> { sectionTitle } </span>

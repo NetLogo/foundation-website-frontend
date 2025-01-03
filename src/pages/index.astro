@@ -7,7 +7,7 @@ let base = 'https://backend.netlogo.org';
 
 let response = await fetch(base + '/items/announcements')
 let data: any = await response.json();
-const announcement = data.data;0
+const announcement = data.data;
 
 response = await fetch('https://backend.netlogo.org/items/upcoming_events');
 data = await response.json();
@@ -84,7 +84,7 @@ const fetchCommunityData = async () => {
 };
 
 const communityContent2 = await fetchCommunityData();
-console.log(communityContent2);
+// console.log(communityContent2);
 ---
 
 <html lang="en">

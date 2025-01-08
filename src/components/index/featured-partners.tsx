@@ -28,7 +28,7 @@ const FeaturedPartners = () => {
         <div className="featured-partners-section">
             <Section 
                 sectionTitle="Featured Partners"
-                sectionDescript="Trusted by the world’s leading universities and research institutes"
+                sectionDescript="Trusted by the world's leading universities and research institutes"
                 sectionGap={2.5}
                 sectionPaddingBot={6}
                 backgroundColor="white"

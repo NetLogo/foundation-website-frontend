@@ -28,7 +28,7 @@ export const links: links = {
         "Tutorial 4: Lists": "https://forum.netlogo.org/c/share/tutorials/16",
       },
       "Guides": {
-        "Beginner’s Interactive NetLogo Dictionary":
+        "Beginner's Interactive NetLogo Dictionary":
           "https://ccl.northwestern.edu/netlogo/bind/",
         "Common NetLogo Errors and How to Fix Them":
           "https://ccl.northwestern.edu/netlogo/bind/article/common-netlogo-error-messages.html",
@@ -55,7 +55,7 @@ export const links: links = {
         "NetLogo User Manual": "https://ccl.northwestern.edu/netlogo/docs/",
         "NetLogo Dictionary":
           "https://ccl.northwestern.edu/netlogo/docs/dictionary.html",
-        "Beginner’s Interactive NetLogo Dictionary":
+        "Beginner's Interactive NetLogo Dictionary":
           "https://ccl.northwestern.edu/netlogo/docs/dictionary.html",
         "NetLogo Source Code": "https://github.com/NetLogo/",
       },
@@ -112,7 +112,7 @@ export const links: links = {
       "NetLogo User Manual": "https://ccl.northwestern.edu/netlogo/docs/",
       "NetLogo Dictionary":
         "https://ccl.northwestern.edu/netlogo/docs/dictionary.html",
-      "Beginner’s Interactive NetLogo Dictionary":
+      "Beginner's Interactive NetLogo Dictionary":
         "https://ccl.northwestern.edu/netlogo/docs/dictionary.html",
       "NetLogo Source Code": "https://github.com/NetLogo/",
     },

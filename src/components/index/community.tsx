@@ -22,7 +22,7 @@ interface communityProps {
 
 interface communityCard {
   title: string;
-  description : string;
+  description: string;
   link: string;
   icon: string;
   bordered: boolean;
@@ -41,28 +41,37 @@ const communityLinks = links.Footer["Community"] as { [key: string]: string };
 const communityCardData: Array<communityCard> = [
   {
     title: "NetLogo Forum",
-    description: "The NetLogo Forum provides a place for the NetLogo community to ask and answer questions, share resources and more.",
+    description:
+      "The NetLogo Forum provides a place for the NetLogo community to ask and answer questions, share resources and more.",
     link: communityLinks["NetLogo Forum"],
     icon: forumIcon.src,
-    bordered: false
+    bordered: false,
   },
   {
     title: "NetLogo Google Group",
-    description: "The netlogo-users google group is a mailing list where NetLogo users can ask and answer questions. ",
+    description:
+      "The netlogo-users google group is a mailing list where NetLogo users can ask and answer questions. ",
     link: communityLinks["NetLogo Google Group"],
     icon: googleGroupIcon.src,
-    bordered: true
+    bordered: true,
   },
   {
     title: "Modeling Commons",
-    description: "NetLogo provides educators with an easy-to-use modeling platform that includes many built-in models to engage students in learning science.",
+    description:
+      "NetLogo provides educators with an easy-to-use modeling platform that includes many built-in models to engage students in learning science.",
     link: communityLinks["Modeling Commons"],
     icon: modelingCommonsIcon.src,
-    bordered: false
+    bordered: false,
   },
-]
+];
 
-const CommunityCard = ({ link, title, description, icon, bordered }: communityCardProps) => {
+const CommunityCard = ({
+  link,
+  title,
+  description,
+  icon,
+  bordered,
+}: communityCardProps) => {
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");
   };
@@ -95,7 +104,6 @@ const Community = ({ communityPosts }: communityProps) => {
   const [previewImage, setPreviewImage] = useState<string | null>(
     communityPosts.length > 0 ? communityPosts[0].image : null
   );
-
 
   return (
     <div className="community-section">
@@ -152,19 +160,16 @@ const Community = ({ communityPosts }: communityProps) => {
               }}
               className="community-netlogo-content"
             >
-              {communityCardData.map((card: communityCard, index: number) => ( <CommunityCard title={card.title} link={card.link} description={card.description} icon={card.icon} bordered={card.bordered} />))}
-              {/* <CommunityCard
-                title="NetLogo Forum"
-                link={communityLinks["NetLogo Forum"]}
-              />
-              <CommunityCard
-                title="NetLogo Google Group"
-                link={communityLinks["NetLogo Google Group"]}
-              />
-              <CommunityCard
-                title="Modeling Commons"
-                link={communityLinks["Modeling Commons"]}
-              /> */}
+              {communityCardData.map((card: communityCard, index: number) => (
+                <CommunityCard
+                  title={card.title}
+                  link={card.link}
+                  description={card.description}
+                  icon={card.icon}
+                  bordered={card.bordered}
+                  key={index}
+                />
+              ))}
             </div>
           </div>
         }

@@ -2,6 +2,11 @@
 import { Body } from "../components/index/body.tsx";
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
+import NetLogoApi from "../utils/api.js";
+
+const api = new NetLogoApi();
+
+const allData = await api.getAllData();
 
 let base = 'https://backend.netlogo.org';
 
@@ -91,13 +96,17 @@ const communityContent2 = await fetchCommunityData();
 	<head>
 	</head>
 	<body>
-		<Body client:load announcement={announcement}
+      <Body
+      client:load
+        announcement={announcement}
         upcomingEvents={upcomingEvents}
         upcomingWorkshops={upcomingWorkshops}
         competitions={competitions}
         publications={publications}
         communityContent={communityContent2}
-        />
+        siteData={allData}
+      />
+
 	</body>
 </html>
 

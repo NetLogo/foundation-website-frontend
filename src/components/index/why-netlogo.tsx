@@ -1,32 +1,25 @@
-"use client";
-
 import "./styles/why-netlogo.css";
-import { useEffect, useState } from "react";
 import { Section } from "../shared/section";
-import { Button } from "../shared/button";
-import student from "../../assets/students_icon.svg";
-import researcher from "../../assets/research_icon.svg";
-import educator from "../../assets/educators_icon.svg";
-import NetLogoApi, { type WhyNetLogoEntry } from "../../utils/api.js";
+import {type WhyNetLogoEntry} from "../../utils/api";
 
 /** Inner component for X tab **/
 interface ForTabProps {
   title: string;
   content: string;
-  imagePath: { src: string };
+  imageKey: string;
 }
 
-const ForTab = ({ title, content, imagePath }: ForTabProps) => {
+const ForTab = ({ title, content, imageKey }: ForTabProps) => {
   return (
     <div className="for-tab-inner">
       <div className="for-tab-content">
         <div className="for-tab-title-cont">
           <div className="for-tab-icon">
-            {/* <img
+            <img
               className="for-tab-icon-image"
-              src={imagePath.src}
+              src={`https://backend.netlogo.org/assets/${imageKey}`}
               alt={`${title} icon`}
-            /> */}
+            />
           </div>
           <span className="for-tab-title">{title}</span>
         </div>
@@ -36,27 +29,11 @@ const ForTab = ({ title, content, imagePath }: ForTabProps) => {
   );
 };
 
-const WhyNetLogo = () => {
-  const [whyNetLogoData, setWhyNetLogoData] = useState<WhyNetLogoEntry[]>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const api = new NetLogoApi();
-      try {
-        const data = await api.getWhyNetLogoEntries();
-        console.log("why_netlogo data:", data);
-        setWhyNetLogoData(data);
-      } catch (error) {
-        console.error("Error fetching why_netlogo:", error);
-      }
-    };
-    
-    fetchData();
-  }, []); // Empty dependency array means it only runs once on mount
+interface WhyNetLogoProps {
+  page_data: WhyNetLogoEntry[];
+}
 
-  console.log("whyNetLogoData:", whyNetLogoData);
-  console.log("Entry:", whyNetLogoData[0]);
-  console.log("whyNetLogoData:", whyNetLogoData);
-  console.log("Entry:", whyNetLogoData[0]);
+const WhyNetLogo = ({page_data}:WhyNetLogoProps) => {
 
   return (
     <div className="why-section">
@@ -69,12 +46,34 @@ const WhyNetLogo = () => {
         moreButton={false}
         body={
           <div className="why-netlogo-content">
-            <ForTab
+            {page_data?.length > 0 ? (
+              page_data.map((entry) => (
+                <ForTab
+                  key={entry.id}
+                  title={entry.title}
+                  content={entry.content}
+                  imageKey={entry.icon}
+                />
+              ))
+            ) : (
+              <p>Loading or no data available...</p>
+            )}
+          </div>
+        }
+      />
+    </div>
+  );
+};
+
+export { WhyNetLogo };
+
+
+            {/* <ForTab
               title="For Students"
               content="NetLogo provides students with many pre-made models of scientific phenomena they can explore. For those who want to learn to program or create models themselves, NetLogo is very easy to get started with."
               imagePath={student}
             />
-            {/* <ForTab
+            <ForTab
               title="For Researchers"
               content="NetLogo is easy to learn but still very powerful. It is has been used in over 20,000 scientific publications in fields including sociology, ecology, cognitive science, business, and more."
               imagePath={researcher}
@@ -84,11 +83,3 @@ const WhyNetLogo = () => {
               content="NetLogo provides educators with an easy-to-use modeling platform that includes many built-in models to engage students in learning science."
               imagePath={educator}
             /> */}
-          </div>
-        }
-      />
-    </div>
-  );
-};
-
-export { WhyNetLogo };

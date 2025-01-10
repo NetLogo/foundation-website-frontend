@@ -3,34 +3,10 @@ interface ApiResponse<T> {
   data: T;
 }
 
-interface Announcement {
-  // Add specific announcement properties here
+export interface Introduction {
   id: string;
-  // ... other properties
-}
-
-interface Event {
-  // Add specific event properties here
-  id: string;
-  // ... other properties
-}
-
-interface Workshop {
-  // Add specific workshop properties here
-  id: string;
-  // ... other properties
-}
-
-interface Competition {
-  // Add specific competition properties here
-  id: string;
-  // ... other properties
-}
-
-interface Publication {
-  // Add specific publication properties here
-  id: string;
-  // ... other properties
+  title: string;
+  content: string;
 }
 
 export interface WhyNetLogoEntry {
@@ -38,6 +14,30 @@ export interface WhyNetLogoEntry {
   title: string;
   content: string;
   icon: string;
+  order: number;
+}
+
+export interface GetNetLogoEntry {
+  id: string;
+  title: string;
+  content: string;
+  icon: string;
+  link: string;
+  order: number;
+}
+
+export interface CommunityPost {
+  id: string;
+  title: string;
+  content: string;
+  icon: string;
+  link: string;
+  order: number;
+}
+
+export interface AllData {
+  why_netlogo: WhyNetLogoEntry[];
+  get_netlogo: GetNetLogoEntry[];
 }
 
 class NetLogoAPI {
@@ -62,53 +62,20 @@ class NetLogoAPI {
     }
   }
 
-  async getAnnouncements(): Promise<Announcement[]> {
-    return this.fetchData<Announcement[]>("/items/announcements");
-  }
-
-  async getUpcomingEvents(): Promise<Event[]> {
-    return this.fetchData<Event[]>("/items/upcoming_events");
-  }
-
-  async getUpcomingWorkshops(): Promise<Workshop[]> {
-    return this.fetchData<Workshop[]>("/items/upcoming_workshops");
-  }
-
-  async getCompetitions(): Promise<Competition[]> {
-    return this.fetchData<Competition[]>("/items/competitions");
-  }
-
-  async getPublications(): Promise<Publication[]> {
-    return this.fetchData<Publication[]>("/items/publications");
-  }
-
   async getWhyNetLogoEntries(): Promise<WhyNetLogoEntry[]> {
     return this.fetchData<WhyNetLogoEntry[]>("/items/why_netlogo");
+  }
+  async getGetNetLogoEntries(): Promise<GetNetLogoEntry[]> {
+    return this.fetchData<GetNetLogoEntry[]>("/items/get_netlogo");
   }
 
   // Fetch all data at once
   async getAllData() {
     try {
-      const [
-        announcements,
-        upcomingEvents,
-        upcomingWorkshops,
-        competitions,
-        publications,
-      ] = await Promise.all([
-        this.getAnnouncements(),
-        this.getUpcomingEvents(),
-        this.getUpcomingWorkshops(),
-        this.getCompetitions(),
-        this.getPublications(),
-      ]);
+      const [why_netlogo] = await Promise.all([this.getWhyNetLogoEntries()]);
 
       return {
-        announcements,
-        upcomingEvents,
-        upcomingWorkshops,
-        competitions,
-        publications,
+        why_netlogo,
       };
     } catch (error) {
       console.error("Error fetching all data:", error);

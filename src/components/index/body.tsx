@@ -13,6 +13,8 @@ import { Footer } from "../layout/footer";
 import type { CommunityPost } from "./community";
 import type { Event } from "./event-display";
 import "./styles/body.css";
+import {type AllData} from "../../utils/api";
+
 
 interface BodyProps {
   announcement?: AnnouncementObj;
@@ -21,6 +23,7 @@ interface BodyProps {
   upcomingWorkshops: Event[];
   publications: Event[];
   communityContent: CommunityPost[];
+  siteData: AllData;
 }
 
 function Body({
@@ -30,12 +33,14 @@ function Body({
   competitions,
   publications,
   communityContent,
+  siteData
 }: BodyProps) {
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
 
   // Reference for the GetNetLogo section
   const getNetLogoSection = useRef<HTMLDivElement | null>(null);
-
+  
+  const {why_netlogo} = siteData;
   return (
     <div className="body">
       <Header />
@@ -47,7 +52,7 @@ function Body({
         />
       )}
       <Intro getNetLogoSection={getNetLogoSection}/>
-      <WhyNetLogo />
+      <WhyNetLogo page_data = {why_netlogo}/>
       <GetNetLogo sectionRef = {getNetLogoSection}/>
       <Community communityPosts={communityContent} />
       {/* <News upcomingEvents={upcomingEvents}

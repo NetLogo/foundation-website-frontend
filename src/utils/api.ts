@@ -9,6 +9,14 @@ export interface Introduction {
   description: string;
 }
 
+export interface IntroSplashEntry{
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  demo_image: string;
+}
+
 export interface WhyNetLogoEntry {
   id: string;
   title: string;
@@ -69,20 +77,21 @@ class NetLogoAPI {
   async getGetNetLogoEntries(): Promise<GetNetLogoEntry[]> {
     return this.fetchData<GetNetLogoEntry[]>("/items/get_netlogo");
   }
-
   async getIntro(): Promise<Introduction> {
     return this.fetchData<Introduction>("/items/introduction");
   }
-
-
+  async getIntroSplashEntries(): Promise<IntroSplashEntry[]> {
+    return this.fetchData<IntroSplashEntry[]>("/items/intro_splash");
+  }
 
   // Fetch all data at once
   async getAllData() {
     try {
-      const [introduction, why_netlogo, get_netlogo] = await Promise.all([this.getIntro(), this.getWhyNetLogoEntries(), this.getGetNetLogoEntries()]);
+      const [introduction, intro_splash, why_netlogo, get_netlogo] = await Promise.all([this.getIntro(), this.getIntroSplashEntries(), this.getWhyNetLogoEntries(), this.getGetNetLogoEntries()]);
 
       return {
         introduction,
+        intro_splash,
         why_netlogo,
         get_netlogo,
       };

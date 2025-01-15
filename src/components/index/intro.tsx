@@ -1,15 +1,19 @@
 import { IntroAnimation } from "./intro-splash";
 import { Button } from "../shared/button";
 import "./styles/intro.css";
-import type { Introduction } from "../../utils/api";
+import type { Introduction, IntroSplashEntry } from "../../utils/api";
 
 interface IntroProps {
   intro_data: Introduction;
+  intro_splash_data: IntroSplashEntry[];
   getNetLogoSection: React.RefObject<HTMLDivElement>;
-
 }
 
-const Intro: React.FC<IntroProps> = ({ intro_data, getNetLogoSection }) => {
+const Intro: React.FC<IntroProps> = ({
+  intro_data,
+  intro_splash_data,
+  getNetLogoSection,
+}) => {
   const scrollToGetNetLogo = () => {
     getNetLogoSection.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -20,17 +24,13 @@ const Intro: React.FC<IntroProps> = ({ intro_data, getNetLogoSection }) => {
     <div className="intro">
       <div className="intro-title-text-cont">
         <div className="intro-title">
-          <p>
-            {title}
-          </p>
+          <p>{title}</p>
         </div>
         <div className="intro-text">
-          <p>
-            {description}
-          </p>
+          <p>{description}</p>
         </div>
       </div>
-      <IntroAnimation />
+      <IntroAnimation page_data={intro_splash_data} />
       <div className="intro-btn-cont">
         <Button
           colorClass="blue-button"

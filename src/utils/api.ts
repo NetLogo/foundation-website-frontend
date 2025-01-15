@@ -45,6 +45,7 @@ export interface CommunityPost {
 
 export interface AllData {
   introduction: Introduction;
+  intro_splash: IntroSplashEntry[];
   why_netlogo: WhyNetLogoEntry[];
   get_netlogo: GetNetLogoEntry[];
 }

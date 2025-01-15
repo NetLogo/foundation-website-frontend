@@ -12,8 +12,13 @@ import visualizationImg1 from "../../assets/visualization-img1.svg";
 import visualizationImg2 from "../../assets/fire.gif";
 import visualization from "../../assets/visualization.png";
 import powerfulExtensible from "../../assets/powerful-extensible.png";
+import type { IntroSplashEntry } from "../../utils/api";
 
-const IntroAnimation = () => {
+interface IntroSplashProps {
+  page_data: IntroSplashEntry[];
+}
+
+const IntroAnimation = ({ page_data }: IntroSplashProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   // Effect to handle tab switching

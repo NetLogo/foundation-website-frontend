@@ -13,8 +13,7 @@ import { Footer } from "../layout/footer";
 import type { CommunityPost } from "./community";
 import type { Event } from "./event-display";
 import "./styles/body.css";
-import {type AllData} from "../../utils/api";
-
+import { type AllData } from "../../utils/api";
 
 interface BodyProps {
   announcement?: AnnouncementObj;
@@ -33,14 +32,14 @@ function Body({
   competitions,
   publications,
   communityContent,
-  siteData
+  siteData,
 }: BodyProps) {
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
 
   // Reference for the GetNetLogo section
   const getNetLogoSection = useRef<HTMLDivElement | null>(null);
-  
-  const {introduction, why_netlogo, get_netlogo} = siteData;
+
+  const { introduction, intro_splash, why_netlogo, get_netlogo } = siteData;
   return (
     <div className="body">
       <Header />
@@ -51,9 +50,13 @@ function Body({
           setShowAnnouncement={setShowAnnouncement}
         />
       )}
-      <Intro intro_data = {introduction} getNetLogoSection={getNetLogoSection}/>
-      <WhyNetLogo page_data = {why_netlogo}/>
-      <GetNetLogo  page_data = {get_netlogo} sectionRef = {getNetLogoSection}/>
+      <Intro
+        intro_data={introduction}
+        intro_splash_data={intro_splash}
+        getNetLogoSection={getNetLogoSection}
+      />
+      <WhyNetLogo page_data={why_netlogo} />
+      <GetNetLogo page_data={get_netlogo} sectionRef={getNetLogoSection} />
       <Community communityPosts={communityContent} />
       {/* <News upcomingEvents={upcomingEvents}
             upcomingWorkshops={upcomingWorkshops}
@@ -61,7 +64,7 @@ function Body({
             publications={publications}/> */}
       <FeaturedPartners />
       <MailingList />
-      <Footer getNetLogoSection={getNetLogoSection}/>
+      <Footer getNetLogoSection={getNetLogoSection} />
     </div>
   );
 }

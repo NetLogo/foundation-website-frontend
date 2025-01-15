@@ -6,7 +6,7 @@ interface ApiResponse<T> {
 export interface Introduction {
   id: string;
   title: string;
-  content: string;
+  description: string;
 }
 
 export interface WhyNetLogoEntry {
@@ -36,6 +36,7 @@ export interface CommunityPost {
 }
 
 export interface AllData {
+  introduction: Introduction;
   why_netlogo: WhyNetLogoEntry[];
   get_netlogo: GetNetLogoEntry[];
 }
@@ -69,13 +70,21 @@ class NetLogoAPI {
     return this.fetchData<GetNetLogoEntry[]>("/items/get_netlogo");
   }
 
+  async getIntro(): Promise<Introduction> {
+    return this.fetchData<Introduction>("/items/introduction");
+  }
+
+
+
   // Fetch all data at once
   async getAllData() {
     try {
-      const [why_netlogo] = await Promise.all([this.getWhyNetLogoEntries()]);
+      const [introduction, why_netlogo, get_netlogo] = await Promise.all([this.getIntro(), this.getWhyNetLogoEntries(), this.getGetNetLogoEntries()]);
 
       return {
+        introduction,
         why_netlogo,
+        get_netlogo,
       };
     } catch (error) {
       console.error("Error fetching all data:", error);

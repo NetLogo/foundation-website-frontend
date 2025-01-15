@@ -1,34 +1,32 @@
 import { IntroAnimation } from "./intro-splash";
 import { Button } from "../shared/button";
 import "./styles/intro.css";
+import type { Introduction } from "../../utils/api";
 
 interface IntroProps {
+  intro_data: Introduction;
   getNetLogoSection: React.RefObject<HTMLDivElement>;
+
 }
 
-const Intro: React.FC<IntroProps> = ({ getNetLogoSection }) => {
+const Intro: React.FC<IntroProps> = ({ intro_data, getNetLogoSection }) => {
   const scrollToGetNetLogo = () => {
     getNetLogoSection.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const { title, description } = intro_data;
 
   return (
     <div className="intro">
       <div className="intro-title-text-cont">
         <div className="intro-title">
           <p>
-            Complex Systems with{"\n"}
-            Agent-Based Modeling
+            {title}
           </p>
         </div>
         <div className="intro-text">
           <p>
-            Agent-based modeling (ABM) is a powerful tool for understanding
-            complex systems in which large-scale patterns emerge from the
-            interactions of many simple parts. NetLogo is an ABM environment
-            with a "low threshold" for learning yet "high ceiling" capabilities.
-            This combination is why NetLogo is used widely both in educational
-            settings and by professional scientists doing cutting edge research.
-            {"\n"}
+            {description}
           </p>
         </div>
       </div>

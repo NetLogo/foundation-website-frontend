@@ -6,19 +6,21 @@ import netlogoWebIcon from "../../assets/netlogo-web.svg";
 import TU from "../../assets/turtle-universe.svg";
 import "./styles/get-netlogo.css";
 import { links } from "../../utils/links.js";
+import type { GetNetLogoEntry } from "../../utils/api.js";
 
 interface GetNetLogoProps {
   sectionRef: React.RefObject<HTMLDivElement>;
+  page_data: GetNetLogoEntry[];
 }
 
 interface ItemCardProps {
   title: string;
   description: string;
-  icon: string;
+  image_key: string;
   link: string;
 }
 
-const ItemCard = ({ title, description, icon, link }: ItemCardProps) => {
+const ItemCard = ({ title, description, image_key, link }: ItemCardProps) => {
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");
   };
@@ -26,7 +28,7 @@ const ItemCard = ({ title, description, icon, link }: ItemCardProps) => {
   return (
     <div className="get-item">
       <div className="get-item-header">
-        <img className="get-item-img" src={icon} />
+        <img className="get-item-img" src={`https://backend.netlogo.org/assets/${image_key}`} />
         <span className="get-item-title"> {title} </span>
       </div>
       <span className="get-item-descript"> {description} </span>
@@ -43,7 +45,7 @@ const ItemCard = ({ title, description, icon, link }: ItemCardProps) => {
   );
 };
 
-const GetNetLogo = ({ sectionRef }: GetNetLogoProps) => {
+const GetNetLogo = ({ sectionRef, page_data }: GetNetLogoProps) => {
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");
   };
@@ -71,46 +73,14 @@ const GetNetLogo = ({ sectionRef }: GetNetLogoProps) => {
               ref={sectionRef}
               className="get-netlogo-content"
             >
-              <ItemCard
-                title="NetLogo Desktop"
-                description="A programmable modeling environment for simulating natural and
-                  social phenomena that runs on Mac, Windows, and Linux. This is
-                  the most powerful version of NetLogo."
-                icon={getNetLogoIcon.src}
-                link={softwareLinks["NetLogo Desktop"]}
-              />
-              <ItemCard
-                title="NetLogo Web"
-                description="A version of NetLogo that runs in all modern web browsers,
-                  without any need for installation. Very useful for embedding
-                  in online educational materials."
-                icon={netlogoWebIcon.src}
-                link={softwareLinks["NetLogo Web"]}
-              />
-              <ItemCard
-                title="Turtle Universe"
-                description="Powered by the NetLogo engine but with its own unique
-                  interface, Turtle Universe brings the limitless power of
-                  computational modeling to smartphones and tablets of young
-                  students and educators."
-                icon={TU.src}
-                link={softwareLinks["Turtle Universe"]}
-              />
-              <ItemCard
-                title="NetTango"
-                description="A block-based interface for NetLogo for creating educational
-                  models with domain-specific programming blocks."
-                icon={TU.src}
-                link={softwareLinks["NetTango"]}
-              />
-              <ItemCard
-                title="HubNet Web"
-                description="An online platform for creating and running participatory
-                  simulations in which people can play the role of agents in a
-                  NetLogo model."
-                icon= {TU.src}
-                link={softwareLinks["HubNet Web"]}
-              />
+              {page_data.map((item) => (
+                <ItemCard
+                  title={item.title}
+                  description={item.content}
+                  image_key={item.icon}
+                  link={item.link}
+                />
+              ))}
             </div>
           </div>
         }

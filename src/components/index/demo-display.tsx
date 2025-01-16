@@ -1,50 +1,65 @@
-import { useState, useEffect } from 'react';
-import './styles/demo-display.css';
+import { useState, useEffect } from "react";
+import "./styles/demo-display.css";
+import type { IntroSplashEntry } from "../../utils/api";
+import visualizationDemo from "../../assets/visualization-demo.svg";
+import visualizationImg2 from "../../assets/fire.gif";
 
 interface DemoDisplayProps {
-    demo: React.ReactNode,
-    descript: string,
-    currentTab: number
+  demo: IntroSplashEntry;
+  currentTab: number;
 }
 
-const DemoDisplay = ({demo, descript, currentTab}: DemoDisplayProps ) => {
-    const [isChanging, setIsChanging] = useState(false);
-    const [currentDemo, setCurrentDemo] = useState(demo);
-    const [currentDescript, setCurrentDescript] = useState(descript);
+const DemoDisplay = ({ demo, currentTab }: DemoDisplayProps) => {
+  const [isChanging, setIsChanging] = useState(false);
+  const [currentDemo, setCurrentDemo] = useState(demo);
 
-    useEffect(() => {
-        if (demo !== currentDemo || descript !== currentDescript) {
-            setIsChanging(true);
-            const timer = setTimeout(() => {
-                setCurrentDemo(demo);
-                setCurrentDescript(descript);
-                setIsChanging(false);
-            }, 150); // Matches the duration of the fade-out animation
+  const { description, demo_image, background } = demo;
 
-            return () => clearTimeout(timer);
-        }
-    }, [demo, descript]);
+  useEffect(() => {
+    if (demo !== currentDemo) {
+      setIsChanging(true);
+      const timer = setTimeout(() => {
+        setCurrentDemo(demo);
+        setIsChanging(false);
+      }, 150); // Matches the duration of the fade-out animation
 
-    let additonalStyle:string = '';
-    
-    if (currentTab === 0) {
-        additonalStyle = '0px 10px 10px 10px';
+      return () => clearTimeout(timer);
     }
-    else if (currentTab === 3) {
-        additonalStyle = '10px 10px 10px 0px';
-    }
+  }, [demo]);
 
+  let additonalStyle: string = "";
 
+  if (currentTab === 0) {
+    additonalStyle = "0px 10px 10px 10px";
+  } else if (currentTab === 3) {
+    additonalStyle = "10px 10px 10px 0px";
+  }
 
-
-    return (
-        <div className="demo-display" style = {{borderRadius:`${additonalStyle}`}}>
-            <div className={`demo-content ${isChanging ? 'fade-out' : ''}`}>
-                {currentDemo}
-                <span className="demo-display-text">{currentDescript}</span>
-            </div>
+  return (
+    <div className="demo-display" style={{ borderRadius: `${additonalStyle}` }}>
+      <div className={`demo-content ${isChanging ? "fade-out" : ""}`}>
+        <div className="intro-demo">
+          {background ? (
+            <>
+              <img src={visualizationDemo.src} alt="Visualization Demo" />
+              <img
+                src={`https://backend.netlogo.org/assets/${demo_image}`}
+                className={`visualization-inner-img`}
+                alt="Visualization 1"
+              />
+            </>
+          ) : (
+            <img
+              className="demo-img"
+              src={`https://backend.netlogo.org/assets/${demo_image}`}
+              alt="Visualization Demo"
+            />
+          )}
         </div>
-    )
-}
+        <span className="demo-display-text">{description}</span>
+      </div>
+    </div>
+  );
+};
 
 export { DemoDisplay };

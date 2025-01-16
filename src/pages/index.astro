@@ -17,7 +17,7 @@ const announcement = data.data;
 
 response = await fetch('https://backend.netlogo.org/items/upcoming_events');
 data = await response.json();
-const upcomingEvents = data.data;
+const upcomingEvents = data.data; 
 
 // reupload, 
 response = await fetch(base + '/items/upcoming_workshops');

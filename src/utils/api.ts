@@ -15,6 +15,7 @@ export interface IntroSplashEntry{
   icon: string;
   description: string;
   demo_image: string;
+  background: boolean;
 }
 
 export interface WhyNetLogoEntry {

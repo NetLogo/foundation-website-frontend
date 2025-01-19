@@ -7,9 +7,10 @@ import visualizationImg2 from "../../assets/fire.gif";
 interface DemoDisplayProps {
   demo: IntroSplashEntry;
   currentTab: number;
+  isLastTab: boolean;
 }
 
-const DemoDisplay = ({ demo, currentTab }: DemoDisplayProps) => {
+const DemoDisplay = ({ demo, currentTab, isLastTab }: DemoDisplayProps) => {
   const [isChanging, setIsChanging] = useState(false);
   const [currentDemo, setCurrentDemo] = useState(demo);
 
@@ -29,9 +30,10 @@ const DemoDisplay = ({ demo, currentTab }: DemoDisplayProps) => {
 
   let additonalStyle: string = "";
 
+  // This is to account for the css of the demo when we are sel;ecting the first or last demo tab
   if (currentTab === 0) {
     additonalStyle = "0px 10px 10px 10px";
-  } else if (currentTab === 3) {
+  } else if (isLastTab) {
     additonalStyle = "10px 10px 10px 0px";
   }
 
@@ -39,22 +41,12 @@ const DemoDisplay = ({ demo, currentTab }: DemoDisplayProps) => {
     <div className="demo-display" style={{ borderRadius: `${additonalStyle}` }}>
       <div className={`demo-content ${isChanging ? "fade-out" : ""}`}>
         <div className="intro-demo">
-          {background ? (
-            <>
-              <img src={visualizationDemo.src} alt="Visualization Demo" />
-              <img
-                src={`https://backend.netlogo.org/assets/${demo_image}`}
-                className={`visualization-inner-img`}
-                alt="Visualization 1"
-              />
-            </>
-          ) : (
+          
             <img
               className="demo-img"
               src={`https://backend.netlogo.org/assets/${demo_image}`}
               alt="Visualization Demo"
             />
-          )}
         </div>
         <span className="demo-display-text">{description}</span>
       </div>

@@ -85,7 +85,11 @@ const IntroAnimation = ({ page_data }: IntroSplashProps) => {
           />
         ))}
       </div>
-      <DemoDisplay demo={page_data[currentTab]} currentTab={currentTab} />
+      <DemoDisplay
+        demo={page_data[currentTab]}
+        currentTab={currentTab}
+        isLastTab={currentTab == page_data.length - 1}
+      />
     </div>
   );
 };

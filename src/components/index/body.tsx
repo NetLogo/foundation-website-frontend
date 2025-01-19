@@ -54,7 +54,7 @@ function Body({
             upcomingWorkshops={upcomingWorkshops}
             competitions={competitions}
             publications={publications}/> */}
-      {/* <FeaturedPartners/> */}
+      <FeaturedPartners />
       <MailingList />
       <Footer getNetLogoSection={getNetLogoSection}/>
     </div>

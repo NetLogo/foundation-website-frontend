@@ -32,7 +32,6 @@ const FeaturedPartners = () => {
                 sectionGap={2.5}
                 sectionPaddingBot={6}
                 backgroundColor="white"
-                borderRadius={0}
                 moreButton={false}
                 body={
                     <div className="partners-cont">

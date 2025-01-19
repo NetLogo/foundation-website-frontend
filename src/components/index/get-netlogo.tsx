@@ -27,16 +27,18 @@ const ItemCard = ({ title, description, icon, link }: ItemCardProps) => {
     <div className="get-item">
       <div className="get-item-header">
         <img className="get-item-img" src={icon} />
+        <span className="get-item-title"> {title} </span>
+      </div>
+      <span className="get-item-descript"> {description} </span>
+      <div className="button-container">
         <Button
           colorClass="blue-button"
-          padding="0.75rem 1.5rem"
+          padding="0.75rem 2.5rem"
           fontSize="0.875rem"
           text="GET"
           onClick={() => pageRedirect(link)}
         />
       </div>
-      <span className="get-item-title"> {title} </span>
-      <span className="get-item-descript"> {description} </span>
     </div>
   );
 };
@@ -52,11 +54,10 @@ const GetNetLogo = ({ sectionRef }: GetNetLogoProps) => {
     <div ref={sectionRef} className="get-section">
       <Section
         sectionTitle="Get NetLogo"
-        sectionDescript="There are over xxx products in NetLogo. Find the one that suits your need."
+        sectionDescript="There are five different products in NetLogo. Find the one suits your need."
         sectionGap={2.5}
         sectionPaddingBot={3.75}
         backgroundColor="white"
-        borderRadius={5}
         moreButton={false}
         body={
           <div>
@@ -107,7 +108,7 @@ const GetNetLogo = ({ sectionRef }: GetNetLogoProps) => {
                 description="An online platform for creating and running participatory
                   simulations in which people can play the role of agents in a
                   NetLogo model."
-                icon="src\assets\HubNetLogo.png"
+                icon= {TU.src}
                 link={softwareLinks["HubNet Web"]}
               />
             </div>

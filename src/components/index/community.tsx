@@ -7,6 +7,7 @@ import { links } from "../../utils/links.js";
 import forumIcon from "../../assets/netlogo-forum.png";
 import googleGroupIcon from "../../assets/google-group.png";
 import modelingCommonsIcon from "../../assets/modeling-commons.png";
+import type { CommunityEntry } from "../../utils/api.js";
 
 interface CommunityPost {
   project: string;
@@ -18,6 +19,7 @@ interface CommunityPost {
 
 interface communityProps {
   communityPosts: CommunityPost[];
+  page_data: CommunityEntry[];
 }
 
 interface communityCard {
@@ -81,7 +83,7 @@ const CommunityCard = ({
   return (
     <div className="community-item">
       <div className="community-item-header">
-        <img className={imageClass} src={icon} />
+        <img className={imageClass} src={`https://backend.netlogo.org/assets/${icon}`} />
         <span className="community-item-title"> {title} </span>
       </div>
       <span className="community-item-descript"> {description} </span>
@@ -99,12 +101,12 @@ const CommunityCard = ({
 };
 
 /** Community: defines the Community section in the landing page **/
-const Community = ({ communityPosts }: communityProps) => {
+const Community = ({ communityPosts, page_data }: communityProps) => {
   // Initialize previewImage with the first image if available
   const [previewImage, setPreviewImage] = useState<string | null>(
     communityPosts.length > 0 ? communityPosts[0].image : null
   );
-
+console.log(page_data);
   return (
     <div className="community-section">
       <Section
@@ -160,13 +162,13 @@ const Community = ({ communityPosts }: communityProps) => {
               }}
               className="community-netlogo-content"
             >
-              {communityCardData.map((card: communityCard, index: number) => (
+              {page_data.map((card: CommunityEntry, index: number) => (
                 <CommunityCard
-                  title={card.title}
-                  link={card.link}
-                  description={card.description}
-                  icon={card.icon}
-                  bordered={card.bordered}
+                  title={card.Title}
+                  link={card.Link}
+                  description={card.Description}
+                  icon={card.Icon}
+                  bordered={card.Bordered}
                   key={index}
                 />
               ))}

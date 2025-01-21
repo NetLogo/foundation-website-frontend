@@ -40,7 +40,7 @@ function Body({
   // Reference for the GetNetLogo section
   const getNetLogoSection = useRef<HTMLDivElement | null>(null);
   
-  const {why_netlogo} = siteData;
+  const {why_netlogo, community} = siteData;
   return (
     <div className="body">
       <Header />
@@ -54,7 +54,7 @@ function Body({
       <Intro getNetLogoSection={getNetLogoSection}/>
       <WhyNetLogo page_data = {why_netlogo}/>
       <GetNetLogo sectionRef = {getNetLogoSection}/>
-      <Community communityPosts={communityContent} />
+      <Community communityPosts={communityContent} page_data = {community} />
       {/* <News upcomingEvents={upcomingEvents}
             upcomingWorkshops={upcomingWorkshops}
             competitions={competitions}

@@ -35,9 +35,20 @@ export interface CommunityPost {
   order: number;
 }
 
+export interface CommunityEntry {
+  id: string;
+  Title: string;
+  Description: string;
+  Icon: string;
+  Link: string;
+  order: number;
+  Bordered: boolean;
+}
+
 export interface AllData {
   why_netlogo: WhyNetLogoEntry[];
   get_netlogo: GetNetLogoEntry[];
+  community: CommunityEntry[];
 }
 
 class NetLogoAPI {
@@ -69,13 +80,18 @@ class NetLogoAPI {
     return this.fetchData<GetNetLogoEntry[]>("/items/get_netlogo");
   }
 
+  async getCommunityEntries(): Promise<CommunityEntry[]> {
+    return this.fetchData<CommunityEntry[]>("/items/Community");
+  }
+
+
   // Fetch all data at once
   async getAllData() {
     try {
-      const [why_netlogo] = await Promise.all([this.getWhyNetLogoEntries()]);
+      const [why_netlogo, community] = await Promise.all([this.getWhyNetLogoEntries(), this.getCommunityEntries()]);
 
       return {
-        why_netlogo,
+        why_netlogo, community
       };
     } catch (error) {
       console.error("Error fetching all data:", error);

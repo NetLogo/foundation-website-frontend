@@ -3,6 +3,7 @@ import { Button } from "../shared/button";
 import "./styles/intro.css";
 import type { Introduction, IntroSplashEntry } from "../../utils/api";
 
+
 interface IntroProps {
   intro_data: Introduction;
   intro_splash_data: IntroSplashEntry[];
@@ -17,6 +18,9 @@ const Intro: React.FC<IntroProps> = ({
   const scrollToGetNetLogo = () => {
     getNetLogoSection.current?.scrollIntoView({ behavior: "smooth" });
   };
+  // React Hooks useEffect, useRef, useState
+  //useEffect( () => {}, [])
+//rendering any component, useEffect runs before display the component
 
   const { title, description } = intro_data;
 

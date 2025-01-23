@@ -44,11 +44,33 @@ export interface CommunityPost {
   order: number;
 }
 
+export interface CommunityEntry {
+  id: string;
+  Title: string;
+  Description: string;
+  Icon: string;
+  Link: string;
+  order: number;
+  Bordered: boolean;
+}
+
+export interface PartnerEntry {
+  id: string;
+  partner_name: string;
+  partner_image: string;
+}
+
+// after makeing directus 
+// creating a option type for featured partners, and what to expect in it and know what you are fetching
+
+
 export interface AllData {
   introduction: Introduction;
   intro_splash: IntroSplashEntry[];
   why_netlogo: WhyNetLogoEntry[];
-  get_netlogo: GetNetLogoEntry[];
+  //get_netlogo: GetNetLogoEntry[];
+  community: CommunityEntry[];
+  featured_partners: PartnerEntry[];
 }
 
 class NetLogoAPI {
@@ -86,16 +108,37 @@ class NetLogoAPI {
     return this.fetchData<IntroSplashEntry[]>("/items/intro_splash");
   }
 
+  async getCommunityEntries(): Promise<CommunityEntry[]> {
+    return this.fetchData<CommunityEntry[]>("/items/Community");
+
+  
+  }
+// add fetch info partners,get specifally that endpoint
+// get specifally the data
+
+  async getPartnerEntries(): Promise<PartnerEntry[]> {
+    return this.fetchData<PartnerEntry[]>("/items/featured_partners");
+
+  }
+
+
   // Fetch all data at once
+  // only have to call function in index.astro
+  //organizing all of it for us, 
   async getAllData() {
     try {
-      const [introduction, intro_splash, why_netlogo, get_netlogo] = await Promise.all([this.getIntro(), this.getIntroSplashEntries(), this.getWhyNetLogoEntries(), this.getGetNetLogoEntries()]);
+
+
+      const [introduction, intro_splash, why_netlogo, get_netlogo, community, featured_partners] = await Promise.all([this.getIntro(), this.getIntroSplashEntries(), this.getWhyNetLogoEntries(), this.getGetNetLogoEntries(), this.getCommunityEntries(), this.getPartnerEntries()]);
 
       return {
         introduction,
         intro_splash,
         why_netlogo,
         get_netlogo,
+        community,
+        featured_partners
+
       };
     } catch (error) {
       console.error("Error fetching all data:", error);

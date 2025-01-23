@@ -13,7 +13,10 @@ import { Footer } from "../layout/footer";
 import type { CommunityPost } from "./community";
 import type { Event } from "./event-display";
 import "./styles/body.css";
-import { type AllData } from "../../utils/api";
+
+import {type AllData} from "../../utils/api";
+
+
 
 interface BodyProps {
   announcement?: AnnouncementObj;
@@ -24,6 +27,8 @@ interface BodyProps {
   communityContent: CommunityPost[];
   siteData: AllData;
 }
+
+//light blue is input
 
 function Body({
   announcement,
@@ -37,9 +42,17 @@ function Body({
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
 
   // Reference for the GetNetLogo section
+  //light green
+  //way to construct sequence of the website outputs HTML
   const getNetLogoSection = useRef<HTMLDivElement | null>(null);
 
-  const { introduction, intro_splash, why_netlogo, get_netlogo } = siteData;
+  
+
+  //review this functions as a example
+
+
+  const { introduction, intro_splash, why_netlogo, get_netlogo, featured_partners, community } = siteData;
+
   return (
     <div className="body">
       <Header />
@@ -50,6 +63,7 @@ function Body({
           setShowAnnouncement={setShowAnnouncement}
         />
       )}
+
       <Intro
         intro_data={introduction}
         intro_splash_data={intro_splash}
@@ -57,12 +71,14 @@ function Body({
       />
       <WhyNetLogo page_data={why_netlogo} />
       <GetNetLogo page_data={get_netlogo} sectionRef={getNetLogoSection} />
-      <Community communityPosts={communityContent} />
+      <Community communityPosts={communityContent} page_data = {community} />
+      <FeaturedPartners featured_partners={featured_partners}  />
+
       {/* <News upcomingEvents={upcomingEvents}
             upcomingWorkshops={upcomingWorkshops}
             competitions={competitions}
             publications={publications}/> */}
-      <FeaturedPartners />
+      
       <MailingList />
       <Footer getNetLogoSection={getNetLogoSection} />
     </div>

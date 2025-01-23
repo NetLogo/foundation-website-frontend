@@ -45,10 +45,21 @@ export interface CommunityEntry {
   Bordered: boolean;
 }
 
+export interface PartnerEntry {
+  id: string;
+  partner_name: string;
+  partner_image: string;
+}
+
+// after makeing directus 
+// creating a option type for featured partners, and what to expect in it and know what you are fetching
+
+
 export interface AllData {
   why_netlogo: WhyNetLogoEntry[];
-  get_netlogo: GetNetLogoEntry[];
+  //get_netlogo: GetNetLogoEntry[];
   community: CommunityEntry[];
+  featured_partners: PartnerEntry[];
 }
 
 class NetLogoAPI {
@@ -82,16 +93,27 @@ class NetLogoAPI {
 
   async getCommunityEntries(): Promise<CommunityEntry[]> {
     return this.fetchData<CommunityEntry[]>("/items/Community");
+
+  
+  }
+// add fetch info partners,get specifally that endpoint
+// get specifally the data
+
+  async getPartnerEntries(): Promise<PartnerEntry[]> {
+    return this.fetchData<PartnerEntry[]>("/items/featured_partners");
+
   }
 
 
   // Fetch all data at once
+  // only have to call function in index.astro
+  //organizing all of it for us, 
   async getAllData() {
     try {
-      const [why_netlogo, community] = await Promise.all([this.getWhyNetLogoEntries(), this.getCommunityEntries()]);
+      const [why_netlogo, community, featured_partners] = await Promise.all([this.getWhyNetLogoEntries(), this.getCommunityEntries(), this.getPartnerEntries()]);
 
       return {
-        why_netlogo, community
+        why_netlogo, community, featured_partners
       };
     } catch (error) {
       console.error("Error fetching all data:", error);

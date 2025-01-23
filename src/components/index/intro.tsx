@@ -1,6 +1,7 @@
 import { IntroAnimation } from "./intro-splash";
 import { Button } from "../shared/button";
 import "./styles/intro.css";
+import { useEffect } from "react";
 
 interface IntroProps {
   getNetLogoSection: React.RefObject<HTMLDivElement>;
@@ -10,6 +11,9 @@ const Intro: React.FC<IntroProps> = ({ getNetLogoSection }) => {
   const scrollToGetNetLogo = () => {
     getNetLogoSection.current?.scrollIntoView({ behavior: "smooth" });
   };
+  // React Hooks useEffect, useRef, useState
+  //useEffect( () => {}, [])
+//rendering any component, useEffect runs before display the component
 
   return (
     <div className="intro">

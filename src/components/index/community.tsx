@@ -38,34 +38,34 @@ interface communityCardProps {
   bordered: boolean;
 }
 
-const communityLinks = links.Footer["Community"] as { [key: string]: string };
+// const communityCardData: Array<communityCard> = [
+//   {
+//     //done already
+//     title: "NetLogo Forum",
+//     description:
+//       "The NetLogo Forum provides a place for the NetLogo community to ask and answer questions, share resources and more.",
+//     link: communityLinks["NetLogo Forum"],
+//     icon: forumIcon.src,
+//     bordered: false,
+//   },
+//   {
+//     title: "NetLogo Google Group",
+//     description:
+//       "The netlogo-users google group is a mailing list where NetLogo users can ask and answer questions. ",
+//     link: communityLinks["NetLogo Google Group"],
+//     icon: googleGroupIcon.src,
+//     bordered: true,
+//   },
+//   {
+//     title: "Modeling Commons",
+//     description:
+//       "NetLogo provides educators with an easy-to-use modeling platform that includes many built-in models to engage students in learning science.",
+//     link: communityLinks["Modeling Commons"],
+//     icon: modelingCommonsIcon.src,
+//     bordered: false,
+//   },
+// ];
 
-const communityCardData: Array<communityCard> = [
-  {
-    title: "NetLogo Forum",
-    description:
-      "The NetLogo Forum provides a place for the NetLogo community to ask and answer questions, share resources and more.",
-    link: communityLinks["NetLogo Forum"],
-    icon: forumIcon.src,
-    bordered: false,
-  },
-  {
-    title: "NetLogo Google Group",
-    description:
-      "The netlogo-users google group is a mailing list where NetLogo users can ask and answer questions. ",
-    link: communityLinks["NetLogo Google Group"],
-    icon: googleGroupIcon.src,
-    bordered: true,
-  },
-  {
-    title: "Modeling Commons",
-    description:
-      "NetLogo provides educators with an easy-to-use modeling platform that includes many built-in models to engage students in learning science.",
-    link: communityLinks["Modeling Commons"],
-    icon: modelingCommonsIcon.src,
-    bordered: false,
-  },
-];
 
 const CommunityCard = ({
   link,
@@ -117,41 +117,6 @@ console.log(page_data);
         backgroundColor="#F2F2F5"
         moreButton={false}
         body={
-          //   <div className="community-content">
-          //         <div className="preview-content">
-          //             <div className="preview-display">
-          //                 {previewImage ? <img className="community-preview-image" src={previewImage} alt="Preview" /> : 'No preview available'}
-          //             </div>
-          //             <Button
-          //                 colorClass="blue-button"
-          //                 padding="1rem 3rem"
-          //                 fontSize="1.125rem"
-          //                 text="JOIN DISCOURSE"
-          //                 style={{ alignSelf: 'stretch' }} // make it grow to the full size
-          //             />
-          //         </div>
-          //         <div className="community-models">
-          //             {communityPosts.map((post: CommunityPost, index: number) => (
-          //                 <div
-          //                     className="community-post-cont"
-          //                     key={index}
-          //                     onClick={() => setPreviewImage(post.image)}
-          //                 >
-          //                     <div className="community-post-icon">
-          //                         <img src={communityIcon.src} className="community-post-icon-image"/>
-          //                     </div>
-          //                     <div className="community-post-descript">
-          //                         <div className="community-post-user-date-cont">
-          //                             <span> {post.author} </span>
-          //                             <span> {post.date} </span>
-          //                         </div>
-          //                         <span className="community-post-title"> {"New model: "}
-          //                             <a href={post.link} className="community-post-link">{post.project}</a>
-          //                         </span> </div>
-          //                 </div>
-          //             ))}
-          //         </div>
-          //     </div>
           <div>
             <div
               style={{

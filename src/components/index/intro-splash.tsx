@@ -15,8 +15,12 @@ import powerfulExtensible from "../../assets/powerful-extensible.png";
 
 const IntroAnimation = () => {
   const [currentTab, setCurrentTab] = useState(0);
+  // const [variable name, variable changing function] = useState(starting value)
+  // 
 
   // Effect to handle tab switching
+  //example of useeffect, run once
+  //
   useEffect(() => {
     const tabTimer = setTimeout(() => {
       setCurrentTab((prevTab) => (prevTab + 1) % 4);
@@ -26,6 +30,10 @@ const IntroAnimation = () => {
       clearTimeout(tabTimer);
     };
   }, [currentTab]);
+  // Dependency array
+  // [] - Only runs on mount
+  // [currentTab] - Runs every time that the value of currentTab changes
+  // useeffect and usestate
 
   const handleTabClick = (tab: number) => {
     setCurrentTab(tab);

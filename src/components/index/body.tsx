@@ -15,7 +15,8 @@ import type { Event } from "./event-display";
 import "./styles/body.css";
 import {type AllData} from "../../utils/api";
 
-
+//interface ... props needs to take in some kind of 
+// data and definfing what type of data that takes in
 interface BodyProps {
   announcement?: AnnouncementObj;
   upcomingEvents: Event[];
@@ -25,6 +26,8 @@ interface BodyProps {
   communityContent: CommunityPost[];
   siteData: AllData;
 }
+
+//light blue is input
 
 function Body({
   announcement,
@@ -38,9 +41,13 @@ function Body({
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
 
   // Reference for the GetNetLogo section
+  //light green
+  //way to construct sequence of the website outputs HTML
   const getNetLogoSection = useRef<HTMLDivElement | null>(null);
   
-  const {why_netlogo, community} = siteData;
+
+  //review this functions as a example
+  const {why_netlogo, community, featured_partners} = siteData;
   return (
     <div className="body">
       <Header />
@@ -55,11 +62,12 @@ function Body({
       <WhyNetLogo page_data = {why_netlogo}/>
       <GetNetLogo sectionRef = {getNetLogoSection}/>
       <Community communityPosts={communityContent} page_data = {community} />
+      <FeaturedPartners featured_partners={featured_partners}  />
       {/* <News upcomingEvents={upcomingEvents}
             upcomingWorkshops={upcomingWorkshops}
             competitions={competitions}
             publications={publications}/> */}
-      <FeaturedPartners />
+      
       <MailingList />
       <Footer getNetLogoSection={getNetLogoSection}/>
     </div>

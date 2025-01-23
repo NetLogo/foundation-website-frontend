@@ -6,6 +6,8 @@ import NetLogoApi from "../utils/api.js";
 
 const api = new NetLogoApi();
 
+//in not a function its a instance of a class
+//general API calls ,define variables
 const allData = await api.getAllData();
 console.log(allData);
 
@@ -31,6 +33,15 @@ const competitions = data.data;
 response = await fetch(base + '/items/publications');
 data = await response.json();
 const publications = data.data;
+// function syntax
+
+//const testFunction = () => {
+
+//}
+
+// <Button 
+//   OnClick = {() => console.log("Test")}
+// />
 
 const fetchImageFromLink = async (url: string) => {
     try {
@@ -92,7 +103,7 @@ const fetchCommunityData = async () => {
 const communityContent2 = await fetchCommunityData();
 // console.log(communityContent2);
 ---
-
+// all directus get info page
 <html lang="en">
 	<head>
 	</head>

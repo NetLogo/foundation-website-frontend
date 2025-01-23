@@ -6,7 +6,16 @@ interface ApiResponse<T> {
 export interface Introduction {
   id: string;
   title: string;
-  content: string;
+  description: string;
+}
+
+export interface IntroSplashEntry{
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  demo_image: string;
+  background: boolean;
 }
 
 export interface WhyNetLogoEntry {
@@ -56,6 +65,8 @@ export interface PartnerEntry {
 
 
 export interface AllData {
+  introduction: Introduction;
+  intro_splash: IntroSplashEntry[];
   why_netlogo: WhyNetLogoEntry[];
   //get_netlogo: GetNetLogoEntry[];
   community: CommunityEntry[];
@@ -90,6 +101,12 @@ class NetLogoAPI {
   async getGetNetLogoEntries(): Promise<GetNetLogoEntry[]> {
     return this.fetchData<GetNetLogoEntry[]>("/items/get_netlogo");
   }
+  async getIntro(): Promise<Introduction> {
+    return this.fetchData<Introduction>("/items/introduction");
+  }
+  async getIntroSplashEntries(): Promise<IntroSplashEntry[]> {
+    return this.fetchData<IntroSplashEntry[]>("/items/intro_splash");
+  }
 
   async getCommunityEntries(): Promise<CommunityEntry[]> {
     return this.fetchData<CommunityEntry[]>("/items/Community");
@@ -110,10 +127,18 @@ class NetLogoAPI {
   //organizing all of it for us, 
   async getAllData() {
     try {
-      const [why_netlogo, community, featured_partners] = await Promise.all([this.getWhyNetLogoEntries(), this.getCommunityEntries(), this.getPartnerEntries()]);
+
+
+      const [introduction, intro_splash, why_netlogo, get_netlogo, community, featured_partners] = await Promise.all([this.getIntro(), this.getIntroSplashEntries(), this.getWhyNetLogoEntries(), this.getGetNetLogoEntries(), this.getCommunityEntries(), this.getPartnerEntries()]);
 
       return {
-        why_netlogo, community, featured_partners
+        introduction,
+        intro_splash,
+        why_netlogo,
+        get_netlogo,
+        community,
+        featured_partners
+
       };
     } catch (error) {
       console.error("Error fetching all data:", error);

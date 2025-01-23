@@ -3,13 +3,13 @@ import { Section } from "../shared/section";
 import {type WhyNetLogoEntry} from "../../utils/api";
 
 /** Inner component for X tab **/
-interface ForTabProps {
+interface ForCardProps {
   title: string;
   content: string;
   imageKey: string;
 }
 
-const ForTab = ({ title, content, imageKey }: ForTabProps) => {
+const ForCard = ({ title, content, imageKey }: ForCardProps) => {
   return (
     <div className="for-tab-inner">
       <div className="for-tab-content">
@@ -48,7 +48,7 @@ const WhyNetLogo = ({page_data}:WhyNetLogoProps) => {
           <div className="why-netlogo-content">
             {page_data?.length > 0 ? (
               page_data.map((entry) => (
-                <ForTab
+                <ForCard
                   key={entry.id}
                   title={entry.title}
                   content={entry.content}
@@ -66,20 +66,3 @@ const WhyNetLogo = ({page_data}:WhyNetLogoProps) => {
 };
 
 export { WhyNetLogo };
-
-
-            {/* <ForTab
-              title="For Students"
-              content="NetLogo provides students with many pre-made models of scientific phenomena they can explore. For those who want to learn to program or create models themselves, NetLogo is very easy to get started with."
-              imagePath={student}
-            />
-            <ForTab
-              title="For Researchers"
-              content="NetLogo is easy to learn but still very powerful. It is has been used in over 20,000 scientific publications in fields including sociology, ecology, cognitive science, business, and more."
-              imagePath={researcher}
-            />
-            <ForTab
-              title="For Educators"
-              content="NetLogo provides educators with an easy-to-use modeling platform that includes many built-in models to engage students in learning science."
-              imagePath={educator}
-            /> */}

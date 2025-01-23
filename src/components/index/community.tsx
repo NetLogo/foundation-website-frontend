@@ -66,7 +66,6 @@ interface communityCardProps {
 //   },
 // ];
 
-
 const CommunityCard = ({
   link,
   title,
@@ -83,7 +82,10 @@ const CommunityCard = ({
   return (
     <div className="community-item">
       <div className="community-item-header">
-        <img className={imageClass} src={`https://backend.netlogo.org/assets/${icon}`} />
+        <img
+          className={imageClass}
+          src={`https://backend.netlogo.org/assets/${icon}`}
+        />
         <span className="community-item-title"> {title} </span>
       </div>
       <span className="community-item-descript"> {description} </span>
@@ -106,7 +108,6 @@ const Community = ({ communityPosts, page_data }: communityProps) => {
   const [previewImage, setPreviewImage] = useState<string | null>(
     communityPosts.length > 0 ? communityPosts[0].image : null
   );
-console.log(page_data);
   return (
     <div className="community-section">
       <Section

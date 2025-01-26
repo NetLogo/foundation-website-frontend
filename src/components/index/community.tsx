@@ -38,34 +38,6 @@ interface communityCardProps {
   bordered: boolean;
 }
 
-// const communityCardData: Array<communityCard> = [
-//   {
-//     //done already
-//     title: "NetLogo Forum",
-//     description:
-//       "The NetLogo Forum provides a place for the NetLogo community to ask and answer questions, share resources and more.",
-//     link: communityLinks["NetLogo Forum"],
-//     icon: forumIcon.src,
-//     bordered: false,
-//   },
-//   {
-//     title: "NetLogo Google Group",
-//     description:
-//       "The netlogo-users google group is a mailing list where NetLogo users can ask and answer questions. ",
-//     link: communityLinks["NetLogo Google Group"],
-//     icon: googleGroupIcon.src,
-//     bordered: true,
-//   },
-//   {
-//     title: "Modeling Commons",
-//     description:
-//       "NetLogo provides educators with an easy-to-use modeling platform that includes many built-in models to engage students in learning science.",
-//     link: communityLinks["Modeling Commons"],
-//     icon: modelingCommonsIcon.src,
-//     bordered: false,
-//   },
-// ];
-
 const CommunityCard = ({
   link,
   title,

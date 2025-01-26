@@ -14,10 +14,11 @@ interface FeaturePartnerProps {
 
 /** Partner: defines a component to display a partner. **/
 const Partner = ({partnerName, partnerImage}: PartnerProps) => {
+    const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
     return (
         <div className="partner">
             <div className="partner-image">
-                <img className="partner-image-image" src={`https://backend.netlogo.org/assets/${partnerImage}`} />
+                <img className="partner-image-image" src={`${backend_url}/assets/${partnerImage}`} />
             </div>
             <span className="partner-name">
                 {partnerName}

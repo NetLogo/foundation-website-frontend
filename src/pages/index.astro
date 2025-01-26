@@ -10,14 +10,10 @@ const api = new NetLogoApi();
 //general API calls ,define variables
 const allData = await api.getAllData();
 
-let base = 'https://backend.netlogo.org';
+let base = import.meta.env.PUBLIC_BACKEND_URL;
 
-let response = await fetch(base + '/items/announcements')
+let response = await fetch('https://backend.netlogo.org/items/upcoming_events');
 let data: any = await response.json();
-const announcement = data.data;
-
-response = await fetch('https://backend.netlogo.org/items/upcoming_events');
-data = await response.json();
 const upcomingEvents = data.data; 
 
 // reupload, 
@@ -101,7 +97,6 @@ const communityContent2 = await fetchCommunityData();
 	<body>
       <Body
       client:load
-        announcement={announcement}
         upcomingEvents={upcomingEvents}
         upcomingWorkshops={upcomingWorkshops}
         competitions={competitions}

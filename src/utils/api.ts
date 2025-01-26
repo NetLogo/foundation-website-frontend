@@ -1,3 +1,4 @@
+import { type AnnouncementObj } from "../components/layout/announcement";
 // Types for the API responses
 interface ApiResponse<T> {
   data: T;
@@ -70,12 +71,13 @@ export interface AllData {
   get_netlogo: GetNetLogoEntry[];
   community: CommunityEntry[];
   featured_partners: PartnerEntry[];
+  announcement: AnnouncementObj;
 }
 
 class NetLogoAPI {
   private readonly baseUrl: string;
 
-  constructor(baseUrl: string = "https://backend.netlogo.org") {
+  constructor(baseUrl: string = import.meta.env.PUBLIC_BACKEND_URL) {
     this.baseUrl = baseUrl;
   }
 
@@ -106,13 +108,14 @@ class NetLogoAPI {
   async getIntroSplashEntries(): Promise<IntroSplashEntry[]> {
     return this.fetchData<IntroSplashEntry[]>("/items/intro_splash");
   }
-
   async getCommunityEntries(): Promise<CommunityEntry[]> {
     return this.fetchData<CommunityEntry[]>("/items/Community");
   }
-
   async getPartnerEntries(): Promise<PartnerEntry[]> {
     return this.fetchData<PartnerEntry[]>("/items/featured_partners");
+  }
+  async getAnnouncement(): Promise<AnnouncementObj> {
+    return this.fetchData<AnnouncementObj>("/items/announcements");
   }
 
   // Fetch all data at once
@@ -127,6 +130,7 @@ class NetLogoAPI {
         get_netlogo,
         community,
         featured_partners,
+        announcement,
       ] = await Promise.all([
         this.getIntro(),
         this.getIntroSplashEntries(),
@@ -134,6 +138,7 @@ class NetLogoAPI {
         this.getGetNetLogoEntries(),
         this.getCommunityEntries(),
         this.getPartnerEntries(),
+        this.getAnnouncement(),
       ]);
 
       return {
@@ -143,6 +148,7 @@ class NetLogoAPI {
         get_netlogo,
         community,
         featured_partners,
+        announcement,
       };
     } catch (error) {
       console.error("Error fetching all data:", error);

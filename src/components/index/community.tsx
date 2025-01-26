@@ -45,13 +45,13 @@ const CommunityCard = ({
   };
 
   const imageClass = "community-item-img" + (bordered ? " bordered" : "");
-
+  const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
   return (
     <div className="community-item">
       <div className="community-item-header">
         <img
           className={imageClass}
-          src={`https://backend.netlogo.org/assets/${icon}`}
+          src={`${backend_url}/assets/${icon}`}
         />
         <span className="community-item-title"> {title} </span>
       </div>

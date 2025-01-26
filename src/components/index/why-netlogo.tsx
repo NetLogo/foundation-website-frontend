@@ -1,6 +1,6 @@
 import "./styles/why-netlogo.css";
 import { Section } from "../shared/section";
-import {type WhyNetLogoEntry} from "../../utils/api";
+import { type WhyNetLogoEntry } from "../../utils/api";
 
 /** Inner component for X tab **/
 interface ForCardProps {
@@ -10,6 +10,8 @@ interface ForCardProps {
 }
 
 const ForCard = ({ title, content, imageKey }: ForCardProps) => {
+  const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
+  console.log(`${backend_url}`);
   return (
     <div className="for-tab-inner">
       <div className="for-tab-content">
@@ -17,7 +19,7 @@ const ForCard = ({ title, content, imageKey }: ForCardProps) => {
           <div className="for-tab-icon">
             <img
               className="for-tab-icon-image"
-              src={`https://backend.netlogo.org/assets/${imageKey}`}
+              src={`${backend_url}/assets/${imageKey}`}
               alt={`${title} icon`}
             />
           </div>
@@ -33,8 +35,7 @@ interface WhyNetLogoProps {
   page_data: WhyNetLogoEntry[];
 }
 
-const WhyNetLogo = ({page_data}:WhyNetLogoProps) => {
-
+const WhyNetLogo = ({ page_data }: WhyNetLogoProps) => {
   return (
     <div className="why-section">
       <Section

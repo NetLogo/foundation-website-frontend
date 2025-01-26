@@ -24,11 +24,14 @@ const ItemCard = ({ title, description, image_key, link }: ItemCardProps) => {
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");
   };
-
+  const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
   return (
     <div className="get-item">
       <div className="get-item-header">
-        <img className="get-item-img" src={`https://backend.netlogo.org/assets/${image_key}`} />
+        <img
+          className="get-item-img"
+          src={`${backend_url}/assets/${image_key}`}
+        />
         <span className="get-item-title"> {title} </span>
       </div>
       <span className="get-item-descript"> {description} </span>

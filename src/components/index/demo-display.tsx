@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import "./styles/demo-display.css";
 import type { IntroSplashEntry } from "../../utils/api";
-import visualizationDemo from "../../assets/visualization-demo.svg";
-import visualizationImg2 from "../../assets/fire.gif";
 
+//
 interface DemoDisplayProps {
-  demo: IntroSplashEntry;
-  currentTab: number;
-  isLastTab: boolean;
+  demo: IntroSplashEntry; // content for each demo in the tab
+  currentTab: number; // current tab number (index of the demo we are llooking at)
+  isLastTab: boolean; // boolean to check if we are on the last tab
 }
 
 const DemoDisplay = ({ demo, currentTab, isLastTab }: DemoDisplayProps) => {
@@ -36,17 +35,16 @@ const DemoDisplay = ({ demo, currentTab, isLastTab }: DemoDisplayProps) => {
   } else if (isLastTab) {
     additonalStyle = "10px 10px 10px 0px";
   }
-
+  const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
   return (
     <div className="demo-display" style={{ borderRadius: `${additonalStyle}` }}>
       <div className={`demo-content ${isChanging ? "fade-out" : ""}`}>
         <div className="intro-demo">
-          
-            <img
-              className="demo-img"
-              src={`https://backend.netlogo.org/assets/${demo_image}`}
-              alt="Visualization Demo"
-            />
+          <img
+            className="demo-img"
+            src={`${backend_url}/assets/${demo_image}`}
+            alt="Visualization Demo"
+          />
         </div>
         <span className="demo-display-text">{description}</span>
       </div>

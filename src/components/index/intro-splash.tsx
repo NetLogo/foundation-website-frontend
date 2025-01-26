@@ -22,6 +22,7 @@ const IntroTab = ({
   current_tab,
   click_handler,
 }: IntroTabProps) => {
+  const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
   return (
     <div className={`${current_tab === tab_number ? "current-tab" : ""}`}>
       <div
@@ -38,7 +39,7 @@ const IntroTab = ({
             className={`intro-anim-icon ${current_tab === tab_number ? "current-tab-icon" : ""}`}
           >
             <img
-              src={`https://backend.netlogo.org/assets/${icon_key}`}
+              src={`${backend_url}/assets/${icon_key}`}
               alt="Visual Icon"
             />
           </div>
@@ -56,7 +57,7 @@ const IntroTab = ({
 const IntroAnimation = ({ page_data }: IntroSplashProps) => {
   const [currentTab, setCurrentTab] = useState(0);
   // const [variable name, variable changing function] = useState(starting value)
-  // 
+  //
 
   // Effect to handle tab switching
   //example of useeffect, run once

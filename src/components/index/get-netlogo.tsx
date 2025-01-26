@@ -1,11 +1,7 @@
 import React from "react";
 import { Section } from "../shared/section.js";
 import { Button } from "../shared/button.js";
-import getNetLogoIcon from "../../assets/get-netlogo.svg";
-import netlogoWebIcon from "../../assets/netlogo-web.svg";
-import TU from "../../assets/turtle-universe.svg";
 import "./styles/get-netlogo.css";
-import { links } from "../../utils/links.js";
 import type { GetNetLogoEntry } from "../../utils/api.js";
 
 interface GetNetLogoProps {
@@ -52,8 +48,6 @@ const GetNetLogo = ({ sectionRef, page_data }: GetNetLogoProps) => {
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");
   };
-
-  const softwareLinks = links.Body["Get NetLogo"];
 
   return (
     <div ref={sectionRef} className="get-section">

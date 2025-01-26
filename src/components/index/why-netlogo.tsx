@@ -47,18 +47,14 @@ const WhyNetLogo = ({ page_data }: WhyNetLogoProps) => {
         moreButton={false}
         body={
           <div className="why-netlogo-content">
-            {page_data?.length > 0 ? (
-              page_data.map((entry) => (
-                <ForCard
-                  key={entry.id}
-                  title={entry.title}
-                  content={entry.content}
-                  imageKey={entry.icon}
-                />
-              ))
-            ) : (
-              <p>Loading or no data available...</p>
-            )}
+            {page_data.map((entry) => (
+              <ForCard
+                key={entry.id}
+                title={entry.title}
+                content={entry.content}
+                imageKey={entry.icon}
+              />
+            ))}
           </div>
         }
       />

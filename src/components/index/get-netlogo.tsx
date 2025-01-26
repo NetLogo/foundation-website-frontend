@@ -45,9 +45,6 @@ const ItemCard = ({ title, description, image_key, link }: ItemCardProps) => {
 };
 
 const GetNetLogo = ({ sectionRef, page_data }: GetNetLogoProps) => {
-  const pageRedirect = (url: string) => {
-    window.open(url, "_blank");
-  };
 
   return (
     <div ref={sectionRef} className="get-section">

@@ -10,11 +10,11 @@ interface IntroProps {
   getNetLogoSection: React.RefObject<HTMLDivElement>;
 }
 
-const Intro: React.FC<IntroProps> = ({
+const Intro= ({
   intro_data,
   intro_splash_data,
   getNetLogoSection,
-}) => {
+}:IntroProps) => {
   const scrollToGetNetLogo = () => {
     getNetLogoSection.current?.scrollIntoView({ behavior: "smooth" });
   };

@@ -1,5 +1,6 @@
 ---
 import { Body } from "../components/index/body.tsx";
+import type { Event } from "../components/index/event-display.tsx";
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import NetLogoApi from "../utils/api.js";
@@ -10,24 +11,11 @@ const api = new NetLogoApi();
 //general API calls ,define variables
 const allData = await api.getAllData();
 
-let base = import.meta.env.PUBLIC_BACKEND_URL;
-
-let response = await fetch('https://backend.netlogo.org/items/upcoming_events');
-let data: any = await response.json();
-const upcomingEvents = data.data; 
-
+const upcomingEvents: Event[] = await api.fetchData('/items/upcoming_events')
 // reupload, 
-response = await fetch(base + '/items/upcoming_workshops');
-data = await response.json();
-const upcomingWorkshops = data.data;
-
-response = await fetch(base  + '/items/competitions');
-data = await response.json();
-const competitions = data.data;
-
-response = await fetch(base + '/items/publications');
-data = await response.json();
-const publications = data.data;
+const upcomingWorkshops: Event[] = await api.fetchData('/items/upcoming_workshops');
+const competitions: Event[] = await api.fetchData('/items/competitions');
+const publications: Event[] = await api.fetchData('/items/publications');
 
 const fetchImageFromLink = async (url: string) => {
     try {

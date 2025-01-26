@@ -81,7 +81,7 @@ class NetLogoAPI {
     this.baseUrl = baseUrl;
   }
 
-  private async fetchData<T>(endpoint: string): Promise<T> {
+  async fetchData<T>(endpoint: string): Promise<T> {
     try {
       const url = `${this.baseUrl}${endpoint}`;
       const response = await fetch(url);
@@ -95,6 +95,7 @@ class NetLogoAPI {
       throw error;
     }
   }
+
 
   async getWhyNetLogoEntries(): Promise<WhyNetLogoEntry[]> {
     return this.fetchData<WhyNetLogoEntry[]>("/items/why_netlogo");

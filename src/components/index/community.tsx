@@ -2,11 +2,6 @@ import { useState, useEffect } from "react";
 import "./styles/community.css";
 import { Section } from "../shared/section";
 import { Button } from "../shared/button";
-import communityIcon from "../../assets/community-icon.svg";
-import { links } from "../../utils/links.js";
-import forumIcon from "../../assets/netlogo-forum.png";
-import googleGroupIcon from "../../assets/google-group.png";
-import modelingCommonsIcon from "../../assets/modeling-commons.png";
 import type { CommunityEntry } from "../../utils/api.js";
 
 interface CommunityPost {

@@ -19,7 +19,7 @@ import {type AllData} from "../../utils/api";
 
 
 interface BodyProps {
-  announcement?: AnnouncementObj;
+  announcement: AnnouncementObj;
   upcomingEvents: Event[];
   competitions: Event[];
   upcomingWorkshops: Event[];
@@ -41,15 +41,7 @@ function Body({
 }: BodyProps) {
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
 
-  // Reference for the GetNetLogo section
-  //light green
-  //way to construct sequence of the website outputs HTML
   const getNetLogoSection = useRef<HTMLDivElement | null>(null);
-
-  
-
-  //review this functions as a example
-
 
   const { introduction, intro_splash, why_netlogo, get_netlogo, featured_partners, community } = siteData;
 
@@ -57,7 +49,7 @@ function Body({
     <div className="body">
       <Header />
 
-      {showAnnouncement && announcement && (
+      {showAnnouncement && (
         <Announcement
           announcement={announcement}
           setShowAnnouncement={setShowAnnouncement}

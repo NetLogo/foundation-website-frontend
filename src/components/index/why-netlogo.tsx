@@ -11,7 +11,6 @@ interface ForCardProps {
 
 const ForCard = ({ title, content, imageKey }: ForCardProps) => {
   const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
-  console.log(`${backend_url}`);
   return (
     <div className="for-tab-inner">
       <div className="for-tab-content">

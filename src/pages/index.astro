@@ -4,7 +4,6 @@ import type { Event } from "../components/index/event-display.tsx";
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import NetLogoApi from "../utils/api.js";
-import { GraphQLClient, gql } from 'graphql-request';
 
 const api = new NetLogoApi();
   
@@ -15,9 +14,6 @@ const competitions: Event[] = await api.fetchData('/items/competitions');
 const publications: Event[] = await api.fetchData('/items/publications');
 
 const siteData = await api.getSiteData();
-
-const navigation_data = siteData['navigation_sections'];
-console.log(navigation_data);
 
 const fetchImageFromLink = async (url: string) => {
     try {

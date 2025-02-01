@@ -6,7 +6,7 @@ interface SearchbarProps {
     headerRef: React.RefObject<HTMLDivElement>;
 }
 
-const Searchbar: React.FC<SearchbarProps> = ({ headerRef }) => {
+const Searchbar = ({ headerRef }: SearchbarProps) => {
     const [isCompact, setIsCompact] = useState(false)
     const [isExpanded, setIsExpanded] = useState(false);
     const [isClosing, setIsClosing] = useState(false);

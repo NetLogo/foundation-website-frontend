@@ -1,51 +1,46 @@
 import headerActionIcon from "../../assets/header-action-icon.svg";
 import React, { useState, useMemo } from 'react';
-import {links} from "../../utils/links";
+import type { NavigationSection, NavigationSubsection, NavigationItem } from "../../utils/api";
 
 interface HeaderExpandedProps {
-    headerIndex: number
-    headerSections: string[]
+    headerIndex: number;
+    navigation_section: NavigationSection
 }
 
 interface HeaderActionColumnProps {
-    columnContent: { [key: string]: string };
+    columnContent: NavigationItem[];
     columnTitle: string;
 }
 
-const headerColumns = links.Header;
-
-
 /** defines one section of a action */
 const HeaderActionColumn = ({columnTitle, columnContent}: HeaderActionColumnProps) => {
-    const title = columnTitle == "No Title" ? "" : columnTitle;
     return (
         <div className="header-action-column">
-            <div className={`header-action-title ${title ? '' : 'not-visible'}`} >
-                <span>{title}</span>            
+            <div className={`header-action-title ${columnTitle ? '' : 'not-visible'}`} >
+                <span>{columnTitle}</span>            
                 <img 
                     src={headerActionIcon.src} 
-                    className={`header-action-icon ${title ? '' : 'not-viVsible'}`} 
+                    className={`header-action-icon ${columnTitle ? '' : 'not-viVsible'}`} 
                     alt="Header action icon" 
             />
             </div>
-            {Object.entries(columnContent).map(([key, value]) => (
-                <a key = {`link-${key}`} href={value} className="header-link"><span key={key} className="header-action-content">{key}</span></a>
+            {columnContent.map((item, index) => (
+                <a key = {`link-${item.display_title}`} href={item.url} className="header-link"><span key={index} className="header-action-content">{item.display_title}</span></a>
             ))}
         </div>
     )
 }
-const HeaderExpanded = React.memo(({ headerSections, headerIndex }: HeaderExpandedProps) => {
-    const expandedContent:string = headerIndex >= 0 ? headerSections[headerIndex] : "Products";
-    const currentColumn = headerColumns[expandedContent] as { [key: string]: { [key: string]: string } };
+const HeaderExpanded = React.memo(({ headerIndex, navigation_section }: HeaderExpandedProps) => {
+    const subsection = headerIndex >= 0 ? navigation_section.subsections : []
     return (
-        <div className={`header-expanded ${(headerIndex >= 0 && expandedContent.length > 0)? "expanded" : ""}`}>
+        <div className={`header-expanded ${headerIndex >= 0 ? "expanded" : ""}`}>
             <div className="header-expanded-line"></div>
             <div className="header-expanded-content">
-                {Object.entries(currentColumn).map(([key, value], i) => (
+                {subsection.map((column, index) => (
                     <HeaderActionColumn
-                        columnTitle={key}
-                        columnContent={value}
-                        key = {key}
+                        columnTitle={column.display_title ? column.title : ""}
+                        columnContent={column.items}
+                        key = {index}
                     />
                 ))}
             </div>

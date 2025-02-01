@@ -1,30 +1,19 @@
 ---
 import { Body } from "../components/index/body.tsx";
+import type { Event } from "../components/index/event-display.tsx";
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
+import NetLogoApi from "../utils/api.js";
 
-let base = 'https://backend.netlogo.org';
-
-let response = await fetch(base + '/items/announcements')
-let data: any = await response.json();
-const announcement = data.data;0
-
-response = await fetch('https://backend.netlogo.org/items/upcoming_events');
-data = await response.json();
-const upcomingEvents = data.data;
-
+const api = new NetLogoApi();
+  
+const upcomingEvents: Event[] = await api.fetchData('/items/upcoming_events')
 // reupload, 
-response = await fetch(base + '/items/upcoming_workshops');
-data = await response.json();
-const upcomingWorkshops = data.data;
+const upcomingWorkshops: Event[] = await api.fetchData('/items/upcoming_workshops');
+const competitions: Event[] = await api.fetchData('/items/competitions');
+const publications: Event[] = await api.fetchData('/items/publications');
 
-response = await fetch(base  + '/items/competitions');
-data = await response.json();
-const competitions = data.data;
-
-response = await fetch(base + '/items/publications');
-data = await response.json();
-const publications = data.data;
+const siteData = await api.getSiteData();
 
 const fetchImageFromLink = async (url: string) => {
     try {
@@ -80,24 +69,28 @@ const fetchCommunityData = async () => {
     });
     
     const communityData = await Promise.all<any>(communityDataPromises);
-    return communityData;
+    return communityData; 
 };
 
 const communityContent2 = await fetchCommunityData();
-console.log(communityContent2);
+
+
 ---
 
 <html lang="en">
 	<head>
 	</head>
 	<body>
-		<Body client:load announcement={announcement}
+      <Body
+      client:load
         upcomingEvents={upcomingEvents}
         upcomingWorkshops={upcomingWorkshops}
         competitions={competitions}
         publications={publications}
         communityContent={communityContent2}
-        />
+        siteData={siteData}
+      />
+
 	</body>
 </html>
 

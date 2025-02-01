@@ -97,11 +97,11 @@ const Community = ({ communityPosts, page_data }: communityProps) => {
             >
               {page_data.map((card: CommunityEntry, index: number) => (
                 <CommunityCard
-                  title={card.Title}
-                  link={card.Link}
-                  description={card.Description}
-                  icon={card.Icon}
-                  bordered={card.Bordered}
+                  title={card.title}
+                  link={card.link}
+                  description={card.description}
+                  icon={card.icon.id}
+                  bordered={card.bordered}
                   key={index}
                 />
               ))}

@@ -4,18 +4,17 @@ import type { Event } from "../components/index/event-display.tsx";
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import NetLogoApi from "../utils/api.js";
+import { GraphQLClient, gql } from 'graphql-request';
 
 const api = new NetLogoApi();
-
-//in not a function its a instance of a class
-//general API calls ,define variables
-const allData = await api.getAllData();
-
+  
 const upcomingEvents: Event[] = await api.fetchData('/items/upcoming_events')
 // reupload, 
 const upcomingWorkshops: Event[] = await api.fetchData('/items/upcoming_workshops');
 const competitions: Event[] = await api.fetchData('/items/competitions');
 const publications: Event[] = await api.fetchData('/items/publications');
+
+const siteData = await api.getSiteData();
 
 const fetchImageFromLink = async (url: string) => {
     try {
@@ -71,7 +70,7 @@ const fetchCommunityData = async () => {
     });
     
     const communityData = await Promise.all<any>(communityDataPromises);
-    return communityData;
+    return communityData; 
 };
 
 const communityContent2 = await fetchCommunityData();
@@ -90,7 +89,7 @@ const communityContent2 = await fetchCommunityData();
         competitions={competitions}
         publications={publications}
         communityContent={communityContent2}
-        siteData={allData}
+        siteData={siteData}
       />
 
 	</body>

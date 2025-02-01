@@ -46,12 +46,12 @@ const WhyNetLogo = ({ page_data }: WhyNetLogoProps) => {
         moreButton={false}
         body={
           <div className="why-netlogo-content">
-            {page_data.map((entry) => (
+            {page_data.map((entry,index) => (
               <ForCard
-                key={entry.id}
+                key={index}
                 title={entry.title}
                 content={entry.content}
-                imageKey={entry.icon}
+                imageKey={entry.icon.id}
               />
             ))}
           </div>

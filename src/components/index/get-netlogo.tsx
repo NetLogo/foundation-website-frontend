@@ -71,7 +71,7 @@ const GetNetLogo = ({ sectionRef, page_data }: GetNetLogoProps) => {
                 <ItemCard
                   title={item.title}
                   description={item.content}
-                  image_key={item.icon}
+                  image_key={item.icon.id}
                   link={item.link}
                 />
               ))}

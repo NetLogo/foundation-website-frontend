@@ -30,7 +30,7 @@ function Body({
   competitions,
   publications,
   communityContent,
-  siteData,
+  siteData
 }: BodyProps) {
   const {
     introduction,
@@ -40,14 +40,18 @@ function Body({
     featured_partners,
     community,
     announcement,
+    navigation_sections
   } = siteData;
+
+  console.log("siteData", siteData);
+
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
 
   const getNetLogoSection = useRef<HTMLDivElement | null>(null);
 
   return (
     <div className="body">
-      <Header />
+      <Header navigation_sections = {navigation_sections}/>
 
       {showAnnouncement && (
         <Announcement

@@ -1,7 +1,13 @@
 import { type AnnouncementObj } from "../components/layout/announcement";
+import { GraphQLClient} from 'graphql-request';
+import queries from './queries';
 // Types for the API responses
 interface ApiResponse<T> {
   data: T;
+}
+
+interface Image {
+  id: string;
 }
 
 export interface Introduction {
@@ -13,17 +19,16 @@ export interface Introduction {
 export interface IntroSplashEntry {
   id: string;
   title: string;
-  icon: string;
+  icon: Image;
   description: string;
-  demo_image: string;
+  demo_image: Image;
   background: boolean;
 }
 
 export interface WhyNetLogoEntry {
-  id: string;
   title: string;
   content: string;
-  icon: string;
+  icon: Image;
   order: number;
 }
 
@@ -31,7 +36,7 @@ export interface GetNetLogoEntry {
   id: string;
   title: string;
   content: string;
-  icon: string;
+  icon: Image;
   link: string;
   order: number;
 }
@@ -40,26 +45,43 @@ export interface CommunityPost {
   id: string;
   title: string;
   content: string;
-  icon: string;
+  icon: Image;
   link: string;
   order: number;
 }
 
 export interface CommunityEntry {
   id: string;
-  Title: string;
-  Description: string;
-  Icon: string;
-  Link: string;
+  title: string;
+  description: string;
+  icon: Image;
+  link: string;
   order: number;
-  Bordered: boolean;
+  bordered: boolean;
 }
 
 export interface PartnerEntry {
   id: string;
   partner_name: string;
-  partner_image: string;
+  partner_image: Image;
 }
+
+export interface NavigationSection {
+  name: string;
+  subsections: NavigationSubsection[];
+}
+
+export interface NavigationSubsection {
+  title: string;
+  display_title: boolean;
+  items: NavigationItem[];
+}
+
+export interface NavigationItem {
+  display_title: string;
+  url: string;
+}
+
 
 // after makeing directus
 // creating a option type for featured partners, and what to expect in it and know what you are fetching
@@ -72,13 +94,16 @@ export interface AllData {
   community: CommunityEntry[];
   featured_partners: PartnerEntry[];
   announcement: AnnouncementObj;
+  navigation_sections: NavigationSection[];
 }
 
 class NetLogoAPI {
   private readonly baseUrl: string;
+  private client: GraphQLClient;
 
   constructor(baseUrl: string = import.meta.env.PUBLIC_BACKEND_URL) {
     this.baseUrl = baseUrl;
+    this.client = new GraphQLClient(this.baseUrl + '/graphql')
   }
 
   async fetchData<T>(endpoint: string): Promise<T> {
@@ -95,66 +120,20 @@ class NetLogoAPI {
       throw error;
     }
   }
-
-
-  async getWhyNetLogoEntries(): Promise<WhyNetLogoEntry[]> {
-    return this.fetchData<WhyNetLogoEntry[]>("/items/why_netlogo");
-  }
-  async getGetNetLogoEntries(): Promise<GetNetLogoEntry[]> {
-    return this.fetchData<GetNetLogoEntry[]>("/items/get_netlogo");
-  }
-  async getIntro(): Promise<Introduction> {
-    return this.fetchData<Introduction>("/items/introduction");
-  }
-  async getIntroSplashEntries(): Promise<IntroSplashEntry[]> {
-    return this.fetchData<IntroSplashEntry[]>("/items/intro_splash");
-  }
-  async getCommunityEntries(): Promise<CommunityEntry[]> {
-    return this.fetchData<CommunityEntry[]>("/items/Community");
-  }
-  async getPartnerEntries(): Promise<PartnerEntry[]> {
-    return this.fetchData<PartnerEntry[]>("/items/featured_partners");
-  }
-  async getAnnouncement(): Promise<AnnouncementObj> {
-    return this.fetchData<AnnouncementObj>("/items/announcements");
-  }
-
-  // Fetch all data at once
-  // only have to call function in index.astro
-  //organizing all of it for us,
-  async getAllData() {
+  
+  async graphqlFetchData<T>(query: string): Promise<T> {
     try {
-      const [
-        introduction,
-        intro_splash,
-        why_netlogo,
-        get_netlogo,
-        community,
-        featured_partners,
-        announcement,
-      ] = await Promise.all([
-        this.getIntro(),
-        this.getIntroSplashEntries(),
-        this.getWhyNetLogoEntries(),
-        this.getGetNetLogoEntries(),
-        this.getCommunityEntries(),
-        this.getPartnerEntries(),
-        this.getAnnouncement(),
-      ]);
-
-      return {
-        introduction,
-        intro_splash,
-        why_netlogo,
-        get_netlogo,
-        community,
-        featured_partners,
-        announcement,
-      };
+      // Remove the extra data property access since GraphQL already returns the correct structure
+      const data = await this.client.request<T>(query);
+      return data;
     } catch (error) {
-      console.error("Error fetching all data:", error);
+      console.error('GraphQL query error:', error);
       throw error;
     }
+  }
+
+  async getSiteData() {
+    return await this.graphqlFetchData<AllData>(queries.allData);
   }
 }
 

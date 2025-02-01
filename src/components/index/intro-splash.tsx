@@ -88,7 +88,7 @@ const IntroAnimation = ({ page_data }: IntroSplashProps) => {
             key={entry.id}
             title={entry.title}
             tab_number={index}
-            icon_key={entry.icon}
+            icon_key={entry.icon.id}
             current_tab={currentTab}
             click_handler={handleTabClick}
           />

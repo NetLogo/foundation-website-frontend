@@ -42,7 +42,7 @@ const DemoDisplay = ({ demo, currentTab, isLastTab }: DemoDisplayProps) => {
         <div className="intro-demo">
           <img
             className="demo-img"
-            src={`${backend_url}/assets/${demo_image}`}
+            src={`${backend_url}/assets/${demo_image.id}`}
             alt="Visualization Demo"
           />
         </div>

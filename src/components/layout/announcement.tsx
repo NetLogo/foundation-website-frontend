@@ -15,7 +15,6 @@ interface AnnouncementProps {
 }
 
 const Announcement = ({ announcement, setShowAnnouncement } : AnnouncementProps ) => {
-    console.log("announcement", announcement);
     return (
         <div className="aCont">
             <div className="aTextButtonCont"> 

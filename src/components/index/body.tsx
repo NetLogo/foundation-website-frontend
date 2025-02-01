@@ -43,8 +43,6 @@ function Body({
     navigation_sections
   } = siteData;
 
-  console.log("siteData", siteData);
-
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
 
   const getNetLogoSection = useRef<HTMLDivElement | null>(null);
@@ -76,7 +74,7 @@ function Body({
             publications={publications}/> */}
 
       <MailingList />
-      <Footer getNetLogoSection={getNetLogoSection} />
+      <Footer getNetLogoSection={getNetLogoSection} navigationData={navigation_sections}/>
     </div>
   );
 }

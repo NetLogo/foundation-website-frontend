@@ -157,6 +157,7 @@ const queries = {
             items{
                 display_title
                 url
+                in_footer
             }
         }
       }

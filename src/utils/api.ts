@@ -1,6 +1,7 @@
 import { type AnnouncementObj } from "../components/layout/announcement";
 import { GraphQLClient} from 'graphql-request';
 import queries from './queries';
+
 // Types for the API responses
 interface ApiResponse<T> {
   data: T;
@@ -41,15 +42,6 @@ export interface GetNetLogoEntry {
   order: number;
 }
 
-export interface CommunityPost {
-  id: string;
-  title: string;
-  content: string;
-  icon: Image;
-  link: string;
-  order: number;
-}
-
 export interface CommunityEntry {
   id: string;
   title: string;
@@ -80,11 +72,8 @@ export interface NavigationSubsection {
 export interface NavigationItem {
   display_title: string;
   url: string;
+  in_footer: boolean;
 }
-
-
-// after makeing directus
-// creating a option type for featured partners, and what to expect in it and know what you are fetching
 
 export interface AllData {
   introduction: Introduction;
@@ -123,7 +112,6 @@ class NetLogoAPI {
   
   async graphqlFetchData<T>(query: string): Promise<T> {
     try {
-      // Remove the extra data property access since GraphQL already returns the correct structure
       const data = await this.client.request<T>(query);
       return data;
     } catch (error) {

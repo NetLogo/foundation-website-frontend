@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./styles/demo-display.css";
 import type { IntroSplashEntry } from "../../utils/api";
+import ReactMarkdown from "react-markdown";
 
 //
 interface DemoDisplayProps {
@@ -46,7 +47,10 @@ const DemoDisplay = ({ demo, currentTab, isLastTab }: DemoDisplayProps) => {
             alt="Visualization Demo"
           />
         </div>
-        <span className="demo-display-text">{description}</span>
+        <span className="demo-display-text">
+          <ReactMarkdown>{description}</ReactMarkdown>
+          
+          </span>
       </div>
     </div>
   );

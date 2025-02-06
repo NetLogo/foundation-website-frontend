@@ -3,6 +3,7 @@ import "./styles/community.css";
 import { Section } from "../shared/section";
 import { Button } from "../shared/button";
 import type { CommunityEntry } from "../../utils/api.js";
+import ReactMarkdown from "react-markdown";
 
 interface CommunityPost {
   project: string;
@@ -15,14 +16,6 @@ interface CommunityPost {
 interface communityProps {
   communityPosts: CommunityPost[];
   page_data: CommunityEntry[];
-}
-
-interface communityCard {
-  title: string;
-  description: string;
-  link: string;
-  icon: string;
-  bordered: boolean;
 }
 
 interface communityCardProps {
@@ -49,13 +42,12 @@ const CommunityCard = ({
   return (
     <div className="community-item">
       <div className="community-item-header">
-        <img
-          className={imageClass}
-          src={`${backend_url}/assets/${icon}`}
-        />
+        <img className={imageClass} src={`${backend_url}/assets/${icon}`} />
         <span className="community-item-title"> {title} </span>
       </div>
-      <span className="community-item-descript"> {description} </span>
+      <span className="community-item-descript">
+        <ReactMarkdown>{description}</ReactMarkdown>{" "}
+      </span>
       <div className="button-container">
         <Button
           colorClass="blue-button"

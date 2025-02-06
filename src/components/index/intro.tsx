@@ -2,7 +2,7 @@ import { IntroAnimation } from "./intro-splash";
 import { Button } from "../shared/button";
 import "./styles/intro.css";
 import type { Introduction, IntroSplashEntry } from "../../utils/api";
-
+import ReactMarkdown from 'react-markdown';
 
 interface IntroProps {
   intro_data: Introduction;
@@ -28,10 +28,10 @@ const Intro= ({
     <div className="intro">
       <div className="intro-title-text-cont">
         <div className="intro-title">
-          <p>{title}</p>
+          <p>{title + "merp"}</p>
         </div>
         <div className="intro-text">
-          <p>{description}</p>
+          <ReactMarkdown>{description}</ReactMarkdown>
         </div>
       </div>
       <IntroAnimation page_data={intro_splash_data} />

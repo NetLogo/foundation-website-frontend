@@ -1,6 +1,7 @@
 import "./styles/why-netlogo.css";
 import { Section } from "../shared/section";
 import { type WhyNetLogoEntry } from "../../utils/api";
+import ReactMarkdown from "react-markdown";
 
 /** Inner component for X tab **/
 interface ForCardProps {
@@ -24,7 +25,7 @@ const ForCard = ({ title, content, imageKey }: ForCardProps) => {
           </div>
           <span className="for-tab-title">{title}</span>
         </div>
-        <span className="for-tab-text">{content}</span>
+        <ReactMarkdown className="for-tab-text">{content}</ReactMarkdown>
       </div>
     </div>
   );
@@ -46,7 +47,7 @@ const WhyNetLogo = ({ page_data }: WhyNetLogoProps) => {
         moreButton={false}
         body={
           <div className="why-netlogo-content">
-            {page_data.map((entry,index) => (
+            {page_data.map((entry, index) => (
               <ForCard
                 key={index}
                 title={entry.title}

@@ -21,6 +21,8 @@ interface HeaderActionProps {
   isCompact: boolean;
 }
 
+// To prevent re-renders of the header actions
+// when not necessary
 const HeaderAction = React.memo(
   ({ title, isHovered, onMouseEnter, isCompact }: HeaderActionProps) => (
     <div className="header-action-cont" onMouseEnter={onMouseEnter}>
@@ -50,6 +52,8 @@ const Header = ({ navigation_sections }: HeaderProps) => {
     setHoveredIndex(-1);
   }, []);
 
+  // To prevent re-renders of the header actions
+  // when not necessary
   const memoizedHeaderActions = useMemo(
     () =>
       navigation_sections.map((section, index) => (

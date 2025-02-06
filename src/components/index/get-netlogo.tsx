@@ -3,6 +3,7 @@ import { Section } from "../shared/section.js";
 import { Button } from "../shared/button.js";
 import "./styles/get-netlogo.css";
 import type { GetNetLogoEntry } from "../../utils/api.js";
+import ReactMarkdown from "react-markdown";
 
 interface GetNetLogoProps {
   sectionRef: React.RefObject<HTMLDivElement>;
@@ -30,7 +31,12 @@ const ItemCard = ({ title, description, image_key, link }: ItemCardProps) => {
         />
         <span className="get-item-title"> {title} </span>
       </div>
-      <span className="get-item-descript"> {description} </span>
+      <span>
+        <ReactMarkdown className="get-item-descript">
+          {description}
+        </ReactMarkdown>
+      </span>
+
       <div className="button-container">
         <Button
           colorClass="blue-button"
@@ -45,7 +51,6 @@ const ItemCard = ({ title, description, image_key, link }: ItemCardProps) => {
 };
 
 const GetNetLogo = ({ sectionRef, page_data }: GetNetLogoProps) => {
-
   return (
     <div ref={sectionRef} className="get-section">
       <Section

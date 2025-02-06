@@ -1,38 +1,40 @@
 import { IntroAnimation } from "./intro-splash";
 import { Button } from "../shared/button";
 import "./styles/intro.css";
+import type { Introduction, IntroSplashEntry } from "../../utils/api";
+import ReactMarkdown from 'react-markdown';
 
 interface IntroProps {
+  intro_data: Introduction;
+  intro_splash_data: IntroSplashEntry[];
   getNetLogoSection: React.RefObject<HTMLDivElement>;
 }
 
-const Intro: React.FC<IntroProps> = ({ getNetLogoSection }) => {
+const Intro= ({
+  intro_data,
+  intro_splash_data,
+  getNetLogoSection,
+}:IntroProps) => {
   const scrollToGetNetLogo = () => {
     getNetLogoSection.current?.scrollIntoView({ behavior: "smooth" });
   };
+  // React Hooks useEffect, useRef, useState
+  //useEffect( () => {}, [])
+//rendering any component, useEffect runs before display the component
+
+  const { title, description } = intro_data;
 
   return (
     <div className="intro">
       <div className="intro-title-text-cont">
         <div className="intro-title">
-          <p>
-            Complex Systems with{"\n"}
-            Agent-Based Modeling
-          </p>
+          <p>{title + "merp"}</p>
         </div>
         <div className="intro-text">
-          <p>
-            Agent-based modeling (ABM) is a powerful tool for understanding
-            complex systems in which large-scale patterns emerge from the
-            interactions of many simple parts. NetLogo is an ABM environment
-            with a "low threshold" for learning yet "high ceiling" capabilities.
-            This combination is why NetLogo is used widely both in educational
-            settings and by professional scientists doing cutting edge research.
-            {"\n"}
-          </p>
+          <ReactMarkdown>{description}</ReactMarkdown>
         </div>
       </div>
-      <IntroAnimation />
+      <IntroAnimation page_data={intro_splash_data} />
       <div className="intro-btn-cont">
         <Button
           colorClass="blue-button"

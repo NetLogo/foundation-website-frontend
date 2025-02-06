@@ -1,50 +1,59 @@
-import { useState, useEffect } from 'react';
-import './styles/demo-display.css';
+import { useState, useEffect } from "react";
+import "./styles/demo-display.css";
+import type { IntroSplashEntry } from "../../utils/api";
+import ReactMarkdown from "react-markdown";
 
+//
 interface DemoDisplayProps {
-    demo: React.ReactNode,
-    descript: string,
-    currentTab: number
+  demo: IntroSplashEntry; // content for each demo in the tab
+  currentTab: number; // current tab number (index of the demo we are llooking at)
+  isLastTab: boolean; // boolean to check if we are on the last tab
 }
 
-const DemoDisplay = ({demo, descript, currentTab}: DemoDisplayProps ) => {
-    const [isChanging, setIsChanging] = useState(false);
-    const [currentDemo, setCurrentDemo] = useState(demo);
-    const [currentDescript, setCurrentDescript] = useState(descript);
+const DemoDisplay = ({ demo, currentTab, isLastTab }: DemoDisplayProps) => {
+  const [isChanging, setIsChanging] = useState(false);
+  const [currentDemo, setCurrentDemo] = useState(demo);
 
-    useEffect(() => {
-        if (demo !== currentDemo || descript !== currentDescript) {
-            setIsChanging(true);
-            const timer = setTimeout(() => {
-                setCurrentDemo(demo);
-                setCurrentDescript(descript);
-                setIsChanging(false);
-            }, 150); // Matches the duration of the fade-out animation
+  const { description, demo_image, background } = demo;
 
-            return () => clearTimeout(timer);
-        }
-    }, [demo, descript]);
+  useEffect(() => {
+    if (demo !== currentDemo) {
+      setIsChanging(true);
+      const timer = setTimeout(() => {
+        setCurrentDemo(demo);
+        setIsChanging(false);
+      }, 150); // Matches the duration of the fade-out animation
 
-    let additonalStyle:string = '';
-    
-    if (currentTab === 0) {
-        additonalStyle = '0px 10px 10px 10px';
+      return () => clearTimeout(timer);
     }
-    else if (currentTab === 3) {
-        additonalStyle = '10px 10px 10px 0px';
-    }
+  }, [demo]);
 
+  let additonalStyle: string = "";
 
-
-
-    return (
-        <div className="demo-display" style = {{borderRadius:`${additonalStyle}`}}>
-            <div className={`demo-content ${isChanging ? 'fade-out' : ''}`}>
-                {currentDemo}
-                <span className="demo-display-text">{currentDescript}</span>
-            </div>
+  // This is to account for the css of the demo when we are sel;ecting the first or last demo tab
+  if (currentTab === 0) {
+    additonalStyle = "0px 10px 10px 10px";
+  } else if (isLastTab) {
+    additonalStyle = "10px 10px 10px 0px";
+  }
+  const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
+  return (
+    <div className="demo-display" style={{ borderRadius: `${additonalStyle}` }}>
+      <div className={`demo-content ${isChanging ? "fade-out" : ""}`}>
+        <div className="intro-demo">
+          <img
+            className="demo-img"
+            src={`${backend_url}/assets/${demo_image.id}`}
+            alt="Visualization Demo"
+          />
         </div>
-    )
-}
+        <span className="demo-display-text">
+          <ReactMarkdown>{description}</ReactMarkdown>
+          
+          </span>
+      </div>
+    </div>
+  );
+};
 
 export { DemoDisplay };

@@ -1,8 +1,6 @@
 import { useState, useRef } from "react";
-import { Header } from "../layout/header";
 import { Announcement } from "../layout/announcement";
 import { Intro } from "./intro";
-import { News } from "./news";
 import { WhyNetLogo } from "./why-netlogo";
 import { GetNetLogo } from "./get-netlogo";
 import { Community } from "./community";
@@ -39,8 +37,7 @@ function Body({
     get_netlogo,
     featured_partners,
     community,
-    announcement,
-    navigation_sections
+    announcement
   } = siteData;
 
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
@@ -49,9 +46,9 @@ function Body({
 
   return (
     <div className="body">
-      <Header navigation_sections = {navigation_sections}/>
 
-      {showAnnouncement && (
+      {showAnnouncement && ( 
+        
         <Announcement
           announcement={announcement}
           setShowAnnouncement={setShowAnnouncement}
@@ -74,7 +71,6 @@ function Body({
             publications={publications}/> */}
 
       <MailingList />
-      <Footer getNetLogoSection={getNetLogoSection} navigationData={navigation_sections}/>
     </div>
   );
 }

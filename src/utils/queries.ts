@@ -84,16 +84,18 @@ const queries = {
     }
   `,
 
-  navigation: gql`
+  navigationData: gql`
     query GetNavigation {
-      navigation_sections {
+      navigation_sections{
         name
-        subsections {
-          title
-          items {
+        subsections{
             title
-            url
-          }
+            display_title
+            items{
+                display_title
+                url
+                in_footer
+            }
         }
       }
     }
@@ -148,18 +150,6 @@ const queries = {
       announcements {
         title
         content
-      }
-      navigation_sections{
-        name
-        subsections{
-            title
-            display_title
-            items{
-                display_title
-                url
-                in_footer
-            }
-        }
       }
     }
     

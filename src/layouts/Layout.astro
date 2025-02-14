@@ -1,0 +1,25 @@
+---
+import NetLogoApi from "../utils/api.js";
+import { Header } from "../components/layout/header";
+import { Footer } from "../components/layout/footer";
+import "./styles/Layout.css";
+
+const api = new NetLogoApi();
+
+const navData = await api.getNavigationData();
+
+const {navigation_sections} = navData;
+
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <Header client:load navData={navigation_sections}/>
+    <main>
+      <slot />
+    </main>
+    <Footer client:load navData={navigation_sections}/>
+  </body>
+</html>

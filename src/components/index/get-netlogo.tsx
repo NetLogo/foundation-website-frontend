@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import { Section } from "../shared/section.js";
 import { Button } from "../shared/button.js";
 import "./styles/get-netlogo.css";
@@ -51,8 +51,22 @@ const ItemCard = ({ title, description, image_key, link }: ItemCardProps) => {
 };
 
 const GetNetLogo = ({ sectionRef, page_data }: GetNetLogoProps) => {
+
+  useEffect(() => {
+    // Check if we navigated here with a hash
+    if (window.location.hash === '#get-netlogo') {
+      const section = document.querySelector('.get-section');
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, []);
+
   return (
-    <div ref={sectionRef} className="get-section">
+    <div
+      id="get-netlogo"
+      className="get-section"
+    >
       <Section
         sectionTitle="Get NetLogo"
         sectionDescript="There are five different products in NetLogo. Find the one suits your need."
@@ -69,11 +83,11 @@ const GetNetLogo = ({ sectionRef, page_data }: GetNetLogoProps) => {
                 justifyContent: "center",
                 gap: "2%",
               }}
-              ref={sectionRef}
               className="get-netlogo-content"
             >
               {page_data.map((item) => (
                 <ItemCard
+                  key={item.title}
                   title={item.title}
                   description={item.content}
                   image_key={item.icon.id}

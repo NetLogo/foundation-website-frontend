@@ -28,7 +28,7 @@ const Intro= ({
     <div className="intro">
       <div className="intro-title-text-cont">
         <div className="intro-title">
-          <p>{title + "merp"}</p>
+          <p>{title}</p>
         </div>
         <div className="intro-text">
           <ReactMarkdown>{description}</ReactMarkdown>

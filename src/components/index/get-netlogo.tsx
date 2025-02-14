@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import { Section } from "../shared/section.js";
 import { Button } from "../shared/button.js";
 import "./styles/get-netlogo.css";
@@ -6,7 +6,6 @@ import type { GetNetLogoEntry } from "../../utils/api.js";
 import ReactMarkdown from "react-markdown";
 
 interface GetNetLogoProps {
-  sectionRef: React.RefObject<HTMLDivElement>;
   page_data: GetNetLogoEntry[];
 }
 
@@ -50,7 +49,7 @@ const ItemCard = ({ title, description, image_key, link }: ItemCardProps) => {
   );
 };
 
-const GetNetLogo = ({ sectionRef, page_data }: GetNetLogoProps) => {
+const GetNetLogo = ({ page_data }: GetNetLogoProps) => {
 
   useEffect(() => {
     // Check if we navigated here with a hash

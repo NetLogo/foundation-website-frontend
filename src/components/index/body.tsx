@@ -6,7 +6,6 @@ import { GetNetLogo } from "./get-netlogo";
 import { Community } from "./community";
 import { FeaturedPartners } from "./featured-partners";
 import { MailingList } from "../shared/mailing-list";
-import { Footer } from "../layout/footer";
 import type { CommunityPost } from "./community";
 import type { Event } from "./event-display";
 import "./styles/body.css";
@@ -58,10 +57,9 @@ function Body({
       <Intro
         intro_data={introduction}
         intro_splash_data={intro_splash}
-        getNetLogoSection={getNetLogoSection}
       />
       <WhyNetLogo page_data={why_netlogo} />
-      <GetNetLogo page_data={get_netlogo} sectionRef={getNetLogoSection} />
+      <GetNetLogo page_data={get_netlogo} />
       <Community communityPosts={communityContent} page_data={community} />
       <FeaturedPartners featured_partners={featured_partners} />
 

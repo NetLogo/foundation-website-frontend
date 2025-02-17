@@ -11,7 +11,7 @@ import type { NavigationSection } from "../../utils/api";
 const LazyHeaderExpanded = React.lazy(() => import("./header-expanded"));
 
 interface HeaderProps {
-  navigation_sections: NavigationSection[];
+  navData: NavigationSection[];
 }
 
 interface HeaderActionProps {
@@ -40,7 +40,7 @@ const HeaderAction = React.memo(
   )
 );
 
-const Header = ({ navigation_sections }: HeaderProps) => {
+const Header = ({ navData }: HeaderProps) => {
   const headerRef = useRef(null);
   const [isCompact, setIsCompact] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
@@ -56,7 +56,7 @@ const Header = ({ navigation_sections }: HeaderProps) => {
   // when not necessary
   const memoizedHeaderActions = useMemo(
     () =>
-      navigation_sections.map((section, index) => (
+      navData.map((section, index) => (
         <HeaderAction
           key={index}
           title={section.name}
@@ -92,7 +92,7 @@ const Header = ({ navigation_sections }: HeaderProps) => {
         />
       </div>
       <LazyHeaderExpanded
-        navigation_section={navigation_sections[hoveredIndex]}
+        navigation_section={navData[hoveredIndex]}
         headerIndex={hoveredIndex}
       />
     </div>

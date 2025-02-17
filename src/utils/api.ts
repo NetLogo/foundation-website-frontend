@@ -83,7 +83,6 @@ export interface AllData {
   community: CommunityEntry[];
   featured_partners: PartnerEntry[];
   announcement: AnnouncementObj;
-  navigation_sections: NavigationSection[];
 }
 
 class NetLogoAPI {
@@ -122,6 +121,10 @@ class NetLogoAPI {
 
   async getSiteData() {
     return await this.graphqlFetchData<AllData>(queries.allData);
+  }
+
+  async getNavigationData() {
+    return await this.graphqlFetchData<{navigation_sections:NavigationSection[]}>(queries.navigationData);
   }
 }
 

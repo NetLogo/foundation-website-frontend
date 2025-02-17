@@ -7,16 +7,23 @@ import ReactMarkdown from 'react-markdown';
 interface IntroProps {
   intro_data: Introduction;
   intro_splash_data: IntroSplashEntry[];
-  getNetLogoSection: React.RefObject<HTMLDivElement>;
 }
 
 const Intro= ({
   intro_data,
-  intro_splash_data,
-  getNetLogoSection,
+  intro_splash_data
 }:IntroProps) => {
   const scrollToGetNetLogo = () => {
-    getNetLogoSection.current?.scrollIntoView({ behavior: "smooth" });
+    // If we're on the home page
+    if (window.location.pathname === '/foundation-website-frontend/') {
+      const getNetLogoSection = document.querySelector('.get-section');
+      if (getNetLogoSection) {
+        getNetLogoSection.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If we're on a different page, navigate to home and add a hash
+      window.location.href = '/foundation-website-frontend/#get-netlogo';
+    }
   };
   // React Hooks useEffect, useRef, useState
   //useEffect( () => {}, [])
@@ -28,7 +35,7 @@ const Intro= ({
     <div className="intro">
       <div className="intro-title-text-cont">
         <div className="intro-title">
-          <p>{title + "merp"}</p>
+          <p>{title}</p>
         </div>
         <div className="intro-text">
           <ReactMarkdown>{description}</ReactMarkdown>

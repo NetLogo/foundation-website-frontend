@@ -1,18 +1,14 @@
 import "./styles/footer.css";
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { Button } from "../shared/button";
 import lofiTextLg from "../../assets/lofi-text-l.svg";
 import lofiTextMed from "../../assets/lofi-text-m.svg";
 import lofiTextSm from "../../assets/lofi-text-s.svg";
-import type {
-  NavigationSection,
-  NavigationSubsection,
-  NavigationItem,
-} from "../../utils/api";
+import type { NavigationSection, NavigationItem } from "../../utils/api";
 
 interface FooterProps {
-  getNetLogoSection: React.RefObject<HTMLDivElement>;
-  navigationData: NavigationSection[];
+  getNetLogoSection?: React.RefObject<HTMLDivElement> | null;
+  navData: NavigationSection[];
 }
 
 interface FooterColumnProps {
@@ -42,19 +38,29 @@ const FooterColumn = ({ title, items }: FooterColumnProps) => {
   );
 };
 
-const Footer = ({ getNetLogoSection, navigationData }: FooterProps) => {
+const Footer = ({ getNetLogoSection, navData }: FooterProps) => {
+
+  const scrollToGetNetLogo = () => {
+    // If we're on the home page
+    if (window.location.pathname === '/foundation-website-frontend/') {
+      const getNetLogoSection = document.querySelector('.get-section');
+      if (getNetLogoSection) {
+        getNetLogoSection.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If we're on a different page, navigate to home and add a hash
+      window.location.href = '/foundation-website-frontend/#get-netlogo';
+    }
+  };
+
   const footerData = useMemo(() => {
-    return navigationData.map((section) => ({
+    return navData.map((section) => ({
       name: section.name,
       items: section.subsections.flatMap((subsection) =>
         subsection.items.filter((item) => item.in_footer)
       ),
     }));
-  }, [navigationData]);
-
-  const scrollToGetNetLogo = () => {
-    getNetLogoSection.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  }, [navData]);
 
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");

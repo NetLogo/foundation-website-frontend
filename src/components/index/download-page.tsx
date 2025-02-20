@@ -1,12 +1,17 @@
-import React from 'react'
-import { Section } from '../shared/section'
+import React from "react";
+import "./styles/download-page.css";
+import { DownloadForm } from "./download-form";
+import NetLogoIcon from "../../assets/NetlogoIcon.svg"
 
 const DownloadSection = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const options = ["NetLogo 7.0.0"];
 
-export {DownloadSection}
+  return (
+    <div className="download-section">
+      <img src={NetLogoIcon.src} />
+      <DownloadForm />
+    </div>
+  );
+};
+
+export { DownloadSection };

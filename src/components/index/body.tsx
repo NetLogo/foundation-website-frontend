@@ -13,10 +13,11 @@ import { Footer } from "../layout/footer";
 import type { CommunityPost } from "./community";
 import type { Event } from "./event-display";
 import "./styles/body.css";
+
 import {type AllData} from "../../utils/api";
 
-//interface ... props needs to take in some kind of 
-// data and definfing what type of data that takes in
+
+
 interface BodyProps {
   announcement?: AnnouncementObj;
   upcomingEvents: Event[];
@@ -36,7 +37,7 @@ function Body({
   competitions,
   publications,
   communityContent,
-  siteData
+  siteData,
 }: BodyProps) {
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
 
@@ -44,10 +45,14 @@ function Body({
   //light green
   //way to construct sequence of the website outputs HTML
   const getNetLogoSection = useRef<HTMLDivElement | null>(null);
+
   
 
   //review this functions as a example
-  const {why_netlogo, community, featured_partners} = siteData;
+
+
+  const { introduction, intro_splash, why_netlogo, get_netlogo, featured_partners, community } = siteData;
+
   return (
     <div className="body">
       <Header />
@@ -58,18 +63,24 @@ function Body({
           setShowAnnouncement={setShowAnnouncement}
         />
       )}
-      <Intro getNetLogoSection={getNetLogoSection}/>
-      <WhyNetLogo page_data = {why_netlogo}/>
-      <GetNetLogo sectionRef = {getNetLogoSection}/>
+
+      <Intro
+        intro_data={introduction}
+        intro_splash_data={intro_splash}
+        getNetLogoSection={getNetLogoSection}
+      />
+      <WhyNetLogo page_data={why_netlogo} />
+      <GetNetLogo page_data={get_netlogo} sectionRef={getNetLogoSection} />
       <Community communityPosts={communityContent} page_data = {community} />
       <FeaturedPartners featured_partners={featured_partners}  />
+
       {/* <News upcomingEvents={upcomingEvents}
             upcomingWorkshops={upcomingWorkshops}
             competitions={competitions}
             publications={publications}/> */}
       
       <MailingList />
-      <Footer getNetLogoSection={getNetLogoSection}/>
+      <Footer getNetLogoSection={getNetLogoSection} />
     </div>
   );
 }

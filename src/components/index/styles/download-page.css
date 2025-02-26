@@ -3,5 +3,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  margin-top: 109px;
+  margin-bottom: 200px;
 }
 
+.netlogo-download-icon {
+  position: relative;
+  left: -50px;
+}

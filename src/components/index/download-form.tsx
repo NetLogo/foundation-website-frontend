@@ -9,10 +9,10 @@ const DownloadForm = () => {
         {"Most computers can run NetLogo (see system requirements). If you wouldlike to run NetLogo on a Chromebook or in a web browser, please see if NetLogo Web will meet your needs."}
       </p>
       <p>
-        {"Multiple versions of NetLogo can be installed on the same computer; installing a new one doesn’t remove the old one. "}
+        {"Multiple versions of NetLogo can be installed on the same computer; installing a new one doesnt remove the old one. "}
       </p>
       <form>
-        <div className="form-row">
+        <div className="shared-form-row">
           <label htmlFor="version">Version</label>
           <select id="version" name="version">
             <option value="7.0.0">NetLogo 7.0.0</option>
@@ -20,6 +20,7 @@ const DownloadForm = () => {
           <label htmlFor="platform">Platform</label>
           <select id="platform" name="version">
             <option value="Mac OS X">Mac OS X</option>
+            <option value="Windows">Windows</option>
           </select>
         </div>
         <div className="form-row">

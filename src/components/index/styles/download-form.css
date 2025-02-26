@@ -1,31 +1,57 @@
-.download-form{
-    width: 45%;
-    text-align: left;
-    margin: 2% 3% 2% 3%;
-    max-width: 600px;
+.download-form {
+  width: 45%;
+  text-align: left;
+  margin: 2% 3% 2% 3%;
+  max-width: 500px;
 }
 
-.form-row{
+.form-row {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0 15px 0;
+}
+
+.form-row > label {
+  width: 30%;
+  text-align: left;
+  margin-right: 5%;
+}
+
+.form-row > input {
+  width: 65%;
+}
+
+.form-row > textarea {
+  width: 65%;
+}
+
+.shared-form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 6%;
+  width: 100%;
+}
+
+.shared-form-row > div {
+    width: 47%;
     display: flex;
     flex-direction: row;
-    margin: 15px 0 15px 0;
+    justify-content: space-between;
 }
 
-.form-row > label{
-    width: 30%;
-    text-align: left;
-    margin-right: 5%;
+.shared-form-row > div > label {
+  width: 30%;
 }
 
-.form-row > input{
-    width: 65%;
+.shared-form-row > div > select {
+  width: 60%;
 }
 
-.form-row > textarea{
-    width: 65%;
+.submit-row {
+  display: flex;
+  justify-content: center;
 }
 
-.submit-row{
-    display: flex;
-    justify-content: center;
+.detail-row{
+    margin-left: 35%;
 }

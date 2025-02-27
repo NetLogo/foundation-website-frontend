@@ -1,28 +1,62 @@
 .download-form {
-  width: 45%;
+  width: 55%;
   text-align: left;
   margin: 2% 3% 2% 3%;
-  max-width: 500px;
+  max-width: 610px;
+}
+
+.download-form > p {
+  font-size: 14px;
+}
+
+.download-form > form {
+  margin-top: 50px;
+}
+
+.form-title {
+  color: #3c3c3c;
+  font-weight: 700;
+  size: 48px;
 }
 
 .form-row {
   display: flex;
   flex-direction: row;
   margin: 15px 0 15px 0;
+  align-items: center;
 }
 
 .form-row > label {
   width: 30%;
   text-align: left;
-  margin-right: 5%;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0%;
 }
 
 .form-row > input {
-  width: 65%;
+  width: 70%;
+  height: 45;
+  gap: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+  padding: 10px;
+  border: 1px solid #b2b2b2;
 }
 
 .form-row > textarea {
-  width: 65%;
+  width: 70%;
+  max-width: 70%;
+  font-family: Inter;
+  height: 100;
+  gap: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+  padding: 10px;
+  border: 1px solid #b2b2b2;
+  resize: none;
 }
 
 .shared-form-row {
@@ -33,18 +67,33 @@
 }
 
 .shared-form-row > div {
-    width: 47%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  width: 47%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .shared-form-row > div > label {
   width: 30%;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0%;
+  vertical-align: middle;
 }
 
 .shared-form-row > div > select {
   width: 60%;
+  height: 45;
+  justify-content: space-between;
+  border-radius: 10px;
+  border-width: 1px;
+  padding-top: 10px;
+  padding-right: 4px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
 
 .submit-row {
@@ -52,6 +101,36 @@
   justify-content: center;
 }
 
-.detail-row{
-    margin-left: 35%;
+.submit-row > button {
+  width: 203;
+  height: 70;
+  left: 176px;
+  gap: 10px;
+  border-radius: 16px;
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  font-family: Inter;
+  background: #000000;
+}
+
+.detail-row {
+  margin-left: 30%;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.email-row {
+  display: flex;
+  align-items: center;
+}
+
+.form-ref {
+  color: blue;
+}
+
+.form-ref:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

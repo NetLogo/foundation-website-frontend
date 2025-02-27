@@ -103,15 +103,14 @@ const DownloadForm = () => {
         </div>
         <div className="submit-row">
           <button type="submit">Download</button>
-        </div>
-        <div className="detail-row">
-          <p>
+          <p >
             {"Download trouble? Write"}{" "}
             <a className="form-ref" href="mailto:bugs@ccl.northwestern.edu">
               {"bugs@ccl.northwestern.edu."}
             </a>
           </p>
         </div>
+        <div className="detail-row"></div>
       </form>
     </div>
   );

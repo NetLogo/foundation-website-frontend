@@ -102,10 +102,11 @@
 }
 
 .submit-row {
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin-left: 30%;
+  margin-left: 35%;
 }
 
 .submit-row > button {

@@ -1,7 +1,86 @@
-import React from "react";
+import React, { useState, type ChangeEvent, type FormEvent } from "react";
 import "./styles/download-form.css";
 
-const DownloadForm = () => {
+// Define interface for form data
+interface FormData {
+  version: string;
+  platform: string;
+  name: string;
+  organization: string;
+  email: string;
+  subscribe: boolean;
+  comments: string;
+}
+
+const DownloadForm: React.FC = () => {
+  // State for all form fields with typed interface
+  const [formData, setFormData] = useState<FormData>({
+    version: "7.0.0",
+    platform: "Mac OS X",
+    name: "",
+    organization: "",
+    email: "",
+    subscribe: false,
+    comments: ""
+  });
+
+  // Handle all input changes 
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+
+    // track name, value, and type of input
+    const { name, value, type } = e.target;
+
+    // Use type assertion to handle checkbox type
+    const checked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined;
+    
+    // Update form data with new value
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value
+    });
+  };
+
+  // Form submission handler with proper type
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Validate required fields
+    if (!formData.name || !formData.organization || !formData.email) {
+      alert("Please fill in all required fields");
+      return;
+    }
+
+    // Here you would typically send the form data to your backend
+    console.log("Form submitted with data:", formData);
+    
+    // For now, let's simulate a download
+    const downloadUrl = determineDownloadUrl(formData.version, formData.platform);
+    
+    // Create an anchor element and trigger download
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.setAttribute('download', `NetLogo-${formData.version}-${formData.platform}.zip`);
+    link.setAttribute('target', '_blank');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // You might want to reset the form or show a success message
+    alert("Thank you for downloading NetLogo!");
+    
+    // Optional: reset certain fields after submission
+    setFormData({
+      ...formData,
+      comments: ""
+    });
+  };
+
+  // Helper function to determine download URL based on version and platform
+  const determineDownloadUrl = (version: string, platform: string): string => {
+    // This would be replaced with actual download URLs
+    return `https://ccl.northwestern.edu/netlogo/download/NetLogo-${version}-${platform}.zip`;
+  };
+
   return (
     <div className="download-form">
       <h1 className="form-title">Download NetLogo</h1>
@@ -27,17 +106,27 @@ const DownloadForm = () => {
           "Multiple versions of NetLogo can be installed on the same computer; installing a new one doesn't remove the old one. "
         }
       </p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="shared-form-row">
           <div>
             <label htmlFor="version">Version</label>
-            <select id="version" name="version">
+            <select 
+              id="version" 
+              name="version" 
+              value={formData.version} 
+              onChange={handleInputChange}
+            >
               <option value="7.0.0">NetLogo 7.0.0</option>
             </select>
           </div>
           <div>
             <label htmlFor="platform">Platform</label>
-            <select id="platform" name="version">
+            <select 
+              id="platform" 
+              name="platform" 
+              value={formData.platform} 
+              onChange={handleInputChange}
+            >
               <option value="Mac OS X">Mac OS X</option>
               <option value="Windows">Windows</option>
               <option value="Linux">Linux</option>
@@ -68,15 +157,36 @@ const DownloadForm = () => {
         </div>
         <div className="form-row">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" name="name" required />
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            value={formData.name} 
+            onChange={handleInputChange} 
+            required 
+          />
         </div>
         <div className="form-row">
           <label htmlFor="organization">Organization</label>
-          <input type="text" id="organization" name="organization" required />
+          <input 
+            type="text" 
+            id="organization" 
+            name="organization" 
+            value={formData.organization} 
+            onChange={handleInputChange} 
+            required 
+          />
         </div>
         <div className="form-row">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" required />
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            value={formData.email} 
+            onChange={handleInputChange} 
+            required 
+          />
         </div>
         <div className="detail-row email-row">
           <input
@@ -84,6 +194,8 @@ const DownloadForm = () => {
             type="checkbox"
             id="subscribe"
             name="subscribe"
+            checked={formData.subscribe}
+            onChange={handleInputChange}
           />
           <label htmlFor="subscribe">
             Update me on the newest releases of NetLogo
@@ -91,7 +203,13 @@ const DownloadForm = () => {
         </div>
         <div className="form-row">
           <label htmlFor="comments">Comments</label>
-          <textarea id="comments" name="comments" rows={4} />
+          <textarea 
+            id="comments" 
+            name="comments" 
+            rows={4} 
+            value={formData.comments} 
+            onChange={handleInputChange} 
+          />
         </div>
         <div className="detail-row">
           <p>
@@ -103,7 +221,7 @@ const DownloadForm = () => {
         </div>
         <div className="submit-row">
           <button type="submit">Download</button>
-          <p >
+          <p>
             {"Download trouble? Write"}{" "}
             <a className="form-ref" href="mailto:bugs@ccl.northwestern.edu">
               {"bugs@ccl.northwestern.edu."}

@@ -3,6 +3,7 @@ import React, {
   useMemo,
   type ChangeEvent,
   type FormEvent,
+  version,
 } from "react";
 import "./styles/download-form.css";
 import { type NetLogoVersion } from "../../utils/api";
@@ -22,15 +23,13 @@ interface DownloadFormProps {
 }
 
 const DownloadForm = ({ versions }: DownloadFormProps) => {
-
   const netLogoVersions = useMemo(() => {
-    console.log("Running useMemo");
     return versions.map((version) => version.version);
   }, []);
 
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
-    version: "7.0.0",
+    version: "6.4.0",
     platform: "Mac OS X",
     name: "",
     organization: "",
@@ -57,52 +56,33 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
     });
   };
 
-  // Form submission handler with proper type
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmission = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Validate required fields
-    if (!formData.name || !formData.organization || !formData.email) {
-      alert("Please fill in all required fields");
+    // Send form data to backend
+
+    // Go to download Link
+    const downloadVersion = versions.find(
+      (version) => version.version === formData.version
+    )
+    console.log(downloadVersion)
+
+    const downloadUrl = downloadVersion?.download_links.find(
+      (link) => link.platform === formData.platform
+    )?.download_url;
+
+    console.log(downloadUrl)
+
+
+    if (!downloadUrl) {
+      alert("Download link not found");
       return;
     }
+    else {
+      window.open(downloadUrl, "_blank");
+    }
 
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted with data:", formData);
-
-    // For now, let's simulate a download
-    const downloadUrl = determineDownloadUrl(
-      formData.version,
-      formData.platform
-    );
-
-    // Create an anchor element and trigger download
-    const link = document.createElement("a");
-    link.href = downloadUrl;
-    link.setAttribute(
-      "download",
-      `NetLogo-${formData.version}-${formData.platform}.zip`
-    );
-    link.setAttribute("target", "_blank");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    // You might want to reset the form or show a success message
-    alert("Thank you for downloading NetLogo!");
-
-    // Optional: reset certain fields after submission
-    setFormData({
-      ...formData,
-      comments: "",
-    });
-  };
-
-  // Helper function to determine download URL based on version and platform
-  const determineDownloadUrl = (version: string, platform: string): string => {
-    // This would be replaced with actual download URLs
-    return `https://ccl.northwestern.edu/netlogo/download/NetLogo-${version}-${platform}.zip`;
-  };
+  }
 
   return (
     <div className="download-form">
@@ -129,7 +109,7 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
           "Multiple versions of NetLogo can be installed on the same computer; installing a new one doesn't remove the old one. "
         }
       </p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleFormSubmission}>
         <div className="shared-form-row">
           <div>
             <label htmlFor="version">Version</label>
@@ -190,7 +170,6 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            required
           />
         </div>
         <div className="form-row">
@@ -201,7 +180,6 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
             name="organization"
             value={formData.organization}
             onChange={handleInputChange}
-            required
           />
         </div>
         <div className="form-row">
@@ -212,7 +190,6 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            required
           />
         </div>
         <div className="detail-row email-row">

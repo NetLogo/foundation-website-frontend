@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./styles/download-page.css";
 import { DownloadForm } from "./download-form";
 import NetLogoIcon from "../../assets/NetlogoIcon.svg";
+import { type NetLogoVersion } from "../../utils/api";
 
-const DownloadSection = () => {
+interface DownloadSectionProps {
+  versions: NetLogoVersion[];
+}
+
+
+const DownloadSection = ({versions}: DownloadSectionProps ) => {
   const [isDesktop, setDesktop] = useState(false); // Default to false initially
 
   useEffect(() => {
@@ -21,7 +27,7 @@ const DownloadSection = () => {
   return (
     <div className="download-section">
       {isDesktop && <img className="netlogo-download-icon" src={NetLogoIcon.src} />}
-      <DownloadForm />
+      <DownloadForm versions={versions}/>
     </div>
   );
 };

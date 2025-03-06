@@ -1,6 +1,11 @@
-import React, { useState, type ChangeEvent, type FormEvent } from "react";
+import React, {
+  useState,
+  useMemo,
+  type ChangeEvent,
+  type FormEvent,
+} from "react";
 import "./styles/download-form.css";
-
+import { type NetLogoVersion } from "../../utils/api";
 // Define interface for form data
 interface FormData {
   version: string;
@@ -12,7 +17,17 @@ interface FormData {
   comments: string;
 }
 
-const DownloadForm: React.FC = () => {
+interface DownloadFormProps {
+  versions: NetLogoVersion[];
+}
+
+const DownloadForm = ({ versions }: DownloadFormProps) => {
+
+  const netLogoVersions = useMemo(() => {
+    console.log("Running useMemo");
+    return versions.map((version) => version.version);
+  }, []);
+
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
     version: "7.0.0",
@@ -21,29 +36,31 @@ const DownloadForm: React.FC = () => {
     organization: "",
     email: "",
     subscribe: false,
-    comments: ""
+    comments: "",
   });
 
-  // Handle all input changes 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-
+  // Handle all input changes
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     // track name, value, and type of input
     const { name, value, type } = e.target;
 
     // Use type assertion to handle checkbox type
-    const checked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined;
-    
+    const checked =
+      type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
+
     // Update form data with new value
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
   // Form submission handler with proper type
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     // Validate required fields
     if (!formData.name || !formData.organization || !formData.email) {
       alert("Please fill in all required fields");
@@ -52,26 +69,32 @@ const DownloadForm: React.FC = () => {
 
     // Here you would typically send the form data to your backend
     console.log("Form submitted with data:", formData);
-    
+
     // For now, let's simulate a download
-    const downloadUrl = determineDownloadUrl(formData.version, formData.platform);
-    
+    const downloadUrl = determineDownloadUrl(
+      formData.version,
+      formData.platform
+    );
+
     // Create an anchor element and trigger download
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = downloadUrl;
-    link.setAttribute('download', `NetLogo-${formData.version}-${formData.platform}.zip`);
-    link.setAttribute('target', '_blank');
+    link.setAttribute(
+      "download",
+      `NetLogo-${formData.version}-${formData.platform}.zip`
+    );
+    link.setAttribute("target", "_blank");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
+
     // You might want to reset the form or show a success message
     alert("Thank you for downloading NetLogo!");
-    
+
     // Optional: reset certain fields after submission
     setFormData({
       ...formData,
-      comments: ""
+      comments: "",
     });
   };
 
@@ -110,21 +133,25 @@ const DownloadForm: React.FC = () => {
         <div className="shared-form-row">
           <div>
             <label htmlFor="version">Version</label>
-            <select 
-              id="version" 
-              name="version" 
-              value={formData.version} 
+            <select
+              id="version"
+              name="version"
+              value={formData.version}
               onChange={handleInputChange}
             >
-              <option value="7.0.0">NetLogo 7.0.0</option>
+              {netLogoVersions.map((version) => (
+                <option key={version} value={version}>
+                  {`NetLogo ${version}`}
+                </option>
+              ))}
             </select>
           </div>
           <div>
             <label htmlFor="platform">Platform</label>
-            <select 
-              id="platform" 
-              name="platform" 
-              value={formData.platform} 
+            <select
+              id="platform"
+              name="platform"
+              value={formData.platform}
               onChange={handleInputChange}
             >
               <option value="Mac OS X">Mac OS X</option>
@@ -157,35 +184,35 @@ const DownloadForm: React.FC = () => {
         </div>
         <div className="form-row">
           <label htmlFor="name">Name</label>
-          <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            value={formData.name} 
-            onChange={handleInputChange} 
-            required 
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
           />
         </div>
         <div className="form-row">
           <label htmlFor="organization">Organization</label>
-          <input 
-            type="text" 
-            id="organization" 
-            name="organization" 
-            value={formData.organization} 
-            onChange={handleInputChange} 
-            required 
+          <input
+            type="text"
+            id="organization"
+            name="organization"
+            value={formData.organization}
+            onChange={handleInputChange}
+            required
           />
         </div>
         <div className="form-row">
           <label htmlFor="email">Email</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            value={formData.email} 
-            onChange={handleInputChange} 
-            required 
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
           />
         </div>
         <div className="detail-row email-row">
@@ -203,12 +230,12 @@ const DownloadForm: React.FC = () => {
         </div>
         <div className="form-row">
           <label htmlFor="comments">Comments</label>
-          <textarea 
-            id="comments" 
-            name="comments" 
-            rows={4} 
-            value={formData.comments} 
-            onChange={handleInputChange} 
+          <textarea
+            id="comments"
+            name="comments"
+            rows={4}
+            value={formData.comments}
+            onChange={handleInputChange}
           />
         </div>
         <div className="detail-row">

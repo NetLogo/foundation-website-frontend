@@ -1,11 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import {DownloadSection} from "../components/index/download-page.tsx";
+import NetLogoApi from "../utils/api.js";
 
+const api = new NetLogoApi();
 
+const versions = await api.getNetLogoVersions()
 
 ---
 
 <Layout>
-    <DownloadSection client:load/>
+    <DownloadSection versions = {versions["netlogo_versions"]} client:load/>
 </Layout>

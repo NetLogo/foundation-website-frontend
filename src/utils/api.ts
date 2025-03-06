@@ -1,6 +1,6 @@
 import { type AnnouncementObj } from "../components/layout/announcement";
-import { GraphQLClient} from 'graphql-request';
-import queries from './queries';
+import { GraphQLClient } from "graphql-request";
+import queries from "./queries";
 
 // Types for the API responses
 interface ApiResponse<T> {
@@ -85,13 +85,23 @@ export interface AllData {
   announcement: AnnouncementObj;
 }
 
+export interface DownloadLink {
+  platform: string;
+  download_url: string;
+}
+
+export interface NetLogoVersion {
+  version: string;
+  download_links: DownloadLink[];
+}
+
 class NetLogoAPI {
   private readonly baseUrl: string;
   private client: GraphQLClient;
 
   constructor(baseUrl: string = import.meta.env.PUBLIC_BACKEND_URL) {
     this.baseUrl = baseUrl;
-    this.client = new GraphQLClient(this.baseUrl + '/graphql')
+    this.client = new GraphQLClient(this.baseUrl + "/graphql");
   }
 
   async fetchData<T>(endpoint: string): Promise<T> {
@@ -108,13 +118,13 @@ class NetLogoAPI {
       throw error;
     }
   }
-  
+
   async graphqlFetchData<T>(query: string): Promise<T> {
     try {
       const data = await this.client.request<T>(query);
       return data;
     } catch (error) {
-      console.error('GraphQL query error:', error);
+      console.error("GraphQL query error:", error);
       throw error;
     }
   }
@@ -123,8 +133,16 @@ class NetLogoAPI {
     return await this.graphqlFetchData<AllData>(queries.allData);
   }
 
+  async getNetLogoVersions() {
+    return await this.graphqlFetchData<NetLogoVersion[]>(
+      queries.netLogoVersions
+    );
+  }
+
   async getNavigationData() {
-    return await this.graphqlFetchData<{navigation_sections:NavigationSection[]}>(queries.navigationData);
+    return await this.graphqlFetchData<{
+      navigation_sections: NavigationSection[];
+    }>(queries.navigationData);
   }
 }
 

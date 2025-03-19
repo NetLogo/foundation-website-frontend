@@ -1,4 +1,9 @@
 
+# next step is putting on the refrences on the page
+# getting the data looping thru each of the years and years as heading.
+# in press, boolean top, section.
+
+#display all the refrences redo the refernce page, using the same structure, using CSS, pull down all teh refeces from directus
 
 from directus_sdk_py import DirectusClient
 from bs4 import BeautifulSoup

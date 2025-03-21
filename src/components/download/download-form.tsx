@@ -38,6 +38,13 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
     comments: "",
   });
 
+  const platforms = useMemo(() => {
+    const downloadLinks = versions.find(
+      (version) => version.version === formData.version
+    )?.download_links;
+    return downloadLinks?.map((link) => link.platform);
+  }, [formData.version]);
+
   // Handle all input changes
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -65,19 +72,16 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
     const downloadVersion = versions.find(
       (version) => version.version === formData.version
     );
-    console.log(downloadVersion);
 
     const downloadUrl = downloadVersion?.download_links.find(
       (link) => link.platform === formData.platform
     )?.download_url;
 
-    console.log(downloadUrl);
-
     if (!downloadUrl) {
       alert("Download link not found");
       return;
     } else {
-      window.open(downloadUrl, "_blank");
+      window.open(downloadUrl);
     }
   };
 
@@ -131,9 +135,11 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
               value={formData.platform}
               onChange={handleInputChange}
             >
-              <option value="Mac OS X">Mac OS X</option>
-              <option value="Windows">Windows</option>
-              <option value="Linux">Linux</option>
+              {platforms?.map((platform) => (
+                <option key={platform} value={platform}>
+                  {platform}
+                </option>
+              ))}
             </select>
           </div>
         </div>

@@ -59,6 +59,10 @@
     align-items: center;
 }
 
+.header-action-cont:hover {
+    cursor: pointer;
+}
+
 .header-action-cont:first-child {
     gap: 0.63rem;
 }

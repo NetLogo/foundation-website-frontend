@@ -8,14 +8,13 @@ interface DownloadSectionProps {
   versions: NetLogoVersion[];
 }
 
-
-const DownloadSection = ({versions}: DownloadSectionProps ) => {
+const DownloadSection = ({ versions }: DownloadSectionProps) => {
   const [isDesktop, setDesktop] = useState(false); // Default to false initially
 
   useEffect(() => {
     // Set initial value once in browser
     setDesktop(window.innerWidth > 1300);
-    
+
     const updateMedia = () => {
       setDesktop(window.innerWidth > 1300);
     };
@@ -26,8 +25,10 @@ const DownloadSection = ({versions}: DownloadSectionProps ) => {
 
   return (
     <div className="download-section">
-      {isDesktop && <img className="netlogo-download-icon" src={NetLogoIcon.src} />}
-      <DownloadForm versions={versions}/>
+      {isDesktop && (
+        <img className="netlogo-download-icon" src={NetLogoIcon.src} />
+      )}
+      <DownloadForm versions={versions} />
     </div>
   );
 };

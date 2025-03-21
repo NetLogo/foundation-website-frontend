@@ -64,25 +64,22 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
     // Go to download Link
     const downloadVersion = versions.find(
       (version) => version.version === formData.version
-    )
-    console.log(downloadVersion)
+    );
+    console.log(downloadVersion);
 
     const downloadUrl = downloadVersion?.download_links.find(
       (link) => link.platform === formData.platform
     )?.download_url;
 
-    console.log(downloadUrl)
-
+    console.log(downloadUrl);
 
     if (!downloadUrl) {
       alert("Download link not found");
       return;
-    }
-    else {
+    } else {
       window.open(downloadUrl, "_blank");
     }
-
-  }
+  };
 
   return (
     <div className="download-form">

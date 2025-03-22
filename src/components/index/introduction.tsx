@@ -43,7 +43,7 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
           </div>
 
           <div className="intro-text-section">
-            <p className="intro-description">{intro_data.description}</p>
+            <ReactMarkdown className="intro-description">{intro_data.description}</ReactMarkdown>
             <div className="button-data">
               <Button
                 colorClass="blue-button"

@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Announcement } from "../layout/announcement";
-import { Intro } from "./intro";
+import { Intro } from "./introduction";
 import { WhyNetLogo } from "./why-netlogo";
 import { GetNetLogo } from "./get-netlogo";
 import { Community } from "./community";

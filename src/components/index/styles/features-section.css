@@ -1,0 +1,124 @@
+/* Features Section */
+.features-section {
+  padding: 32px 0;
+}
+
+.features-content {
+  border: 0.75px solid #d2d2d2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  padding-top: 10px;
+}
+
+/* Category Buttons */
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.category-button {
+  padding: 10.5px 25px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  background-color: transparent;
+  color: #666;
+  cursor: pointer;
+  font-family: Inter;
+}
+
+.category-button.active {
+  background-color: #ebf5ff;
+  color: #2563eb;
+}
+
+.category-button:hover:not(.active) {
+  background-color: #f3f4f6;
+}
+
+/* Simulation */
+.simulation-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.simulation-placeholder {
+  background-color: #eee;
+  width: 100%;
+  max-width: 500px;
+  height: 256px;
+  border-radius: 4px;
+}
+
+/* Simple Rule */
+.simple-rule {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.simple-rule p {
+  font-size: 16px;
+  color: #333;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* NetLogo Description */
+.netlogo-description {
+  text-align: center;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.netlogo-description p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.emphasis {
+  font-weight: 500;
+}
+
+.learn-more-link {
+  color: #2563eb;
+  text-decoration: none;
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.learn-more-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .intro-flex {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .category-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .category-button {
+    width: 100%;
+    text-align: center;
+  }
+}

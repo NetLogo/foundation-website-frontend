@@ -1,0 +1,61 @@
+/* Main Intro Container */
+.intro-container {
+  width: 100%;
+  background-color: #fff;
+  font-family: Inter;
+}
+
+.intro-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.intro-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* Logo Section */
+.intro-logo-section {
+  flex: 1;
+}
+
+/* Text Section */
+.intro-text-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.button-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+}
+
+.button-data p {
+  font-size: 16px;
+  color: #555;
+  margin: 3px;
+}
+
+.intro-description {
+  font-size: 18px;
+  line-height: 1.5;
+  color: black;
+  margin: 0;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 16.5px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+

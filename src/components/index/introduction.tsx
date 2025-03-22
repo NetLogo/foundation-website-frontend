@@ -58,7 +58,7 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
           </div>
         </div>
       </div>
-      <FeaturesSection />
+      <FeaturesSection page_data={intro_splash_data}/>
     </div>
   );
 };

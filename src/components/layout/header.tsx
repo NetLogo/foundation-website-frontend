@@ -7,6 +7,7 @@ import dropdownIcon from "../../assets/dropdown-icon.svg";
 import hoverDropdownIcon from "../../assets/hover-dropdown-icon.svg";
 import { useRef } from "react";
 import type { NavigationSection } from "../../utils/api";
+import NetLogoOrgLogo from "../../assets/NetLogoOrgLogo.svg";
 
 const LazyHeaderExpanded = React.lazy(() => import("./header-expanded"));
 

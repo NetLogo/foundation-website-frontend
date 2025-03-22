@@ -1,22 +1,25 @@
-import React, {useState, useMemo} from "react";
+import React, { useState, useMemo } from "react";
 import "./styles/features-section.css";
 import type { IntroSplashEntry } from "../../utils/api";
+import ReactMarkdown from "react-markdown";
 
 interface FeaturesSectionProps {
   page_data: IntroSplashEntry[];
 }
 
-const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {  
+const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
+  const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
+
   const [currentTab, setCurrentTab] = useState(page_data[0].title);
 
   const currentTabData = useMemo(() => {
     return page_data.find((tab) => tab.title === currentTab);
-  }
-  , [currentTab]);
+  }, [currentTab]);
 
-  console.log(currentTabData);
+  console.log("currentTabData", currentTabData);
 
-  console.log(page_data);
+  const image_url = `${backend_url}/assets/${currentTabData?.demo_image.id}`;
+
   return (
     <div className="features-section">
       <div className="features-content">
@@ -32,10 +35,8 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
           ))}
         </div>
 
-        <div className="simulation-container">
-          {/* The simulation graphic with green/black squares will be an image */}
-          <div className="simulation-placeholder"></div>
-
+        <div className="simulation-container ">
+          <img className="simulation-image" src={image_url} alt="simulation" />
         </div>
 
         <div className="simple-rule">
@@ -47,15 +48,7 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
         </div>
 
         <div className="netlogo-description">
-          <p>
-            NetLogo was designed to model{" "}
-            <span className="emphasis">emergent</span> phenomena in which
-            large-scale patterns arise from the interactions of many individual
-            agents.
-            <a href="#" className="learn-more-link">
-              Learn more →
-            </a>
-          </p>
+          <ReactMarkdown>{currentTabData?.description}</ReactMarkdown>
         </div>
       </div>
     </div>

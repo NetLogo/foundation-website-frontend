@@ -23,13 +23,9 @@ interface DownloadFormProps {
 }
 
 const DownloadForm = ({ versions }: DownloadFormProps) => {
-  const netLogoVersions = useMemo(() => {
-    return versions.map((version) => version.version);
-  }, []);
-
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
-    version: "6.4.0",
+    version: "",
     platform: "Mac OS X",
     name: "",
     organization: "",
@@ -37,6 +33,17 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
     subscribe: false,
     comments: "",
   });
+
+  const netLogoVersions = useMemo(() => {
+    const onlyVersions = versions.map((version) => version.version);
+
+    setFormData({
+      ...formData,
+      ["version"]: onlyVersions[0],
+    });
+
+    return onlyVersions;
+  }, []);
 
   const platforms = useMemo(() => {
     const downloadLinks = versions.find(

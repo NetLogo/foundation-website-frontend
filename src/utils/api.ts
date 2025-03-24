@@ -113,7 +113,7 @@ class NetLogoAPI {
     this.client = new GraphQLClient(this.baseUrl + "/graphql");
     this.directus = createDirectus<Schema>(baseUrl)
     .with(rest())
-    .with(staticToken("bFEEkrM-5bVPGzeKsnRxwQYbD59GZgbY"));
+    .with(staticToken("token?"));
   }
 
   async fetchData<T>(endpoint: string): Promise<T> {

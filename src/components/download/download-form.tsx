@@ -7,8 +7,10 @@ import React, {
 } from "react";
 import "./styles/download-form.css";
 import { type NetLogoVersion } from "../../utils/api";
+import NetLogoAPI from "../../utils/api";
+
 // Define interface for form data
-interface FormData {
+export interface FormData {
   version: string;
   platform: string;
   name: string;
@@ -74,7 +76,10 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
     e.preventDefault();
 
     // Send form data to backend
-
+    // console.log("Form Data: ", formData);
+    // const api = new NetLogoAPI();
+    // const result = api.sendDownloadData(formData);
+    // console.log(result)
     // Go to download Link
     const downloadVersion = versions.find(
       (version) => version.version === formData.version

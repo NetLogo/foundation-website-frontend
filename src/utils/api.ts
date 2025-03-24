@@ -1,6 +1,9 @@
 import { type AnnouncementObj } from "../components/layout/announcement";
 import { GraphQLClient } from "graphql-request";
 import queries from "./queries";
+import { type FormData } from "../components/download/download-form";
+import { createDirectus, rest, staticToken, createItem } from '@directus/sdk';
+
 
 // Types for the API responses
 interface ApiResponse<T> {
@@ -95,13 +98,22 @@ export interface NetLogoVersion {
   download_links: DownloadLink[];
 }
 
+interface Schema {
+  download_responses: FormData;
+  // Add other collections if needed
+}
+
 class NetLogoAPI {
   private readonly baseUrl: string;
   private client: GraphQLClient;
+  private directus;
 
   constructor(baseUrl: string = import.meta.env.PUBLIC_BACKEND_URL) {
     this.baseUrl = baseUrl;
     this.client = new GraphQLClient(this.baseUrl + "/graphql");
+    this.directus = createDirectus<Schema>(baseUrl)
+    .with(rest())
+    .with(staticToken("bFEEkrM-5bVPGzeKsnRxwQYbD59GZgbY"));
   }
 
   async fetchData<T>(endpoint: string): Promise<T> {
@@ -143,6 +155,41 @@ class NetLogoAPI {
     return await this.graphqlFetchData<{
       navigation_sections: NavigationSection[];
     }>(queries.navigationData);
+  }
+
+  async sendDownloadForm(formData: FormData) {
+    const url = this.baseUrl + "/items/download_responses"
+    
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    return response;
+  }
+
+  async sendDownloadData(formData: FormData) {
+    try {
+      // Convert FormData to a plain object
+      const formObject: Record<string, any> = {};
+      Object.entries(formData).forEach((value, key) => {
+        formObject[key] = value;
+      });
+      
+      // Use the SDK to create an item in your collection
+      const response = await this.directus.request(
+        createItem('download_responses', formObject)
+      );
+      
+      return response;
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      throw error;
+    }
   }
 }
 

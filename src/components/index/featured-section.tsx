@@ -41,9 +41,7 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
 
         <div className="simple-rule">
           <p>
-            <span className="bold">Simple Rule:</span> Each fire ignites
-            neighbors →<span className="bold"> Emergent</span> forest fire
-            patterns
+            We are currently looking at {currentTabData?.title}.{" "}
           </p>
         </div>
 

@@ -77,13 +77,7 @@ const Header = ({ navData }: HeaderProps) => {
     >
       <div className="header-action-bar">
         <div className="header-action-cont">
-          <div className="netlogo-icon-cont">
-            <img className="icon" src={blueEllipse.src} alt="Blue Ellipse" />
-            <img className="icon" src={netlogoicon.src} alt="NetLogo Icon" />
-          </div>
-          <div id="netlogo-title" className="header-action">
-            NetLogo
-          </div>
+          <img id="page-logo" src={NetLogoOrgLogo.src} />
         </div>
         {memoizedHeaderActions}
         <Searchbar

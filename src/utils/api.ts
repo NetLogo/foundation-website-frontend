@@ -22,6 +22,7 @@ export interface IntroSplashEntry {
   title: string;
   description: string;
   demo_image: Image;
+  learn_more_link: string;
   featured_items: FeaturedItem[];
 }
 

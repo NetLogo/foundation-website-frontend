@@ -86,16 +86,45 @@
 }
 
 /* NetLogo Description */
-.netlogo-description {
-  text-align: left;
-  max-width: 768px;
-  margin: 0 auto;
-}
-
 .netlogo-description p {
   font-size: 16px;
   color: #555;
   line-height: 1.5;
+}
+
+.netlogo-description {
+  text-align: left;
+  max-width: 768px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.netlogo-description a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.netlogo-description a:hover {
+  text-decoration: underline;
+}
+
+.inline-markdown {
+  display: inline;
+}
+
+.markdown-content {
+  display: inline;
+}
+
+.learn-more-link {
+  color: #2563eb;
+  text-decoration: none;
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .emphasis {

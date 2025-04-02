@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import "./styles/features-section.css";
 import type {
   IntroSplashEntry,
@@ -15,20 +15,20 @@ interface TopicsComponentProps {
   title?: string;
   topics?: ColumnWord[];
 }
+
+const handleLinkClick = (url: string) => {
+  // Check if the URL starts with http:// or https://
+  // If not, prepend https:// to the URL
+  const fullUrl =
+    url.startsWith("http://") || url.startsWith("https://")
+      ? url
+      : `https://${url}`;
+
+  // Open the URL in a new tab
+  window.open(fullUrl, "_blank");
+};
+
 const TopicsComponent = ({ title, topics }: TopicsComponentProps) => {
-  // Click handler function
-  const handleTopicClick = (url: string) => {
-    // Check if the URL starts with http:// or https://
-    // If not, prepend https:// to the URL
-    const fullUrl =
-      url.startsWith("http://") || url.startsWith("https://")
-        ? url
-        : `https://${url}`;
-
-    // Open the URL in a new tab
-    window.open(fullUrl, "_blank");
-  };
-
   return (
     <div className="netlogo-container">
       <div className="netlogo-title">{title}</div>
@@ -42,7 +42,7 @@ const TopicsComponent = ({ title, topics }: TopicsComponentProps) => {
               className="topic-link"
               onClick={(e) => {
                 e.preventDefault();
-                handleTopicClick(topic.url);
+                handleLinkClick(topic.url);
               }}
             >
               {topic.word}
@@ -61,6 +61,20 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
   const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
 
   const [currentTab, setCurrentTab] = useState(page_data[0].title);
+
+  useEffect(() => {
+    page_data.map((item: any) => {
+      if (item.learn_more_link) {
+        const url = item.learn_more_link;
+        const fullUrl =
+          url.startsWith("http://") || url.startsWith("https://")
+            ? url
+            : `https://${url}`;
+
+        item.description += ` [Learn more →](${fullUrl})`;
+      }
+    });
+  }, []);
 
   const currentTabData = useMemo(() => {
     return page_data.find((tab) => tab.title === currentTab);
@@ -124,7 +138,9 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
         </div>
 
         <div className="netlogo-description">
-          <ReactMarkdown>{currentTabData?.description}</ReactMarkdown>
+          <span className="inline-markdown">
+            <ReactMarkdown>{currentTabData?.description}</ReactMarkdown>
+          </span>
         </div>
       </div>
     </div>

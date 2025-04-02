@@ -20,10 +20,23 @@ export interface Introduction {
 export interface IntroSplashEntry {
   id: string;
   title: string;
-  icon: Image;
   description: string;
   demo_image: Image;
-  background: boolean;
+  featured_items: FeaturedItem[];
+}
+
+export interface FeaturedItem {
+  id: string;
+  type: number;
+  image_description: string;
+  image: Image;
+  column_title: string;
+  column_words: ColumnWord[]; 
+}
+
+export interface ColumnWord {
+  word: string;
+  url: string;
 }
 
 export interface WhyNetLogoEntry {

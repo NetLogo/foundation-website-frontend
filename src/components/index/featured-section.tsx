@@ -1,6 +1,10 @@
 import React, { useState, useMemo } from "react";
 import "./styles/features-section.css";
-import type { IntroSplashEntry } from "../../utils/api";
+import type {
+  IntroSplashEntry,
+  FeaturedItem,
+  ColumnWord,
+} from "../../utils/api";
 import ReactMarkdown from "react-markdown";
 
 interface FeaturesSectionProps {
@@ -9,68 +13,49 @@ interface FeaturesSectionProps {
 
 interface TopicsComponentProps {
   title?: string;
-  topics?: string[];
+  topics?: ColumnWord[];
 }
-
-const TopicsComponent = ({ 
-  title = "NetLogo is used in",
-  topics = [
-    "Anthropology",
-    "Archaeology",
-    "Biology",
-    "Cognitive Science",
-    "Ecology",
-    "Educational Research",
-    "Economics",
-    "Epidemiology",
-    "Psychology",
-    "Sociology",
-    "Urban Planning"
-  ]
-}: TopicsComponentProps) => {
+const TopicsComponent = ({ title, topics }: TopicsComponentProps) => {
   // Click handler function
-  const handleTopicClick = (topic: any) => {
-    console.log(`Clicked on ${topic}`);
-    // Add your navigation or other functionality here
+  const handleTopicClick = (url: string) => {
+    // Check if the URL starts with http:// or https://
+    // If not, prepend https:// to the URL
+    const fullUrl =
+      url.startsWith("http://") || url.startsWith("https://")
+        ? url
+        : `https://${url}`;
+
+    // Open the URL in a new tab
+    window.open(fullUrl, "_blank");
   };
 
   return (
     <div className="netlogo-container">
-      {/* Title section */}
-      <div className="netlogo-title">
-        {title}
-      </div>
-      
-      {/* Topics card */}
+      <div className="netlogo-title">{title}</div>
+
       <div className="topics-card">
-        {topics.map((topic, index) => (
-          <div 
-            key={index} 
-            className="topic-item"
-          >
-            <a 
-              href="#" 
+        {topics?.map((topic, index) => (
+          <div key={index} className="topic-item">
+            <a
+              href={topic.url}
+              target="_blank"
               className="topic-link"
               onClick={(e) => {
                 e.preventDefault();
-                handleTopicClick(topic);
+                handleTopicClick(topic.url);
               }}
             >
-              {topic}
+              {topic.word}
             </a>
           </div>
         ))}
-        
+
         {/* Footer text - grayed out */}
-        <div className="topics-footer">
-          and many more...
-        </div>
+        <div className="topics-footer">and many more...</div>
       </div>
     </div>
   );
 };
-
-
 
 const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
   const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
@@ -81,9 +66,12 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
     return page_data.find((tab) => tab.title === currentTab);
   }, [currentTab]);
 
-  console.log("currentTabData", currentTabData);
+  const FeaturedItems: FeaturedItem[] | undefined =
+    currentTabData?.featured_items;
 
-  const image_url = `${backend_url}/assets/${currentTabData?.demo_image.id}`;
+  const createImageURL = (imageId: string) => {
+    return `${backend_url}/assets/${imageId}`;
+  };
 
   return (
     <div className="features-section">
@@ -101,13 +89,38 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
         </div>
 
         <div className="simulation-container ">
-          <img className="simulation-image" src={image_url} alt="simulation" />
-        </div>
+          {FeaturedItems?.map((item, index) => {
+            const renderItem = () => {
+              // Convert string to number with Number()
+              const itemType = Number(item?.type);
 
-        <div className="simple-rule">
-          <p>
-            We are currently looking at {currentTabData?.title}.{" "}
-          </p>
+              switch (itemType) {
+                case 1:
+                  return (
+                    <img
+                      className="simulation-image"
+                      src={createImageURL(item?.image.id)}
+                      alt={currentTabData?.title}
+                    />
+                  );
+                case 2:
+                  return (
+                    <TopicsComponent
+                      title={item?.column_title}
+                      topics={item?.column_words}
+                    />
+                  );
+                default:
+                  return (
+                    <div className="default-element">
+                      {/* Default content */}
+                    </div>
+                  );
+              }
+            };
+
+            return <React.Fragment key={index}>{renderItem()}</React.Fragment>;
+          })}
         </div>
 
         <div className="netlogo-description">

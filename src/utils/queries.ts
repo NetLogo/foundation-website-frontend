@@ -1,4 +1,4 @@
-import { gql } from 'graphql-request';
+import { gql } from "graphql-request";
 
 const queries = {
   introduction: gql`
@@ -13,12 +13,25 @@ const queries = {
   introSplash: gql`
     query GetIntroSplash {
       intro_splash {
-        id
         title
-        icon
         description
-        demo_image
-        background
+        learn_more_link
+        demo_image {
+          id
+        }
+        featured_items {
+          id
+          image {
+            id
+          }
+          type
+          image_description
+          column_title
+          column_words {
+            word
+            url
+          }
+        }
       }
     }
   `,
@@ -86,16 +99,16 @@ const queries = {
 
   navigationData: gql`
     query GetNavigation {
-      navigation_sections{
+      navigation_sections {
         name
-        subsections{
-            title
+        subsections {
+          title
+          display_title
+          items {
             display_title
-            items{
-                display_title
-                url
-                in_footer
-            }
+            url
+            in_footer
+          }
         }
       }
     }
@@ -109,42 +122,52 @@ const queries = {
       }
       intro_splash {
         title
-        icon{
-            id
-        }
         description
-        demo_image{
-            id
+        learn_more_link
+        demo_image {
+          id
         }
-        background
+        featured_items {
+          id
+          image {
+            id
+          }
+          type
+          image_description
+          column_title
+          column_words {
+            word
+            url
+          }
+        }
       }
       why_netlogo {
         title
         content
-        icon{
-            id
+        icon {
+          id
         }
       }
       get_netlogo {
         title
         content
-        icon{
-            id
+        icon {
+          id
         }
         link
       }
       community {
         title
         description
-        icon{
-            id
+        icon {
+          id
         }
         link
       }
       featured_partners {
         partner_name
-        partner_image{
-            id
+        partner_image {
+          id
         }
       }
       announcements {
@@ -152,8 +175,7 @@ const queries = {
         content
       }
     }
-    
-  `
+  `,
 };
 
 export default queries;

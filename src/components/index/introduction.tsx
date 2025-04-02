@@ -2,8 +2,9 @@ import React from "react";
 import type { Introduction, IntroSplashEntry } from "../../utils/api";
 import ReactMarkdown from "react-markdown";
 import { Button } from "../shared/button";
-import {FeaturesSection} from "./featured-section";
+import { FeaturesSection } from "./featured-section";
 import LogoText from "../../assets/logo-text.svg";
+import IntroTurtles from "../../assets/intro-turtles.svg";
 import "./styles/introduction.css";
 
 interface IntroProps {
@@ -31,7 +32,7 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
     fontSize: "13.5px",
     lineHeight: "150%",
     letterSpacing: "2%",
-    verticalAlign: "middle"
+    verticalAlign: "middle",
   };
 
   return (
@@ -39,11 +40,22 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
       <div className="intro-content">
         <div className="intro-flex">
           <div className="intro-logo-section">
-            <img src={LogoText.src} />
+              <img
+                src={IntroTurtles.src}
+                alt="NetLogo Turtles"
+                className="intro-turtles"
+              />
+              <img
+                src={LogoText.src}
+                alt="NetLogo"
+                className="intro-logo-text"
+              />
           </div>
 
           <div className="intro-text-section">
-            <ReactMarkdown className="intro-description">{intro_data.description}</ReactMarkdown>
+            <ReactMarkdown className="intro-description">
+              {intro_data.description}
+            </ReactMarkdown>
             <div className="button-data">
               <Button
                 colorClass="blue-button"
@@ -58,7 +70,7 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
           </div>
         </div>
       </div>
-      <FeaturesSection page_data={intro_splash_data}/>
+      <FeaturesSection page_data={intro_splash_data} />
     </div>
   );
 };

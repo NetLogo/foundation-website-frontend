@@ -27,7 +27,7 @@ function Body({
   competitions,
   publications,
   communityContent,
-  siteData
+  siteData,
 }: BodyProps) {
   const {
     introduction,
@@ -36,37 +36,24 @@ function Body({
     get_netlogo,
     featured_partners,
     community,
-    announcement
+    announcement,
   } = siteData;
 
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
-
-  const getNetLogoSection = useRef<HTMLDivElement | null>(null);
-
   return (
     <div className="body">
-
-      {showAnnouncement && ( 
-        
+      {showAnnouncement && (
         <Announcement
           announcement={announcement}
           setShowAnnouncement={setShowAnnouncement}
         />
       )}
 
-      <Intro
-        intro_data={introduction}
-        intro_splash_data={intro_splash}
-      />
+      <Intro intro_data={introduction} intro_splash_data={intro_splash} />
       <WhyNetLogo page_data={why_netlogo} />
       <GetNetLogo page_data={get_netlogo} />
       <Community communityPosts={communityContent} page_data={community} />
       <FeaturedPartners featured_partners={featured_partners} />
-
-      {/* <News upcomingEvents={upcomingEvents}
-            upcomingWorkshops={upcomingWorkshops}
-            competitions={competitions}
-            publications={publications}/> */}
 
       <MailingList />
     </div>

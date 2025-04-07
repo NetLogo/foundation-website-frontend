@@ -53,9 +53,10 @@ const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
 
 // Helper functions
 const handleLinkClick = (url: string) => {
-  const fullUrl = url.startsWith("http://") || url.startsWith("https://")
-    ? url
-    : `https://${url}`;
+  const fullUrl =
+    url.startsWith("http://") || url.startsWith("https://")
+      ? url
+      : `https://${url}`;
 
   window.open(fullUrl, "_blank");
 };
@@ -139,33 +140,40 @@ const LinksColumnComponent = ({ title, topics }: TopicsComponentProps) => {
 // Main component
 const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
   // State
-  const [currentTab, setCurrentTab] = useState(page_data[0]?.title || "");
+  const [introData, setIntroData] = useState<IntroSplashEntry[]>(page_data);
+  const [currentTab, setCurrentTab] = useState(introData[0]?.title || "");
 
   // Process learn more links
   useEffect(() => {
-    page_data.forEach((item: IntroSplashEntry) => {
-      if (item.learn_more_link) {
-        const url = item.learn_more_link;
-        const fullUrl = url.startsWith("http://") || url.startsWith("https://")
-          ? url
-          : `https://${url}`;
+    setIntroData((prev) => {
+      prev.forEach((item: IntroSplashEntry) => {
+        if (item.learn_more_link) {
+          const url = item.learn_more_link;
+          const fullUrl =
+            url.startsWith("http://") || url.startsWith("https://")
+              ? url
+              : `https://${url}`;
 
-        item.description += ` [Learn more →](${fullUrl})`;
-      }
+          item.description += ` [Learn more →](${fullUrl})`;
+        }
+      });
+
+      return [...prev];
     });
   }, []);
 
   // Memoized values
   const currentTabData = useMemo(() => {
-    return page_data.find((tab) => tab.title === currentTab);
-  }, [currentTab, page_data]);
+    return introData.find((tab) => tab.title === currentTab);
+  }, [currentTab, introData]);
 
-  const FeaturedItems: FeaturedItem[] | undefined = currentTabData?.featured_items;
+  const FeaturedItems: FeaturedItem[] | undefined =
+    currentTabData?.featured_items;
 
   // Check if all items are images (type 1)
   const allItemsAreImages = useMemo(() => {
     if (!FeaturedItems || FeaturedItems.length === 0) return false;
-    return FeaturedItems.every(item => Number(item?.type) === 1);
+    return FeaturedItems.every((item) => Number(item?.type) === 1);
   }, [FeaturedItems]);
 
   // Render functions
@@ -176,7 +184,7 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
       case 1:
         return (
           <img
-            className={`simulation-image ${allItemsAreImages ? 'uniform-height' : ''}`}
+            className={`simulation-image ${allItemsAreImages ? "uniform-height" : ""}`}
             src={createImageURL(item?.image?.id || "")}
             alt={currentTabData?.title}
           />
@@ -217,7 +225,9 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
           ))}
         </div>
 
-        <div className={`simulation-container ${allItemsAreImages ? 'all-images' : ''}`}>
+        <div
+          className={`simulation-container ${allItemsAreImages ? "all-images" : ""}`}
+        >
           {FeaturedItems?.map((item, index) => (
             <React.Fragment key={index}>
               {renderFeaturedItem(item, index)}

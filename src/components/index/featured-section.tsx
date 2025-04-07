@@ -1,13 +1,39 @@
 import React, { useState, useMemo, useEffect } from "react";
-import "./styles/features-section.css";
-import type {
-  IntroSplashEntry,
-  FeaturedItem,
-  ColumnWord,
-  ColumnImage,
-} from "../../utils/api";
 import ReactMarkdown from "react-markdown";
+import "./styles/features-section.css";
 
+// Types
+interface IntroSplashEntry {
+  title: string;
+  description: string;
+  featured_items: FeaturedItem[];
+  learn_more_link?: string;
+}
+
+interface FeaturedItem {
+  type: string;
+  image?: {
+    id: string;
+  };
+  word_column_title?: string;
+  column_words?: ColumnWord[];
+  image_column_title?: string;
+  column_images?: ColumnImage[];
+}
+
+interface ColumnWord {
+  word: string;
+  url: string;
+}
+
+interface ColumnImage {
+  word: string;
+  image: {
+    id: string;
+  };
+}
+
+// Props interfaces
 interface FeaturesSectionProps {
   page_data: IntroSplashEntry[];
 }
@@ -22,34 +48,31 @@ interface ImagesColumnProps {
   image_entries: ColumnImage[];
 }
 
+// Constants
 const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
 
+// Helper functions
 const handleLinkClick = (url: string) => {
-  // Check if the URL starts with http:// or https://
-  // If not, prepend https:// to the URL
-  const fullUrl =
-    url.startsWith("http://") || url.startsWith("https://")
-      ? url
-      : `https://${url}`;
+  const fullUrl = url.startsWith("http://") || url.startsWith("https://")
+    ? url
+    : `https://${url}`;
 
-  // Open the URL in a new tab
   window.open(fullUrl, "_blank");
 };
 
+const createImageURL = (imageId: string) => {
+  return `${backend_url}/assets/${imageId}`;
+};
+
+// Sub-components
 const ImagesColumnComponent = ({ title, image_entries }: ImagesColumnProps) => {
   const images_object = image_entries?.reduce(
     (acc: any, entry: ColumnImage) => {
-      const imageId = entry.image.id;
-      const imageWord = entry.word;
-      acc[imageId] = imageWord;
+      acc[entry.image.id] = entry.word;
       return acc;
     },
     {}
   );
-
-  const createImageURL = (imageId: string) => {
-    return `${backend_url}/assets/${imageId}`;
-  };
 
   const [currentImageId, setCurrentImageId] = useState<string>(
     image_entries[0]?.image.id
@@ -79,7 +102,6 @@ const ImagesColumnComponent = ({ title, image_entries }: ImagesColumnProps) => {
               </a>
             </div>
           ))}
-          {/* Footer text - grayed out */}
           <div className="topics-footer">and many more...</div>
         </div>
       </div>
@@ -108,47 +130,77 @@ const LinksColumnComponent = ({ title, topics }: TopicsComponentProps) => {
             </a>
           </div>
         ))}
-
         <div className="topics-footer">and many more...</div>
       </div>
     </div>
   );
 };
 
+// Main component
 const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
+  // State
+  const [currentTab, setCurrentTab] = useState(page_data[0]?.title || "");
+
+  // Process learn more links
   useEffect(() => {
-    page_data.map((item: any) => {
+    page_data.forEach((item: IntroSplashEntry) => {
       if (item.learn_more_link) {
         const url = item.learn_more_link;
-        const fullUrl =
-          url.startsWith("http://") || url.startsWith("https://")
-            ? url
-            : `https://${url}`;
+        const fullUrl = url.startsWith("http://") || url.startsWith("https://")
+          ? url
+          : `https://${url}`;
 
         item.description += ` [Learn more →](${fullUrl})`;
       }
     });
   }, []);
 
-  const [currentTab, setCurrentTab] = useState(page_data[0].title);
-
+  // Memoized values
   const currentTabData = useMemo(() => {
     return page_data.find((tab) => tab.title === currentTab);
-  }, [currentTab]);
+  }, [currentTab, page_data]);
 
-  const FeaturedItems: FeaturedItem[] | undefined =
-    currentTabData?.featured_items;
+  const FeaturedItems: FeaturedItem[] | undefined = currentTabData?.featured_items;
 
-  const createImageURL = (imageId: string) => {
-    return `${backend_url}/assets/${imageId}`;
-  };
-  
   // Check if all items are images (type 1)
   const allItemsAreImages = useMemo(() => {
     if (!FeaturedItems || FeaturedItems.length === 0) return false;
-    
     return FeaturedItems.every(item => Number(item?.type) === 1);
   }, [FeaturedItems]);
+
+  // Render functions
+  const renderFeaturedItem = (item: FeaturedItem, index: number) => {
+    const itemType = Number(item?.type);
+
+    switch (itemType) {
+      case 1:
+        return (
+          <img
+            className={`simulation-image ${allItemsAreImages ? 'uniform-height' : ''}`}
+            src={createImageURL(item?.image?.id || "")}
+            alt={currentTabData?.title}
+          />
+        );
+      case 2:
+        return (
+          <LinksColumnComponent
+            key={index}
+            title={item?.word_column_title || ""}
+            topics={item?.column_words || []}
+          />
+        );
+      case 3:
+        return (
+          <ImagesColumnComponent
+            key={index}
+            title={item?.image_column_title || ""}
+            image_entries={item?.column_images || []}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="features-section">
@@ -166,46 +218,16 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
         </div>
 
         <div className={`simulation-container ${allItemsAreImages ? 'all-images' : ''}`}>
-          {FeaturedItems?.map((item, index) => {
-            const renderItem = () => {
-              // Convert string to number with Number()
-              const itemType = Number(item?.type);
-
-              switch (itemType) {
-                case 1:
-                  return (
-                    <img
-                      className={`simulation-image ${allItemsAreImages ? 'uniform-height' : ''}`}
-                      src={createImageURL(item?.image.id)}
-                      alt={currentTabData?.title}
-                    />
-                  );
-                case 2:
-                  return (
-                    <LinksColumnComponent
-                      key={index}
-                      title={item?.word_column_title}
-                      topics={item?.column_words}
-                    />
-                  );
-                case 3:
-                  return (
-                    <ImagesColumnComponent
-                      key={index}
-                      title={item?.image_column_title}
-                      image_entries={item?.column_images}
-                    />
-                  );
-              }
-            };
-
-            return <React.Fragment key={index}>{renderItem()}</React.Fragment>;
-          })}
+          {FeaturedItems?.map((item, index) => (
+            <React.Fragment key={index}>
+              {renderFeaturedItem(item, index)}
+            </React.Fragment>
+          ))}
         </div>
 
         <div className="netlogo-description">
           <span className="inline-markdown">
-            <ReactMarkdown>{currentTabData?.description}</ReactMarkdown>
+            <ReactMarkdown>{currentTabData?.description || ""}</ReactMarkdown>
           </span>
         </div>
       </div>

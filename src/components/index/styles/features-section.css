@@ -1,4 +1,9 @@
-/* Features Section */
+/* 
+ * Features Section Styles
+ * Organized by component and functionality
+ */
+
+/* ===== Main Container ===== */
 .features-section {
   padding: 30px 0px 100px 0px;
 }
@@ -6,7 +11,6 @@
 .features-content {
   border: 0.75px solid #d2d2d2;
   max-width: 1100px;
-  /* min-height: 650px; */
   margin: 0 auto;
   padding: 0 16px;
   display: flex;
@@ -16,7 +20,7 @@
   padding-top: 10px;
 }
 
-/* Category Buttons */
+/* ===== Category Navigation ===== */
 .category-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -46,21 +50,35 @@
   background-color: #f3f4f6;
 }
 
-/* Simulation */
+/* ===== Simulation Container ===== */
 .simulation-container {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center; /* Add this line to vertically align items */
+  align-items: center;
   margin-bottom: 24px;
-  gap: 20px; /* Optional: adds spacing between the image and topics component */
+  gap: 20px;
 }
 
+/* Layout for multiple images display */
+.simulation-container.all-images {
+  flex-wrap: wrap; 
+  gap: 20px; 
+}
+
+/* ===== Images ===== */
 .simulation-image {
   height: 100%;
   max-width: 750px;
   border-radius: 4px;
+}
+
+.simulation-image.uniform-height {
+  height: 325px; 
+  width: auto;
+  object-fit: contain;
+  max-width: 100%; 
 }
 
 .column-simulation-image {
@@ -76,53 +94,7 @@
   border-radius: 4px;
 }
 
-.simulation-container.all-images {
-  flex-wrap: wrap; 
-  gap: 20px; 
-}
-
-
-.simulation-image.uniform-height {
-  height: 325px; 
-  width: auto;
-  object-fit: contain;
-  max-width: 100%; 
-}
-
-
-@media (max-width: 768px) {
-  .simulation-image.uniform-height {
-    height: 200px; /* Reset height for smaller screens */
-  }
-
-  
-  .simulation-container.all-images {
-    flex-direction: row;
-  }
-}
-
-/* Simple Rule */
-.simple-rule {
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.simple-rule p {
-  font-size: 16px;
-  color: #333;
-}
-
-.bold {
-  font-weight: 700;
-}
-
-/* NetLogo Description */
-.netlogo-description p {
-  font-size: 16px;
-  color: #555;
-  line-height: 1.5;
-}
-
+/* ===== Description Section ===== */
 .netlogo-description {
   text-align: left;
   max-width: 768px;
@@ -130,6 +102,12 @@
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+}
+
+.netlogo-description p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
 }
 
 .netlogo-description a {
@@ -149,56 +127,14 @@
   display: inline;
 }
 
-.learn-more-link {
-  color: #2563eb;
-  text-decoration: none;
-  margin-left: 8px;
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.emphasis {
-  font-weight: 500;
-}
-
-.learn-more-link {
-  color: #2563eb;
-  text-decoration: none;
-  margin-left: 8px;
-  display: inline-flex;
-  align-items: center;
-}
-
-.learn-more-link:hover {
-  text-decoration: underline;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .intro-flex {
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .category-buttons {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .category-button {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-/* Topics Container */
+/* ===== ImagesColumnComponent ===== */
 .image-column-container {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
+/* ===== LinksColumnComponent & ImagesColumnComponent shared styles ===== */
 .netlogo-container {
   min-width: 190px;
   margin: 20px;
@@ -246,4 +182,55 @@
   padding: 8px 0 0;
   color: #888;
   font-size: 14px;
+}
+
+/* ===== Learn More Link ===== */
+.learn-more-link {
+  color: #2563eb;
+  text-decoration: none;
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.learn-more-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== Utility Classes ===== */
+.bold {
+  font-weight: 700;
+}
+
+.emphasis {
+  font-weight: 500;
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 768px) {
+  /* Fix category buttons on small screens */
+  .intro-flex {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .category-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .category-button {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Scale down images on small screens */
+  .simulation-image.uniform-height {
+    height: 200px;
+  }
+  
+  .simulation-container.all-images {
+    flex-direction: row;
+  }
 }

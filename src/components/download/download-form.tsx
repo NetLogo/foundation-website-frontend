@@ -76,25 +76,26 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
     e.preventDefault();
 
     // Send form data to backend
-    // console.log("Form Data: ", formData);
-    // const api = new NetLogoAPI();
-    // const result = api.sendDownloadData(formData);
-    // console.log(result)
+    console.log("Form Data: ", formData);
+    const api = new NetLogoAPI();
+    const result = api.sendDownloadForm(formData);
+    console.log(result)
+    
     // Go to download Link
-    const downloadVersion = versions.find(
-      (version) => version.version === formData.version
-    );
+    // const downloadVersion = versions.find(
+    //   (version) => version.version === formData.version
+    // );
 
-    const downloadUrl = downloadVersion?.download_links.find(
-      (link) => link.platform === formData.platform
-    )?.download_url;
+    // const downloadUrl = downloadVersion?.download_links.find(
+    //   (link) => link.platform === formData.platform
+    // )?.download_url;
 
-    if (!downloadUrl) {
-      alert("Download link not found");
-      return;
-    } else {
-      window.open(downloadUrl);
-    }
+    // if (!downloadUrl) {
+    //   alert("Download link not found");
+    //   return;
+    // } else {
+    //   window.open(downloadUrl);
+    // }
   };
 
   return (

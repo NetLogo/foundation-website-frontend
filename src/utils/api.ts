@@ -26,18 +26,28 @@ export interface IntroSplashEntry {
   featured_items: FeaturedItem[];
 }
 
+
+
+
 export interface FeaturedItem {
   id: string;
   type: number;
-  image_description: string;
   image: Image;
-  column_title: string;
+  image_description: string;
+  word_column_title: string;
   column_words: ColumnWord[]; 
+  image_column_title: string;
+  column_images: ColumnImage[];
 }
 
 export interface ColumnWord {
   word: string;
   url: string;
+}
+
+export interface ColumnImage {
+  image: Image;
+  word: string;
 }
 
 export interface WhyNetLogoEntry {

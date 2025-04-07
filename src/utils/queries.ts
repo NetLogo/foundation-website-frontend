@@ -124,20 +124,24 @@ const queries = {
         title
         description
         learn_more_link
-        demo_image {
-          id
-        }
         featured_items {
           id
+          type
           image {
             id
           }
-          type
           image_description
-          column_title
+          word_column_title
           column_words {
             word
             url
+          }
+          image_column_title
+          column_images {
+            image {
+              id
+            }
+            word
           }
         }
       }

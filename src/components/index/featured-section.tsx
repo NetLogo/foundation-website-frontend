@@ -4,6 +4,7 @@ import type {
   IntroSplashEntry,
   FeaturedItem,
   ColumnWord,
+  ColumnImage,
 } from "../../utils/api";
 import ReactMarkdown from "react-markdown";
 
@@ -12,9 +13,16 @@ interface FeaturesSectionProps {
 }
 
 interface TopicsComponentProps {
-  title?: string;
-  topics?: ColumnWord[];
+  title: string;
+  topics: ColumnWord[];
 }
+
+interface ImagesColumnProps {
+  title: string;
+  image_entries: ColumnImage[];
+}
+
+const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
 
 const handleLinkClick = (url: string) => {
   // Check if the URL starts with http:// or https://
@@ -28,7 +36,58 @@ const handleLinkClick = (url: string) => {
   window.open(fullUrl, "_blank");
 };
 
-const TopicsComponent = ({ title, topics }: TopicsComponentProps) => {
+const ImagesColumnComponent = ({ title, image_entries }: ImagesColumnProps) => {
+  const images_object = image_entries?.reduce(
+    (acc: any, entry: ColumnImage) => {
+      const imageId = entry.image.id;
+      const imageWord = entry.word;
+      acc[imageId] = imageWord;
+      return acc;
+    },
+    {}
+  );
+
+  const createImageURL = (imageId: string) => {
+    return `${backend_url}/assets/${imageId}`;
+  };
+
+  const [currentImageId, setCurrentImageId] = useState<string>(
+    image_entries[0]?.image.id
+  );
+
+  return (
+    <div className="image-column-container">
+      <img
+        className="column-simulation-image"
+        src={createImageURL(currentImageId)}
+        alt={images_object[currentImageId]}
+      />
+      <div className="netlogo-container">
+        <div className="netlogo-title">{title}</div>
+
+        <div className="topics-card">
+          {image_entries?.map((pair, index) => (
+            <div key={index} className="topic-item">
+              <a
+                className="topic-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCurrentImageId(pair.image.id);
+                }}
+              >
+                {pair.word}
+              </a>
+            </div>
+          ))}
+          {/* Footer text - grayed out */}
+          <div className="topics-footer">and many more...</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const LinksColumnComponent = ({ title, topics }: TopicsComponentProps) => {
   return (
     <div className="netlogo-container">
       <div className="netlogo-title">{title}</div>
@@ -50,7 +109,6 @@ const TopicsComponent = ({ title, topics }: TopicsComponentProps) => {
           </div>
         ))}
 
-        {/* Footer text - grayed out */}
         <div className="topics-footer">and many more...</div>
       </div>
     </div>
@@ -58,10 +116,6 @@ const TopicsComponent = ({ title, topics }: TopicsComponentProps) => {
 };
 
 const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
-  const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
-
-  const [currentTab, setCurrentTab] = useState(page_data[0].title);
-
   useEffect(() => {
     page_data.map((item: any) => {
       if (item.learn_more_link) {
@@ -76,6 +130,8 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
     });
   }, []);
 
+  const [currentTab, setCurrentTab] = useState(page_data[0].title);
+
   const currentTabData = useMemo(() => {
     return page_data.find((tab) => tab.title === currentTab);
   }, [currentTab]);
@@ -86,6 +142,13 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
   const createImageURL = (imageId: string) => {
     return `${backend_url}/assets/${imageId}`;
   };
+  
+  // Check if all items are images (type 1)
+  const allItemsAreImages = useMemo(() => {
+    if (!FeaturedItems || FeaturedItems.length === 0) return false;
+    
+    return FeaturedItems.every(item => Number(item?.type) === 1);
+  }, [FeaturedItems]);
 
   return (
     <div className="features-section">
@@ -102,7 +165,7 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
           ))}
         </div>
 
-        <div className="simulation-container ">
+        <div className={`simulation-container ${allItemsAreImages ? 'all-images' : ''}`}>
           {FeaturedItems?.map((item, index) => {
             const renderItem = () => {
               // Convert string to number with Number()
@@ -112,23 +175,26 @@ const FeaturesSection = ({ page_data }: FeaturesSectionProps) => {
                 case 1:
                   return (
                     <img
-                      className="simulation-image"
+                      className={`simulation-image ${allItemsAreImages ? 'uniform-height' : ''}`}
                       src={createImageURL(item?.image.id)}
                       alt={currentTabData?.title}
                     />
                   );
                 case 2:
                   return (
-                    <TopicsComponent
-                      title={item?.column_title}
+                    <LinksColumnComponent
+                      key={index}
+                      title={item?.word_column_title}
                       topics={item?.column_words}
                     />
                   );
-                default:
+                case 3:
                   return (
-                    <div className="default-element">
-                      {/* Default content */}
-                    </div>
+                    <ImagesColumnComponent
+                      key={index}
+                      title={item?.image_column_title}
+                      image_entries={item?.column_images}
+                    />
                   );
               }
             };

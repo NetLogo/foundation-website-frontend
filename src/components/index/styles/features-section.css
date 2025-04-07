@@ -57,8 +57,14 @@
   gap: 20px; /* Optional: adds spacing between the image and topics component */
 }
 
-.simulation-image{
-  height: 325px;
+.simulation-image {
+  height: 100%;
+  max-width: 750px;
+  border-radius: 4px;
+}
+
+.column-simulation-image {
+  height: 375px;
   border-radius: 4px;
 }
 
@@ -68,6 +74,31 @@
   max-width: 500px;
   height: 256px;
   border-radius: 4px;
+}
+
+.simulation-container.all-images {
+  flex-wrap: wrap; 
+  gap: 20px; 
+}
+
+
+.simulation-image.uniform-height {
+  height: 325px; 
+  width: auto;
+  object-fit: contain;
+  max-width: 100%; 
+}
+
+
+@media (max-width: 768px) {
+  .simulation-image.uniform-height {
+    height: 200px; /* Reset height for smaller screens */
+  }
+
+  
+  .simulation-container.all-images {
+    flex-direction: row;
+  }
 }
 
 /* Simple Rule */
@@ -161,13 +192,18 @@
   }
 }
 
-
 /* Topics Container */
+.image-column-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 .netlogo-container {
-  width: 210px;
+  min-width: 190px;
   margin: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
 }
 
 .netlogo-title {
@@ -194,7 +230,7 @@
 }
 
 .topic-link {
-  color: #4285F4;
+  color: #4285f4;
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s;

@@ -1,4 +1,4 @@
-import { gql } from 'graphql-request';
+import { gql } from "graphql-request";
 
 const queries = {
   introduction: gql`
@@ -86,16 +86,28 @@ const queries = {
 
   navigationData: gql`
     query GetNavigation {
-      navigation_sections{
+      navigation_sections {
         name
-        subsections{
-            title
+        subsections {
+          title
+          display_title
+          items {
             display_title
-            items{
-                display_title
-                url
-                in_footer
-            }
+            url
+            in_footer
+          }
+        }
+      }
+    }
+  `,
+
+  netLogoVersions: gql`
+    query GetNetLogoVersions {
+      netlogo_versions {
+        version
+        download_links {
+          platform
+          download_url
         }
       }
     }
@@ -109,42 +121,42 @@ const queries = {
       }
       intro_splash {
         title
-        icon{
-            id
+        icon {
+          id
         }
         description
-        demo_image{
-            id
+        demo_image {
+          id
         }
         background
       }
       why_netlogo {
         title
         content
-        icon{
-            id
+        icon {
+          id
         }
       }
       get_netlogo {
         title
         content
-        icon{
-            id
+        icon {
+          id
         }
         link
       }
       community {
         title
         description
-        icon{
-            id
+        icon {
+          id
         }
         link
       }
       featured_partners {
         partner_name
-        partner_image{
-            id
+        partner_image {
+          id
         }
       }
       announcements {
@@ -152,8 +164,7 @@ const queries = {
         content
       }
     }
-    
-  `
+  `,
 };
 
 export default queries;

@@ -1,6 +1,6 @@
 /* Main Intro Container */
 .intro-container {
-  padding-top: 30px;
+  padding-top: 10px;
   width: 100%;
   background-color: #fff;
   font-family: Inter;
@@ -28,13 +28,13 @@
 }
 
 .intro-turtles {
-  width: 220px;
+  width: 175px;
   margin-bottom: 0; /* Remove bottom margin */
 }
 
 .intro-logo-text {
   margin-top: -10px; /* Use negative margin to pull it closer to the turtles */
-  width: 400px;
+  width: 350px;
 }
 
 /* Text Section */

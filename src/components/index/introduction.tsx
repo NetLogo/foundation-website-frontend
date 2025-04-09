@@ -2,7 +2,7 @@ import React from "react";
 import type { Introduction, IntroSplashEntry } from "../../utils/api";
 import ReactMarkdown from "react-markdown";
 import { Button } from "../shared/button";
-import { FeaturesSection } from "./featured-section";
+import { IntroSplash } from "./intro-splash";
 import LogoText from "../../assets/logo-text.svg";
 import IntroTurtles from "../../assets/intro-turtles.svg";
 import "./styles/introduction.css";
@@ -70,7 +70,7 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
           </div>
         </div>
       </div>
-      <FeaturesSection page_data={intro_splash_data} />
+      <IntroSplash page_data={intro_splash_data} />
     </div>
   );
 };

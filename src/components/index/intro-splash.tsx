@@ -1,14 +1,14 @@
 import React, { useState, useMemo, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-import "./styles/features-section.css";
+import "./styles/intro-splash.css";
 import type { IntroSplashEntry, FeaturedItem } from "../../utils/api";
 
-interface ColumnWord {
+interface WordPair {
   word: string;
   url: string;
 }
 
-interface ColumnImage {
+interface ImagePair {
   word: string;
   image: {
     id: string;
@@ -20,14 +20,14 @@ interface IntroSplashProps {
   page_data: IntroSplashEntry[];
 }
 
-interface TopicsComponentProps {
+interface LinksColumnProps {
   title: string;
-  topics: ColumnWord[];
+  link_entries: WordPair[];
 }
 
 interface ImagesColumnProps {
   title: string;
-  image_entries: ColumnImage[];
+  image_entries: ImagePair[];
 }
 
 // Constants
@@ -48,9 +48,9 @@ const createImageURL = (imageId: string) => {
 };
 
 // Sub-components
-const ImagesColumnComponent = ({ title, image_entries }: ImagesColumnProps) => {
+const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
   const images_object = image_entries?.reduce(
-    (acc: any, entry: ColumnImage) => {
+    (acc: any, entry: ImagePair) => {
       acc[entry.image.id] = entry.word;
       return acc;
     },
@@ -64,18 +64,18 @@ const ImagesColumnComponent = ({ title, image_entries }: ImagesColumnProps) => {
   return (
     <div className="image-column-container">
       <img
-        className="column-simulation-image"
+        className="current-column-image"
         src={createImageURL(currentImageId)}
         alt={images_object[currentImageId]}
       />
-      <div className="netlogo-container">
-        <div className="netlogo-title">{title}</div>
+      <div className="column-container">
+        <div className="column-title">{title}</div>
 
-        <div className="topics-card">
+        <div className="column-card">
           {image_entries?.map((pair, index) => (
-            <div key={index} className="topic-item">
+            <div key={index} className="column-entry">
               <a
-                className="topic-link"
+                className="entry-text"
                 onClick={(e) => {
                   e.preventDefault();
                   setCurrentImageId(pair.image.id);
@@ -85,35 +85,35 @@ const ImagesColumnComponent = ({ title, image_entries }: ImagesColumnProps) => {
               </a>
             </div>
           ))}
-          <div className="topics-footer">and many more...</div>
+          <div className="column-footer">and many more...</div>
         </div>
       </div>
     </div>
   );
 };
 
-const LinksColumnComponent = ({ title, topics }: TopicsComponentProps) => {
+const LinksColumn = ({ title, link_entries }: LinksColumnProps) => {
   return (
-    <div className="netlogo-container">
-      <div className="netlogo-title">{title}</div>
+    <div className="column-container">
+      <div className="column-title">{title}</div>
 
-      <div className="topics-card">
-        {topics?.map((topic, index) => (
-          <div key={index} className="topic-item">
+      <div className="column-card">
+        {link_entries?.map((entry, index) => (
+          <div key={index} className="column-entry">
             <a
-              href={topic.url}
+              href={entry.url}
               target="_blank"
-              className="topic-link"
+              className="entry-text"
               onClick={(e) => {
                 e.preventDefault();
-                handleLinkClick(topic.url);
+                handleLinkClick(entry.url);
               }}
             >
-              {topic.word}
+              {entry.word}
             </a>
           </div>
         ))}
-        <div className="topics-footer">and many more...</div>
+        <div className="column-footer">and many more...</div>
       </div>
     </div>
   );
@@ -166,22 +166,22 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
       case 1:
         return (
           <img
-            className={`simulation-image ${allItemsAreImages ? "uniform-height" : ""}`}
+            className={`featured-image ${allItemsAreImages ? "uniform-height" : ""}`}
             src={createImageURL(item?.image?.id || "")}
             alt={currentTabData?.title}
           />
         );
       case 2:
         return (
-          <LinksColumnComponent
+          <LinksColumn
             key={index}
             title={item?.word_column_title || ""}
-            topics={item?.column_words || []}
+            link_entries={item?.column_words || []}
           />
         );
       case 3:
         return (
-          <ImagesColumnComponent
+          <ImagesColumn
             key={index}
             title={item?.image_column_title || ""}
             image_entries={item?.column_images || []}
@@ -193,8 +193,8 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
   };
 
   return (
-    <div className="features-section">
-      <div className="features-content">
+    <div className="splash-section">
+      <div className="splash-content">
         <div className="category-buttons">
           {page_data.map((tab, index) => (
             <button
@@ -208,7 +208,7 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
         </div>
 
         <div
-          className={`simulation-container ${allItemsAreImages ? "all-images" : ""}`}
+          className={`featured-item-container ${allItemsAreImages ? "all-images" : ""}`}
         >
           {FeaturedItems?.map((item, index) => (
             <React.Fragment key={index}>
@@ -217,7 +217,7 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
           ))}
         </div>
 
-        <div className="netlogo-description">
+        <div className="featured-item-description">
           <span className="inline-markdown">
             <ReactMarkdown>{currentTabData?.description || ""}</ReactMarkdown>
           </span>

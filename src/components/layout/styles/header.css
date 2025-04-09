@@ -1,177 +1,183 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap");
 .root {
-    --Light-3: #EBEBF0;
-    --Light-2: #F2F2F5;
-    --Dark-2: #555770;
+  --Light-3: #ebebf0;
+  --Light-2: #f2f2f5;
+  --Dark-2: #555770;
 }
 
 .netlogo-header {
-    width: 100%;
-    max-width: 100%;
-    height: 5.505rem;
-    background-color: black;
-    flex-shrink: 0;
-    border-bottom: 1px solid var(--Light-3, #EBEBF0);
-    background: var(--Light-2, #F2F2F5);
-    overflow:hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 4.5rem;
+  background-color: black;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--Light-3, #ebebf0);
+  background: var(--Light-2, #f2f2f5);
+  overflow: hidden;
 }
 
 #netlogo-title {
-	font-family: Dosis;
-	font-weight: 650;
+  font-family: Dosis;
+  font-weight: 650;
+}
+
+#page-logo {
+  width: 175px;
+  margin-top: -10px;
 }
 
 .header-action-bar {
-    box-sizing: border-box;
-    height: 3rem;
-    cursor: default;
-    margin-top: 1.88rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: 2.64rem;
-    padding-right: 2.64rem;
-    justify-content: space-between;
-    min-width: 1600px;    
+  box-sizing: border-box;
+  height: 3rem;
+  cursor: default;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 2.64rem;
+  padding-right: 2.64rem;
+  justify-content: space-between;
+  min-width: 1600px;
 }
 
-
 .header-action {
-	color: var(--Dark-2, #555770);
-	font-family: Inter;
-	font-size: 1.25rem;
-	font-style: normal;
-	font-weight: 600;
-	line-height: 130%;
-	letter-spacing: 0.025rem;
+  color: var(--Dark-2, #555770);
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%;
+  letter-spacing: 0.025rem;
 }
 
 .header-action-hovered {
-    color: #FB6055;
+  color: #fb6055;
 }
 
 .header-action-cont {
-    display: flex;
-    flex-direction: row;
-    gap: 0.62rem;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 0.62rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-action-cont:first-child {
-    gap: 0.63rem;
+  gap: 0.63rem;
 }
 
 .netlogo-icon-cont {
-    position: relative;
-    height: 1.875rem;
-    width: 1.875rem;
+  position: relative;
+  height: 1.875rem;
+  width: 1.875rem;
 }
 
 .icon {
-    position: absolute;
+  position: absolute;
 }
 
 .icon:first-child {
-    top: 0;
-    left: 0;
-    z-index: 1;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .icon:last-child {
-    top: calc(47%);
-    left: calc(55%);
-    transform: translate(-50%, -50%);
-    z-index: 2;
+  top: calc(47%);
+  left: calc(55%);
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 .dropdown-icon {
-    width: 1rem;
-    height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .header-expanded {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-    border-bottom: 1px solid var(--Light-3, #EBEBF0);
-    background: var(--Light-2, #F2F2F5);
-    position: absolute;
-    top: 5.505rem;
-    z-index: 1;
-    justify-content: center;
-    padding-bottom: 1.88rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    max-height 0.3s ease-out,
+    opacity 0.3s ease-out;
+  border-bottom: 1px solid var(--Light-3, #ebebf0);
+  background: var(--Light-2, #f2f2f5);
+  position: absolute;
+  top: 5.505rem;
+  z-index: 1;
+  justify-content: center;
+  padding-bottom: 1.88rem;
 }
 
 .header-expanded.expanded {
-    max-height: 500px;
-    visibility: visible;
-    opacity: 1;
+  max-height: 500px;
+  visibility: visible;
+  opacity: 1;
 }
 
 .header-expanded-content {
-    display: flex;
-    flex-direction: row;
-    gap: 2.5rem;
-    padding-left: 12.8%;
-    width: 100%;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  padding-left: 12.8%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .header-action-column {
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
-    width: 14rem;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  width: 14rem;
+  text-align: left;
 }
 
 .header-action-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.625rem;
-    color: var(--Dark-3, #8F90A6);
-    font-family: Inter;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; 
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.625rem;
+  color: var(--Dark-3, #8f90a6);
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  cursor: pointer;
 }
 
 .header-action-icon {
-    width: 1.5rem;
-    height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .header-action-content {
-    color: var(--Dark-2, #555770);
-    font-family: Inter;
-    font-size: 1.125rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%; 
-    cursor: pointer;
-    text-decoration: none;
+  color: var(--Dark-2, #555770);
+  font-family: Inter;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.header-link{
-    text-decoration: none;
+.header-link {
+  text-decoration: none;
 }
 
 .header-expanded-line {
-    border-bottom: 1px solid var(--Dark-3, #8F90A6);
-    width: 95.7%;
-    margin: auto;
-    margin-bottom: 0.81rem;
+  border-bottom: 1px solid var(--Dark-3, #8f90a6);
+  width: 95.7%;
+  margin: auto;
+  margin-bottom: 0.81rem;
 }
 .not-visible {
-    visibility: hidden;
-    cursor: default !important;
+  visibility: hidden;
+  cursor: default !important;
 }

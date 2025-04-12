@@ -42,14 +42,14 @@ const Footer = ({ getNetLogoSection, navData }: FooterProps) => {
 
   const scrollToGetNetLogo = () => {
     // If we're on the home page
-    if (window.location.pathname === '/foundation-website-frontend/') {
+    if (window.location.pathname === '/') {
       const getNetLogoSection = document.querySelector('.get-section');
       if (getNetLogoSection) {
         getNetLogoSection.scrollIntoView({ behavior: "smooth" });
       }
     } else {
       // If we're on a different page, navigate to home and add a hash
-      window.location.href = '/foundation-website-frontend/#get-netlogo';
+      window.location.href = '/#get-netlogo';
     }
   };
 

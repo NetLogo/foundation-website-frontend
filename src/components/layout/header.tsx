@@ -1,12 +1,11 @@
 import "./styles/header.css";
 import { Searchbar } from "../shared/search-bar";
-import React, { useState, useCallback, useMemo, Suspense } from "react";
-import blueEllipse from "../../assets/blue-ellipse.svg";
-import netlogoicon from "../../assets/netlogo.svg";
+import React, { useState, useCallback, useMemo } from "react";
 import dropdownIcon from "../../assets/dropdown-icon.svg";
 import hoverDropdownIcon from "../../assets/hover-dropdown-icon.svg";
 import { useRef } from "react";
 import type { NavigationSection } from "../../utils/api";
+import NetLogoOrgLogo from "../../assets/NetLogoOrgLogo.svg";
 
 const LazyHeaderExpanded = React.lazy(() => import("./header-expanded"));
 
@@ -91,6 +90,7 @@ const Header = ({ navData }: HeaderProps) => {
           <div id="netlogo-title" className="header-action">
             NetLogo
           </div>
+
         </div>
         {memoizedHeaderActions}    
       </div>

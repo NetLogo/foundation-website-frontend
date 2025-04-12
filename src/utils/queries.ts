@@ -13,12 +13,25 @@ const queries = {
   introSplash: gql`
     query GetIntroSplash {
       intro_splash {
-        id
         title
-        icon
         description
-        demo_image
-        background
+        learn_more_link
+        demo_image {
+          id
+        }
+        featured_items {
+          id
+          image {
+            id
+          }
+          type
+          image_description
+          column_title
+          column_words {
+            word
+            url
+          }
+        }
       }
     }
   `,
@@ -108,6 +121,7 @@ const queries = {
         download_links {
           platform
           download_url
+
         }
       }
     }
@@ -121,14 +135,29 @@ const queries = {
       }
       intro_splash {
         title
-        icon {
-          id
-        }
+
         description
-        demo_image {
+        learn_more_link
+        featured_items {
           id
+          type
+          image {
+            id
+          }
+          image_description
+          word_column_title
+          column_words {
+            word
+            url
+          }
+          image_column_title
+          column_images {
+            image {
+              id
+            }
+            word
+          }
         }
-        background
       }
       why_netlogo {
         title

@@ -13,10 +13,10 @@ const DownloadSection = ({ versions }: DownloadSectionProps) => {
 
   useEffect(() => {
     // Set initial value once in browser
-    setDesktop(window.innerWidth > 1300);
+    setDesktop(window.innerWidth > 1350);
 
     const updateMedia = () => {
-      setDesktop(window.innerWidth > 1300);
+      setDesktop(window.innerWidth > 1350);
     };
 
     window.addEventListener("resize", updateMedia);

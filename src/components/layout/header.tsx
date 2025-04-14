@@ -68,12 +68,12 @@ const Header = ({ navData }: HeaderProps) => {
   );
 
   const NavigateHome = () => {
-    const homePath = '/foundation-website-frontend/';
+    const homePath = "/";
     // Check if we're already on the homepage
     if (window.location.pathname !== homePath) {
       window.location.href = homePath;
     }
-  }
+  };
 
   return (
     <div
@@ -82,17 +82,10 @@ const Header = ({ navData }: HeaderProps) => {
       onMouseLeave={handleHeaderMouseLeave}
     >
       <div className="header-action-bar">
-        <div className="header-action-cont" onClick = {NavigateHome}>
-          <div className="netlogo-icon-cont" >
-            <img className="icon" src={blueEllipse.src} alt="Blue Ellipse" />
-            <img className="icon" src={netlogoicon.src} alt="NetLogo Icon" />
-          </div>
-          <div id="netlogo-title" className="header-action">
-            NetLogo
-          </div>
-
+        <div className="header-action-cont" onClick={NavigateHome}>
+          <img id="page-logo" src={NetLogoOrgLogo.src} />
         </div>
-        {memoizedHeaderActions}    
+        {memoizedHeaderActions}
       </div>
       <LazyHeaderExpanded
         navigation_section={navData[hoveredIndex]}

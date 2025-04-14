@@ -52,10 +52,10 @@ function Body({
       <Intro intro_data={introduction} intro_splash_data={intro_splash} />
       <WhyNetLogo page_data={why_netlogo} />
       <GetNetLogo page_data={get_netlogo} />
-      <Community communityPosts={communityContent} page_data={community} />
+      {/* <Community communityPosts={communityContent} page_data={community} />
       <FeaturedPartners featured_partners={featured_partners} />
 
-      <MailingList />
+      <MailingList /> */}
     </div>
   );
 }

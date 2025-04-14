@@ -121,13 +121,12 @@ const queries = {
         download_links {
           platform
           download_url
-
         }
       }
     }
   `,
 
-  allData: gql`
+  mainPageData: gql`
     query GetAllData {
       introduction {
         title
@@ -191,6 +190,26 @@ const queries = {
       announcements {
         title
         content
+      }
+    }
+  `,
+
+  downloadPageData: gql`
+    query GetDownloadPageData {
+      netlogo_versions {
+        version
+        download_links {
+          platform
+          download_url
+        }
+      }
+      donation_section {
+        title
+        text
+        image {
+          id
+        }
+        url
       }
     }
   `,

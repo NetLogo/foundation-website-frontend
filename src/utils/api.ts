@@ -118,6 +118,16 @@ export interface NetLogoVersion {
   download_links: DownloadLink[];
 }
 
+export interface DonationData {
+  title: string;
+  text: string;
+  image: Image;
+  url: string;
+}
+
+export interface DownloadPageData {
+  netlogo_versions: NetLogoVersion[];
+  donation_section: DonationData;
 }
 
 class NetLogoAPI {
@@ -157,6 +167,9 @@ class NetLogoAPI {
   async getMainPageData() {
     return await this.graphqlFetchData<AllData>(queries.mainPageData);
   }
+
+  async getDownloadPageData() {
+    return await this.graphqlFetchData<DownloadPageData>(queries.downloadPageData);
   }
 
   async getNetLogoVersions() {

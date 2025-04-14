@@ -28,9 +28,6 @@ export interface IntroSplashEntry {
   featured_items: FeaturedItem[];
 }
 
-
-
-
 export interface FeaturedItem {
   id: string;
   type: number;
@@ -121,9 +118,6 @@ export interface NetLogoVersion {
   download_links: DownloadLink[];
 }
 
-interface Schema {
-  download_responses: FormData;
-  // Add other collections if needed
 }
 
 class NetLogoAPI {
@@ -160,8 +154,9 @@ class NetLogoAPI {
     }
   }
 
-  async getSiteData() {
-    return await this.graphqlFetchData<AllData>(queries.allData);
+  async getMainPageData() {
+    return await this.graphqlFetchData<AllData>(queries.mainPageData);
+  }
   }
 
   async getNetLogoVersions() {

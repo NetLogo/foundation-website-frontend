@@ -27,11 +27,9 @@ const DonationSection = ({ donationData }: DonationSectionProps) => {
       </div>
       <div className="donate-text-container">
         <h1 className="donate-title">{donationData.title}</h1>
-        <ReactMarkdown className="donate-text">
-          {donationData.text}
-        </ReactMarkdown>
-        <Button 
-          colorClass="dark-button" 
+        <ReactMarkdown className="donate-text">{donationData.text}</ReactMarkdown>
+        <Button
+          colorClass="dark-button"
           padding="1rem 2.2rem"
           fontSize="1.56rem"
           text="Donate"

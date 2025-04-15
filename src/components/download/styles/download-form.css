@@ -7,7 +7,7 @@
 }
 
 .download-form > p {
-  font-size: 14px;
+  font-size: .875rem;
 }
 
 .download-form > form {
@@ -17,7 +17,8 @@
 .form-title {
   color: #3c3c3c;
   font-weight: 700;
-  size: 48px;
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
 }
 
 .form-row {

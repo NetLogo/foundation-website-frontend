@@ -1,0 +1,48 @@
+/* Donation Section Styles */
+.donate-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 109px;
+  gap: 3%
+}
+
+.donate-image-container {
+  justify-content: center;
+  width: 45%;
+  max-width: 652px;
+  min-width: 560px;
+}
+
+.donate-image{
+    width: 100%;
+}
+
+.donate-text-container {
+    width: 52%;
+    text-align: left;
+    max-width: 652px;
+    min-width: 560px;
+    margin: 0% 3% 2% 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.donate-title {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 3.5rem;
+  letter-spacing: 0%;
+  color: #3c3c3c;
+  text-align: left;
+}
+
+.donate-text {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: .875rem;
+  line-height: 1rem;
+  letter-spacing: 0%;
+  text-align: left;
+}

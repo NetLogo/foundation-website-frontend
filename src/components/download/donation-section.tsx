@@ -1,6 +1,8 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { getImageUrl } from "../../utils/url-utils";
+import "./styles/donation-section.css";
+import { Button } from "../shared/button";
 
 export interface DonationData {
   title: string;
@@ -16,7 +18,7 @@ interface DonationSectionProps {
 const DonationSection = ({ donationData }: DonationSectionProps) => {
   return (
     <div className="donate-container">
-      <div className="donate-image-0container">
+      <div className="donate-image-container">
         <img
           className="donate-image"
           src={getImageUrl(donationData.image)}
@@ -28,7 +30,18 @@ const DonationSection = ({ donationData }: DonationSectionProps) => {
         <ReactMarkdown className="donate-text">
           {donationData.text}
         </ReactMarkdown>
-        <button className="donate-button">Donate Now</button>
+        <Button 
+          colorClass="dark-button" 
+          padding="1rem 2.2rem"
+          fontSize="1.56rem"
+          text="Donate"
+          hasIcon={false}
+          style={{
+            marginTop: "1.75rem",
+            width: "fit-content",
+            borderRadius: "17px",
+          }}
+        />
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import type { reference } from 'astro:content';
 import { gql } from 'graphql-request';
 
 const queries = {
@@ -83,6 +84,14 @@ const queries = {
       }
     }
   `,
+  referenceData: gql`
+  query getReferences {
+    References {
+      year
+      reference
+    }
+  }
+  ` ,
 
   navigationData: gql`
     query GetNavigation {

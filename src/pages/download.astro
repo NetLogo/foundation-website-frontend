@@ -8,9 +8,18 @@ const api = new NetLogoApi();
 
 const pageData = await api.getDownloadPageData()
 
+const isTesting = import.meta.env.PUBLIC_TESTING_DONATIONS
+
+if (isTesting){
+    console.log(pageData)
+    const testData = await api.getDonationTestData()
+    const randomIndex = Math.floor(Math.random() * testData.length);
+    pageData["donation_section"] = testData[randomIndex]
+}
+
 ---
 
 <Layout>
     <DownloadSection downloadData = {pageData["netlogo_versions"]} client:load/>
-    <DonationSection donationData = {pageData["donation_section"]} />
+    <DonationSection donationData = {pageData["donation_section"]} client:load/>
 </Layout>

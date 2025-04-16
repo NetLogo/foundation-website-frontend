@@ -213,6 +213,18 @@ const queries = {
       }
     }
   `,
+  donationTestData: gql`
+    query GetDonationTestData {
+      donation_test_entries {
+        title
+        text
+        image {
+          id
+        }
+        url
+      }
+    }
+  `,
 };
 
 export default queries;

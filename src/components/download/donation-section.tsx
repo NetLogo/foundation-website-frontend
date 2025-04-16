@@ -1,6 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import { getImageUrl } from "../../utils/url-utils";
+import { getImageUrl, handleLinkClick } from "../../utils/url-utils";
 import "./styles/donation-section.css";
 import { Button } from "../shared/button";
 
@@ -27,7 +27,9 @@ const DonationSection = ({ donationData }: DonationSectionProps) => {
       </div>
       <div className="donate-text-container">
         <h1 className="donate-title">{donationData.title}</h1>
-        <ReactMarkdown className="donate-text">{donationData.text}</ReactMarkdown>
+        <ReactMarkdown className="donate-text">
+          {donationData.text}
+        </ReactMarkdown>
         <Button
           colorClass="dark-button"
           padding="1rem 2.2rem"
@@ -39,6 +41,7 @@ const DonationSection = ({ donationData }: DonationSectionProps) => {
             width: "fit-content",
             borderRadius: "17px",
           }}
+          onClick={() => handleLinkClick(donationData.url)}
         />
       </div>
     </div>

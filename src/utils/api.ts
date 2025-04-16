@@ -3,7 +3,6 @@ import { GraphQLClient } from "graphql-request";
 import queries from "./queries";
 import { type FormData } from "../components/download/download-form";
 
-
 // Types for the API responses
 interface ApiResponse<T> {
   data: T;
@@ -34,7 +33,7 @@ export interface FeaturedItem {
   image: Image;
   image_description: string;
   word_column_title: string;
-  column_words: ColumnWord[]; 
+  column_words: ColumnWord[];
   image_column_title: string;
   column_images: ColumnImage[];
 }
@@ -169,7 +168,17 @@ class NetLogoAPI {
   }
 
   async getDownloadPageData() {
-    return await this.graphqlFetchData<DownloadPageData>(queries.downloadPageData);
+    return await this.graphqlFetchData<DownloadPageData>(
+      queries.downloadPageData
+    );
+  }
+
+  async getDonationTestData() {
+    const donationData = await this.graphqlFetchData<{
+      donation_test_entries: DonationData[];
+    }>(queries.donationTestData);
+
+    return donationData.donation_test_entries;
   }
 
   async getNetLogoVersions() {
@@ -185,13 +194,13 @@ class NetLogoAPI {
   }
 
   async sendDownloadForm(formData: FormData) {
-    const url = this.baseUrl + "/items/download_responses"
-    
+    const url = this.baseUrl + "/items/download_responses";
+
     console.log("Sending form data to:", url);
     const response = await fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     });

@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { ReferenceSection } from "../components/references/references-page";
+import NetLogoApi from "../utils/api.js";
+
+const api = new NetLogoApi();
+const siteData = await api.getReferences();
+console.log(siteData);
+---
+
+<Layout>
+    <ReferenceSection
+        pageData={siteData} client:load/>
+</Layout>

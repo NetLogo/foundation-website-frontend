@@ -96,6 +96,14 @@ const queries = {
       }
     }
   `,
+  referenceData: gql`
+  query getReferences {
+    References {
+      year
+      reference
+    }
+  }
+  ` ,
 
   navigationData: gql`
     query GetNavigation {

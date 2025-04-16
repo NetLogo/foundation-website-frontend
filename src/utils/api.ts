@@ -99,6 +99,13 @@ export interface NavigationItem {
   in_footer: boolean;
 }
 
+export interface ReferenceEntry {
+  year: number;
+  reference: string;
+}
+
+
+
 export interface AllData {
   introduction: Introduction;
   intro_splash: IntroSplashEntry[];
@@ -145,6 +152,10 @@ class NetLogoAPI {
 
   async getSiteData() {
     return await this.graphqlFetchData<AllData>(queries.allData);
+  }
+
+  async getReferences() {
+    return await this.graphqlFetchData<ReferenceEntry[]>(queries.referenceData);
   }
 
   async getNavigationData() {

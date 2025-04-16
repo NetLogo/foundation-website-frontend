@@ -3,13 +3,13 @@
   display: flex;
   justify-content: center;
   margin-top: 109px;
-  gap: 3%
+  gap: 5%
 }
 
 .donate-image-container {
   justify-content: center;
-  width: 45%;
-  max-width: 652px;
+  width: 50%;
+  max-width: 672px;
   min-width: 560px;
 }
 
@@ -18,9 +18,9 @@
 }
 
 .donate-text-container {
-    width: 52%;
+    width: 55%;
     text-align: left;
-    max-width: 652px;
+    max-width: 732px;
     min-width: 560px;
     margin: 0% 3% 2% 3%;
     display: flex;

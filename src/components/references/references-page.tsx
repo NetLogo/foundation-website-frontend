@@ -30,20 +30,20 @@ const ReferenceSection = ({ pageData }: ReferenceSectionProps) => {
     //proper years
     //makae a for loop in typescript to loop through the years grouped by year, make sure that are grouped by year 
     //mak ea map with the key being the year and the value being a array of refrences for that year.
-    let mapR: Map<number, string[]> = new Map();
+//     let mapR: Map<number, string[]> = new Map();
 
-    for (let i = 0; i < pageData.length; i++) {
-        // make a empty map 
-        console.log(pageData[i]);
-        if (!mapR.has(pageData[i].year)) {
-            mapR.set(pageData[i].year, []);
-        }
-        mapR.get(pageData[i].year)?.push(pageData[i].reference);
+//     for (let i = 0; i < pageData.length; i++) {
+//         // make a empty map 
+//         console.log(pageData[i]);
+//         if (!mapR.has(pageData[i].year)) {
+//             mapR.set(pageData[i].year, []);
+//         }
+//         mapR.get(pageData[i].year)?.push(pageData[i].reference);
     
-    }
-    return mapR;
+//     }
+//     return mapR;
 
-ReferenceSection(pageData);
+// ReferenceSection(pageData);
   
 
 
@@ -96,15 +96,26 @@ ReferenceSection(pageData);
 
                         <p><strong>Bold</strong> = Publications authored by the CCL </p>
 
-                            <p></p>
+                        {pageData.map((item, index) => {
+        return (
+          <div key={index}>
+            <h3>{item.year}</h3>
+            <ul>
+              {item.references.map((reference, refIndex) => {
+                return (
+                  <li key={refIndex}>
+                    {reference}
+                    {/* <a href={item.link} target="_blank" rel="noopener noreferrer">Link</a> */}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      })}
 
+    </div>
+  );
+};
 
-                        </div>
-                        
-                        
-
-                        )
-
-}
-
-                        export {ReferenceSection}
+export { ReferenceSection };

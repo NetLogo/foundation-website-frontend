@@ -98,12 +98,12 @@ const queries = {
   `,
   referenceData: gql`
   query getReferences {
-    References {
+    References(limit: -1) {
       year
       reference
     }
   }
-  ` ,
+`,
 
   navigationData: gql`
     query GetNavigation {

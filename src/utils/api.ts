@@ -100,11 +100,14 @@ export interface NavigationItem {
 }
 
 export interface ReferenceEntry {
-  year: number;
+  year: string;
   reference: string;
 }
 
-
+export interface GroupedReference {
+  year: string;
+  references: string[];
+}
 
 export interface AllData {
   introduction: Introduction;
@@ -155,7 +158,27 @@ class NetLogoAPI {
   }
 
   async getReferences() {
-    return await this.graphqlFetchData<ReferenceEntry[]>(queries.referenceData);
+    const references: {'References': ReferenceEntry[]} =  await this.graphqlFetchData<{'References': ReferenceEntry[]}>(queries.referenceData);
+
+    // Group references by year
+    // Variable where it will be strored
+    let groupedReferences: Map<string, string[]> = new Map();
+
+    // Loop through the references and group them by year
+    references['References'].forEach((item) => {
+      const year = item.year; // Convert year to string for the key
+      
+      // Check if the year already exists in the map
+      if (!groupedReferences.has(year)) {
+        // If not, create a new entry with an empty array
+        groupedReferences.set(year, []);
+      }
+
+      // Push the reference into the array for that year
+      groupedReferences.get(year)?.push(item.reference);
+    })
+    
+    return groupedReferences
   }
 
   async getNavigationData() {

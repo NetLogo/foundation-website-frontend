@@ -2,13 +2,23 @@
 import Layout from "../layouts/Layout.astro";
 import { ReferenceSection } from "../components/references/references-page";
 import NetLogoApi from "../utils/api.js";
+import type{ YearReferences } from "../components/references/references-page.js";
 
 const api = new NetLogoApi();
 const siteData = await api.getReferences();
-console.log(siteData);
+
+let formattedReferences: YearReferences[] = [];
+
+Array.from(siteData.entries()).forEach(([key, value]) => {
+    formattedReferences.push( {
+        year: key,
+        references: value
+    });
+});
+
 ---
 
 <Layout>
     <ReferenceSection
-        pageData={siteData} client:load/>
+        pageData={formattedReferences}/>
 </Layout>

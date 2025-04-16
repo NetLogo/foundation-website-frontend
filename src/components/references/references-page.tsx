@@ -1,15 +1,13 @@
-import React from 'react';
-import { Section } from '../shared/section';
-import NetLogoApi from "../../utils/api";
-import { type ReferenceEntry } from "../../utils/api";
+import React from "react";
 
-
-interface ReferenceSectionProps {
-    pageData: ReferenceEntry[];
+export interface YearReferences {
+  year: string;
+  references: string[];
 }
 
-const api = new NetLogoApi();
-const siteData = await api.getReferences();
+interface ReferenceSectionProps {
+  pageData: YearReferences[];
+}
 
 const ReferenceSection = ({ pageData }: ReferenceSectionProps) => {
     // FUNCTION ReferenceSection TAKES pageData (a list of reference entries):

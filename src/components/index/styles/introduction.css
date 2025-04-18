@@ -18,6 +18,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 62px;
+
 }
 
 /* Logo Section */
@@ -25,15 +26,18 @@
   display: flex;
   flex: 1;
   flex-direction: row;
+  max-height: 100%;
 }
 
 .intro-turtles {
   width: 175px;
-  margin-bottom: 0; /* Remove bottom margin */
+  margin-bottom: 0;
+  /* Remove bottom margin */
 }
 
 .intro-logo-text {
-  margin-top: -10px; /* Use negative margin to pull it closer to the turtles */
+  margin-top: -10px;
+  /* Use negative margin to pull it closer to the turtles */
   width: 350px;
 }
 

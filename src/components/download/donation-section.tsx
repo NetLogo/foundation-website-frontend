@@ -30,19 +30,25 @@ const DonationSection = ({ donationData }: DonationSectionProps) => {
         <ReactMarkdown className="donate-text">
           {donationData.text}
         </ReactMarkdown>
-        <Button
-          colorClass="dark-button"
-          padding="1rem 2.2rem"
-          fontSize="1.56rem"
-          text="Donate"
-          hasIcon={false}
-          style={{
-            marginTop: "1.75rem",
-            width: "fit-content",
-            borderRadius: "17px",
-          }}
-          onClick={() => handleLinkClick(donationData.url)}
-        />
+        <div className="donate-button-container">
+          <Button
+            colorClass="dark-button"
+            padding="1rem 2.2rem"
+            fontSize="1.56rem"
+            text="Donate"
+            hasIcon={false}
+            style={{
+              marginTop: "1.75rem",
+              width: "fit-content",
+              borderRadius: "17px",
+            }}
+            onClick={() => handleLinkClick(donationData.url)}
+          />
+          <p>
+            Donations are processed through Northwestern University, but 100%
+            goes to the Center for Connected Learning to support NetLogo
+          </p>
+        </div>
       </div>
     </div>
   );

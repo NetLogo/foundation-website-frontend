@@ -47,3 +47,16 @@
   letter-spacing: 0%;
   text-align: left;
 }
+
+.donate-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.donate-button-container > p{
+  font-size: .875rem;
+  width: 160px;
+  color: #3c3c3c;
+  opacity: 70%;
+}

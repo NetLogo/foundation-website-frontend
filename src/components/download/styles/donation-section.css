@@ -3,14 +3,15 @@
   display: flex;
   justify-content: center;
   margin-top: 109px;
-  gap: 5%
 }
 
 .donate-image-container {
   justify-content: center;
   width: 50%;
   max-width: 672px;
-  min-width: 560px;
+  min-width: 520px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .donate-image{

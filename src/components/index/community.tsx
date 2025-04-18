@@ -16,6 +16,7 @@ interface CommunityPost {
 interface communityProps {
   communityPosts: CommunityPost[];
   page_data: CommunityEntry[];
+  section_color: string;
 }
 
 interface communityCardProps {
@@ -24,6 +25,7 @@ interface communityCardProps {
   description: string;
   icon: string;
   bordered: boolean;
+  card_color: string;
 }
 
 const CommunityCard = ({
@@ -32,6 +34,7 @@ const CommunityCard = ({
   description,
   icon,
   bordered,
+  card_color,
 }: communityCardProps) => {
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");
@@ -40,7 +43,7 @@ const CommunityCard = ({
   const imageClass = "community-item-img" + (bordered ? " bordered" : "");
   const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
   return (
-    <div className="community-item">
+    <div className="community-item" style={{ backgroundColor: card_color }}>
       <div className="community-item-header">
         <img className={imageClass} src={`${backend_url}/assets/${icon}`} />
         <span className="community-item-title"> {title} </span>
@@ -62,11 +65,18 @@ const CommunityCard = ({
 };
 
 /** Community: defines the Community section in the landing page **/
-const Community = ({ communityPosts, page_data }: communityProps) => {
+const Community = ({
+  communityPosts,
+  page_data,
+  section_color,
+}: communityProps) => {
   // Initialize previewImage with the first image if available
   const [previewImage, setPreviewImage] = useState<string | null>(
     communityPosts.length > 0 ? communityPosts[0].image : null
   );
+
+  const color_palette = ["#F2F2F2", "white"];
+
   return (
     <div className="community-section">
       <Section
@@ -74,7 +84,7 @@ const Community = ({ communityPosts, page_data }: communityProps) => {
         sectionDescript="Join NetLogo community and start contributing today."
         sectionGap={1.88}
         sectionPaddingBot={3.75}
-        backgroundColor="#F2F2F5"
+        backgroundColor={section_color}
         moreButton={false}
         body={
           <div>
@@ -95,6 +105,11 @@ const Community = ({ communityPosts, page_data }: communityProps) => {
                   icon={card.icon.id}
                   bordered={card.bordered}
                   key={index}
+                  card_color={
+                    section_color == color_palette[0]
+                      ? color_palette[1]
+                      : color_palette[0]
+                  }
                 />
               ))}
             </div>

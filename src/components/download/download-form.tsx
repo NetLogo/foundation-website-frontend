@@ -234,8 +234,8 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
         <div className="detail-row">
           <p>
             {"We read these but don't respond directly. For a response, write "}
-            <a className="form-ref" href="mailto:feedback@ccl.northwestern.edu">
-              {"feedback@ccl.northwestern.edu."}
+            <a className="form-ref" href="mailto:netlogo-help@ccl.northwestern.edu">
+              {"netlogo-help@ccl.northwestern.edu"}
             </a>
           </p>
         </div>

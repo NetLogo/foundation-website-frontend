@@ -1,0 +1,20 @@
+.download-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 109px;
+  font-family: Inter;
+}
+
+.netlogo-download-icon {
+  position: relative;
+  left: -50px;
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .netlogo-download-icon {
+    display: block;
+  }
+}

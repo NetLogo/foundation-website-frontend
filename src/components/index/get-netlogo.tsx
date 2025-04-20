@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 
 interface GetNetLogoProps {
   page_data: GetNetLogoEntry[];
+  section_color: string;
 }
 
 interface ItemCardProps {
@@ -14,15 +15,22 @@ interface ItemCardProps {
   description: string;
   image_key: string;
   link: string;
+  card_color: string;
 }
 
-const ItemCard = ({ title, description, image_key, link }: ItemCardProps) => {
+const ItemCard = ({
+  title,
+  description,
+  image_key,
+  link,
+  card_color,
+}: ItemCardProps) => {
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");
   };
   const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
   return (
-    <div className="get-item">
+    <div className="get-item " style={{ backgroundColor: card_color }}>
       <div className="get-item-header">
         <img
           className="get-item-img"
@@ -49,12 +57,13 @@ const ItemCard = ({ title, description, image_key, link }: ItemCardProps) => {
   );
 };
 
-const GetNetLogo = ({ page_data }: GetNetLogoProps) => {
+const GetNetLogo = ({ page_data, section_color }: GetNetLogoProps) => {
+  const color_palette = ["#F2F2F2", "white"];
 
   useEffect(() => {
     // Check if we navigated here with a hash
-    if (window.location.hash === '#get-netlogo') {
-      const section = document.querySelector('.get-section');
+    if (window.location.hash === "#get-netlogo") {
+      const section = document.querySelector(".get-section");
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
       }
@@ -62,16 +71,13 @@ const GetNetLogo = ({ page_data }: GetNetLogoProps) => {
   }, []);
 
   return (
-    <div
-      id="get-netlogo"
-      className="get-section"
-    >
+    <div id="get-netlogo" className="get-section">
       <Section
         sectionTitle="Get NetLogo"
         sectionDescript="There are five different products in NetLogo. Find the one suits your need."
         sectionGap={2.5}
         sectionPaddingBot={3.75}
-        backgroundColor="white"
+        backgroundColor={section_color}
         moreButton={false}
         body={
           <div>
@@ -91,6 +97,11 @@ const GetNetLogo = ({ page_data }: GetNetLogoProps) => {
                   description={item.content}
                   image_key={item.icon.id}
                   link={item.link}
+                  card_color={
+                    section_color == color_palette[0]
+                      ? color_palette[1]
+                      : color_palette[0]
+                  }
                 />
               ))}
             </div>

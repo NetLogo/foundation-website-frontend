@@ -13,7 +13,7 @@ const upcomingWorkshops: Event[] = await api.fetchData('/items/upcoming_workshop
 const competitions: Event[] = await api.fetchData('/items/competitions');
 const publications: Event[] = await api.fetchData('/items/publications');
 
-const siteData = await api.getSiteData();
+const siteData = await api.getMainPageData();
 
 const fetchImageFromLink = async (url: string) => {
     try {

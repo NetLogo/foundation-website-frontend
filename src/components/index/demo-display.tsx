@@ -14,7 +14,7 @@ const DemoDisplay = ({ demo, currentTab, isLastTab }: DemoDisplayProps) => {
   const [isChanging, setIsChanging] = useState(false);
   const [currentDemo, setCurrentDemo] = useState(demo);
 
-  const { description, demo_image, background } = demo;
+  const { description, demo_image } = demo;
 
   useEffect(() => {
     if (demo !== currentDemo) {

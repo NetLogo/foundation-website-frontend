@@ -3,6 +3,13 @@
   display: flex;
   justify-content: center;
   margin-top: 109px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 1200px) {
+  .donate-container {
+    flex-wrap: nowrap;
+  }
 }
 
 .donate-image-container {
@@ -61,3 +68,4 @@
   color: #3c3c3c;
   opacity: 70%;
 }
+

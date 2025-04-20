@@ -16,21 +16,8 @@ interface DonationSectionProps {
 }
 
 const DonationSection = ({ donationData }: DonationSectionProps) => {
-  const [isDesktop, setDesktop] = useState(false); // Default to false initially
-
-  useEffect(() => {
-    // Set initial value once in browser
-    setDesktop(window.innerWidth > 1350);
-
-    const updateMedia = () => {
-      setDesktop(window.innerWidth > 1350);
-    };
-
-    window.addEventListener("resize", updateMedia);
-    return () => window.removeEventListener("resize", updateMedia);
-  }, []);
   return (
-    <div className="donate-container" style={{flexWrap: isDesktop ? "nowrap" : "wrap"}}>
+    <div className="donate-container" >
       <div className="donate-image-container">
         <img
           className="donate-image"

@@ -9,8 +9,10 @@
 
 .netlogo-download-icon {
   position: relative;
-  left: -50px;
+  left: 50px;
   display: none;
+  width: 40%;
+  transform: scale(-1, 1);
 }
 
 @media (min-width: 1200px) {

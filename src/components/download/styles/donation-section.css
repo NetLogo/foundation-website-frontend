@@ -4,11 +4,14 @@
   justify-content: center;
   margin-top: 109px;
   flex-wrap: wrap;
+  flex-direction: column-reverse;
+  align-items: center;
 }
 
 @media (min-width: 1200px) {
   .donate-container {
     flex-wrap: nowrap;
+    flex-direction: row;
   }
 }
 

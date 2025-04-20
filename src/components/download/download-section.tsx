@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./styles/download-section.css";
 import { DownloadForm } from "./download-form";
 import NetLogoIcon from "../../assets/NetlogoIcon.svg";
@@ -11,8 +11,8 @@ interface DownloadSectionProps {
 const DownloadSection = ({ downloadData }: DownloadSectionProps) => {
   return (
     <div className="download-section">
-      <img className="netlogo-download-icon" src={NetLogoIcon.src} />
       <DownloadForm versions={downloadData} />
+      <img className="netlogo-download-icon" src={NetLogoIcon.src} />
     </div>
   );
 };

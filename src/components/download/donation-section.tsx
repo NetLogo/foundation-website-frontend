@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { getImageUrl, handleLinkClick } from "../../utils/url-utils";
 import "./styles/donation-section.css";
@@ -17,14 +17,7 @@ interface DonationSectionProps {
 
 const DonationSection = ({ donationData }: DonationSectionProps) => {
   return (
-    <div className="donate-container" >
-      <div className="donate-image-container">
-        <img
-          className="donate-image"
-          src={getImageUrl(donationData.image)}
-          alt="donate image"
-        />
-      </div>
+    <div className="donate-container">
       <div className="donate-text-container">
         <h1 className="donate-title">{donationData.title}</h1>
         <ReactMarkdown className="donate-text">
@@ -49,6 +42,13 @@ const DonationSection = ({ donationData }: DonationSectionProps) => {
             goes to the Center for Connected Learning to support NetLogo
           </p>
         </div>
+      </div>
+      <div className="donate-image-container">
+        <img
+          className="donate-image"
+          src={getImageUrl(donationData.image)}
+          alt="donate image"
+        />
       </div>
     </div>
   );

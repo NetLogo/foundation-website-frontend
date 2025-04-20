@@ -49,13 +49,10 @@ const createImageURL = (imageId: string) => {
 
 // Sub-components
 const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
-  const images_object = image_entries?.reduce(
-    (acc: any, entry: ImagePair) => {
-      acc[entry.image.id] = entry.word;
-      return acc;
-    },
-    {}
-  );
+  const images_object = image_entries?.reduce((acc: any, entry: ImagePair) => {
+    acc[entry.image.id] = entry.word;
+    return acc;
+  }, {});
 
   const [currentImageId, setCurrentImageId] = useState<string>(
     image_entries[0]?.image.id
@@ -73,7 +70,10 @@ const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
 
         <div className="column-card">
           {image_entries?.map((pair, index) => (
-            <div key={index} className="column-entry">
+            <div
+              key={index}
+              className={`image-column-entry ${currentImageId === pair.image.id ? "active" : ""}`}
+            >
               <a
                 className="entry-text"
                 onClick={(e) => {
@@ -81,7 +81,11 @@ const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
                   setCurrentImageId(pair.image.id);
                 }}
               >
-                {pair.word}
+                <div
+                  className={`${currentImageId === pair.image.id ? "active-image-entry" : ""}`}
+                >
+                  {pair.word}
+                </div>
               </a>
             </div>
           ))}
@@ -93,24 +97,29 @@ const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
 };
 
 const LinksColumn = ({ title, link_entries }: LinksColumnProps) => {
+  console.log("link_entries", link_entries);
   return (
     <div className="column-container">
       <div className="column-title">{title}</div>
 
       <div className="column-card">
         {link_entries?.map((entry, index) => (
-          <div key={index} className="column-entry">
-            <a
-              href={entry.url}
-              target="_blank"
-              className="entry-text"
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick(entry.url);
-              }}
-            >
-              {entry.word}
-            </a>
+          <div key={index} className="link-column-entry">
+            {entry.url ? (
+              <a
+                href={entry.url}
+                target="_blank"
+                className="entry-text"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(entry.url);
+                }}
+              >
+                {entry.word}
+              </a>
+            ) : (
+              <span className="link-entry-text">{entry.word}</span>
+            )}
           </div>
         ))}
         <div className="column-footer">and many more...</div>

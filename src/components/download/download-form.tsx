@@ -82,20 +82,20 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
     console.log(result)
     
     // Go to download Link
-    // const downloadVersion = versions.find(
-    //   (version) => version.version === formData.version
-    // );
+    const downloadVersion = versions.find(
+      (version) => version.version === formData.version
+    );
 
-    // const downloadUrl = downloadVersion?.download_links.find(
-    //   (link) => link.platform === formData.platform
-    // )?.download_url;
+    const downloadUrl = downloadVersion?.download_links.find(
+      (link) => link.platform === formData.platform
+    )?.download_url;
 
-    // if (!downloadUrl) {
-    //   alert("Download link not found");
-    //   return;
-    // } else {
-    //   window.open(downloadUrl);
-    // }
+    if (!downloadUrl) {
+      alert("Download link not found");
+      return;
+    } else {
+      window.open(downloadUrl);
+    }
   };
 
   return (

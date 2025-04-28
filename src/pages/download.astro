@@ -11,6 +11,7 @@ const pageData = await api.getDownloadPageData()
 const isTesting = import.meta.env.PUBLIC_TESTING_DONATIONS
 
 if (isTesting){
+    console.log(pageData)
     const testData = await api.getDonationTestData()
     const randomIndex = Math.floor(Math.random() * testData.length);
     pageData["donation_section"] = testData[randomIndex]

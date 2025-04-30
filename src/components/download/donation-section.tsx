@@ -25,7 +25,7 @@ const DonationSection = ({ donationData }: DonationSectionProps) => {
         </ReactMarkdown>
         <div className="donate-button-container">
           <Button
-            colorClass="dark-button"
+            colorClass="blue-button"
             padding="1rem 2.2rem"
             fontSize="1.56rem"
             text="Donate"

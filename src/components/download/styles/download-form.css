@@ -116,14 +116,18 @@
   border-radius: 17px;
   font-size: 25px;
   font-weight: 700;
-  color: white;
-  background-color: black;
+  background: var(--Secondary-color, #0670ED);
+  color: var(--White, #FFF);
+  border: 2px solid transparent; 
 }
 
 .submit-row > button:hover {
-  background-color: #3c3c3c;
-  cursor: pointer;
-  box-shadow: 0px 10px 10px 0px rgba(0, 99, 247, 0.15);
+  background: var(--Primary-Main-Color, #37F);
+	box-shadow: 0px 10px 10px 0px rgba(0, 99, 247, 0.15);
+}
+
+.submit-row > button:active {
+  background: #5B8DEF;
 }
 
 .submit-row > p {

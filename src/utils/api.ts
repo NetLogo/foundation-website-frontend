@@ -196,7 +196,6 @@ class NetLogoAPI {
   async sendDownloadForm(formData: FormData) {
     const url = this.baseUrl + "/items/download_responses";
 
-    console.log("Sending form data to:", url);
     const response = await fetch(url, {
       method: "POST",
       headers: {

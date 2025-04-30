@@ -100,15 +100,6 @@ const Footer = ({ navData, show_buttons = true }: FooterProps) => {
 
         <div className="footer-content">
           <div className="footer-content-row">
-            <div className="footer-row-front">
-              <div className="footer-row-front-title">LOGO</div>
-              <div className="footer-row-front-logo">
-                <img src={lofiTextLg.src} />
-                <img src={lofiTextMed.src} />
-                <img src={lofiTextSm.src} />
-              </div>
-            </div>
-
             <div className="footer-content-row-back">
               {footerData.map((column, index) => (
                 <FooterColumn

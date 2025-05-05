@@ -1,0 +1,155 @@
+.download-form {
+  width: 55%;
+  text-align: left;
+  margin: 2% 3% 2% 3%;
+  max-width: 652px;
+  min-width: 560px;
+}
+
+.download-form > p {
+  font-size: .875rem;
+}
+
+.download-form > form {
+  margin-top: 50px;
+}
+
+.form-title {
+  color: #3c3c3c;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0 20px 0;
+  align-items: center;
+}
+
+.form-row > label {
+  width: 22%;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0%;
+}
+
+.form-row > input {
+  width: 80%;
+  height: 45;
+  gap: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+  padding: 10px;
+  border: 1px solid #b2b2b2;
+  font-family: Inter;
+}
+
+.form-row > textarea {
+  width: 80%;
+  max-width: 80%;
+  font-family: Inter;
+  height: 100;
+  gap: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+  padding: 10px;
+  border: 1px solid #b2b2b2;
+  resize: none;
+}
+
+.shared-form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 6%;
+  width: 100%;
+}
+
+.shared-form-row > div {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shared-form-row > div > label {
+  width: 50%;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+.shared-form-row > div > select {
+  width: 60%;
+  height: 45;
+  justify-content: space-between;
+  border-radius: 10px;
+  border-width: 1px;
+  padding-top: 10px;
+  padding-right: 4px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.submit-row {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-left: 35%;
+}
+
+.submit-row > button {
+  width: 203px;
+  height: 70px;
+  border-radius: 17px;
+  font-size: 25px;
+  font-weight: 700;
+  background: var(--Secondary-color, #0670ED);
+  color: var(--White, #FFF);
+  border: 2px solid transparent; 
+}
+
+.submit-row > button:hover {
+  background: var(--Primary-Main-Color, #37F);
+	box-shadow: 0px 10px 10px 0px rgba(0, 99, 247, 0.15);
+}
+
+.submit-row > button:active {
+  background: #5B8DEF;
+}
+
+.submit-row > p {
+  font-size: 12px;
+}
+
+.detail-row {
+  margin-left: 22%;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.email-row {
+  display: flex;
+  align-items: center;
+}
+
+.form-ref {
+  color: blue;
+}
+
+.form-ref:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

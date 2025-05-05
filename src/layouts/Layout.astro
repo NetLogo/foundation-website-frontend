@@ -4,6 +4,8 @@ import { Header } from "../components/layout/header";
 import { Footer } from "../components/layout/footer";
 import "./styles/Layout.css";
 
+const {show_footer_buttons} = Astro.props;
+
 const api = new NetLogoApi();
 
 const navData = await api.getNavigationData();
@@ -20,6 +22,6 @@ const {navigation_sections} = navData;
     <main>
       <slot />
     </main>
-    <Footer client:load navData={navigation_sections}/>
+    <Footer client:load navData={navigation_sections} show_buttons={show_footer_buttons}/>
   </body>
 </html>

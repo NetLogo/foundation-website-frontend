@@ -49,9 +49,24 @@
     color: #FFF;
 }
 
+/* New dark button style for the Donate button */
+.dark-button {
+    background-color: #000;
+    color: #FFF;
+    border: none;
+}
+
+.dark-button:hover {
+    background-color: #333;
+    box-shadow: 0px 10px 10px 0px rgba(0, 99, 247, 0.15);
+}
+
+.dark-button:active {
+    background-color: #222;
+}
+
 .button-icon {
     width: 1.25rem;
     height: 1.25rem;
     transition: fill 0.3s ease;
 }
-

@@ -49,31 +49,44 @@ const createImageURL = (imageId: string) => {
 
 // Sub-components
 const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
-  const images_object = image_entries?.reduce(
-    (acc: any, entry: ImagePair) => {
-      acc[entry.image.id] = entry.word;
-      return acc;
-    },
-    {}
+  // Initialize with first image immediately to avoid delay
+  const [currentImageId, setCurrentImageId] = useState<string>(
+    image_entries?.[0]?.image?.id || ""
   );
 
-  const [currentImageId, setCurrentImageId] = useState<string>(
-    image_entries[0]?.image.id
-  );
+  // Reset image when entries change
+  useEffect(() => {
+    if (image_entries && image_entries.length > 0) {
+      setCurrentImageId(image_entries[0].image.id);
+    }
+  }, [image_entries]);
+
+  const images_object = useMemo(() => {
+    return image_entries?.reduce((acc: any, entry: ImagePair) => {
+      acc[entry.image.id] = entry.word;
+      return acc;
+    }, {}) || {};
+  }, [image_entries]);
 
   return (
     <div className="image-column-container">
-      <img
-        className="current-column-image"
-        src={createImageURL(currentImageId)}
-        alt={images_object[currentImageId]}
-      />
+      {currentImageId && (
+        <img
+          key={currentImageId} // Add key to force re-render when image changes
+          className="current-column-image"
+          src={createImageURL(currentImageId)}
+          alt={images_object[currentImageId]}
+        />
+      )}
       <div className="column-container">
         <div className="column-title">{title}</div>
 
         <div className="column-card">
           {image_entries?.map((pair, index) => (
-            <div key={index} className="column-entry">
+            <div
+              key={pair.image.id} // Use image id as key instead of index
+              className={`image-column-entry ${currentImageId === pair.image.id ? "active" : ""}`}
+            >
               <a
                 className="entry-text"
                 onClick={(e) => {
@@ -81,7 +94,11 @@ const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
                   setCurrentImageId(pair.image.id);
                 }}
               >
-                {pair.word}
+                <div
+                  className={`${currentImageId === pair.image.id ? "active-image-entry" : ""}`}
+                >
+                  {pair.word}
+                </div>
               </a>
             </div>
           ))}
@@ -99,18 +116,22 @@ const LinksColumn = ({ title, link_entries }: LinksColumnProps) => {
 
       <div className="column-card">
         {link_entries?.map((entry, index) => (
-          <div key={index} className="column-entry">
-            <a
-              href={entry.url}
-              target="_blank"
-              className="entry-text"
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick(entry.url);
-              }}
-            >
-              {entry.word}
-            </a>
+          <div key={index} className="link-column-entry">
+            {entry.url ? (
+              <a
+                href={entry.url}
+                target="_blank"
+                className="entry-text"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(entry.url);
+                }}
+              >
+                {entry.word}
+              </a>
+            ) : (
+              <span className="link-entry-text">{entry.word}</span>
+            )}
           </div>
         ))}
         <div className="column-footer">and many more...</div>
@@ -121,32 +142,30 @@ const LinksColumn = ({ title, link_entries }: LinksColumnProps) => {
 
 // Main component
 const IntroSplash = ({ page_data }: IntroSplashProps) => {
-  // State
-  const [introData, setIntroData] = useState<IntroSplashEntry[]>(page_data);
-  const [currentTab, setCurrentTab] = useState(introData[0]?.title || "");
+  // Process learn more links first before setting state
+  const processedData = useMemo(() => {
+    return page_data.map((item: IntroSplashEntry) => {
+      const newItem = { ...item };
+      if (newItem.learn_more_link) {
+        const url = newItem.learn_more_link;
+        const fullUrl =
+          url.startsWith("http://") || url.startsWith("https://")
+            ? url
+            : `https://${url}`;
 
-  // Process learn more links
-  useEffect(() => {
-    setIntroData((prev) => {
-      prev.forEach((item: IntroSplashEntry) => {
-        if (item.learn_more_link) {
-          const url = item.learn_more_link;
-          const fullUrl =
-            url.startsWith("http://") || url.startsWith("https://")
-              ? url
-              : `https://${url}`;
-
-          item.description += ` [Learn more →](${fullUrl})`;
-        }
-      });
-
-      return [...prev];
+        newItem.description = `${newItem.description} [Learn more →](${fullUrl})`;
+      }
+      return newItem;
     });
-  }, []);
+  }, [page_data]);
+
+  // State
+  const [introData] = useState<IntroSplashEntry[]>(processedData);
+  const [currentTab, setCurrentTab] = useState(introData[0]?.title || "");
 
   // Memoized values
   const currentTabData = useMemo(() => {
-    return introData.find((tab) => tab.title === currentTab);
+    return introData.find((tab) => tab.title === currentTab) || introData[0];
   }, [currentTab, introData]);
 
   const FeaturedItems: FeaturedItem[] | undefined =
@@ -166,6 +185,7 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
       case 1:
         return (
           <img
+            key={`${currentTab}-image-${index}`} // Add unique key based on tab
             className={`featured-image ${allItemsAreImages ? "uniform-height" : ""}`}
             src={createImageURL(item?.image?.id || "")}
             alt={currentTabData?.title}
@@ -174,7 +194,7 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
       case 2:
         return (
           <LinksColumn
-            key={index}
+            key={`${currentTab}-links-${index}`} // Add unique key based on tab
             title={item?.word_column_title || ""}
             link_entries={item?.column_words || []}
           />
@@ -182,7 +202,7 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
       case 3:
         return (
           <ImagesColumn
-            key={index}
+            key={`${currentTab}-images-${index}`} // Add unique key based on tab
             title={item?.image_column_title || ""}
             image_entries={item?.column_images || []}
           />
@@ -196,7 +216,7 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
     <div className="splash-section">
       <div className="splash-content">
         <div className="category-buttons">
-          {page_data.map((tab, index) => (
+          {introData.map((tab, index) => (
             <button
               key={index}
               className={`category-button ${currentTab === tab.title ? "active" : ""}`}
@@ -211,7 +231,7 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
           className={`featured-item-container ${allItemsAreImages ? "all-images" : ""}`}
         >
           {FeaturedItems?.map((item, index) => (
-            <React.Fragment key={index}>
+            <React.Fragment key={`${currentTab}-item-${index}`}>
               {renderFeaturedItem(item, index)}
             </React.Fragment>
           ))}

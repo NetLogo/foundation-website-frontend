@@ -39,6 +39,8 @@ function Body({
     announcement,
   } = siteData;
 
+  const color_palette = ["#F2F2F2", "white"];
+
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
   return (
     <div className="body">
@@ -50,12 +52,15 @@ function Body({
       )}
 
       <Intro intro_data={introduction} intro_splash_data={intro_splash} />
-      <WhyNetLogo page_data={why_netlogo} />
-      <GetNetLogo page_data={get_netlogo} />
-      <Community communityPosts={communityContent} page_data={community} />
-      <FeaturedPartners featured_partners={featured_partners} />
-
-      <MailingList />
+      {/* <WhyNetLogo page_data={why_netlogo} /> */}
+      <GetNetLogo page_data={get_netlogo} section_color={color_palette[0]} />
+      <Community
+        communityPosts={communityContent}
+        page_data={community}
+        section_color={color_palette[1]}
+      />
+      {/* <FeaturedPartners featured_partners={featured_partners} /> */}
+      {/* <MailingList /> */}
     </div>
   );
 }

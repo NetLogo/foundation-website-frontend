@@ -114,7 +114,19 @@ const queries = {
     }
   `,
 
-  allData: gql`
+  netLogoVersions: gql`
+    query GetNetLogoVersions {
+      netlogo_versions {
+        version
+        download_links {
+          platform
+          download_url
+        }
+      }
+    }
+  `,
+
+  mainPageData: gql`
     query GetAllData {
       introduction {
         title
@@ -122,6 +134,7 @@ const queries = {
       }
       intro_splash {
         title
+
         description
         learn_more_link
         featured_items {
@@ -177,6 +190,38 @@ const queries = {
       announcements {
         title
         content
+      }
+    }
+  `,
+
+  downloadPageData: gql`
+    query GetDownloadPageData {
+      netlogo_versions {
+        version
+        download_links {
+          platform
+          download_url
+        }
+      }
+      donation_section {
+        title
+        text
+        image {
+          id
+        }
+        url
+      }
+    }
+  `,
+  donationTestData: gql`
+    query GetDonationTestData {
+      donation_test_entries {
+        title
+        text
+        image {
+          id
+        }
+        url
       }
     }
   `,

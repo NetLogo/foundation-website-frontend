@@ -35,11 +35,12 @@
   cursor: default;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: space-around;
   padding-left: 2.64rem;
   padding-right: 2.64rem;
   justify-content: space-between;
-  min-width: 1600px;
+  min-width: 1000px;
+  width: 100%;
 }
 
 .header-action {

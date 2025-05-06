@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useLayoutEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import "./styles/intro-splash.css";
 import type { IntroSplashEntry, FeaturedItem } from "../../utils/api";
@@ -54,8 +54,8 @@ const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
     image_entries?.[0]?.image?.id || ""
   );
 
-  // Reset image when entries change
-  useEffect(() => {
+  // Reset image when entries change - using useLayoutEffect instead of useEffect
+  useLayoutEffect(() => {
     if (image_entries && image_entries.length > 0) {
       setCurrentImageId(image_entries[0].image.id);
     }

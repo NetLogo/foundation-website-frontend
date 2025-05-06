@@ -62,6 +62,7 @@ export interface GetNetLogoEntry {
   icon: Image;
   link: string;
   order: number;
+  button_text: string;
 }
 
 export interface CommunityEntry {

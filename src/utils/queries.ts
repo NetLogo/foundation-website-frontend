@@ -172,6 +172,7 @@ const queries = {
           id
         }
         link
+        button_text
       }
       community {
         title

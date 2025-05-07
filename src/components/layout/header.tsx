@@ -76,6 +76,14 @@ const Header = ({ navData }: HeaderProps) => {
     }
   };
 
+  const NavigateToDonate = () => {
+    const donatePath = "/donate";
+    // Check if we're already on the homepage
+    if (window.location.pathname !== donatePath) {
+      window.location.href = donatePath;
+    }
+  };
+
   return (
     <div
       ref={headerRef}
@@ -94,7 +102,7 @@ const Header = ({ navData }: HeaderProps) => {
           style = {{ height: "2.4rem" }}
           text="DONATE"
           onClick={() => {
-            window.open("https://www.netlogo.org/donate", "_blank");
+            NavigateToDonate();
           }} />
       </div>
       <LazyHeaderExpanded

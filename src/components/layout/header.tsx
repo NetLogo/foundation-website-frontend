@@ -6,6 +6,7 @@ import hoverDropdownIcon from "../../assets/hover-dropdown-icon.svg";
 import { useRef } from "react";
 import type { NavigationSection } from "../../utils/api";
 import NetLogoOrgLogo from "../../assets/NetLogoOrgLogo.svg";
+import { Button } from "../shared/button";
 
 const LazyHeaderExpanded = React.lazy(() => import("./header-expanded"));
 
@@ -86,6 +87,15 @@ const Header = ({ navData }: HeaderProps) => {
           <img id="page-logo" src={NetLogoOrgLogo.src} />
         </div>
         {memoizedHeaderActions}
+        <Button
+          colorClass="blue-button"
+          padding=".9rem 1rem"
+          fontSize=".8rem"
+          style = {{ height: "2.4rem" }}
+          text="DONATE"
+          onClick={() => {
+            window.open("https://www.netlogo.org/donate", "_blank");
+          }} />
       </div>
       <LazyHeaderExpanded
         navigation_section={navData[hoveredIndex]}

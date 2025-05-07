@@ -35,7 +35,7 @@
   cursor: default;
   display: flex;
   flex-direction: row;
-  align-items: space-around;
+  align-items: center;
   padding-left: 2.64rem;
   padding-right: 2.64rem;
   justify-content: space-between;

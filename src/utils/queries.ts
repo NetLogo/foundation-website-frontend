@@ -226,6 +226,18 @@ const queries = {
       }
     }
   `,
+  donatePageData: gql`
+    query GetDonatePageData {
+      donation_section {
+        title
+        text
+        image {
+          id
+        }
+        url
+      }
+    }
+  `,
 };
 
 export default queries;

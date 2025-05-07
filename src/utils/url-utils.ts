@@ -17,4 +17,12 @@ const handleLinkClick = (url: string) => {
   window.open(fullUrl, "_blank");
 };
 
-export {getImageUrl, handleLinkClick};
+const NavigateToDonate = () => {
+  const donatePath = "/donate";
+  // Check if we're already on the homepage
+  if (window.location.pathname !== donatePath) {
+    window.location.href = donatePath;
+  }
+};
+
+export {getImageUrl, handleLinkClick, NavigateToDonate};

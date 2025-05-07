@@ -7,6 +7,7 @@ import { useRef } from "react";
 import type { NavigationSection } from "../../utils/api";
 import NetLogoOrgLogo from "../../assets/NetLogoOrgLogo.svg";
 import { Button } from "../shared/button";
+import { NavigateToDonate } from "../../utils/url-utils";
 
 const LazyHeaderExpanded = React.lazy(() => import("./header-expanded"));
 
@@ -73,14 +74,6 @@ const Header = ({ navData }: HeaderProps) => {
     // Check if we're already on the homepage
     if (window.location.pathname !== homePath) {
       window.location.href = homePath;
-    }
-  };
-
-  const NavigateToDonate = () => {
-    const donatePath = "/donate";
-    // Check if we're already on the homepage
-    if (window.location.pathname !== donatePath) {
-      window.location.href = donatePath;
     }
   };
 

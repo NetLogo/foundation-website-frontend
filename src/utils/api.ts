@@ -194,6 +194,10 @@ class NetLogoAPI {
     }>(queries.navigationData);
   }
 
+  async getDonationPageData() {
+    return await this.graphqlFetchData<{"donation_section":DonationData}>(queries.donatePageData);
+  }
+
   async sendDownloadForm(formData: FormData) {
     const url = this.baseUrl + "/items/download_responses";
 

@@ -204,7 +204,7 @@ const queries = {
           download_url
         }
       }
-      donation_section {
+      donation_data{
         title
         text
         image {
@@ -214,21 +214,9 @@ const queries = {
       }
     }
   `,
-  donationTestData: gql`
-    query GetDonationTestData {
-      donation_test_entries {
-        title
-        text
-        image {
-          id
-        }
-        url
-      }
-    }
-  `,
-  donatePageData: gql`
-    query GetDonatePageData {
-      donation_section {
+  donationData: gql`
+    query GetDonationData {
+      donation_data{
         title
         text
         image {

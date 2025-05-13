@@ -5,18 +5,13 @@ import DonationSection from "../components/download/donation-section.tsx";
 
 const api = new NetLogoApi();
 
-let pageData = await api.getDonationPageData()
 
-const isTesting = import.meta.env.PUBLIC_TESTING_DONATIONS
+const donationData = await api.getDonationData()
+const randomIndex = Math.floor(Math.random() * donationData.length);
 
-if (isTesting){
-    const testData = await api.getDonationTestData()
-    const randomIndex = Math.floor(Math.random() * testData.length);
-    pageData["donation_section"] = testData[randomIndex]
-}
 
 ---
 
 <Layout show_footer_buttons={false}>
-    <DonationSection donationData = {pageData["donation_section"]} client:load/>
+    <DonationSection donationData = {donationData[randomIndex]} client:load/>
 </Layout>

@@ -1,4 +1,3 @@
-import React from "react";
 import "./styles/download-section.css";
 import { DownloadForm } from "./download-form";
 import NetLogoIcon from "../../assets/NetlogoIcon.svg";

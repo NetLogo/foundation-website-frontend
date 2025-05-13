@@ -127,7 +127,7 @@ export interface DonationData {
 
 export interface DownloadPageData {
   netlogo_versions: NetLogoVersion[];
-  donation_section: DonationData;
+  donation_data: DonationData[];
 }
 
 class NetLogoAPI {
@@ -174,12 +174,12 @@ class NetLogoAPI {
     );
   }
 
-  async getDonationTestData() {
+  async getDonationData() {
     const donationData = await this.graphqlFetchData<{
-      donation_test_entries: DonationData[];
-    }>(queries.donationTestData);
+      donation_data: DonationData[];
+    }>(queries.donationData);
 
-    return donationData.donation_test_entries;
+    return donationData.donation_data;
   }
 
   async getNetLogoVersions() {
@@ -192,10 +192,6 @@ class NetLogoAPI {
     return await this.graphqlFetchData<{
       navigation_sections: NavigationSection[];
     }>(queries.navigationData);
-  }
-
-  async getDonationPageData() {
-    return await this.graphqlFetchData<{"donation_section":DonationData}>(queries.donatePageData);
   }
 
   async sendDownloadForm(formData: FormData) {

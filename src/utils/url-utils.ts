@@ -1,11 +1,7 @@
 const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
 
-interface Image {
-  id: string;
-}
-
-const getImageUrl = (image: Image) => {
-  return `${backend_url}/assets/${image.id}`;
+const getImageUrl = (id: string) => {
+  return `${backend_url}/assets/${id}`;
 };
 
 const handleLinkClick = (url: string) => {

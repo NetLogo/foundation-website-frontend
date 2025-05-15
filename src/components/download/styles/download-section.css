@@ -20,3 +20,36 @@
     display: block;
   }
 }
+
+.thankyou-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.thankyou-heading {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 3.5rem;
+  color: #3c3c3c;
+  text-align: left;
+  margin-bottom: 1.1rem;
+}
+
+.thankyou-text {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.25rem;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.thankyou-link {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.thankyou-link:hover {
+  text-decoration: underline;
+}

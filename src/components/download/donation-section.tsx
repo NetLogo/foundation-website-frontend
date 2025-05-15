@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { getImageUrl, handleLinkClick } from "../../utils/url-utils";
 import "./styles/donation-section.css";
 import { Button } from "../shared/button";
+import ContentImageLayout from "../shared/content-image-layout";
 
 export interface DonationData {
   title: string;
@@ -17,9 +18,9 @@ interface DonationSectionProps {
 
 const DonationSection = ({ donationData }: DonationSectionProps) => {
   return (
-    <div className="donate-container">
-      <div className="donate-text-container">
-        <h1 className="donate-title">{donationData.title}</h1>
+    <ContentImageLayout
+      imageId={donationData.image.id}>
+      <h1 className="donate-title">{donationData.title}</h1>
         <ReactMarkdown className="donate-text">
           {donationData.text}
         </ReactMarkdown>
@@ -32,7 +33,7 @@ const DonationSection = ({ donationData }: DonationSectionProps) => {
             hasIcon={false}
             style={{
               marginTop: "1.75rem",
-              width: "fit-content",
+              width: "203px",
               borderRadius: "17px",
             }}
             onClick={() => handleLinkClick(donationData.url)}
@@ -42,16 +43,10 @@ const DonationSection = ({ donationData }: DonationSectionProps) => {
             goes to the Center for Connected Learning to support NetLogo
           </p>
         </div>
-      </div>
-      <div className="donate-image-container">
-        <img
-          className="donate-image"
-          src={getImageUrl(donationData.image)}
-          alt="donate image"
-        />
-      </div>
-    </div>
+    </ContentImageLayout>
+
   );
 };
 
 export default DonationSection;
+

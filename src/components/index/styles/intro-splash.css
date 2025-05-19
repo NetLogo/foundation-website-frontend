@@ -34,13 +34,14 @@
 }
 
 .category-button {
-  padding: 10.5px 25px;
+  padding: 17.25px 25px;
   border-radius: 10px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 17.5px;
   border: none;
   background-color: transparent;
   color: #666;
+  background-color: #f4f4f5;
   cursor: pointer;
   font-family: Inter;
 }
@@ -51,7 +52,7 @@
 }
 
 .category-button:hover:not(.active) {
-  background-color: #f3f4f6;
+  background-color: #e7e9eb;
 }
 
 /* ===== Simulation Container ===== */
@@ -64,7 +65,6 @@
   gap: 20px;
   height: fit-content;
   margin: 0;
-
 }
 
 /* Layout for multiple images display */
@@ -163,7 +163,6 @@
   border-radius: 10px;
   margin: 2px;
 }
-
 
 /* ===== LinksColumnComponent & ImagesColumnComponent shared styles ===== */
 .column-container {

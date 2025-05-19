@@ -62,10 +62,12 @@ const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
   }, [image_entries]);
 
   const images_object = useMemo(() => {
-    return image_entries?.reduce((acc: any, entry: ImagePair) => {
-      acc[entry.image.id] = entry.word;
-      return acc;
-    }, {}) || {};
+    return (
+      image_entries?.reduce((acc: any, entry: ImagePair) => {
+        acc[entry.image.id] = entry.word;
+        return acc;
+      }, {}) || {}
+    );
   }, [image_entries]);
 
   return (
@@ -142,6 +144,8 @@ const LinksColumn = ({ title, link_entries }: LinksColumnProps) => {
 
 // Main component
 const IntroSplash = ({ page_data }: IntroSplashProps) => {
+  console.log("IntroSplash component rendered");
+  console.log(page_data);
   // Process learn more links first before setting state
   const processedData = useMemo(() => {
     return page_data.map((item: IntroSplashEntry) => {
@@ -168,14 +172,17 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
     return introData.find((tab) => tab.title === currentTab) || introData[0];
   }, [currentTab, introData]);
 
-  const FeaturedItems: FeaturedItem[] | undefined =
-    currentTabData?.featured_items;
+  const FeaturedItems: FeaturedItem[] | undefined = useMemo(() => {
+    return currentTabData?.featured_items;
+  }, [currentTabData]);
 
   // Check if all items are images (type 1)
   const allItemsAreImages = useMemo(() => {
     if (!FeaturedItems || FeaturedItems.length === 0) return false;
+    console.log(currentTabData);
+    console.log(FeaturedItems.every((item) => Number(item?.type) === 1));
     return FeaturedItems.every((item) => Number(item?.type) === 1);
-  }, [FeaturedItems]);
+  }, [currentTabData]);
 
   // Render functions
   const renderFeaturedItem = (item: FeaturedItem, index: number) => {
@@ -186,7 +193,7 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
         return (
           <img
             key={`${currentTab}-image-${index}`} // Add unique key based on tab
-            className={`featured-image ${allItemsAreImages ? "uniform-height" : ""}`}
+            className={`featured-image ${allItemsAreImages && FeaturedItems.length > 1 ? "uniform-height" : ""}`}
             src={createImageURL(item?.image?.id || "")}
             alt={currentTabData?.title}
           />
@@ -227,6 +234,10 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
           ))}
         </div>
 
+        <div className="featured-item-description">
+            <ReactMarkdown>{currentTabData?.description || ""}</ReactMarkdown>
+        </div>
+
         <div
           className={`featured-item-container ${allItemsAreImages ? "all-images" : ""}`}
         >
@@ -235,12 +246,6 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
               {renderFeaturedItem(item, index)}
             </React.Fragment>
           ))}
-        </div>
-
-        <div className="featured-item-description">
-          <span className="inline-markdown">
-            <ReactMarkdown>{currentTabData?.description || ""}</ReactMarkdown>
-          </span>
         </div>
       </div>
     </div>

@@ -18,7 +18,9 @@
   align-items: center;
   border-radius: 15px;
   padding-top: 10px;
-  height: 700px;
+  height: fit-content;
+  max-height: 700px;
+  padding-bottom: 24px;
 }
 
 /* ===== Category Navigation ===== */
@@ -26,8 +28,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  justify-content: center;
-  margin-bottom: 32px;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
 }
 
 .category-button {
@@ -58,9 +61,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-bottom: 24px;
   gap: 20px;
-  height: 500px;
+  height: fit-content;
+  margin: 0;
+
 }
 
 /* Layout for multiple images display */
@@ -71,8 +75,10 @@
 
 /* ===== Images ===== */
 .featured-image {
-  height: 100%;
+  height: 95%;
+  max-height: 520px;
   border-radius: 4px;
+  max-width: 100%;
 }
 
 .featured-image.uniform-height {
@@ -83,7 +89,9 @@
 }
 
 .current-column-image {
-  height: 400px;
+  min-height: 450px;
+  height: 29rem;
+  width: auto;
   border-radius: 4px;
 }
 
@@ -98,8 +106,8 @@
 /* ===== Description Section ===== */
 .featured-item-description {
   text-align: left;
-  max-width: 768px;
-  margin: 0 auto;
+  max-width: 90%;
+  margin: 20px auto;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -109,6 +117,7 @@
   font-size: 16px;
   color: #555;
   line-height: 1.5;
+  margin: 0;
 }
 
 .featured-item-description a {
@@ -159,9 +168,7 @@
 /* ===== LinksColumnComponent & ImagesColumnComponent shared styles ===== */
 .column-container {
   min-width: 190px;
-  margin: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
+  font-family: Inter;
 }
 
 .column-title {

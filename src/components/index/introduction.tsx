@@ -65,7 +65,7 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
                 style={buttonStyle}
                 onClick={scrollToGetNetLogo}
               />
-              <p>Free to use</p>
+              <p>100% Free</p>
             </div>
           </div>
         </div>

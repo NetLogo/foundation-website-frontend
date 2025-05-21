@@ -59,10 +59,10 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
             <div className="button-data">
               <Button
                 colorClass="blue-button"
-                padding=".5rem 1.5rem"
-                fontSize="1.125rem"
+                padding="0.875rem 2rem"
+                fontSize="1rem"
                 text="GET NETLOGO"
-                style={buttonStyle}
+                style={{ width: "12rem" }}
                 onClick={scrollToGetNetLogo}
               />
               <p>100% Free</p>

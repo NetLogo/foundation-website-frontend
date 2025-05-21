@@ -1,4 +1,4 @@
-const t=(i,...e)=>i.reduce((o,r,n)=>`${o}${r}${n in e?String(e[n]):""}`,""),a={introduction:t`
+const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={introduction:t`
     query {
       introduction {
         title
@@ -151,6 +151,7 @@ const t=(i,...e)=>i.reduce((o,r,n)=>`${o}${r}${n in e?String(e[n]):""}`,""),a={i
           id
         }
         link
+        button_text
       }
       community {
         title
@@ -180,7 +181,7 @@ const t=(i,...e)=>i.reduce((o,r,n)=>`${o}${r}${n in e?String(e[n]):""}`,""),a={i
           download_url
         }
       }
-      donation_section {
+      donation_data{
         title
         text
         image {
@@ -189,9 +190,9 @@ const t=(i,...e)=>i.reduce((o,r,n)=>`${o}${r}${n in e?String(e[n]):""}`,""),a={i
         url
       }
     }
-  `,donationTestData:t`
-    query GetDonationTestData {
-      donation_test_entries {
+  `,donationData:t`
+    query GetDonationData {
+      donation_data{
         title
         text
         image {

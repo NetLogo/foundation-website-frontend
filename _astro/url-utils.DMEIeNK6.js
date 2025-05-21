@@ -1,0 +1,1 @@
+const o="https://backend.netlogo.org",a=t=>`${o}/assets/${t}`,s=t=>{const n=t.startsWith("http://")||t.startsWith("https://")?t:`https://${t}`;window.open(n,"_blank")},e=()=>{const t="/donate";window.location.pathname!==t&&(window.location.href=t)};export{e as N,a as g,s as h};

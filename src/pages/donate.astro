@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NetLogoApi from "../utils/api.js";
+import DonationSection from "../components/download/donation-section.tsx";
+
+const api = new NetLogoApi();
+
+
+const donationData = await api.getDonationData()
+const randomIndex = Math.floor(Math.random() * donationData.length);
+
+
+---
+
+<Layout show_footer_buttons={false}>
+    <DonationSection donationData = {donationData[randomIndex]} client:load/>
+</Layout>

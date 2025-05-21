@@ -62,6 +62,7 @@ export interface GetNetLogoEntry {
   icon: Image;
   link: string;
   order: number;
+  button_text: string;
 }
 
 export interface CommunityEntry {
@@ -126,7 +127,7 @@ export interface DonationData {
 
 export interface DownloadPageData {
   netlogo_versions: NetLogoVersion[];
-  donation_section: DonationData;
+  donation_data: DonationData[];
 }
 
 class NetLogoAPI {
@@ -173,12 +174,12 @@ class NetLogoAPI {
     );
   }
 
-  async getDonationTestData() {
+  async getDonationData() {
     const donationData = await this.graphqlFetchData<{
-      donation_test_entries: DonationData[];
-    }>(queries.donationTestData);
+      donation_data: DonationData[];
+    }>(queries.donationData);
 
-    return donationData.donation_test_entries;
+    return donationData.donation_data;
   }
 
   async getNetLogoVersions() {

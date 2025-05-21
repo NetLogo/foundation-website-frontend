@@ -1,9 +1,7 @@
 import "./styles/footer.css";
-import { useMemo, useEffect } from "react";
+import { useMemo } from "react";
 import { Button } from "../shared/button";
-import lofiTextLg from "../../assets/lofi-text-l.svg";
-import lofiTextMed from "../../assets/lofi-text-m.svg";
-import lofiTextSm from "../../assets/lofi-text-s.svg";
+import { NavigateToDonate } from "../../utils/url-utils";
 import type { NavigationSection, NavigationItem } from "../../utils/api";
 
 interface FooterProps {
@@ -86,11 +84,7 @@ const Footer = ({ navData, show_buttons = true }: FooterProps) => {
                 fontSize="1rem"
                 text="DONATE"
                 style={{ width: "12rem" }}
-                onClick={() =>
-                  pageRedirect(
-                    "https://secure.ard.northwestern.edu/s/1479/282-giving/basic-page-nonav-campaign.aspx?sid=1479&gid=282&pgid=19841&cid=31575"
-                  )
-                }
+                onClick={() => NavigateToDonate()}
               />
             </div>
           </div>

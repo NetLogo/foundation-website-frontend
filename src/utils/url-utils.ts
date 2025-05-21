@@ -1,11 +1,7 @@
 const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
 
-interface Image {
-  id: string;
-}
-
-const getImageUrl = (image: Image) => {
-  return `${backend_url}/assets/${image.id}`;
+const getImageUrl = (id: string) => {
+  return `${backend_url}/assets/${id}`;
 };
 
 const handleLinkClick = (url: string) => {
@@ -17,4 +13,12 @@ const handleLinkClick = (url: string) => {
   window.open(fullUrl, "_blank");
 };
 
-export {getImageUrl, handleLinkClick};
+const NavigateToDonate = () => {
+  const donatePath = "/donate";
+  // Check if we're already on the homepage
+  if (window.location.pathname !== donatePath) {
+    window.location.href = donatePath;
+  }
+};
+
+export {getImageUrl, handleLinkClick, NavigateToDonate};

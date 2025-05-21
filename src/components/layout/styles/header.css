@@ -5,19 +5,21 @@
   --Light-3: #ebebf0;
   --Light-2: #f2f2f5;
   --Dark-2: #555770;
+  --Dark-3: #8f90a6;
 }
 
 .netlogo-header {
   width: 100%;
   max-width: 100%;
   height: 3.5rem;
-  background-color: black;
   display: flex;
   align-items: center;
   flex-shrink: 0;
   border-bottom: 1px solid var(--Light-3, #ebebf0);
   background: var(--Light-2, #f2f2f5);
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to allow dropdowns to show */
+  position: relative; /* Added to establish positioning context */
+  z-index: 100; /* Ensure header stays above other content */
 }
 
 #netlogo-title {
@@ -39,7 +41,8 @@
   padding-left: 2.64rem;
   padding-right: 2.64rem;
   justify-content: space-between;
-  min-width: 1600px;
+  min-width: 1000px;
+  width: 100%;
 }
 
 .header-action {
@@ -50,6 +53,7 @@
   font-weight: 600;
   line-height: 130%;
   letter-spacing: 0.025rem;
+  transition: color 0.2s ease;
 }
 
 .header-action-hovered {
@@ -57,19 +61,40 @@
 }
 
 .header-action-cont {
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 0.62rem;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
 }
 
 .header-action-cont:hover {
-    cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .header-action-cont:first-child {
   gap: 0.63rem;
+}
+
+.header-nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dropdown-container {
+  position: absolute;
+  margin-top: 10px;
+  top: 100%;
+  left: 0;
+  z-index: 20;
+  width: auto;
 }
 
 .netlogo-icon-cont {
@@ -98,38 +123,57 @@
 .dropdown-icon {
   width: 1rem;
   height: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-icon-rotated {
+  transform: rotate(180deg);
+}
+
+/* Dropdown styling */
+.header-expanded-container {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .header-expanded {
   display: flex;
   flex-direction: column;
-  width: 100%;
   opacity: 0;
   visibility: hidden;
   transition:
     max-height 0.3s ease-out,
-    opacity 0.3s ease-out;
+    opacity 0.3s ease-out,
+    visibility 0.3s ease-out;
   border-bottom: 1px solid var(--Light-3, #ebebf0);
   background: var(--Light-2, #f2f2f5);
   position: absolute;
-  top: 3.5rem;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  z-index: 10;
   justify-content: center;
   padding-bottom: 1.88rem;
+  width: auto;
+  min-width: max-content;
+  max-width: 1200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 4px 4px;
 }
 
 .header-expanded.expanded {
-  max-height: 500px;
-  visibility: visible;
   opacity: 1;
+  visibility: visible;
+  max-height: 500px;
 }
 
 .header-expanded-content {
   display: flex;
   flex-direction: row;
   gap: 2.5rem;
-  padding-left: 12.8%;
-  width: 100%;
+  padding: 1rem 2rem;
+  width: auto;
+  min-width: max-content;
   box-sizing: border-box;
 }
 
@@ -170,10 +214,21 @@
   line-height: 150%;
   cursor: pointer;
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.header-action-content:hover {
+  color: #fb6055;
 }
 
 .header-link {
   text-decoration: none;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.header-link:hover {
+  transform: translateX(3px);
 }
 
 .header-expanded-line {
@@ -186,4 +241,15 @@
 .not-visible {
   visibility: hidden;
   cursor: default !important;
+}
+
+/* Mobile responsiveness - add if needed */
+@media (max-width: 1024px) {
+  .header-action-bar {
+    min-width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* More mobile styles can be added here */
 }

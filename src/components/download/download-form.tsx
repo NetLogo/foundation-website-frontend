@@ -3,7 +3,6 @@ import React, {
   useMemo,
   type ChangeEvent,
   type FormEvent,
-  version,
 } from "react";
 import "./styles/download-form.css";
 import { type NetLogoVersion } from "../../utils/api";
@@ -22,9 +21,23 @@ export interface FormData {
 
 interface DownloadFormProps {
   versions: NetLogoVersion[];
+  downloadedSetter?: () => void;
 }
 
-const DownloadForm = ({ versions }: DownloadFormProps) => {
+const DetectOS = () => {
+  const userAgent = navigator.userAgent;
+  let os = null;
+  
+  if (userAgent.indexOf("Win") !== -1) os = "Windows";
+  else if (userAgent.indexOf("Mac") !== -1) os = "macOS";
+  else if (userAgent.indexOf("Linux") !== -1) os = "Linux";
+  else if (userAgent.indexOf("Android") !== -1) os = "Android";
+  else if (userAgent.indexOf("like Mac") !== -1) os = "iOS"; // iPhone, iPad
+  
+  return os;
+}
+
+const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
     version: "",
@@ -93,6 +106,7 @@ const DownloadForm = ({ versions }: DownloadFormProps) => {
       return;
     } else {
       window.open(downloadUrl);
+      downloadedSetter?.();
     }
   };
 

@@ -16,6 +16,7 @@ interface ItemCardProps {
   image_key: string;
   link: string;
   card_color: string;
+  button_text?: string;
 }
 
 const ItemCard = ({
@@ -24,6 +25,7 @@ const ItemCard = ({
   image_key,
   link,
   card_color,
+  button_text,
 }: ItemCardProps) => {
   const pageRedirect = (url: string) => {
     window.open(url, "_blank");
@@ -49,7 +51,7 @@ const ItemCard = ({
           colorClass="blue-button"
           padding="0.75rem 2.5rem"
           fontSize="0.875rem"
-          text="GET"
+          text={button_text ? button_text : "GET"}
           onClick={() => pageRedirect(link)}
         />
       </div>
@@ -96,6 +98,7 @@ const GetNetLogo = ({ page_data, section_color }: GetNetLogoProps) => {
                   title={item.title}
                   description={item.content}
                   image_key={item.icon.id}
+                  button_text={item.button_text}
                   link={item.link}
                   card_color={
                     section_color == color_palette[0]

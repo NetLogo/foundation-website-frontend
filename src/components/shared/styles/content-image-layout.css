@@ -1,10 +1,12 @@
 .content-image-layout {
   display: flex;
   justify-content: center;
-  margin-top: 109px;
+  margin-top: 40px;
   flex-wrap: nowrap;
   flex-direction: row;
   align-items: center;
+  margin-left: 153px;
+  margin-right: 153px;
 }
 
 .content-container {

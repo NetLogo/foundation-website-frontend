@@ -26,7 +26,6 @@ interface DownloadFormProps {
 
 const DetectOS = () => {
   const userAgent = navigator.userAgent;
-  console.log(userAgent);
   let os = null;
   
   if (userAgent.indexOf("Win") !== -1) os = "Windows";
@@ -49,8 +48,6 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
     subscribe: false,
     comments: "",
   });
-
-  console.log("OS detected:", DetectOS());
 
   const netLogoVersions = useMemo(() => {
     const onlyVersions = versions.map((version) => version.version);

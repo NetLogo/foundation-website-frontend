@@ -144,8 +144,6 @@ const LinksColumn = ({ title, link_entries }: LinksColumnProps) => {
 
 // Main component
 const IntroSplash = ({ page_data }: IntroSplashProps) => {
-  console.log("IntroSplash component rendered");
-  console.log(page_data);
   // Process learn more links first before setting state
   const processedData = useMemo(() => {
     return page_data.map((item: IntroSplashEntry) => {
@@ -179,8 +177,6 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
   // Check if all items are images (type 1)
   const allItemsAreImages = useMemo(() => {
     if (!FeaturedItems || FeaturedItems.length === 0) return false;
-    console.log(currentTabData);
-    console.log(FeaturedItems.every((item) => Number(item?.type) === 1));
     return FeaturedItems.every((item) => Number(item?.type) === 1);
   }, [currentTabData]);
 

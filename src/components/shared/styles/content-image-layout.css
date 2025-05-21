@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   margin-top: 109px;
-  flex-wrap: wrap;
-  flex-direction: column-reverse;
+  flex-wrap: nowrap;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -31,9 +31,9 @@
     width: 100%;
 }
 
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
     .content-image-layout {
       flex-wrap: nowrap;
       flex-direction: row;
     }
-  }
+  } */

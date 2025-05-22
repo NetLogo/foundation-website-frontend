@@ -184,13 +184,18 @@ class NetLogoAPI {
       // add some console log stmts in the api and make sure it get the data how you expect the go to typesript file 
       
 
-
-
+      // ! This groups the references by year
+      // ! The only data that is added is the reference itself
+      // ! Make sure that you are also adding the bool is_ccl
+      // ! This will require you to chnage the data structure
+      // ! So you will have to change the code and the types that you define
       // Push the reference into the array for that year
       groupedReferences.get(year)?.push(item.reference);
     })
+
+    console.log('Grouped References:', groupedReferences);
     
-    return references['References']
+    return groupedReferences
   }
 
   async getNavigationData() {

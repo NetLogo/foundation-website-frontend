@@ -19,13 +19,19 @@ export interface YearReferences {
 
 
 
+// ! To solve the issues you have to go through the flow of the data and make sure it is being handled properly
+// ! Start by making changes to api.ts in the getReferences function to how th data is formatted and make sure you have all the info you need
+// ! Then go to the references.astro file and make sure the data is formated the way you cna interact with it in this component
+// ! Then access the data within this file and make sure you are able to dispaly the data
+
+// ! If all else fails, start over or revert to a previous version of the code that did work
 
 interface ReferenceSectionProps {
   pageData: YearReferences[];
 }
 
 const ReferenceSection = ({ pageData }: ReferenceSectionProps) => {
-  //console.log("Page Data:", pageData[0]); // Log the pageData to check its structure
+  console.log("Page Data:", pageData[0]); // Log the pageData to check its structure
   return (
     <div className="references-container">
       <h1>References</h1>
@@ -56,7 +62,7 @@ const ReferenceSection = ({ pageData }: ReferenceSectionProps) => {
         <div key={index} id={`year-${item.year}`} className="year-block">
           <h3>{item.year}</h3>
           <ul>
-            //console.log({item} {index})
+            
             {item.references.map((reference, refIndex) => (
               <li key={refIndex}>
                 {reference.text}

@@ -101,6 +101,7 @@ const queries = {
     References(limit: -1) {
       year
       reference
+      is_ccl
     }
   }
 `,

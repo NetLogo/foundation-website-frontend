@@ -100,12 +100,14 @@ export interface NavigationItem {
 }
 
 export interface ReferenceEntry {
-  year: string;
+  year: number;
   reference: string;
+  is_ccl: boolean;
+  //in_press: boolean;
 }
 
 export interface GroupedReference {
-  year: string;
+  year: number;
   references: string[];
 }
 
@@ -162,7 +164,7 @@ class NetLogoAPI {
 
     // Group references by year
     // Variable where it will be strored
-    let groupedReferences: Map<string, string[]> = new Map();
+    let groupedReferences: Map<number, string[]> = new Map();
 
     // Loop through the references and group them by year
     references['References'].forEach((item) => {
@@ -173,12 +175,22 @@ class NetLogoAPI {
         // If not, create a new entry with an empty array
         groupedReferences.set(year, []);
       }
+      //data is not consistent
+      //indexing data that i cant work with it
+      //how did i organize data from directus 
+      //The issue is inconsistent data indexing or formatting when calling the getReferences() method and attempting to process or display the data. The line:
+      //suggests that your grouped data may not be properly returned, consumed, or structured. 
+
+      // add some console log stmts in the api and make sure it get the data how you expect the go to typesript file 
+      
+
+
 
       // Push the reference into the array for that year
       groupedReferences.get(year)?.push(item.reference);
     })
     
-    return groupedReferences
+    return references['References']
   }
 
   async getNavigationData() {

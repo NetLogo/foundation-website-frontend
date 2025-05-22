@@ -2,23 +2,26 @@
 import Layout from "../layouts/Layout.astro";
 import { ReferenceSection } from "../components/references/references-page";
 import NetLogoApi from "../utils/api.js";
-import type{ YearReferences } from "../components/references/references-page.js";
+import type { YearReferences } from "../components/references/references-page.js";
 
 const api = new NetLogoApi();
 const siteData = await api.getReferences();
-
+console.log("siteData", siteData);
 let formattedReferences: YearReferences[] = [];
 
-Array.from(siteData.entries()).forEach(([key, value]) => {
-    formattedReferences.push( {
-        year: key,
-        references: value
-    });
-});
 
+// Array.from(siteData.entries()).forEach(([key, value]) => {
+//     formattedReferences.push({
+//         year: key,
+//         references: value.map((ref: any) => ({
+//         text: ref.Reference, // Directus field
+//         is_ccl: ref.is_ccl, 
+//         })),
+//     });
+// });
+//console.log("formattedReferences", formattedReferences);
 ---
 
 <Layout>
-    <ReferenceSection
-        pageData={formattedReferences}/>
+    <ReferenceSection pageData={formattedReferences} client:load />
 </Layout>

@@ -162,9 +162,11 @@ class NetLogoAPI {
   async getReferences() {
     const references: {'References': ReferenceEntry[]} =  await this.graphqlFetchData<{'References': ReferenceEntry[]}>(queries.referenceData);
 
-    // Group references by year
-    // Variable where it will be strored
-    let groupedReferences: Map<number, string[]> = new Map();
+
+    // ***new fix stores is ccl and the refrence not jsut ref 
+    let groupedReferences: Map<number, { reference: string; is_ccl: boolean }[]> = new Map();
+
+    //let groupedReferences: Map<number, string[]> = new Map();
 
     // Loop through the references and group them by year
     references['References'].forEach((item) => {
@@ -184,18 +186,36 @@ class NetLogoAPI {
       // add some console log stmts in the api and make sure it get the data how you expect the go to typesript file 
       
 
-      // ! This groups the references by year
-      // ! The only data that is added is the reference itself
-      // ! Make sure that you are also adding the bool is_ccl
-      // ! This will require you to chnage the data structure
-      // ! So you will have to change the code and the types that you define
-      // Push the reference into the array for that year
-      groupedReferences.get(year)?.push(item.reference);
-    })
 
-    console.log('Grouped References:', groupedReferences);
+
+      // Push the reference into the array for that year
+      //groupedReferences.get(year)?.push(item.reference);
+
+      //***new fix 2: ensure that each reference is stored with the text and the is_ccl field proper rendering
+
+      groupedReferences.get(year)?.push({
+        reference: item.reference,
+        is_ccl: item.is_ccl
+      });
+      
+    })
+    // *** new fix 3: return in coreect strucure 
+    //console.log('Grouped References:', groupedReferences);
+    //return groupedReferences;
+
+    // *** new fix 4: make sure the data is formatted into the array shape your frontend expects
+    const groupedArray = Array.from(groupedReferences.entries()).map(([year, refs]) => ({
+      year,
+      references: refs
+    }));
     
-    return groupedReferences
+    //console.log('Grouped References:', groupedArray);
+    return groupedArray;
+    
+
+    
+
+    //return references['References']
   }
 
   async getNavigationData() {

@@ -17,6 +17,9 @@ export interface FormData {
   email: string;
   subscribe: boolean;
   comments: string;
+  ip: string;
+  country: string;
+  time_stamp: string;
 }
 
 interface DownloadFormProps {
@@ -37,6 +40,20 @@ const DetectOS = () => {
   return os;
 }
 
+const getFormattedTimestamp = () => {
+  const now = new Date();
+  const pad = (n:number) => String(n).padStart(2, '0');
+
+  const year = now.getFullYear();
+  const month = pad(now.getMonth() + 1); // Months are 0-indexed
+  const day = pad(now.getDate());
+  const hour = pad(now.getHours());
+  const minute = pad(now.getMinutes());
+  const second = pad(now.getSeconds());
+
+  return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+}
+
 const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
@@ -47,6 +64,9 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
     email: "",
     subscribe: false,
     comments: "",
+    ip: "",
+    country: "",
+    time_stamp: "",
   });
 
   const netLogoVersions = useMemo(() => {
@@ -85,11 +105,20 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
     });
   };
 
-  const handleFormSubmission = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Send form data to backend
     const api = new NetLogoAPI();
+
+    await fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      formData.ip = data.ip;
+      formData.country = data.country_name;
+      formData.time_stamp = getFormattedTimestamp();
+    });
+
     const result = api.sendDownloadForm(formData);
     
     //Go to download Link
@@ -100,6 +129,9 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
     const downloadUrl = downloadVersion?.download_links.find(
       (link) => link.platform === formData.platform
     )?.download_url;
+
+    
+
 
     if (!downloadUrl) {
       alert("Download link not found");

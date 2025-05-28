@@ -1,0 +1,18 @@
+.dynamic-page{
+    text-align: left;
+    width: 85%;
+    margin: auto;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.section-content{
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    margin-left: 40px;
+}

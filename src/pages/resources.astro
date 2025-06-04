@@ -3,14 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import NetLogoApi from "../utils/api.js";
 import DynamicPage from "../components/dynamic_pages/dynamic-page";
 
-
+// Fetch the resources data from the API
+// Get Page Data
 const api = new NetLogoApi();
-
 const pageData = await api.getResourcesData();
-
 
 ---
 
+<!-- Setup Page Layout -->
 <Layout show_footer_buttons={false}>
+    <!-- Display Data -->
     <DynamicPage pageData = {pageData}/>
 </Layout>

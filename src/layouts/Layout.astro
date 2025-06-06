@@ -4,24 +4,49 @@ import { Header } from "../components/layout/header";
 import { Footer } from "../components/layout/footer";
 import "./styles/Layout.css";
 
-const {show_footer_buttons} = Astro.props;
+const { show_footer_buttons } = Astro.props;
 
 const api = new NetLogoApi();
 
 const navData = await api.getNavigationData();
 
-const {navigation_sections} = navData;
-
+const { navigation_sections } = navData;
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=G-N5CY0TR3R2"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      // This should ALWAYS be set before the gtag("config", "G-XXXXXXXXXX"); line
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
+
+      gtag("config", "G-N5CY0TR3R2");
+    </script>
   </head>
   <body>
-    <Header client:load navData={navigation_sections}/>
+    <Header client:load navData={navigation_sections} />
     <main>
       <slot />
     </main>
-    <Footer client:load navData={navigation_sections} show_buttons={show_footer_buttons}/>
+    <Footer
+      client:load
+      navData={navigation_sections}
+      show_buttons={show_footer_buttons}
+    />
   </body>
 </html>

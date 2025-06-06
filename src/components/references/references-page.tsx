@@ -8,7 +8,7 @@ export interface YearReferences {
   year: number;
   references: {
     text: string;
-    is_ccl: boolean; 
+    is_ccl: boolean;
   }[];
 }
 
@@ -62,12 +62,16 @@ const ReferenceSection = ({ pageData }: ReferenceSectionProps) => {
         <div key={index} id={`year-${item.year}`} className="year-block">
           <h3>{item.year}</h3>
           <ul>
-            
+
             {item.references.map((reference, refIndex) => (
-              <li key={refIndex}>
+              <li
+                key={refIndex}
+                className={reference.is_ccl ? "is_ccl" : ""}
+              >
                 {reference.text}
               </li>
-            ))} 
+            ))}
+
           </ul>
         </div>
       ))}

@@ -84,5 +84,6 @@ def post_references_to_directus(references):
 # Run the function and post to Directus
 file_path = "src/utils/references.shtml"
 references = extract_references(file_path)
-post_references_to_directus(references)
+post_references_to_directus(references[100:300])  # Posting only the first 100 references for testing
+
 

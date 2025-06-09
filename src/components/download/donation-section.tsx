@@ -13,16 +13,23 @@ export interface DonationData {
 }
 
 interface DonationSectionProps {
-  donationData: DonationData;
+  donationArray: DonationData[];
 }
 
-const DonationSection = ({ donationData }: DonationSectionProps) => {
+const DonationSection = ({ donationArray }: DonationSectionProps) => {
+  const [donationData, setDonationData] = useState<DonationData | null>(null);
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * donationArray.length);
+    setDonationData(donationArray[randomIndex]);
+  }, []);
+
   return (
     <ContentImageLayout
-      imageId={donationData.image.id}>
-      <h1 className="donate-title">{donationData.title}</h1>
+      imageId={donationData?.image.id}>
+      <h1 className="donate-title">{donationData?.title}</h1>
         <ReactMarkdown className="donate-text">
-          {donationData.text}
+          {donationData?.text}
         </ReactMarkdown>
         <div className="donate-button-container">
           <Button
@@ -36,7 +43,7 @@ const DonationSection = ({ donationData }: DonationSectionProps) => {
               width: "203px",
               borderRadius: "17px",
             }}
-            onClick={() => handleLinkClick(donationData.url)}
+            onClick={() => donationData ? handleLinkClick(donationData.url) : null}
           />
           <p>
             Donations are processed through Northwestern University, but 100%

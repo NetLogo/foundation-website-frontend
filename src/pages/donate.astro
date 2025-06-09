@@ -5,13 +5,10 @@ import DonationSection from "../components/download/donation-section.tsx";
 
 const api = new NetLogoApi();
 
-
 const donationData = await api.getDonationData()
-const randomIndex = Math.floor(Math.random() * donationData.length);
-
 
 ---
 
 <Layout show_footer_buttons={false}>
-    <DonationSection donationData = {donationData[randomIndex]} client:load/>
+    <DonationSection donationArray = {donationData} client:load/>
 </Layout>

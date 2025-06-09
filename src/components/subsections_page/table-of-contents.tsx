@@ -1,6 +1,7 @@
 import React from "react";
 import { type PageEntry } from "../../utils/api";
 import { generateId } from "../../utils/url-utils";
+import "./styles/table-of-contents.css";
 
 interface TOCProps {
   pageData: PageEntry[];

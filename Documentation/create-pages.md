@@ -15,7 +15,7 @@ The filename becomes the page's route. For instance:
 - [Setting Up Your Page](#setting-up-your-page)    
     - [1. Setup Layout](#1-setup-layout)
     - [2. Get Data](#2-get-data)
-        - [Dynamic Pages](#dynamic-pages)
+        - [subsections Pages](#subsections-pages)
         - [Custom Pages](e#custom-pages)
     - [3. Connect Data](#3-connect-data)
 - [Displaying Page Data](#displaying-page-data)
@@ -40,7 +40,7 @@ Here’s an example breakdown for a page:
 ---
 import Layout from "../layouts/Layout.astro";
 import NetLogoApi from "../utils/api.js";
-import DynamicPage from "../components/dynamic_pages/dynamic-page";
+import subsectionsPage from "../components/subsections_pages/subsections-page";
 
 // Get Page Data
 const api = new NetLogoApi();
@@ -49,7 +49,7 @@ const pageData = await api.getResourcesData();
 <!-- Setup Page Layout -->
 <Layout show_footer_buttons={false}>
   <!-- Display Data -->
-  <DynamicPage pageData={pageData} />
+  <subsectionsPage pageData={pageData} />
 </Layout>
 ```
 
@@ -85,16 +85,16 @@ This step involves interacting with Directus to fetch data for your page.
 
 There are two main flows:
 
-1. **Dynamic Pages** — A common page structure with repeating sections.
+1. **subsections Pages** — A common page structure with repeating sections.
     
 2. **Custom Pages** — A fully customized page based on your needs.
     
 
 ---
 
-### Dynamic Pages
+### subsections Pages
 
-Dynamic pages require a collection with:
+subsections pages require a collection with:
 
 - `section_title`
     
@@ -150,7 +150,7 @@ queries.ts → api.ts → .astro file
 
 ### Creating a New Query (`queries.ts`)
 
-Example query for a dynamic page:
+Example query for a subsections page:
 
 ```ts
 some_name: gql`
@@ -215,7 +215,7 @@ const pageData = await api.getResourcesData();
 ---
 <!-- Setup Page Layout -->
 <Layout show_footer_buttons={false}>
-  <DynamicPage pageData={pageData} />
+  <subsectionsPage pageData={pageData} />
 </Layout>
 ```
 
@@ -223,14 +223,14 @@ const pageData = await api.getResourcesData();
 
 # Displaying Page Data
 
-Once your data is loaded into `pageData`, you can pass it as a prop to your components and render it dynamically.
+Once your data is loaded into `pageData`, you can pass it as a prop to your components and render it subsectionsally.
 
-For dynamic pages, you can use the `DynamicPage` component to map over your `pageData` array and render each section. For instance:
+For subsections pages, you can use the `subsectionsPage` component to map over your `pageData` array and render each section. For instance:
 ```
 ---
 import Layout from "../layouts/Layout.astro";
 import NetLogoApi from "../utils/api.js";
-import DynamicPage from "../components/dynamic_pages/dynamic-page";
+import subsectionsPage from "../components/subsections_pages/subsections-page";
 
 // Get Page Data
 const api = new NetLogoApi();
@@ -239,7 +239,7 @@ const pageData = await api.getResourcesData();
 <!-- Setup Page Layout -->
 <Layout show_footer_buttons={false}>
   <!-- Display Data -->
-  <DynamicPage pageData={pageData} />
+  <subsectionsPage pageData={pageData} />
 </Layout>
 ```
 

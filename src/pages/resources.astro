@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import NetLogoApi from "../utils/api.js";
-import DynamicPage from "../components/dynamic_pages/dynamic-page";
+import SubsectionsPage from "../components/subsections_page/subsections-page";
 
 // Fetch the resources data from the API
 // Get Page Data
@@ -13,5 +13,5 @@ const pageData = await api.getResourcesData();
 <!-- Setup Page Layout -->
 <Layout show_footer_buttons={false}>
     <!-- Display Data -->
-    <DynamicPage pageData = {pageData}/>
+    <SubsectionsPage pageTitle="Resources" pageData = {pageData}/>
 </Layout>

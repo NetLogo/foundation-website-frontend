@@ -3,10 +3,11 @@ import { type PageEntry } from "../../utils/api";
 import ReactMarkdown from "react-markdown";
 import TableOfContents from "./table-of-contents";
 import { generateId } from "../../utils/url-utils";
-import "./styles/dynamic-page.css";
+import "./styles/subsections-page.css";
 
-interface DynamicPageProps {
+interface SubsectionsPageProps {
   pageData: PageEntry[];
+  pageTitle: string;
 }
 
 interface PageSectionProps {
@@ -28,9 +29,10 @@ const PageSection = ({ sectionTitle, sectionContent }: PageSectionProps) => {
 };
 
 
-const DynamicPage = ({ pageData }: DynamicPageProps) => {
+const SubsectionsPage = ({ pageData, pageTitle}: SubsectionsPageProps) => {
   return (
-    <div className="dynamic-page">
+    <div className="subsections-page">
+      <h1 className="page-title">{pageTitle}</h1>
       <TableOfContents pageData={pageData} />
       <div>
         {pageData.map((entry) => (
@@ -46,4 +48,4 @@ const DynamicPage = ({ pageData }: DynamicPageProps) => {
 };
 
 
-export default DynamicPage;
+export default SubsectionsPage;

@@ -7,11 +7,10 @@ import DonationSection from "../components/download/donation-section.tsx";
 const api = new NetLogoApi();
 
 const pageData = await api.getDownloadPageData()
-const randomIndex = Math.floor(Math.random() * pageData.donation_data.length);
 
 ---
 
 <Layout show_footer_buttons={false}>
     <DownloadSection downloadData = {pageData["netlogo_versions"]} client:load/>
-    <DonationSection donationData = {pageData["donation_data"][randomIndex]} client:load/>
+    <DonationSection donationArray = {pageData["donation_data"]} client:load/>
 </Layout>

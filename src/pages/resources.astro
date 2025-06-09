@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NetLogoApi from "../utils/api.js";
+import SubsectionsPage from "../components/subsections_page/subsections-page";
+
+// Fetch the resources data from the API
+// Get Page Data
+const api = new NetLogoApi();
+const pageData = await api.getResourcesData();
+
+---
+
+<!-- Setup Page Layout -->
+<Layout show_footer_buttons={false}>
+    <!-- Display Data -->
+    <SubsectionsPage pageTitle="Resources" pageData = {pageData}/>
+</Layout>

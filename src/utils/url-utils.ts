@@ -21,4 +21,8 @@ const NavigateToDonate = () => {
   }
 };
 
-export {getImageUrl, handleLinkClick, NavigateToDonate};
+const generateId = (title: string) =>
+  title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+
+
+export {getImageUrl, handleLinkClick, NavigateToDonate, generateId};

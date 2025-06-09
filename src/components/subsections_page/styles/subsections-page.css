@@ -1,0 +1,17 @@
+.subsections-page{
+    text-align: left;
+    width: 800px;
+    margin: auto;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.section-content{
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}

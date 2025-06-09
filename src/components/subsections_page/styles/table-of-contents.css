@@ -1,0 +1,21 @@
+.table-of-contents  > h2{
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.table-of-contents > ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.table-of-contents > ul > li > a{
+    font-size: 1.1rem;
+    color: gray;
+    text-decoration: none;
+}
+
+.table-of-contents > ul > li > a:hover {
+    font-size: 1.15rem;
+    color: var(--text-color);
+}

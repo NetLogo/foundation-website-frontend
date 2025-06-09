@@ -1,4 +1,5 @@
 # Creating a New Page
+A more detailed version of this documentation can be found [here](detailed-create-pages.md)
 
 Creating a new page is a simple process. You only need to create a new Astro file inside the `pages/` folder.
 
@@ -11,13 +12,13 @@ The filename becomes the page's route. For instance:
 
 # Table of Contents
 
-- [Setting Up Your Page](https://chatgpt.com/c/683f4efb-0fc0-800c-a47a-a8ef4cd1acde#setting-up-your-page)    
-    - [1. Setup Layout](https://chatgpt.com/c/683f4efb-0fc0-800c-a47a-a8ef4cd1acde#1-setup-layout)
-    - [2. Get Data](https://chatgpt.com/c/683f4efb-0fc0-800c-a47a-a8ef4cd1acde#2-get-data)
-        - [Dynamic Pages](https://chatgpt.com/c/683f4efb-0fc0-800c-a47a-a8ef4cd1acde#dynamic-pages)
-        - [Custom Pages](https://chatgpt.com/c/683f4efb-0fc0-800c-a47a-a8ef4cd1acde#custom-pages)
-    - [3. Connect Data](https://chatgpt.com/c/683f4efb-0fc0-800c-a47a-a8ef4cd1acde#3-connect-data)
-- [Displaying Page Data](https://chatgpt.com/c/683f4efb-0fc0-800c-a47a-a8ef4cd1acde#displaying-page-data)
+- [Setting Up Your Page](#setting-up-your-page)    
+    - [1. Setup Layout](#1-setup-layout)
+    - [2. Get Data](#2-get-data)
+        - [Dynamic Pages](#dynamic-pages)
+        - [Custom Pages](e#custom-pages)
+    - [3. Connect Data](#3-connect-data)
+- [Displaying Page Data](#displaying-page-data)
     
 
 ---

@@ -1,11 +1,11 @@
-const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={introduction:t`
+const e=(i,...t)=>i.reduce((o,r,n)=>`${o}${r}${n in t?String(t[n]):""}`,""),a={introduction:e`
     query {
       introduction {
         title
         description
       }
     }
-  `,introSplash:t`
+  `,introSplash:e`
     query GetIntroSplash {
       intro_splash {
         title
@@ -29,7 +29,7 @@ const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={i
         }
       }
     }
-  `,whyNetLogo:t`
+  `,whyNetLogo:e`
     query GetWhyNetLogo {
       why_netlogo {
         id
@@ -39,7 +39,7 @@ const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={i
         order
       }
     }
-  `,getNetLogo:t`
+  `,getNetLogo:e`
     query GetGetNetLogo {
       get_netlogo {
         id
@@ -50,7 +50,7 @@ const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={i
         order
       }
     }
-  `,community:t`
+  `,community:e`
     query GetCommunity {
       community {
         id
@@ -62,7 +62,7 @@ const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={i
         Bordered
       }
     }
-  `,partners:t`
+  `,partners:e`
     query GetPartners {
       featured_partners {
         id
@@ -70,7 +70,7 @@ const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={i
         partner_image
       }
     }
-  `,announcement:t`
+  `,announcement:e`
     query GetAnnouncement {
       announcement {
         id
@@ -80,7 +80,15 @@ const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={i
         type
       }
     }
-  `,navigationData:t`
+  `,referenceData:e`
+  query getReferences {
+    References(limit: -1) {
+      year
+      reference
+      is_ccl
+    }
+  }
+`,navigationData:e`
     query GetNavigation {
       navigation_sections {
         name
@@ -95,7 +103,7 @@ const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={i
         }
       }
     }
-  `,netLogoVersions:t`
+  `,netLogoVersions:e`
     query GetNetLogoVersions {
       netlogo_versions {
         version
@@ -105,7 +113,7 @@ const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={i
         }
       }
     }
-  `,mainPageData:t`
+  `,mainPageData:e`
     query GetAllData {
       introduction {
         title
@@ -172,7 +180,7 @@ const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={i
         content
       }
     }
-  `,downloadPageData:t`
+  `,downloadPageData:e`
     query GetDownloadPageData {
       netlogo_versions {
         version
@@ -190,7 +198,7 @@ const t=(o,...e)=>o.reduce((i,r,n)=>`${i}${r}${n in e?String(e[n]):""}`,""),a={i
         url
       }
     }
-  `,donationData:t`
+  `,donationData:e`
     query GetDonationData {
       donation_data{
         title

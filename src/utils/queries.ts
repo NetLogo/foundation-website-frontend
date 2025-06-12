@@ -96,6 +96,15 @@ const queries = {
       }
     }
   `,
+  referenceData: gql`
+  query getReferences {
+    References(limit: -1) {
+      year
+      reference
+      is_ccl
+    }
+  }
+`,
 
   navigationData: gql`
     query GetNavigation {

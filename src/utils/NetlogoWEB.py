@@ -19,6 +19,10 @@ DIRECTUS_URL = "https://backend.netlogo.org"  # Base API URL, not Admin panel UR
 # Initialize Directus client
 client = DirectusClient(DIRECTUS_URL, DIRECTUS_TOKEN)
 
+def is_ccl_authored(reference_text: str) -> bool:
+    ccl_keywords = ["Wilensky", "Center for Connected Learning", "Horn"]
+    return any(author in reference_text for author in ccl_keywords) 
+
 def extract_references(file_path):
     with open(file_path, encoding="utf8") as file:
         soup = BeautifulSoup(file, 'html.parser')
@@ -35,10 +39,18 @@ def extract_references(file_path):
             else:
                 continue  
 
-            reference_list = year_header.find_next("ul").find_all("li", class_="ccl")
+            #reference_list = year_header.find_next("ul").find_all("li", class_="ccl")
+            reference_list = year_header.find_next("ul").find_all("li") 
             
+            # for ref in reference_list:
+            #     references.append({"year": year, "reference": ref.get_text()})
             for ref in reference_list:
-                references.append({"year": year, "reference": ref.get_text()})
+                ref_text = ref.get_text()
+                references.append({
+                    "year": year,
+                    "reference": ref_text,
+                    "is_ccl": is_ccl_authored(ref_text)  
+                })
 
     return references
 #this i added due to a HTTPSConnectionPool(host='backend.netlogo.org', port=443): Read timed out. (read timeout=None) error
@@ -72,5 +84,6 @@ def post_references_to_directus(references):
 # Run the function and post to Directus
 file_path = "src/utils/references.shtml"
 references = extract_references(file_path)
-post_references_to_directus(references)
+post_references_to_directus(references[100:300])  # Posting only the first 100 references for testing
+
 

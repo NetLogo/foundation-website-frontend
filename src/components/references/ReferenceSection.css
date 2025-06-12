@@ -1,0 +1,85 @@
+
+.year-nav {
+    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .year-link {
+    padding: 6px 10px;
+    background-color: #dbeeff;
+    border-radius: 6px;
+    color: #003366;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .year-link:hover {
+    background-color: #aad4ff;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+
+  .is_ccl {
+    font-size: 0.95rem;
+    font-weight: bold;
+  }
+
+/* ReferenceSection.css */
+/* 
+.references-container {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  padding: 40px 20px;
+}
+
+.references-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.references-container p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.references-container a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.references-container a:hover {
+  text-decoration: underline;
+}
+
+.year-block {
+  background-color: #e6f0fb;
+  padding: 1rem;
+  margin: 2rem 0 1rem;
+  border-radius: 4px;
+}
+
+.year-block h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #003366;
+}
+
+.year-block ul {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+.year-block li {
+  padding-bottom: 0.75rem;
+  font-size: 0.95rem;
+} */

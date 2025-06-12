@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { ReferenceSection } from "../components/references/references-page";
+import NetLogoApi from "../utils/api.js";
+import type { YearReferences } from "../components/references/references-page.js";
+
+const api = new NetLogoApi();
+const siteData = await api.getReferences();
+console.log("siteData", siteData);
+let formattedReferences: YearReferences[] = [];
+
+// ! This does grouping by year again
+// ! This is used to format the data for the ReferenceSection component
+// ! Specifically, it helps in matching the data types that the Reference Section Expects
+
+// ** new change, since i am no longer getting a map from api.getReferences()
+//*** instead its a arry of objects
+siteData.forEach((item: any) => {
+  formattedReferences.push({
+    year: item.year,
+    references: item.references.map((ref: any) => ({
+      text: ref.reference,
+      is_ccl: ref.is_ccl,
+    })),
+  });
+});
+
+// Array.from(siteData.entries()).forEach(([key, value]) => {
+//     formattedReferences.push({
+//         year: key,
+//         references: value.map((ref: any) => ({
+//         text: ref.reference, 
+//         // ! ref isn't an object at the moment. You can't access a string like this (ref.reference)
+//         is_ccl: ref.is_ccl, 
+//         // ! ref.is_ccl currently doesn't exist in Site Data because its not passed within api.ts
+//         })),
+//     });
+// });
+---
+
+<Layout>
+    <ReferenceSection pageData={formattedReferences} client:load />
+</Layout>

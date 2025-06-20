@@ -1,6 +1,6 @@
 ## NetLogo Website Frontend
 This is the frontend repository of the new NetLogo website.
-Currently, the demo is deployed at https://netlogo.github.io/
+The site is live at https://www.netlogo.org/
 The backend is hosted at https://backend.netlogo.org/
 
 ### Architecture

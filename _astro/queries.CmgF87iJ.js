@@ -1,4 +1,4 @@
-const e=(i,...t)=>i.reduce((o,r,n)=>`${o}${r}${n in t?String(t[n]):""}`,""),a={introduction:e`
+const e=(o,...t)=>o.reduce((i,r,n)=>`${i}${r}${n in t?String(t[n]):""}`,""),a={introduction:e`
     query {
       introduction {
         title
@@ -111,6 +111,13 @@ const e=(i,...t)=>i.reduce((o,r,n)=>`${o}${r}${n in t?String(t[n]):""}`,""),a={i
           platform
           download_url
         }
+      }
+    }
+  `,resourcesData:e`
+    query GetResources {
+      resources {
+        section_title
+        section_content
       }
     }
   `,mainPageData:e`

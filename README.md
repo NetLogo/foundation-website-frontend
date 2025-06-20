@@ -1,6 +1,9 @@
 ## NetLogo Website Frontend
+
 This is the frontend repository of the new NetLogo website.
+
 The site is live at https://www.netlogo.org/
+
 The backend is hosted at https://backend.netlogo.org/
 
 ### Architecture

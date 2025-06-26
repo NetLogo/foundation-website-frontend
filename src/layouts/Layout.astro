@@ -3,6 +3,7 @@ import NetLogoApi from "../utils/api.js";
 import { Header } from "../components/layout/header";
 import { Footer } from "../components/layout/footer";
 import "./styles/Layout.css";
+import { ViewTransitions } from "astro:transitions";
 
 const { show_footer_buttons } = Astro.props;
 
@@ -29,6 +30,7 @@ const { navigation_sections } = navData;
 
       gtag("config", "G-N5CY0TR3R2");
     </script>
+    <ViewTransitions />
   </head>
   <body>
     <Header client:load navData={navigation_sections} />

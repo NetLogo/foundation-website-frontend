@@ -212,6 +212,11 @@ class NetLogoAPI {
     );
   }
 
+  async getContact () {
+    const dict = await this.graphqlFetchData<{ contact_data: ContactItem[] }>(queries.contacts);
+    return dict.contact_data
+  }
+
   async getAnnouncements() {
     const result = await this.graphqlFetchData<{ announcements: AnnouncementEntry[] }>(queries.mainAnnouncements);
     return result.announcements;

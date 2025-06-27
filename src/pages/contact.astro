@@ -5,10 +5,11 @@ import NetLogoApi from "../utils/api.js";
 
 
 
-
+const api = new NetLogoApi();
+const results = await api.getContact();
 ---
 
 <Layout>
     <!-- <h1>Contact</h1> -->
-    <ContactSection/>
+    <ContactSection ContactData={results} client:load/>
 </Layout>

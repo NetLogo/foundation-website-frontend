@@ -97,6 +97,15 @@ const queries = {
   //   }
   // `,
 
+  contacts: gql`
+  query getContacts {
+    contact_data {
+      heading
+      body
+    }
+  }
+  `,
+
   mainAnnouncements: gql`
   query getAnnouncements {
     announcements (sort: ["-date"]){

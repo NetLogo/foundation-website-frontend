@@ -98,6 +98,18 @@ export interface NavigationItem {
   in_footer: boolean;
 }
 
+export interface ContactItem {
+  heading: string;
+  body: string;
+}
+
+export interface AnnouncementEntry {
+  id: number;
+  title: string;
+  date: string;
+  content: string;
+}
+
 export interface ReferenceEntry {
   year: number;
   reference: string;
@@ -198,6 +210,11 @@ class NetLogoAPI {
     return await this.graphqlFetchData<NetLogoVersion[]>(
       queries.netLogoVersions
     );
+  }
+
+  async getAnnouncements() {
+    const result = await this.graphqlFetchData<{ announcements: AnnouncementEntry[] }>(queries.mainAnnouncements);
+    return result.announcements;
   }
 
   async getReferences() {

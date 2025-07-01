@@ -65,6 +65,17 @@ def extract_raw_year_blocks(file_path):
         #         print(f"Reference in {year} with {item_chars} characters")
         #         print(f"Starts with: {item.group(1)[:30]!r}")
 
+        lines = re.split(r'\n', ul_inner)
+
+        #
+        # I can't think of another way but this is not the best checker cause some references take up more than a line
+        # so double check the refernce in the shtml to see if it's really a bad reference
+        #
+
+        for line in lines:
+            if (line.startswith('<li>') or line.startswith('<li class="ccl">')) and ('</li>' not in line):
+                print(f"Bad reference in {year}: {line[:60]}")
+
     return results
 
 def extract_references(file_path):

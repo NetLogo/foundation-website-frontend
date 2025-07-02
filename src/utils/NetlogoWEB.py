@@ -72,8 +72,19 @@ def extract_raw_year_blocks(file_path):
         # so double check the refernce in the shtml to see if it's really a bad reference
         #
 
+        # Also some lines have more than one reference but is still considered as correct
+
         for line in lines:
             if (line.startswith('<li>') or line.startswith('<li class="ccl">')) and ('</li>' not in line):
+                print(f"Bad reference in {year}: {line[:60]}")
+                continue
+
+            li_orig_count = line.count('<li>') + line.count('<li class="ccl">')
+            li_cls_count = line.count('</li>')
+            if ((li_orig_count > 1) or (li_cls_count > 1)):
+                print(f"Bad reference in {year}: {line[:60]}")
+
+            if (li_orig_count > li_cls_count) or (li_orig_count < li_cls_count):
                 print(f"Bad reference in {year}: {line[:60]}")
 
     return results
@@ -140,5 +151,5 @@ def post_references_to_directus(references):
 # Run the function and post to Directus
 file_path = "references.shtml"
 checking_extraction = extract_raw_year_blocks(file_path)
-# references = extract_references(file_path)
-# post_references_to_directus(references)
+references = extract_references(file_path)
+post_references_to_directus(references)

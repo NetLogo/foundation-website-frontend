@@ -61,7 +61,7 @@ const ReferenceSection = ({ pageData }: ReferenceSectionProps) => {
       {pageData.map((item, index) => (
         <div key={index} id={`year-${item.year}`} className="year-block">
           <h3>{item.year}</h3>
-          <ul>
+          <ul id='reference-entries'>
 
             {item.references.map((reference, refIndex) => (
               <li

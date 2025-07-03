@@ -28,10 +28,11 @@ const AnnouncementsSection = ({ AnnouncementData }: AnnouncementSectionProps) =>
                     <div key={index} className="announcement-item">
                         <h2>{announcement.title}</h2>
                         <div className="announcement-date">
-                            {new Date(announcement.date).toLocaleDateString('en-US', {
+                            {new Date(announcement.date + 'T00:00:00Z').toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'long',
-                            day: 'numeric'
+                            day: 'numeric',
+                            timeZone: 'UTC'
                             })}
                         </div>
                         <ReactMarkdown

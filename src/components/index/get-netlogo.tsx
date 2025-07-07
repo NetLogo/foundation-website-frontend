@@ -32,30 +32,31 @@ const ItemCard = ({
   };
   const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
   return (
-    <div className="get-item " style={{ backgroundColor: card_color }}>
-      <div className="get-item-header">
-        <img
-          className="get-item-img"
-          src={`${backend_url}/assets/${image_key}`}
-        />
-        <span className="get-item-title"> {title} </span>
-      </div>
-      <span>
-        <ReactMarkdown className="get-item-descript">
-          {description}
-        </ReactMarkdown>
-      </span>
+      <div className="card shadow-sm rounded-4 m-2 p-4" style={{ backgroundColor: card_color, width: "18rem" }}>
+        <div className="d-flex align-items-center mb-3 gap-3">
+          <img
+            src={`${backend_url}/assets/${image_key}`}
+            alt=""
+            className="rounded"
+            style={{ width: "4rem"}}
+          />
+          <h5 className="fw-bold mb-0 font-inter">{title}</h5>
+        </div>
+        <div className="mb-4">
+          <ReactMarkdown className="text-start small font-inter">
+            {description}
+          </ReactMarkdown>
+        </div>
 
-      <div className="button-container">
-        <Button
-          colorClass="blue-button"
-          padding="0.75rem 2.5rem"
-          fontSize="0.875rem"
-          text={button_text ? button_text : "GET"}
-          onClick={() => pageRedirect(link)}
-        />
+        <div className="text-center">
+          <button
+            className="btn btn-primary fw-semibold font-inter px-4 py-2"
+            onClick={() => pageRedirect(link)}
+          >
+            {button_text ?? "GET"}
+          </button>
+        </div>
       </div>
-    </div>
   );
 };
 
@@ -73,41 +74,31 @@ const GetNetLogo = ({ page_data, section_color }: GetNetLogoProps) => {
   }, []);
 
   return (
-    <div id="get-netlogo" className="get-section">
+    <div className="container" id="get-netlogo">
       <Section
         sectionTitle="Get NetLogo"
-        sectionDescript="There are five different products in NetLogo. Find the one suits your need."
-        sectionGap={2.5}
+        sectionDescript="There are five different products in NetLogo. Find the one that suits your need."
+        sectionGap={1}
         sectionPaddingBot={3.75}
         backgroundColor={section_color}
         moreButton={false}
         body={
-          <div>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                gap: "2%",
-              }}
-              className="get-netlogo-content"
-            >
-              {page_data.map((item) => (
+          <div className="row justify-content-center">
+
+            {page_data.map((item) => (
+              <div key={item.title} className="col-md-4 d-flex justify-content-center">
                 <ItemCard
-                  key={item.title}
                   title={item.title}
                   description={item.content}
                   image_key={item.icon.id}
                   button_text={item.button_text}
                   link={item.link}
                   card_color={
-                    section_color == color_palette[0]
-                      ? color_palette[1]
-                      : color_palette[0]
+                    section_color == "#F2F2F2" ? "white" : "#F2F2F2"
                   }
                 />
+              </div>
               ))}
-            </div>
           </div>
         }
       />

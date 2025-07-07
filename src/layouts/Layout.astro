@@ -35,9 +35,11 @@ const { navigation_sections } = navData;
   </head>
   <body>
     <Header client:load navData={navigation_sections} />
-    <main>
-      <slot />
-    </main>
+    <div class="container">
+      <main>
+        <slot />
+      </main>
+    </div>
     <Footer
       client:load
       navData={navigation_sections}

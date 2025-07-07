@@ -53,7 +53,7 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
               />
           </div>
 
-          <div className="col-md-6 d-flex flex-column gap-3">
+          <div className="col-md-6 d-flex flex-column gap-4">
             <ReactMarkdown className="fs-5 fw-medium lh-base text-start font-inter">
               {intro_data.description}
             </ReactMarkdown>

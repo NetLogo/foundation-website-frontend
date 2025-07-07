@@ -16,18 +16,18 @@ interface ContactSectionProps {
 
 const ContactSection = ({ ContactData }: ContactSectionProps) => {
     return (
-        <div className="contacts-container">
-            <h1>Contact</h1>
+        <div className="container py-5 text-start font-inter">
+            <h1 className="mb-4 fw-bold">Contact</h1>
 
             
             {ContactData.length === 0 ? (
                 <p>No contact info available.</p>
             ) : (
-                <div className="contact-list">
+                <div className="row">
                 {ContactData.map((item, index) => (
-                    <div key={index} className="contact-item">
-                        <h2>{item.heading}</h2>
-                        <ReactMarkdown className="contact-content">
+                    <div key={index} className="col-12">
+                        <h3 className="fw-medium mb-3">{item.heading}</h3>
+                        <ReactMarkdown className="ps-5 lh-lg">
                             {item.body}
                         </ReactMarkdown>
                     </div>

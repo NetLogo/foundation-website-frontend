@@ -83,12 +83,6 @@ export interface PartnerEntry {
 
 export interface NavigationSection {
   name: string;
-  subsections: NavigationSubsection[];
-}
-
-export interface NavigationSubsection {
-  title: string;
-  display_title: boolean;
   items: NavigationItem[];
 }
 

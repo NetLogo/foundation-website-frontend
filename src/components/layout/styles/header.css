@@ -253,3 +253,14 @@
   
   /* More mobile styles can be added here */
 }
+
+.font-inter {
+  font-family: Inter;
+}
+
+@media (min-width: 700px) {
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+        margin-top: 0;
+    }
+}

@@ -140,14 +140,10 @@ const queries = {
     query GetNavigation {
       navigation_sections {
         name
-        subsections {
-          title
+        items {
           display_title
-          items {
-            display_title
-            url
-            in_footer
-          }
+          url
+          in_footer
         }
       }
     }

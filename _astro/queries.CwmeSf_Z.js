@@ -70,17 +70,22 @@ const e=(o,...t)=>o.reduce((i,r,n)=>`${i}${r}${n in t?String(t[n]):""}`,""),a={i
         partner_image
       }
     }
-  `,announcement:e`
-    query GetAnnouncement {
-      announcement {
-        id
-        title
-        content
-        active
-        type
-      }
+  `,contacts:e`
+  query getContacts {
+    contact_data {
+      heading
+      body
     }
-  `,referenceData:e`
+  }
+  `,mainAnnouncements:e`
+  query getAnnouncements {
+    announcements (sort: ["-date"]){
+      title
+      date
+      content
+    }
+  }
+`,referenceData:e`
   query getReferences {
     References(limit: -1) {
       year
@@ -92,14 +97,10 @@ const e=(o,...t)=>o.reduce((i,r,n)=>`${i}${r}${n in t?String(t[n]):""}`,""),a={i
     query GetNavigation {
       navigation_sections {
         name
-        subsections {
-          title
+        items {
           display_title
-          items {
-            display_title
-            url
-            in_footer
-          }
+          url
+          in_footer
         }
       }
     }
@@ -181,10 +182,6 @@ const e=(o,...t)=>o.reduce((i,r,n)=>`${i}${r}${n in t?String(t[n]):""}`,""),a={i
         partner_image {
           id
         }
-      }
-      announcements {
-        title
-        content
       }
     }
   `,downloadPageData:e`

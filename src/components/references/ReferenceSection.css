@@ -31,6 +31,37 @@
     font-weight: bold;
   }
 
+  .references-container{
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-family: Inter;
+  }
+
+  #reference-entries {
+    list-style-type: none;
+    padding-inline-start: 0px;
+  }
+
+  #reference-entries li {
+    margin-bottom: 10px;
+    text-align: match-parent;
+  }
+
+  .year-block {
+    padding-bottom: 10px;
+    
+  }
+
+  .year-block h3 {
+    background-color: #def1ff;
+    line-height: 2.5;
+    padding-left: 10px;
+    font-weight: bold;
+    /* display: inline-block; */
+  }
+
 /* ReferenceSection.css */
 /* 
 .references-container {

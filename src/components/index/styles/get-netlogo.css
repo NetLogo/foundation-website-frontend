@@ -78,3 +78,7 @@
   line-height: 150%; /* 1.3125rem */
   height: 6.5rem;
 }
+
+.font-inter {
+  font-family: Inter;
+}

@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { ContactSection } from "../components/contact/contact-page";
+import NetLogoApi from "../utils/api.js";
+
+
+
+const api = new NetLogoApi();
+const results = await api.getContact();
+---
+
+<Layout>
+    <!-- <h1>Contact</h1> -->
+    <ContactSection ContactData={results} client:load/>
+</Layout>

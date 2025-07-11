@@ -53,9 +53,7 @@ const Footer = ({ navData, show_buttons = true }: FooterProps) => {
   const footerData = useMemo(() => {
     return navData.map((section) => ({
       name: section.name,
-      items: section.subsections.flatMap((subsection) =>
-        subsection.items.filter((item) => item.in_footer)
-      ),
+      items: section.items.filter((item) => item.in_footer)
     }));
   }, [navData]);
 

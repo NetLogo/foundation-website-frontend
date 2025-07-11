@@ -83,12 +83,6 @@ export interface PartnerEntry {
 
 export interface NavigationSection {
   name: string;
-  subsections: NavigationSubsection[];
-}
-
-export interface NavigationSubsection {
-  title: string;
-  display_title: boolean;
   items: NavigationItem[];
 }
 
@@ -96,6 +90,18 @@ export interface NavigationItem {
   display_title: string;
   url: string;
   in_footer: boolean;
+}
+
+export interface ContactItem {
+  heading: string;
+  body: string;
+}
+
+export interface AnnouncementEntry {
+  id: number;
+  title: string;
+  date: string;
+  content: string;
 }
 
 export interface ReferenceEntry {
@@ -203,6 +209,16 @@ class NetLogoAPI {
     return await this.graphqlFetchData<NetLogoVersion[]>(
       queries.netLogoVersions
     );
+  }
+
+  async getContact () {
+    const dict = await this.graphqlFetchData<{ contact_data: ContactItem[] }>(queries.contacts);
+    return dict.contact_data
+  }
+
+  async getAnnouncements() {
+    const result = await this.graphqlFetchData<{ announcements: AnnouncementEntry[] }>(queries.mainAnnouncements);
+    return result.announcements;
   }
 
   async getReferences() {

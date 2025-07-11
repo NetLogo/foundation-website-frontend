@@ -85,17 +85,47 @@ const queries = {
     }
   `,
 
-  announcement: gql`
-    query GetAnnouncement {
-      announcement {
-        id
-        title
-        content
-        active
-        type
-      }
+  // announcement: gql`
+  //   query GetAnnouncement {
+  //     announcement {
+  //       id
+  //       title
+  //       content
+  //       active
+  //       type
+  //     }
+  //   }
+  // `,
+
+  contacts: gql`
+  query getContacts {
+    contact_data {
+      heading
+      body
     }
+  }
   `,
+
+  mainAnnouncements: gql`
+  query getAnnouncements {
+    announcements (sort: ["-date"]){
+      title
+      date
+      content
+    }
+  }
+`,
+
+  // mainAnnouncements: gql`
+  // query GetAnnouncements { announcements {
+  //       id
+  //       title
+  //       date
+  //       content
+  //     }
+  //   }
+  // `,
+
   referenceData: gql`
   query getReferences {
     References(limit: -1) {
@@ -110,14 +140,10 @@ const queries = {
     query GetNavigation {
       navigation_sections {
         name
-        subsections {
-          title
+        items {
           display_title
-          items {
-            display_title
-            url
-            in_footer
-          }
+          url
+          in_footer
         }
       }
     }
@@ -205,10 +231,6 @@ const queries = {
         partner_image {
           id
         }
-      }
-      announcements {
-        title
-        content
       }
     }
   `,

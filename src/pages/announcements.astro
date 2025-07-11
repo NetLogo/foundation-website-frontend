@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { AnnouncementsSection } from "../components/announcements/announcements-page";
+import NetLogoApi from "../utils/api.js";
+
+
+const api = new NetLogoApi();
+console.log("Hi World!")
+const announcements = await api.getAnnouncements();
+console.log("Hi World 2!")
+console.log("siteData", announcements);
+// console.log("heloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
+
+---
+
+<Layout>
+    <AnnouncementsSection AnnouncementData={announcements} client:load/>
+</Layout>

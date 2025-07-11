@@ -254,6 +254,21 @@
   /* More mobile styles can be added here */
 }
 
+.dropdown-menu {
+  max-width: 300px;
+  width: max-content;
+  min-width: 200px;
+  white-space: normal;
+}
+
+.dropdown-item.long-item {
+  max-width: 300px;
+  white-space: normal !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  display: block;
+}
+
 .font-inter {
   font-family: Inter;
 }

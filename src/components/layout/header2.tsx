@@ -57,7 +57,7 @@ const Header = ({ navData }: HeaderProps) => {
                 <ul className="dropdown-menu">
                   {section.items.map((item, j) =>
                     <li key={`${j}`}>
-                      <a className="dropdown-item header-link" href={item.url}>
+                      <a className="dropdown-item header-link long-item" href={item.url}>
                         {item.display_title}
                       </a>
                     </li>

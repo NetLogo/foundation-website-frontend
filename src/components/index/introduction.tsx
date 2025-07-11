@@ -26,15 +26,6 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
     }
   };
 
-  // const buttonStyle = {
-  //   fontFamily: "Inter",
-  //   fontWeight: 600,
-  //   fontSize: "13.5px",
-  //   lineHeight: "150%",
-  //   letterSpacing: "2%",
-  //   verticalAlign: "middle",
-  // };
-
   return (
     <div className="w-100 bg-white pt-2">
       <div className="container py-4">
@@ -43,13 +34,12 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
               <img
                 src={IntroTurtles.src}
                 alt="NetLogo Turtles"
-                style={{ width: "160px"}}
-                className="ms-5"
+                className="ms-5 intro-turtles"
               />
               <img
                 src={LogoText.src}
                 alt="NetLogo"
-                style={{ width: "350px", marginTop: "-5px" }}
+                className="intro-logo-text"
               />
           </div>
 
@@ -57,13 +47,7 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
             <ReactMarkdown className="fs-5 fw-medium lh-base text-start font-inter">
               {intro_data.description}
             </ReactMarkdown>
-            <div className="d-flex flex-column align-items-center" style={{ width: "fit-content" }}>
-              {/* <Button
-                variant="primary"
-                text="GET NETLOGO"
-                style={{ width: "12rem", padding: "0.875rem 2rem", fontSize: "1rem" }}
-                onClick={scrollToGetNetLogo}
-              /> */}
+            <div className="d-flex flex-column align-items-center button-data">
               <button type="button" className="btn btn-primary btn-lg font-inter fw-bold fs-6" data-bs-toggle="button" onClick={scrollToGetNetLogo}>
                 GET NETLOGO
               </button>

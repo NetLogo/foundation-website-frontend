@@ -30,13 +30,13 @@
 }
 
 .intro-turtles {
-  width: 175px;
+  width: 160px;
   margin-bottom: 0;
   /* Remove bottom margin */
 }
 
 .intro-logo-text {
-  margin-top: -10px;
+  margin-top: -5px;
   /* Use negative margin to pull it closer to the turtles */
   width: 350px;
 }
@@ -50,9 +50,6 @@
 }
 
 .button-data {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: fit-content;
 }
 

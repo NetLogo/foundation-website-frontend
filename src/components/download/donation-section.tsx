@@ -27,8 +27,24 @@ const DonationSection = ({ donationArray }: DonationSectionProps) => {
   return (
     <ContentImageLayout
       imageId={donationData?.image.id}>
-      <h1 className="donate-title">{donationData?.title}</h1>
-        <ReactMarkdown className="donate-text">
+      <p className="fs-1 text-start fw-bold font-inter">{donationData?.title}</p>
+      <ReactMarkdown className="text-start font-start fs-5 font-inter">
+        {donationData?.text}
+      </ReactMarkdown>
+      <div className="d-flex flex-column align-items-center">
+        <button 
+        type="button" 
+        className="btn btn-primary btn-lg font-inter fw-bold my-2"
+        onClick={() => donationData ? handleLinkClick(donationData.url) : null}>
+          Donate
+        </button>
+        <p className="text-start font-inter" style={{ maxWidth: "200px" }}>Donations are processed through Northwestern University, but 100% goes 
+          to the Center for Connected Learning to support NetLogo</p>
+      </div>
+      {/* <ContentImageLayout
+        imageId={donationData?.image.id}>
+        <p className="fs-1 text-start fw-bold font-inter">{donationData?.title}</p>
+        <ReactMarkdown className="text-start font-start fs-5">
           {donationData?.text}
         </ReactMarkdown>
         <div className="donate-button-container">
@@ -50,6 +66,7 @@ const DonationSection = ({ donationArray }: DonationSectionProps) => {
             goes to the Center for Connected Learning to support NetLogo
           </p>
         </div>
+      </ContentImageLayout> */}
     </ContentImageLayout>
 
   );

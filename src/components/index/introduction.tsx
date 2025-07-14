@@ -16,7 +16,7 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
   const scrollToGetNetLogo = () => {
     // If we're on the home page
     if (window.location.pathname === "/") {
-      const getNetLogoSection = document.querySelector(".get-section");
+      const getNetLogoSection = document.querySelector("#get-netlogo");
       if (getNetLogoSection) {
         getNetLogoSection.scrollIntoView({ behavior: "smooth" });
       }

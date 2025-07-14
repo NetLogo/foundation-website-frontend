@@ -32,31 +32,31 @@ const ItemCard = ({
   };
   const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
   return (
-      <div className="card shadow-sm rounded-4 m-2 p-4" style={{ backgroundColor: card_color, width: "18rem" }}>
-        <div className="d-flex align-items-center mb-3 gap-3">
-          <img
-            src={`${backend_url}/assets/${image_key}`}
-            alt=""
-            className="rounded"
-            style={{ width: "4rem"}}
-          />
-          <h5 className="fw-bold mb-0 font-inter">{title}</h5>
-        </div>
-        <div className="mb-4">
-          <ReactMarkdown className="text-start small font-inter">
-            {description}
-          </ReactMarkdown>
-        </div>
-
-        <div className="text-center">
-          <button
-            className="btn btn-primary fw-semibold font-inter px-4 py-2"
-            onClick={() => pageRedirect(link)}
-          >
-            {button_text ?? "GET"}
-          </button>
-        </div>
+    <div className="card shadow-sm rounded-4 m-2 p-4" style={{ backgroundColor: card_color, width: "18rem" }}>
+      <div className="d-flex align-items-center mb-3 gap-3">
+        <img
+          src={`${backend_url}/assets/${image_key}`}
+          alt=""
+          className="rounded"
+          style={{ width: "4rem" }}
+        />
+        <h5 className="fw-bold mb-0 font-inter">{title}</h5>
       </div>
+      <div className="mb-4">
+        <ReactMarkdown className="text-start small font-inter">
+          {description}
+        </ReactMarkdown>
+      </div>
+
+      <div className="text-center">
+        <button
+          className="btn btn-primary fw-semibold font-inter px-4 py-2"
+          onClick={() => pageRedirect(link)}
+        >
+          {button_text ?? "GET"}
+        </button>
+      </div>
+    </div>
   );
 };
 
@@ -66,7 +66,7 @@ const GetNetLogo = ({ page_data, section_color }: GetNetLogoProps) => {
   useEffect(() => {
     // Check if we navigated here with a hash
     if (window.location.hash === "#get-netlogo") {
-      const section = document.querySelector(".get-section");
+      const section = document.querySelector("#get-netlogo");
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
       }
@@ -98,7 +98,7 @@ const GetNetLogo = ({ page_data, section_color }: GetNetLogoProps) => {
                   }
                 />
               </div>
-              ))}
+            ))}
           </div>
         }
       />

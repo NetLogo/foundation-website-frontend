@@ -14,12 +14,12 @@ const DownloadSection = ({ downloadData }: DownloadSectionProps) => {
 
   return !downloaded ? (
     // <ContentImageLayout imageSrc={NetLogoIcon.src}>
-      // <DownloadForm
-      //   versions={downloadData}
-      //   downloadedSetter={() => {
-      //     setDownloaded(true);
-      //   }}
-      // />
+    // <DownloadForm
+    //   versions={downloadData}
+    //   downloadedSetter={() => {
+    //     setDownloaded(true);
+    //   }}
+    // />
     // </ContentImageLayout>
 
     <div className="container pt-5 font-inter">
@@ -68,7 +68,7 @@ const DownloadSection = ({ downloadData }: DownloadSectionProps) => {
               .
             </p>
 
-            <img src={NetLogoIcon.src}className="img-fluid mt-5 mb-0 w-50 d-block mx-auto" alt="Download NetLogo Turtle"></img>
+            <img src={NetLogoIcon.src} className="img-fluid mt-5 mb-0 w-50 d-block mx-auto" alt="Download NetLogo Turtle"></img>
           </div>
         </div>
       </div>
@@ -79,22 +79,6 @@ const DownloadSection = ({ downloadData }: DownloadSectionProps) => {
     <ContentImageLayout>
       <div className="thankyou-container">
         <h1 className="thankyou-heading">Thanks for downloading!</h1>
-        <p className="thankyou-text">
-          Most computers can run NetLogo (see{" "}
-          <a href="https://ccl.northwestern.edu/netlogo/requirements.html" className="thankyou-link">
-            system requirements
-          </a>
-          ). If you would like to run NetLogo on a Chromebook or in a web
-          browser, please see if{" "}
-          <a href="https://netlogoweb.org" className="thankyou-link">
-            NetLogo Web
-          </a>{" "}
-          will meet your needs.
-        </p>
-        <p className="thankyou-text">
-          Multiple versions of NetLogo can be installed on the same computer;
-          installing a new one doesn't remove the old one.
-        </p>
       </div>
     </ContentImageLayout>
   );

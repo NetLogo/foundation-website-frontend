@@ -155,8 +155,7 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
 
   return (
     <div className="download-form">
-      <h1 className="form-title">Download NetLogo</h1>
-      <form onSubmit={handleFormSubmission} className="font-inter">
+      <form onSubmit={handleFormSubmission} className="font-inter mt-1">
         <div className="row g-3 align-items-start">
           <div className="col">
             <div className="d-flex align-items-center gap-3 mb-1">

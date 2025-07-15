@@ -23,6 +23,9 @@ const DownloadSection = ({ downloadData }: DownloadSectionProps) => {
     // </ContentImageLayout>
 
     <div className="container pt-5 font-inter">
+
+      <h1 className="form-title text-start">Download NetLogo</h1>
+
       <div className="row align-items-start gx-5">
         <div className="col-lg-6">
           <DownloadForm

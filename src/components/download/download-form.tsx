@@ -30,19 +30,19 @@ interface DownloadFormProps {
 const DetectOS = () => {
   const userAgent = navigator.userAgent;
   let os = null;
-  
+
   if (userAgent.indexOf("Win") !== -1) os = "Windows";
   else if (userAgent.indexOf("Mac") !== -1) os = "macOS";
   else if (userAgent.indexOf("Linux") !== -1) os = "Linux";
   else if (userAgent.indexOf("Android") !== -1) os = "Android";
   else if (userAgent.indexOf("like Mac") !== -1) os = "iOS"; // iPhone, iPad
-  
+
   return os;
 }
 
 const getFormattedTimestamp = () => {
   const now = new Date();
-  const pad = (n:number) => String(n).padStart(2, '0');
+  const pad = (n: number) => String(n).padStart(2, '0');
 
   const year = now.getFullYear();
   const month = pad(now.getMonth() + 1); // Months are 0-indexed
@@ -58,7 +58,7 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
     version: "",
-    platform: "Mac OS X",
+    platform: "",
     name: "",
     organization: "",
     email: "",
@@ -80,11 +80,24 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
     return onlyVersions;
   }, []);
 
+
+
   const platforms = useMemo(() => {
     const downloadLinks = versions.find(
       (version) => version.version === formData.version
     )?.download_links;
-    return downloadLinks?.map((link) => link.platform);
+
+    const platforms = downloadLinks?.map((link) => link.platform);
+
+    if (platforms) {
+      setFormData({
+        ...formData,
+        ["platform"]: platforms[0],
+      });
+    }
+
+    return platforms
+    // return downloadLinks?.map((link) => link.platform);
   }, [formData.version]);
 
   // Handle all input changes
@@ -112,15 +125,15 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
     const api = new NetLogoAPI();
 
     await fetch('https://ipapi.co/json/')
-    .then(res => res.json())
-    .then(data => {
-      formData.ip = data.ip;
-      formData.country = data.country_name;
-      formData.time_stamp = getFormattedTimestamp();
-    });
+      .then(res => res.json())
+      .then(data => {
+        formData.ip = data.ip;
+        formData.country = data.country_name;
+        formData.time_stamp = getFormattedTimestamp();
+      });
 
     const result = api.sendDownloadForm(formData);
-    
+
     //Go to download Link
     const downloadVersion = versions.find(
       (version) => version.version === formData.version
@@ -129,8 +142,6 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
     const downloadUrl = downloadVersion?.download_links.find(
       (link) => link.platform === formData.platform
     )?.download_url;
-
-    
 
 
     if (!downloadUrl) {
@@ -165,17 +176,17 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
                 ))}
               </select>
             </div>
-              <p id="versionHelp" className="form-text mb-0">
-                {"More versions "}
-                <a
-                  target="_blank"
-                  className="form-ref"
-                  href="https://ccl.northwestern.edu/netlogo/oldversions.shtml"
-                >
-                  {"here"}
-                </a>
-                .
-              </p>
+            <p id="versionHelp" className="form-text mb-0">
+              {"More versions "}
+              <a
+                target="_blank"
+                className="form-ref"
+                href="https://ccl.northwestern.edu/netlogo/oldversions.shtml"
+              >
+                {"here"}
+              </a>
+              .
+            </p>
           </div>
           <div className="col d-flex align-items-center gap-4">
             <label htmlFor="platform" className="fs-5 fw-semibold form-label mb-0">Platform</label>
@@ -198,36 +209,36 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
         <div className="mb-3 row my-4">
           <label htmlFor="name" className="col-sm-3 col-form-label fs-5 fw-semibold">Name</label>
           <div className="col-sm-9">
-            <input 
-              type="text" 
-              className="form-control" 
+            <input
+              type="text"
+              className="form-control"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              />
+            />
           </div>
         </div>
         <div className="mb-3 row my-4">
           <label htmlFor="organization" className="col-sm-3 col-form-label fs-5 fw-semibold">Organization</label>
           <div className="col-sm-9">
-            <input 
-              type="text" 
-              className="form-control" 
+            <input
+              type="text"
+              className="form-control"
               id="organization"
               name="organization"
               value={formData.organization}
               onChange={handleInputChange}
-              />
+            />
           </div>
         </div>
 
         <div className="mb-3 row my-4">
           <label htmlFor="email" className="col-sm-3 col-form-label fs-5 fw-semibold">Email</label>
           <div className="col-sm-9">
-            <input 
-              type="email" 
-              className="form-control" 
+            <input
+              type="email"
+              className="form-control"
               id="email"
               name="email"
               value={formData.email}
@@ -297,4 +308,4 @@ export { DownloadForm };
 //  default .input-group sizes
 //  comment textarea needs to be smaller ---------
 //  default cehkbox to true ----------
-//  
+//

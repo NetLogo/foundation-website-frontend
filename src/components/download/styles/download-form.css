@@ -47,10 +47,10 @@
 }
 
 .form-row > textarea {
-  width: 80%;
+  width: 100%;
   max-width: 80%;
   font-family: Inter;
-  height: 100;
+  height: 60px;
   gap: 10px;
   border-radius: 10px;
   border-width: 1px;
@@ -134,7 +134,7 @@
 .detail-row {
   margin-left: 22%;
   font-size: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .email-row {
@@ -149,4 +149,8 @@
 .form-ref:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.font-inter {
+  font-family: Inter;
 }

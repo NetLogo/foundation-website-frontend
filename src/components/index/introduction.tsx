@@ -26,40 +26,30 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
     }
   };
 
-  // const buttonStyle = {
-  //   fontFamily: "Inter",
-  //   fontWeight: 600,
-  //   fontSize: "13.5px",
-  //   lineHeight: "150%",
-  //   letterSpacing: "2%",
-  //   verticalAlign: "middle",
-  // };
-
   return (
     <div className="w-100 bg-white pt-2">
       <div className="container py-4">
         <div className="row align-items-center gx-5">
           <div className="col-md-6 d-flex align-items-center gap-2">
-            <img
-              src={IntroTurtles.src}
-              alt="NetLogo Turtles"
-              style={{ width: "160px" }}
-              className="ms-5"
-            />
-            <img
-              src={LogoText.src}
-              alt="NetLogo"
-              style={{ width: "350px", marginTop: "-5px" }}
-            />
+              <img
+                src={IntroTurtles.src}
+                alt="NetLogo Turtles"
+                className="ms-5 intro-turtles"
+              />
+              <img
+                src={LogoText.src}
+                alt="NetLogo"
+                className="intro-logo-text"
+              />
           </div>
 
           <div className="col-md-6 d-flex flex-column gap-4">
             <ReactMarkdown className="fs-5 fw-medium lh-base text-start font-inter">
               {intro_data.description}
             </ReactMarkdown>
-            <div className="d-flex flex-column align-items-center" style={{ width: "fit-content" }}>
-              <button type="button" className="btn btn-primary btn-lg font-inter" data-bs-toggle="button" onClick={scrollToGetNetLogo}>
-                Get NetLogo
+            <div className="d-flex flex-column align-items-center button-data">
+              <button type="button" className="btn btn-primary btn-lg font-inter fw-bold fs-6" data-bs-toggle="button" onClick={scrollToGetNetLogo}>
+                GET NETLOGO
               </button>
               <p className="text-muted mt-1 mb-0 font-inter">100% Free</p>
             </div>

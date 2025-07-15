@@ -85,18 +85,6 @@ const queries = {
     }
   `,
 
-  // announcement: gql`
-  //   query GetAnnouncement {
-  //     announcement {
-  //       id
-  //       title
-  //       content
-  //       active
-  //       type
-  //     }
-  //   }
-  // `,
-
   contacts: gql`
   query getContacts {
     contact_data {
@@ -115,16 +103,6 @@ const queries = {
     }
   }
 `,
-
-  // mainAnnouncements: gql`
-  // query GetAnnouncements { announcements {
-  //       id
-  //       title
-  //       date
-  //       content
-  //     }
-  //   }
-  // `,
 
   referenceData: gql`
   query getReferences {

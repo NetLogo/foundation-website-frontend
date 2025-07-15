@@ -27,18 +27,21 @@ const ContentImageLayout: React.FC<ContentImageLayoutProps> = ({
   const imageUrl = imageSrc || (imageId ? getImageUrl(imageId) : '');
 
   return (
-    <div className={`content-image-layout reverse-on-mobile ${className}`}>
-      <div className={`content-container ${contentClassName}`}>
-        {children}
-      </div>
-      <div className={`image-container ${!hasImage ? 'empty-image' : ''} ${imageClassName}`}>
-        {hasImage && (
-          <img
-            className="layout-image"
-            src={imageUrl}
-            alt={imageAlt}
-          />
-        )}
+    <div className={`container py-5 ${className}`}>
+      <div className="row align-items-start gx-5">
+        <div className={`col-lg-6 ${contentClassName}`}>
+          {children}
+        </div>
+
+        <div className="col-lg-6 d-flex justify-content-center">
+          {hasImage && (
+            <img
+              src={imageUrl}
+              alt={imageAlt}
+              className={`img-fluid ${imageClassName}`}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

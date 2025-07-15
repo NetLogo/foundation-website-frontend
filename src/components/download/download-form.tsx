@@ -148,7 +148,12 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
       alert("Download link not found");
       return;
     } else {
-      window.open(downloadUrl);
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = "";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
       downloadedSetter?.();
     }
   };

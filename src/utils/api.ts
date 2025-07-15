@@ -148,6 +148,11 @@ export interface DownloadPageData {
   donation_data: DonationData[];
 }
 
+export interface PageEntry {
+  section_title: string;
+  section_content: string;
+}
+
 class NetLogoAPI {
   private readonly baseUrl: string;
   private client: GraphQLClient;
@@ -279,6 +284,14 @@ class NetLogoAPI {
     return await this.graphqlFetchData<{
       navigation_sections: NavigationSection[];
     }>(queries.navigationData);
+  }
+
+  async getResourcesData() {
+    const resourcesData = await this.graphqlFetchData<{
+      resources: PageEntry[];
+    }>(queries.resourcesData);
+
+    return resourcesData.resources;
   }
 
   async sendDownloadForm(formData: FormData) {

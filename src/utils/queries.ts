@@ -139,6 +139,15 @@ const queries = {
     }
   `,
 
+  resourcesData: gql`
+    query GetResources {
+      resources {
+        section_title
+        section_content
+      }
+    }
+  `,
+
   mainPageData: gql`
     query GetAllData {
       introduction {

@@ -62,7 +62,7 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
     name: "",
     organization: "",
     email: "",
-    subscribe: false,
+    subscribe: true,
     comments: "",
     ip: "",
     country: "",
@@ -145,48 +145,42 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
   return (
     <div className="download-form">
       <h1 className="form-title">Download NetLogo</h1>
-      <p>
-        {"Most computers can run NetLogo (see "}
-        <a
-          target="_blank"
-          className="form-ref"
-          href="https://ccl.northwestern.edu/netlogo/requirements.html"
-        >
-          system requirements
-        </a>
-        {
-          "). If you would like to run NetLogo on a Chromebook or in a web browser, please see if "
-        }
-        <a className="form-ref" target="_blank" href="http://netlogoweb.org/">
-          NetLogo Web
-        </a>
-        {" will meet your needs."}
-      </p>
-      <p>
-        {
-          "Multiple versions of NetLogo can be installed on the same computer; installing a new one doesn't remove the old one. "
-        }
-      </p>
-      <form onSubmit={handleFormSubmission}>
-        <div className="shared-form-row">
-          <div>
-            <label htmlFor="version">Version</label>
-            <select
-              id="version"
-              name="version"
-              value={formData.version}
-              onChange={handleInputChange}
-            >
-              {netLogoVersions.map((version) => (
-                <option key={version} value={version}>
-                  {`NetLogo ${version}`}
-                </option>
-              ))}
-            </select>
+      <form onSubmit={handleFormSubmission} className="font-inter">
+        <div className="row g-3 align-items-start">
+          <div className="col">
+            <div className="d-flex align-items-center gap-3 mb-1">
+              <label htmlFor="version" className="fs-5 fw-semibold form-label mb-0">Version</label>
+              <select
+                className="form-select form-select-sl w-75"
+                id="version"
+                name="version"
+                value={formData.version}
+                onChange={handleInputChange}
+                aria-describedby="versionHelp"
+              >
+                {netLogoVersions.map((version) => (
+                  <option key={version} value={version}>
+                    {`NetLogo ${version}`}
+                  </option>
+                ))}
+              </select>
+            </div>
+              <p id="versionHelp" className="form-text mb-0">
+                {"More versions "}
+                <a
+                  target="_blank"
+                  className="form-ref"
+                  href="https://ccl.northwestern.edu/netlogo/oldversions.shtml"
+                >
+                  {"here"}
+                </a>
+                .
+              </p>
           </div>
-          <div>
-            <label htmlFor="platform">Platform</label>
+          <div className="col d-flex align-items-center gap-4">
+            <label htmlFor="platform" className="fs-5 fw-semibold form-label mb-0">Platform</label>
             <select
+              className="form-select form-select-sl w-75"
               id="platform"
               name="platform"
               value={formData.platform}
@@ -200,88 +194,85 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
             </select>
           </div>
         </div>
-        <div className="detail-row">
-          <p>
-            {"More versions "}
-            <a
-              target="_blank"
-              className="form-ref"
-              href="https://ccl.northwestern.edu/netlogo/oldversions.shtml"
-            >
-              {"here"}
-            </a>
-            <br />
-            {"For help using old models with new versions see the "}
-            <a
-              target="_blank"
-              className="form-ref"
-              href="https://ccl.northwestern.edu/netlogo/transition.html"
-            >
-              {"Transition Guide"}
-            </a>
-            .
-          </p>
+
+        <div className="mb-3 row my-4">
+          <label htmlFor="name" className="col-sm-3 col-form-label fs-5 fw-semibold">Name</label>
+          <div className="col-sm-9">
+            <input 
+              type="text" 
+              className="form-control" 
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              />
+          </div>
         </div>
-        <div className="form-row">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-          />
+        <div className="mb-3 row my-4">
+          <label htmlFor="organization" className="col-sm-3 col-form-label fs-5 fw-semibold">Organization</label>
+          <div className="col-sm-9">
+            <input 
+              type="text" 
+              className="form-control" 
+              id="organization"
+              name="organization"
+              value={formData.organization}
+              onChange={handleInputChange}
+              />
+          </div>
         </div>
-        <div className="form-row">
-          <label htmlFor="organization">Organization</label>
-          <input
-            type="text"
-            id="organization"
-            name="organization"
-            value={formData.organization}
-            onChange={handleInputChange}
-          />
+
+        <div className="mb-3 row my-4">
+          <label htmlFor="email" className="col-sm-3 col-form-label fs-5 fw-semibold">Email</label>
+          <div className="col-sm-9">
+            <input 
+              type="email" 
+              className="form-control" 
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
+
+            <div className="form-check mt-2">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="subscribe"
+                name="subscribe"
+                checked={formData.subscribe}
+                onChange={handleInputChange}
+              />
+              <label className="form-check-label small" htmlFor="subscribe">
+                Update me on the newest releases of NetLogo
+              </label>
+            </div>
+          </div>
         </div>
-        <div className="form-row">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="detail-row email-row">
-          <input
-            className="email-signup"
-            type="checkbox"
-            id="subscribe"
-            name="subscribe"
-            checked={formData.subscribe}
-            onChange={handleInputChange}
-          />
-          <label htmlFor="subscribe">
-            Update me on the newest releases of NetLogo
+        <div className="mb-3 row my-4">
+          <label htmlFor="comments" className="col-sm-3 col-form-label fs-5 fw-semibold">
+            Comments
           </label>
-        </div>
-        <div className="form-row">
-          <label htmlFor="comments">Comments</label>
-          <textarea
-            id="comments"
-            name="comments"
-            rows={4}
-            value={formData.comments}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="detail-row">
-          <p>
-            {"We read these but don't respond directly. For a response, write "}
-            <a className="form-ref" href="mailto:netlogo-help@ccl.northwestern.edu">
-              {"netlogo-help@ccl.northwestern.edu"}
-            </a>
-          </p>
+          <div className="col-sm-9">
+            <textarea
+              id="comments"
+              name="comments"
+              className="form-control"
+              rows={2}
+              value={formData.comments}
+              onChange={handleInputChange}
+              aria-describedby="commentsHelp"
+            ></textarea>
+            <div id="commentsHelp" className="form-text mt-1">
+              We read these but don't respond directly. For a response, write
+              <a
+                className="form-ref ms-1"
+                href="mailto:netlogo-help@ccl.northwestern.edu"
+              >
+                netlogo-help@ccl.northwestern.edu
+              </a>
+            </div>
+          </div>
         </div>
         <div className="submit-row">
           <button type="submit">Download</button>
@@ -299,3 +290,11 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
 };
 
 export { DownloadForm };
+
+
+///
+/// Move description to the right with smaller turtle image
+//  default .input-group sizes
+//  comment textarea needs to be smaller ---------
+//  default cehkbox to true ----------
+//  

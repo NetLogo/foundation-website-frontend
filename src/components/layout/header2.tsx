@@ -24,23 +24,25 @@ const Header = ({ navData }: HeaderProps) => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom font-inter">
-      <div className="container">
-        <a className="navbar-brand fw-bold" href="/">
-          <img src={NetLogoOrgLogo.src} alt="NetLogo Logo" width="175"/>
-        </a>
+      <div className="container d-flex justify-content-between align-items-center">
+      
+        <div className="d-flex align-items-center">
+          <button
+            className="navbar-toggler order-1 order-lg-2 me-2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarContent"
+            aria-controls="navbarContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
-          aria-controls="navbarContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
+          <a className="navbar-brand fw-bold order-2 order-lg-1" href="/">
+            <img src={NetLogoOrgLogo.src} alt="NetLogo Logo" width="175" />
+          </a>
+        </div>
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav mx-auto d-flex justify-content-between">
             {navData.map((section, i) => (
@@ -55,20 +57,21 @@ const Header = ({ navData }: HeaderProps) => {
                   {section.name}
                 </a>
                 <ul className="dropdown-menu">
-                  {section.items.map((item, j) =>
+                  {section.items.map((item, j) => (
                     <li key={`${j}`}>
                       <a className="dropdown-item header-link long-item" href={item.url}>
                         {item.display_title}
                       </a>
                     </li>
-                  )}
+                  ))}
                 </ul>
               </li>
             ))}
           </ul>
         </div>
-
-        <a className="btn btn-primary" onClick={NavigateToDonate} role="button">Donate</a>
+        <a className="btn btn-primary ms-2" onClick={NavigateToDonate} role="button">
+          Donate
+        </a>
       </div>
     </nav>
   )

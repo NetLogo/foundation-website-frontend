@@ -248,26 +248,26 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
             </div>
           </div>
         </div>
-        <div className="row g-3 align-items-start mt-1">
-          <div className="col">
-            <div className="d-flex align-items-center gap-3 mb-1">
-              <label htmlFor="version" className="fs-5 fw-semibold form-label mb-0">Version</label>
-              <select
-                className="form-select form-select-sl w-75"
-                id="version"
-                name="version"
-                value={formData.version}
-                onChange={handleInputChange}
-                aria-describedby="versionHelp"
-              >
-                {netLogoVersions.map((version) => (
-                  <option key={version} value={version}>
-                    {`NetLogo ${version}`}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <p id="versionHelp" className="form-text mb-0">
+        <div className="mb-3 row my-4">
+          <label htmlFor="version" className="col-sm-3 col-form-label fs-5 fw-semibold">
+            Version
+          </label>
+          <div className="col-sm-9">
+            <select
+              className="form-select form-select-sl w-auto"
+              id="version"
+              name="version"
+              value={formData.version}
+              onChange={handleInputChange}
+              aria-describedby="versionInfo"
+            >
+              {netLogoVersions.map((version) => (
+                <option key={version} value={version}>
+                  {`NetLogo ${version}`}
+                </option>
+              ))}
+            </select>
+            <div id="versionInfo" className="form-text mt-2">
               {"More versions "}
               <a
                 target="_blank"
@@ -276,34 +276,8 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
               >
                 {"here"}
               </a>
-              .
-            </p>
+            </div>
           </div>
-          <div className="col d-flex align-items-center gap-4">
-            <label htmlFor="platform" className="fs-5 fw-semibold form-label mb-0">Platform</label>
-            <select
-              className="form-select form-select-sl w-75"
-              id="platform"
-              name="platform"
-              value={formData.platform}
-              onChange={handleInputChange}
-            >
-              {platforms?.map((platform) => (
-                <option key={platform} value={platform}>
-                  {platform}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-        <div className="submit-row">
-          <button type="submit">Download</button>
-          <p>
-            {"Download trouble? Write"}{" "}
-            <a className="form-ref" href="mailto:bugs@ccl.northwestern.edu">
-              {"bugs@ccl.northwestern.edu."}
-            </a>
-          </p>
         </div>
         <div className="detail-row"></div>
       </form>

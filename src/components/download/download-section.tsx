@@ -7,9 +7,10 @@ import ContentImageLayout from "../shared/content-image-layout";
 
 interface DownloadSectionProps {
   downloadData: NetLogoVersion[];
+  devOs?: string;
 }
 
-const DownloadSection = ({ downloadData }: DownloadSectionProps) => {
+const DownloadSection = ({ downloadData, devOs }: DownloadSectionProps) => {
   const [downloaded, setDownloaded] = useState<boolean>(false);
 
   return !downloaded ? (
@@ -24,7 +25,7 @@ const DownloadSection = ({ downloadData }: DownloadSectionProps) => {
 
     <div className="container pt-5 font-inter">
 
-      <h1 className="form-title text-start">Download NetLogo</h1>
+      <h1 className="form-title text-start">Download NetLogo for {devOs}</h1>
 
       <div className="row align-items-start gx-5">
         <div className="col-lg-6">
@@ -35,7 +36,7 @@ const DownloadSection = ({ downloadData }: DownloadSectionProps) => {
             }}
           />
         </div>
-        <div className="col-lg-6 justify-content-center ps-5">
+        <div className="col-lg-6 justify-content-center mt-4 ps-5">
           <div className="text-start">
             <p>
               {"Most computers can run NetLogo (see "}

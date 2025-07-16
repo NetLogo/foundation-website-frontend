@@ -53,3 +53,7 @@
 .thankyou-link:hover {
   text-decoration: underline;
 }
+
+.font-inter {
+  font-family: Inter;
+}

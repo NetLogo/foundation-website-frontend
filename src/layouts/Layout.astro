@@ -12,12 +12,16 @@ const api = new NetLogoApi();
 const navData = await api.getNavigationData();
 
 const { navigation_sections } = navData;
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <!-- Google tag (gtag.js) -->
     <script
       type="text/partytown"

@@ -7,11 +7,14 @@ import SubsectionsPage from "../components/subsections_page/subsections-page";
 // Get Page Data
 const api = new NetLogoApi();
 const pageData = await api.getResourcesData();
-
 ---
 
 <!-- Setup Page Layout -->
-<Layout show_footer_buttons={false}>
+<Layout
+    show_footer_buttons={false}
+    title="NetLogo Resources"
+    description="Resources related to NetLogo"
+>
     <!-- Display Data -->
-    <SubsectionsPage pageTitle="Resources" pageData = {pageData}/>
+    <SubsectionsPage pageTitle="Resources" pageData={pageData} />
 </Layout>

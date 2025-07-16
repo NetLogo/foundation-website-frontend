@@ -3,12 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import { AnnouncementsSection } from "../components/announcements/announcements-page";
 import NetLogoApi from "../utils/api.js";
 
-
 const api = new NetLogoApi();
 const announcements = await api.getAnnouncements();
-
 ---
 
-<Layout>
-    <AnnouncementsSection AnnouncementData={announcements} client:load/>
+<Layout
+    title="NetLogo announcements"
+    description="Announcements related to NetLogo"
+>
+    <AnnouncementsSection AnnouncementData={announcements} client:load />
 </Layout>

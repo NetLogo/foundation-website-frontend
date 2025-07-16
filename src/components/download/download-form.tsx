@@ -279,6 +279,13 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
             </div>
           </div>
         </div>
+        {platforms?.map((platform) =>
+          platform.includes("Windows") && (
+            <button type="submit" className="d-flex flex-col mt-4 mb-3 btn btn-primary btn-lg" key={platform} value={platform}>
+              Download {platform}
+            </button>
+          )
+        )}
         <div className="detail-row"></div>
       </form>
     </div>

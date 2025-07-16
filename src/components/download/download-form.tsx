@@ -1,6 +1,7 @@
 import React, {
   useState,
   useMemo,
+  useEffect,
   type ChangeEvent,
   type FormEvent,
 } from "react";
@@ -32,7 +33,7 @@ const DetectOS = () => {
   let os = null;
 
   if (userAgent.indexOf("Win") !== -1) os = "Windows";
-  else if (userAgent.indexOf("Mac") !== -1) os = "macOS";
+  else if (userAgent.indexOf("Mac") !== -1) os = "Mac";
   else if (userAgent.indexOf("Linux") !== -1) os = "Linux";
   else if (userAgent.indexOf("Android") !== -1) os = "Android";
   else if (userAgent.indexOf("like Mac") !== -1) os = "iOS"; // iPhone, iPad
@@ -55,6 +56,7 @@ const getFormattedTimestamp = () => {
 }
 
 const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
+
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
     version: "",
@@ -89,16 +91,21 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
 
     const platforms = downloadLinks?.map((link) => link.platform);
 
-    if (platforms) {
-      setFormData({
-        ...formData,
-        ["platform"]: platforms[0],
-      });
-    }
-
     return platforms
     // return downloadLinks?.map((link) => link.platform);
   }, [formData.version]);
+
+  useEffect(() => {
+    const os = DetectOS();
+    if (!os) return;
+    const matchedPlatform = platforms.find((p) => p.indexOf(os) != -1) || platforms[0];
+    setFormData({
+      ...formData,
+      ["platform"]: matchedPlatform,
+    });
+
+  }, [platforms]);
+
 
   // Handle all input changes
   const handleInputChange = (
@@ -158,58 +165,10 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
     }
   };
 
+
   return (
     <div className="download-form">
       <form onSubmit={handleFormSubmission} className="font-inter mt-1">
-        <div className="row g-3 align-items-start">
-          <div className="col">
-            <div className="d-flex align-items-center gap-3 mb-1">
-              <label htmlFor="version" className="fs-5 fw-semibold form-label mb-0">Version</label>
-              <select
-                className="form-select form-select-sl w-75"
-                id="version"
-                name="version"
-                value={formData.version}
-                onChange={handleInputChange}
-                aria-describedby="versionHelp"
-              >
-                {netLogoVersions.map((version) => (
-                  <option key={version} value={version}>
-                    {`NetLogo ${version}`}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <p id="versionHelp" className="form-text mb-0">
-              {"More versions "}
-              <a
-                target="_blank"
-                className="form-ref"
-                href="https://ccl.northwestern.edu/netlogo/oldversions.shtml"
-              >
-                {"here"}
-              </a>
-              .
-            </p>
-          </div>
-          <div className="col d-flex align-items-center gap-4">
-            <label htmlFor="platform" className="fs-5 fw-semibold form-label mb-0">Platform</label>
-            <select
-              className="form-select form-select-sl w-75"
-              id="platform"
-              name="platform"
-              value={formData.platform}
-              onChange={handleInputChange}
-            >
-              {platforms?.map((platform) => (
-                <option key={platform} value={platform}>
-                  {platform}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
         <div className="mb-3 row my-4">
           <label htmlFor="name" className="col-sm-3 col-form-label fs-5 fw-semibold">Name</label>
           <div className="col-sm-9">
@@ -279,14 +238,62 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
               aria-describedby="commentsHelp"
             ></textarea>
             <div id="commentsHelp" className="form-text mt-1">
-              We read these but don't respond directly. For a response, write
+              For a response, write
               <a
                 className="form-ref ms-1"
-                href="mailto:netlogo-help@ccl.northwestern.edu"
+                href="mailto:feedback@ccl.northwestern.edu"
               >
-                netlogo-help@ccl.northwestern.edu
+                feedback@ccl.northwestern.edu
               </a>
             </div>
+          </div>
+        </div>
+        <div className="row g-3 align-items-start mt-1">
+          <div className="col">
+            <div className="d-flex align-items-center gap-3 mb-1">
+              <label htmlFor="version" className="fs-5 fw-semibold form-label mb-0">Version</label>
+              <select
+                className="form-select form-select-sl w-75"
+                id="version"
+                name="version"
+                value={formData.version}
+                onChange={handleInputChange}
+                aria-describedby="versionHelp"
+              >
+                {netLogoVersions.map((version) => (
+                  <option key={version} value={version}>
+                    {`NetLogo ${version}`}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <p id="versionHelp" className="form-text mb-0">
+              {"More versions "}
+              <a
+                target="_blank"
+                className="form-ref"
+                href="https://ccl.northwestern.edu/netlogo/oldversions.shtml"
+              >
+                {"here"}
+              </a>
+              .
+            </p>
+          </div>
+          <div className="col d-flex align-items-center gap-4">
+            <label htmlFor="platform" className="fs-5 fw-semibold form-label mb-0">Platform</label>
+            <select
+              className="form-select form-select-sl w-75"
+              id="platform"
+              name="platform"
+              value={formData.platform}
+              onChange={handleInputChange}
+            >
+              {platforms?.map((platform) => (
+                <option key={platform} value={platform}>
+                  {platform}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className="submit-row">

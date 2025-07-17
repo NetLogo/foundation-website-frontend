@@ -220,6 +220,7 @@ const queries = {
         download_links {
           platform
           download_url
+          sort
         }
       }
       donation_data{

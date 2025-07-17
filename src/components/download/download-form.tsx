@@ -85,14 +85,12 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
 
 
 
-  const platforms = useMemo(() => {
+  const platforms = useMemo<[string, number][]>(() => {
     const downloadLinks = versions.find(
       (version) => version.version === formData.version
     )?.download_links;
 
-    const platforms = downloadLinks?.map((link) => link.platform);
-
-    return platforms
+    return downloadLinks?.map((link) => [link.platform, link.sort]) || [];
     // return downloadLinks?.map((link) => link.platform);
   }, [formData.version]);
 
@@ -318,13 +316,19 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
             </div>
           </div>
         </div>
-        {platforms?.map((platform) =>
-          devOs && platform.includes(devOs) && (
-            <button type="submit" className="d-flex flex-col mt-4 mb-3 btn btn-primary btn-lg" key={platform} value={platform}>
-              Download {platform}
+        <div className="d-flex flex-row gap-2">
+        {platforms?.map(([name, sort]) =>
+          devOs && name.includes(devOs) && sort % 2 === 1 ? (
+            <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg" key={name} value={name}>
+              Download {name}
             </button>
-          )
+          ) : devOs && name.includes(devOs)? (
+            <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg" key={name} value={name}>
+              Download {name}
+            </button>
+          ) : null
         )}
+        </div>
 
         <OtherOS devOs={devOs} />
         <div className="detail-row"></div>

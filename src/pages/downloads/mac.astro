@@ -11,16 +11,9 @@ const pageData = await api.getDownloadPageData();
 
 <Layout
     show_footer_buttons={false}
-    title="NetLogo Download fo Windows"
+    title="NetLogo Download for Mac"
     description="NetLogo download page"
 >
-    <DownloadSection downloadData={pageData["netlogo_versions"]} devOs="Windows" client:load />
-    <!-- <br/>
-    <p>Netlogo works for {" "}
-        <a href="/downloads/mac">Mac</a>
-        {" "} and {" "}
-        <a href="/downloads/linux">Linux</a>
-        {" "} too.
-    </p> -->
+    <DownloadSection downloadData={pageData["netlogo_versions"]} devOs="Mac" client:load />
     <DonationSection donationArray={pageData["donation_data"]} client:load />
 </Layout>

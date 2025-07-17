@@ -25,6 +25,7 @@ export interface FormData {
 
 interface DownloadFormProps {
   versions: NetLogoVersion[];
+  devOs?: string;
   downloadedSetter?: () => void;
 }
 
@@ -55,7 +56,7 @@ const getFormattedTimestamp = () => {
   return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 }
 
-const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
+const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) => {
 
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
@@ -163,6 +164,44 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
       document.body.removeChild(link);
       downloadedSetter?.();
     }
+  };
+
+  const OtherOS = ({ devOs }: { devOs?: string }) => {
+    if (devOs === "Windows") {
+      return (
+        <p className="pt-3">
+          NetLogo works for{" "}
+          <a href="/downloads/mac">Mac</a>
+          {" "} and {" "}
+          <a href="/downloads/linux">Linux</a>
+          {" "} too.
+        </p>
+      );
+    }
+    else if (devOs === "Linux") {
+      return (
+        <p className="pt-3">
+          NetLogo works for{" "}
+          <a href="/downloads/windows">Windows</a>
+          {" "} and {" "}
+          <a href="/downloads/mac">Mac</a>
+          {" "} too.
+        </p>
+      );
+    }
+    else if (devOs === "Mac") {
+      return (
+        <p className="pt-3">
+          NetLogo works for{" "}
+          <a href="/downloads/windows">Windows</a>
+          {" "} and {" "}
+          <a href="/downloads/linux">Linux</a>
+          {" "} too.
+        </p>
+      );
+    }
+
+    return null;
   };
 
 
@@ -280,12 +319,14 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
           </div>
         </div>
         {platforms?.map((platform) =>
-          platform.includes("Windows") && (
+          devOs && platform.includes(devOs) && (
             <button type="submit" className="d-flex flex-col mt-4 mb-3 btn btn-primary btn-lg" key={platform} value={platform}>
               Download {platform}
             </button>
           )
         )}
+
+        <OtherOS devOs={devOs} />
         <div className="detail-row"></div>
       </form>
     </div>

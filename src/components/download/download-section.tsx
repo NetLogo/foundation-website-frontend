@@ -31,6 +31,7 @@ const DownloadSection = ({ downloadData, devOs }: DownloadSectionProps) => {
         <div className="col-lg-6">
           <DownloadForm
             versions={downloadData}
+            devOs={devOs}
             downloadedSetter={() => {
               setDownloaded(true);
             }}

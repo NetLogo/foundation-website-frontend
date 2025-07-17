@@ -169,7 +169,7 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
   const OtherOS = ({ devOs }: { devOs?: string }) => {
     if (devOs === "Windows") {
       return (
-        <p className="pt-3">
+        <p className="pt-3 font-inter">
           NetLogo works for{" "}
           <a href="/downloads/mac">Mac</a>
           {" "} and {" "}
@@ -180,7 +180,7 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
     }
     else if (devOs === "Linux") {
       return (
-        <p className="pt-3">
+        <p className="pt-3 font-inter">
           NetLogo works for{" "}
           <a href="/downloads/windows">Windows</a>
           {" "} and {" "}
@@ -191,7 +191,7 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
     }
     else if (devOs === "Mac") {
       return (
-        <p className="pt-3">
+        <p className="pt-3 font-inter">
           NetLogo works for{" "}
           <a href="/downloads/windows">Windows</a>
           {" "} and {" "}

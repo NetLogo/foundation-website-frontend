@@ -129,6 +129,8 @@ export interface AllData {
 export interface DownloadLink {
   platform: string;
   download_url: string;
+  primary: boolean;
+  subplatform: string;
 }
 
 export interface NetLogoVersion {

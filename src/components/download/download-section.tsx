@@ -25,7 +25,7 @@ const DownloadSection = ({ downloadData, devOs }: DownloadSectionProps) => {
 
     <div className="container pt-5 font-inter">
 
-      <h1 className="form-title text-start">Download NetLogo for {devOs}</h1>
+      <h1 className="fw-bold text-start">Download NetLogo for {devOs}</h1>
 
       <div className="row align-items-start gx-5">
         <div className="col-lg-6">

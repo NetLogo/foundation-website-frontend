@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro"
 import DownloadOptions from "../../components/download/download-options"
 import NetLogoApi from "../../utils/api"
-import DonationSection from "../../components/download/donation-section"
 
 const api = new NetLogoApi();
 
@@ -16,5 +15,4 @@ const pageData = await api.getDownloadPageData();
 >
     <!-- <DownloadSection downloadData={pageData["netlogo_versions"]} client:load /> -->
     <DownloadOptions></DownloadOptions>
-    <DonationSection donationArray={pageData["donation_data"]} client:load />
 </Layout>

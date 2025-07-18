@@ -85,12 +85,12 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
 
 
 
-  const platforms = useMemo<[string, boolean][]>(() => {
+  const platforms = useMemo<[string, string, boolean][]>(() => {
     const downloadLinks = versions.find(
       (version) => version.version === formData.version
     )?.download_links;
 
-    return downloadLinks?.map((link) => [link.platform, link.primary]) || [];
+    return downloadLinks?.map((link) => [link.platform, link.subplatform, Boolean(link.primary)]) || [];
     // return downloadLinks?.map((link) => link.platform);
   }, [formData.version]);
 
@@ -311,7 +311,7 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
           <label htmlFor="version" className="col-sm-3 col-form-label fs-5 fw-semibold">
             Version
           </label>
-          <div className="col-sm-9">
+          <div className="col-auto d-flex flex-row gap-3">
             <select
               className="form-select form-select-sl w-auto"
               id="version"
@@ -339,14 +339,14 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
           </div>
         </div>
         <div className="d-flex flex-row gap-2">
-        {platforms?.map(([name, primary_link]) =>
+        {platforms?.map(([name, subname, primary_link]) =>
           devOs && name.includes(devOs) && primary_link === true ? (
-            <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg" key={name} value={name}>
-              Download {name}
+            <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg" key={name} value={name} >
+              Download for {subname}
             </button>
           ) : devOs && name.includes(devOs)? (
             <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg" key={name} value={name}>
-              Download {name}
+              Download for {subname}
             </button>
           ) : null
         )}

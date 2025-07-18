@@ -85,12 +85,12 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
 
 
 
-  const platforms = useMemo<[string, number][]>(() => {
+  const platforms = useMemo<[string, boolean][]>(() => {
     const downloadLinks = versions.find(
       (version) => version.version === formData.version
     )?.download_links;
 
-    return downloadLinks?.map((link) => [link.platform, link.sort]) || [];
+    return downloadLinks?.map((link) => [link.platform, link.primary]) || [];
     // return downloadLinks?.map((link) => link.platform);
   }, [formData.version]);
 
@@ -167,35 +167,57 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
   const OtherOS = ({ devOs }: { devOs?: string }) => {
     if (devOs === "Windows") {
       return (
-        <p className="pt-3 font-inter">
-          NetLogo works for{" "}
-          <a href="/downloads/mac">Mac</a>
-          {" "} and {" "}
-          <a href="/downloads/linux">Linux</a>
-          {" "} too.
-        </p>
+        <div>
+          <p className="pt-1 font-inter">
+            Don't know what Windows machine you're using? Figure it out{" "}
+            <a href="https://support.microsoft.com/en-us/topic/determine-whether-your-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system-1b03ca69-ac5e-4b04-827b-c0c47145944b">
+            here</a>.
+          </p>
+          <p className="pt-4 font-inter">
+            NetLogo works for{" "}
+            <a href="/downloads/mac" className="text-decoration-none">Mac</a>
+            {" "} and {" "}
+            <a href="/downloads/linux" className="text-decoration-none">Linux</a>
+            {" "} too.
+          </p>
+        </div>
       );
     }
     else if (devOs === "Linux") {
       return (
-        <p className="pt-3 font-inter">
-          NetLogo works for{" "}
-          <a href="/downloads/windows">Windows</a>
-          {" "} and {" "}
-          <a href="/downloads/mac">Mac</a>
-          {" "} too.
-        </p>
+        <div>
+          <p className="pt-1 font-inter">
+            Don't know what Linux machine you're using? Figure it out{" "}
+            <a href="https://www.howtogeek.com/198615/how-to-check-if-your-linux-system-is-32-bit-or-64-bit/">
+            here</a>.
+          </p>
+          <p className="pt-3 font-inter">
+            NetLogo works for{" "}
+            <a href="/downloads/windows" className="text-decoration-none">Windows</a>
+            {" "} and {" "}
+            <a href="/downloads/mac" className="text-decoration-none">Mac</a>
+            {" "} too.
+          </p>
+        </div>
       );
     }
     else if (devOs === "Mac") {
       return (
-        <p className="pt-3 font-inter">
-          NetLogo works for{" "}
-          <a href="/downloads/windows">Windows</a>
-          {" "} and {" "}
-          <a href="/downloads/linux">Linux</a>
-          {" "} too.
-        </p>
+
+        <div>
+          <p className="pt-1 font-inter">
+            Don't know what Mac you're using? Figure it out{" "}
+            <a href="https://support.apple.com/en-us/116943">
+            here</a>.
+          </p>
+          <p className="pt-3 font-inter">
+            NetLogo works for{" "}
+            <a href="/downloads/windows" className="text-decoration-none">Windows</a>
+            {" "} and {" "}
+            <a href="/downloads/linux" className="text-decoration-none">Linux</a>
+            {" "} too.
+          </p>
+        </div>
       );
     }
 
@@ -317,8 +339,8 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
           </div>
         </div>
         <div className="d-flex flex-row gap-2">
-        {platforms?.map(([name, sort]) =>
-          devOs && name.includes(devOs) && sort % 2 === 1 ? (
+        {platforms?.map(([name, primary_link]) =>
+          devOs && name.includes(devOs) && primary_link === true ? (
             <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg" key={name} value={name}>
               Download {name}
             </button>

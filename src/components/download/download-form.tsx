@@ -56,6 +56,12 @@ const getFormattedTimestamp = () => {
   return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 }
 
+const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
+
+const createImageURL = (imageId: string) => {
+  return `${backend_url}/assets/${imageId}`;
+};
+
 const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) => {
 
   // State for all form fields with typed interface
@@ -85,12 +91,12 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
 
 
 
-  const platforms = useMemo<[string, string, boolean][]>(() => {
+  const platforms = useMemo<[string, string, boolean, string][]>(() => {
     const downloadLinks = versions.find(
       (version) => version.version === formData.version
     )?.download_links;
 
-    return downloadLinks?.map((link) => [link.platform, link.subplatform, Boolean(link.primary)]) || [];
+    return downloadLinks?.map((link) => [link.platform, link.subplatform, Boolean(link.primary), link.platform_icon.icon.id]) || [];
     // return downloadLinks?.map((link) => link.platform);
   }, [formData.version]);
 
@@ -339,14 +345,14 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
           </div>
         </div>
         <div className="d-flex flex-row gap-2">
-        {platforms?.map(([name, subname, primary_link]) =>
+        {platforms?.map(([name, subname, primary_link, img_id]) =>
           devOs && name.includes(devOs) && primary_link === true ? (
-            <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg" key={name} value={name} >
-              Download for {subname}
+            <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" key={name} value={name} >
+              <img src={createImageURL(img_id || "")} className="button-icon"/> Download for {subname}
             </button>
           ) : devOs && name.includes(devOs)? (
             <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg" key={name} value={name}>
-              Download for {subname}
+              <img src={createImageURL(img_id || "")} className="button-icon"/> Download for {subname}
             </button>
           ) : null
         )}

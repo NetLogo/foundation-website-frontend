@@ -222,6 +222,11 @@ const queries = {
           download_url
           primary
           subplatform
+          platform_icon {
+            icon {
+              id
+            }
+          }
         }
       }
       donation_data{

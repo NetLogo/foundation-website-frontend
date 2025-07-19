@@ -154,3 +154,8 @@
 .font-inter {
   font-family: Inter;
 }
+
+.button-icon {
+  width: 24px;
+  height: auto;
+}

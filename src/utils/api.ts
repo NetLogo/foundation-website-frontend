@@ -126,11 +126,16 @@ export interface AllData {
   announcement: AnnouncementObj;
 }
 
+export interface PlatformIcon {
+  icon: Image;
+}
+
 export interface DownloadLink {
   platform: string;
   download_url: string;
   primary: boolean;
   subplatform: string;
+  platform_icon: PlatformIcon;
 }
 
 export interface NetLogoVersion {

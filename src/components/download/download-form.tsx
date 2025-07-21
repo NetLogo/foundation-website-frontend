@@ -349,7 +349,7 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
               ))}
             </select>
             <div id="versionInfo" className="form-text mt-2">
-              {"More versions "}
+              {"Previous versions "}
               <a
                 target="_blank"
                 className="form-ref"
@@ -364,11 +364,11 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
         {platforms?.map(([name, subname, primary_link, img_id]) =>
           devOs && name.includes(devOs) && primary_link === true ? (
             <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
-              <img src={createImageURL(img_id || "")} className="button-icon opacity-50"/> Download {subname}
+              <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
             </button>
           ) : devOs && name.includes(devOs)? (
             <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
-              <img src={createImageURL(img_id || "")} className="button-icon opacity-50"/> Download {subname}
+              <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
             </button>
           ) : null
         )}

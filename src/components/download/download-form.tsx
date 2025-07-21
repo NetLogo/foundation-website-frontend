@@ -3,6 +3,7 @@ import React, {
   useMemo,
   useEffect,
   type ChangeEvent,
+  type MouseEvent,
   type FormEvent,
 } from "react";
 import "./styles/download-form.css";
@@ -114,7 +115,7 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
 
   // Handle all input changes
   const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLButtonElement>
   ) => {
     // track name, value, and type of input
     const { name, value, type } = e.target;
@@ -129,6 +130,16 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
       [name]: type === "checkbox" ? checked : value,
     });
   };
+
+  const handleClickChange = (
+    e: MouseEvent<HTMLButtonElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({...formData,
+      [name]: value,
+    });
+
+  }
 
   const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -176,7 +187,9 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
         <div>
           <p className="pt-1 font-inter">
             Don't know what Windows machine you're using? Figure it out{" "}
-            <a href="https://support.microsoft.com/en-us/topic/determine-whether-your-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system-1b03ca69-ac5e-4b04-827b-c0c47145944b">
+            <a href="https://support.microsoft.com/en-us/topic/determine-whether-your-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system-1b03ca69-ac5e-4b04-827b-c0c47145944b"
+            target="_blank"
+            rel="noopener noreferrer">
             here</a>.
           </p>
           <p className="pt-4 font-inter">
@@ -194,7 +207,9 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
         <div>
           <p className="pt-1 font-inter">
             Don't know what Linux machine you're using? Figure it out{" "}
-            <a href="https://www.howtogeek.com/198615/how-to-check-if-your-linux-system-is-32-bit-or-64-bit/">
+            <a href="https://www.howtogeek.com/198615/how-to-check-if-your-linux-system-is-32-bit-or-64-bit/"
+            target="_blank"
+            rel="noopener noreferrer">
             here</a>.
           </p>
           <p className="pt-3 font-inter">
@@ -213,7 +228,8 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
         <div>
           <p className="pt-1 font-inter">
             Don't know what Mac you're using? Figure it out{" "}
-            <a href="https://support.apple.com/en-us/116943">
+            <a href="https://support.apple.com/en-us/116943"target="_blank"
+            rel="noopener noreferrer">
             here</a>.
           </p>
           <p className="pt-3 font-inter">
@@ -347,12 +363,12 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
         <div className="d-flex flex-row gap-2">
         {platforms?.map(([name, subname, primary_link, img_id]) =>
           devOs && name.includes(devOs) && primary_link === true ? (
-            <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" key={name} value={name} >
-              <img src={createImageURL(img_id || "")} className="button-icon"/> Download for {subname}
+            <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
+              <img src={createImageURL(img_id || "")} className="button-icon opacity-50"/> Download {subname}
             </button>
           ) : devOs && name.includes(devOs)? (
-            <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg" key={name} value={name}>
-              <img src={createImageURL(img_id || "")} className="button-icon"/> Download for {subname}
+            <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
+              <img src={createImageURL(img_id || "")} className="button-icon opacity-50"/> Download {subname}
             </button>
           ) : null
         )}

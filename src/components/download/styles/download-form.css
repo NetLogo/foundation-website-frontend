@@ -159,3 +159,7 @@
   width: 24px;
   height: auto;
 }
+
+.btn-ht {
+  min-height: 50px;
+}

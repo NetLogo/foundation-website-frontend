@@ -1,0 +1,1 @@
+import{default as a}from"./donation-section.DN35e-gZ.js";import"./jsx-runtime.BftctW7E.js";import"./index.DJO9vBfz.js";import"./url-utils.DMEIeNK6.js";/* empty css                        *//* empty css                        */import"./index.4TLT1QzY.js";export{a as default};

@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { DownloadSection } from "../../components/download/download-section";
+import MachineHelp from "../../components/download/download-machine-help";
 import NetLogoApi from "../../utils/api";
 import DonationSection from "../../components/download/donation-section";
 
@@ -15,5 +16,9 @@ const pageData = await api.getDownloadPageData();
     description="NetLogo download page"
 >
     <DownloadSection downloadData={pageData["netlogo_versions"]} devOs="Linux" client:load />
+    <MachineHelp platformMachine="Linux machine" 
+    machineLink="https://www.howtogeek.com/198615/how-to-check-if-your-linux-system-is-32-bit-or-64-bit/"
+    otherplatform1="Windows"
+    otherplatform2="Mac" />
     <DonationSection donationArray={pageData["donation_data"]} client:load />
 </Layout>

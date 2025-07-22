@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { DownloadSection } from "../../components/download/download-section";
+import MachineHelp from "../../components/download/download-machine-help";
 import NetLogoApi from "../../utils/api";
 import DonationSection from "../../components/download/donation-section";
 
@@ -15,5 +16,9 @@ const pageData = await api.getDownloadPageData();
     description="NetLogo download page"
 >
     <DownloadSection downloadData={pageData["netlogo_versions"]} devOs="Mac" client:load />
+    <MachineHelp platformMachine="Mac" 
+    machineLink="https://support.apple.com/en-us/116943"
+    otherplatform1="Windows"
+    otherplatform2="Linux" />
     <DonationSection donationArray={pageData["donation_data"]} client:load />
 </Layout>

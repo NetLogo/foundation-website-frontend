@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./styles/download-section.css";
 import { DownloadForm } from "./download-form";
 import NetLogoIcon from "../../assets/NetlogoIcon.svg";
@@ -11,9 +10,8 @@ interface DownloadSectionProps {
 }
 
 const DownloadSection = ({ downloadData, devOs }: DownloadSectionProps) => {
-  const [downloaded, setDownloaded] = useState<boolean>(false);
 
-  return !downloaded ? (
+  return (
     // <ContentImageLayout imageSrc={NetLogoIcon.src}>
     // <DownloadForm
     //   versions={downloadData}
@@ -32,9 +30,6 @@ const DownloadSection = ({ downloadData, devOs }: DownloadSectionProps) => {
           <DownloadForm
             versions={downloadData}
             devOs={devOs}
-            downloadedSetter={() => {
-              setDownloaded(true);
-            }}
           />
         </div>
         <div className="col-lg-6 justify-content-center mt-4 ps-5">
@@ -80,13 +75,7 @@ const DownloadSection = ({ downloadData, devOs }: DownloadSectionProps) => {
     </div>
 
 
-  ) : (
-    <ContentImageLayout>
-      <div className="thankyou-container">
-        <h1 className="thankyou-heading">Thanks for downloading!</h1>
-      </div>
-    </ContentImageLayout>
-  );
+  )
 };
 
 export { DownloadSection };

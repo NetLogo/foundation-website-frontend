@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ThankYouSection from "../components/download/thank-you-section";
+import DonationSection from "../components/download/donation-section";
+import NetLogoApi from "../utils/api.js";
+
+const api = new NetLogoApi();
+
+const donationData = await api.getDonationData()
+
+---
+
+<Layout
+    show_footer_buttons={false}
+    title="Thanks for Downloading NetLogo"
+    description="NetLogo Downloading Thank You Page"
+>
+    <ThankYouSection />
+    <DonationSection donationArray = {donationData} client:load/>
+
+</Layout>

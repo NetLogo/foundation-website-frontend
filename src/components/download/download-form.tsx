@@ -27,7 +27,6 @@ export interface FormData {
 interface DownloadFormProps {
   versions: NetLogoVersion[];
   devOs?: string;
-  downloadedSetter?: () => void;
 }
 
 const DetectOS = () => {
@@ -63,7 +62,7 @@ const createImageURL = (imageId: string) => {
   return `${backend_url}/assets/${imageId}`;
 };
 
-const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) => {
+const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
 
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
@@ -139,6 +138,8 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
       [name]: value,
     });
 
+    // window.location.href = "/thankyou"; 
+
   }
 
   const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
@@ -177,7 +178,10 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      downloadedSetter?.();
+
+      setTimeout(() => {
+        window.location.href = "/thankyou";
+      }, 500);
     }
   };
 
@@ -300,6 +304,9 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
             <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
               <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
             </button>
+            // <a href="/thankyou" type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
+            //   <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
+            // </a>
           ) : devOs && name.includes(devOs)? (
             <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
               <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}

@@ -27,7 +27,6 @@ export interface FormData {
 interface DownloadFormProps {
   versions: NetLogoVersion[];
   devOs?: string;
-  downloadedSetter?: () => void;
 }
 
 const DetectOS = () => {
@@ -63,7 +62,7 @@ const createImageURL = (imageId: string) => {
   return `${backend_url}/assets/${imageId}`;
 };
 
-const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) => {
+const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
 
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
@@ -139,6 +138,8 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
       [name]: value,
     });
 
+    // window.location.href = "/thankyou"; 
+
   }
 
   const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
@@ -177,75 +178,12 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      downloadedSetter?.();
+
+      setTimeout(() => {
+        window.location.href = "/thankyou";
+      }, 500);
     }
   };
-
-  const OtherOS = ({ devOs }: { devOs?: string }) => {
-    if (devOs === "Windows") {
-      return (
-        <div>
-          <p className="pt-1 font-inter">
-            Don't know what Windows machine you're using? Figure it out{" "}
-            <a href="https://support.microsoft.com/en-us/topic/determine-whether-your-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system-1b03ca69-ac5e-4b04-827b-c0c47145944b"
-            target="_blank"
-            rel="noopener noreferrer">
-            here</a>.
-          </p>
-          <p className="pt-4 font-inter">
-            NetLogo works for{" "}
-            <a href="/downloads/mac" className="text-decoration-none">Mac</a>
-            {" "} and {" "}
-            <a href="/downloads/linux" className="text-decoration-none">Linux</a>
-            {" "} too.
-          </p>
-        </div>
-      );
-    }
-    else if (devOs === "Linux") {
-      return (
-        <div>
-          <p className="pt-1 font-inter">
-            Don't know what Linux machine you're using? Figure it out{" "}
-            <a href="https://www.howtogeek.com/198615/how-to-check-if-your-linux-system-is-32-bit-or-64-bit/"
-            target="_blank"
-            rel="noopener noreferrer">
-            here</a>.
-          </p>
-          <p className="pt-3 font-inter">
-            NetLogo works for{" "}
-            <a href="/downloads/windows" className="text-decoration-none">Windows</a>
-            {" "} and {" "}
-            <a href="/downloads/mac" className="text-decoration-none">Mac</a>
-            {" "} too.
-          </p>
-        </div>
-      );
-    }
-    else if (devOs === "Mac") {
-      return (
-
-        <div>
-          <p className="pt-1 font-inter">
-            Don't know what Mac you're using? Figure it out{" "}
-            <a href="https://support.apple.com/en-us/116943"target="_blank"
-            rel="noopener noreferrer">
-            here</a>.
-          </p>
-          <p className="pt-3 font-inter">
-            NetLogo works for{" "}
-            <a href="/downloads/windows" className="text-decoration-none">Windows</a>
-            {" "} and {" "}
-            <a href="/downloads/linux" className="text-decoration-none">Linux</a>
-            {" "} too.
-          </p>
-        </div>
-      );
-    }
-
-    return null;
-  };
-
 
   return (
     <div className="download-form">
@@ -366,6 +304,9 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
             <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
               <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
             </button>
+            // <a href="/thankyou" type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
+            //   <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
+            // </a>
           ) : devOs && name.includes(devOs)? (
             <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
               <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
@@ -374,7 +315,7 @@ const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) 
         )}
         </div>
 
-        <OtherOS devOs={devOs} />
+        {/* <OtherOS devOs={devOs} /> */}
         <div className="detail-row"></div>
       </form>
     </div>

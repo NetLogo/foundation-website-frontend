@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { DownloadSection } from "../../components/download/download-section";
+import MachineHelp from "../../components/download/download-machine-help";
 import NetLogoApi from "../../utils/api";
 import DonationSection from "../../components/download/donation-section";
 
@@ -15,12 +16,10 @@ const pageData = await api.getDownloadPageData();
     description="NetLogo download page"
 >
     <DownloadSection downloadData={pageData["netlogo_versions"]} devOs="Windows" client:load />
-    <!-- <br/>
-    <p>Netlogo works for {" "}
-        <a href="/downloads/mac">Mac</a>
-        {" "} and {" "}
-        <a href="/downloads/linux">Linux</a>
-        {" "} too.
-    </p> -->
+    <MachineHelp platformMachine="Windows machine" 
+    machineLink="https://support.microsoft.com/en-us/topic/determine-whether-your-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system-1b03ca69-ac5e-4b04-827b-c0c47145944b"
+    otherplatform1="Mac"
+    otherplatform2="Linux" />
+
     <DonationSection donationArray={pageData["donation_data"]} client:load />
 </Layout>

@@ -3,6 +3,7 @@ import React, {
   useMemo,
   useEffect,
   type ChangeEvent,
+  type MouseEvent,
   type FormEvent,
 } from "react";
 import "./styles/download-form.css";
@@ -25,6 +26,7 @@ export interface FormData {
 
 interface DownloadFormProps {
   versions: NetLogoVersion[];
+  devOs?: string;
   downloadedSetter?: () => void;
 }
 
@@ -55,7 +57,13 @@ const getFormattedTimestamp = () => {
   return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 }
 
-const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
+const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
+
+const createImageURL = (imageId: string) => {
+  return `${backend_url}/assets/${imageId}`;
+};
+
+const DownloadForm = ({ versions, devOs, downloadedSetter }: DownloadFormProps) => {
 
   // State for all form fields with typed interface
   const [formData, setFormData] = useState<FormData>({
@@ -84,14 +92,12 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
 
 
 
-  const platforms = useMemo(() => {
+  const platforms = useMemo<[string, string, boolean, string][]>(() => {
     const downloadLinks = versions.find(
       (version) => version.version === formData.version
     )?.download_links;
 
-    const platforms = downloadLinks?.map((link) => link.platform);
-
-    return platforms
+    return downloadLinks?.map((link) => [link.platform, link.subplatform, Boolean(link.primary), link.platform_icon.icon.id]) || [];
     // return downloadLinks?.map((link) => link.platform);
   }, [formData.version]);
 
@@ -109,7 +115,7 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
 
   // Handle all input changes
   const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLButtonElement>
   ) => {
     // track name, value, and type of input
     const { name, value, type } = e.target;
@@ -124,6 +130,16 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
       [name]: type === "checkbox" ? checked : value,
     });
   };
+
+  const handleClickChange = (
+    e: MouseEvent<HTMLButtonElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({...formData,
+      [name]: value,
+    });
+
+  }
 
   const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -163,6 +179,71 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
       document.body.removeChild(link);
       downloadedSetter?.();
     }
+  };
+
+  const OtherOS = ({ devOs }: { devOs?: string }) => {
+    if (devOs === "Windows") {
+      return (
+        <div>
+          <p className="pt-1 font-inter">
+            Don't know what Windows machine you're using? Figure it out{" "}
+            <a href="https://support.microsoft.com/en-us/topic/determine-whether-your-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system-1b03ca69-ac5e-4b04-827b-c0c47145944b"
+            target="_blank"
+            rel="noopener noreferrer">
+            here</a>.
+          </p>
+          <p className="pt-4 font-inter">
+            NetLogo works for{" "}
+            <a href="/downloads/mac" className="text-decoration-none">Mac</a>
+            {" "} and {" "}
+            <a href="/downloads/linux" className="text-decoration-none">Linux</a>
+            {" "} too.
+          </p>
+        </div>
+      );
+    }
+    else if (devOs === "Linux") {
+      return (
+        <div>
+          <p className="pt-1 font-inter">
+            Don't know what Linux machine you're using? Figure it out{" "}
+            <a href="https://www.howtogeek.com/198615/how-to-check-if-your-linux-system-is-32-bit-or-64-bit/"
+            target="_blank"
+            rel="noopener noreferrer">
+            here</a>.
+          </p>
+          <p className="pt-3 font-inter">
+            NetLogo works for{" "}
+            <a href="/downloads/windows" className="text-decoration-none">Windows</a>
+            {" "} and {" "}
+            <a href="/downloads/mac" className="text-decoration-none">Mac</a>
+            {" "} too.
+          </p>
+        </div>
+      );
+    }
+    else if (devOs === "Mac") {
+      return (
+
+        <div>
+          <p className="pt-1 font-inter">
+            Don't know what Mac you're using? Figure it out{" "}
+            <a href="https://support.apple.com/en-us/116943"target="_blank"
+            rel="noopener noreferrer">
+            here</a>.
+          </p>
+          <p className="pt-3 font-inter">
+            NetLogo works for{" "}
+            <a href="/downloads/windows" className="text-decoration-none">Windows</a>
+            {" "} and {" "}
+            <a href="/downloads/linux" className="text-decoration-none">Linux</a>
+            {" "} too.
+          </p>
+        </div>
+      );
+    }
+
+    return null;
   };
 
 
@@ -248,27 +329,27 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
             </div>
           </div>
         </div>
-        <div className="row g-3 align-items-start mt-1">
-          <div className="col">
-            <div className="d-flex align-items-center gap-3 mb-1">
-              <label htmlFor="version" className="fs-5 fw-semibold form-label mb-0">Version</label>
-              <select
-                className="form-select form-select-sl w-75"
-                id="version"
-                name="version"
-                value={formData.version}
-                onChange={handleInputChange}
-                aria-describedby="versionHelp"
-              >
-                {netLogoVersions.map((version) => (
-                  <option key={version} value={version}>
-                    {`NetLogo ${version}`}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <p id="versionHelp" className="form-text mb-0">
-              {"More versions "}
+        <div className="mb-3 row my-4">
+          <label htmlFor="version" className="col-sm-3 col-form-label fs-5 fw-semibold">
+            Version
+          </label>
+          <div className="col-auto d-flex flex-row gap-3">
+            <select
+              className="form-select form-select-sl w-auto"
+              id="version"
+              name="version"
+              value={formData.version}
+              onChange={handleInputChange}
+              aria-describedby="versionInfo"
+            >
+              {netLogoVersions.map((version) => (
+                <option key={version} value={version}>
+                  {`NetLogo ${version}`}
+                </option>
+              ))}
+            </select>
+            <div id="versionInfo" className="form-text mt-2">
+              {"Previous versions "}
               <a
                 target="_blank"
                 className="form-ref"
@@ -276,35 +357,24 @@ const DownloadForm = ({ versions, downloadedSetter }: DownloadFormProps) => {
               >
                 {"here"}
               </a>
-              .
-            </p>
-          </div>
-          <div className="col d-flex align-items-center gap-4">
-            <label htmlFor="platform" className="fs-5 fw-semibold form-label mb-0">Platform</label>
-            <select
-              className="form-select form-select-sl w-75"
-              id="platform"
-              name="platform"
-              value={formData.platform}
-              onChange={handleInputChange}
-            >
-              {platforms?.map((platform) => (
-                <option key={platform} value={platform}>
-                  {platform}
-                </option>
-              ))}
-            </select>
+            </div>
           </div>
         </div>
-        <div className="submit-row">
-          <button type="submit">Download</button>
-          <p>
-            {"Download trouble? Write"}{" "}
-            <a className="form-ref" href="mailto:bugs@ccl.northwestern.edu">
-              {"bugs@ccl.northwestern.edu."}
-            </a>
-          </p>
+        <div className="d-flex flex-row gap-2">
+        {platforms?.map(([name, subname, primary_link, img_id]) =>
+          devOs && name.includes(devOs) && primary_link === true ? (
+            <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
+              <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
+            </button>
+          ) : devOs && name.includes(devOs)? (
+            <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
+              <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
+            </button>
+          ) : null
+        )}
         </div>
+
+        <OtherOS devOs={devOs} />
         <div className="detail-row"></div>
       </form>
     </div>

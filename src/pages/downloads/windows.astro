@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { DownloadSection } from "../../components/download/download-section";
+import NetLogoApi from "../../utils/api";
+import DonationSection from "../../components/download/donation-section";
+
+const api = new NetLogoApi();
+
+const pageData = await api.getDownloadPageData();
+---
+
+<Layout
+    show_footer_buttons={false}
+    title="NetLogo Download fo Windows"
+    description="NetLogo download page"
+>
+    <DownloadSection downloadData={pageData["netlogo_versions"]} devOs="Windows" client:load />
+    <!-- <br/>
+    <p>Netlogo works for {" "}
+        <a href="/downloads/mac">Mac</a>
+        {" "} and {" "}
+        <a href="/downloads/linux">Linux</a>
+        {" "} too.
+    </p> -->
+    <DonationSection donationArray={pageData["donation_data"]} client:load />
+</Layout>

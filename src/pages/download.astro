@@ -1,19 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { DownloadSection } from "../components/download/download-section.tsx";
-import NetLogoApi from "../utils/api.js";
-import DonationSection from "../components/download/donation-section.tsx";
-
-const api = new NetLogoApi();
-
-const pageData = await api.getDownloadPageData();
 ---
 
-<Layout
-    show_footer_buttons={false}
-    title="NetLogo Downloads"
-    description="NetLogo download page"
->
-    <DownloadSection downloadData={pageData["netlogo_versions"]} client:load />
-    <DonationSection donationArray={pageData["donation_data"]} client:load />
+<Layout title="Redirecting...">
+  <script>
+    const userAgent = navigator.userAgent;
+    let os = null;
+
+    if (userAgent.includes("Win")) os = "windows";
+    else if (userAgent.includes("Mac")) os = "mac";
+    else if (userAgent.includes("Linux")) os = "linux";
+
+    if (os) {
+      window.location.href = `/downloads/${os}`;
+    } else {
+      window.location.href = `/downloads/options`;
+    }
+  </script>
+  <p>Redirecting to your device's download page...</p>
 </Layout>

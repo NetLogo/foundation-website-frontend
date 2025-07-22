@@ -154,3 +154,12 @@
 .font-inter {
   font-family: Inter;
 }
+
+.button-icon {
+  width: 23px;
+  height: auto;
+}
+
+.btn-ht {
+  min-height: 50px;
+}

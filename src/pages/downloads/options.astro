@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import DownloadOptions from "../../components/download/download-options"
+import NetLogoApi from "../../utils/api"
+
+const api = new NetLogoApi();
+
+const pageData = await api.getDownloadPageData();
+---
+
+<Layout
+    show_footer_buttons={false}
+    title="NetLogo Downloads"
+    description="NetLogo download page"
+>
+    <!-- <DownloadSection downloadData={pageData["netlogo_versions"]} client:load /> -->
+    <DownloadOptions></DownloadOptions>
+</Layout>

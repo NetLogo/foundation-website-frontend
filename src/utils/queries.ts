@@ -220,6 +220,13 @@ const queries = {
         download_links {
           platform
           download_url
+          primary
+          subplatform
+          platform_icon {
+            icon {
+              id
+            }
+          }
         }
       }
       donation_data{

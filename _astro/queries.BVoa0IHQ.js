@@ -191,6 +191,13 @@ const e=(o,...t)=>o.reduce((i,r,n)=>`${i}${r}${n in t?String(t[n]):""}`,""),a={i
         download_links {
           platform
           download_url
+          primary
+          subplatform
+          platform_icon {
+            icon {
+              id
+            }
+          }
         }
       }
       donation_data{

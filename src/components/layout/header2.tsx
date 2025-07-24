@@ -25,7 +25,7 @@ const Header = ({ navData }: HeaderProps) => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom font-inter">
-      <div className="container d-flex justify-content-between align-items-center">
+      <div className="container d-flex align-items-center justify-content-around">
         <div className="d-flex align-items-center">
           <button
             className="navbar-toggler order-1 order-lg-2 me-2"
@@ -43,13 +43,10 @@ const Header = ({ navData }: HeaderProps) => {
             <img src={NetLogoOrgLogo.src} alt="NetLogo Logo" width="175" />
           </a>
         </div>
-        <a className="d-lg-none btn btn-primary" onClick={NavigateToDonate} role="button">
-            Donate
-        </a>
-        <div className="collapse navbar-collapse" id="navbarContent">
-          <ul className="navbar-nav mx-auto d-flex justify-content-between">
+        <div className="d-none d-lg-block flex-grow-1 text-center">
+          <ul className="navbar-nav justify-content-end">
             {navData.map((section, i) => (
-              <li key={i} className="nav-item mx-5 dropdown">
+              <li key={i} className="nav-item dropdown fw-semibold px-3">
                 <a
                   className="nav-link"
                   onClick={NavigateHome}
@@ -72,7 +69,42 @@ const Header = ({ navData }: HeaderProps) => {
             ))}
           </ul>
         </div>
-        <a className="d-none d-lg-block btn btn-primary ms-2 ms-auto" onClick={NavigateToDonate} role="button">
+        {/* <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div> */}
+        <a className="d-lg-none btn btn-primary" onClick={NavigateToDonate} role="button">
+          Donate
+        </a>
+        <div className="collapse navbar-collapse" id="navbarContent">
+          <ul className="d-lg-none navbar-nav mx-auto d-flex justify-content-between text-start pt-2">
+            {navData.map((section, i) => (
+              <li key={i} className="nav-item mx-5 dropdown fw-semibold">
+                <a
+                  className="nav-link"
+                  onClick={NavigateHome}
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="true"
+                >
+                  {section.name}
+                </a>
+                <ul className="">
+                  {section.items.map((item, j) => (
+                    <li key={`item-${j}`}>
+                      <a className="dropdown-item header-link long-item" href={item.url}>
+                        {item.display_title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <a className="d-none d-lg-block btn btn-primary mx-5" onClick={NavigateToDonate} role="button">
           Donate
         </a>
       </div>

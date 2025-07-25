@@ -15,7 +15,7 @@ const donationData = await api.getDonationData()
     title="Thanks for Downloading NetLogo"
     description="NetLogo Downloading Thank You Page"
 >
-    <ThankYouSection />
+    <ThankYouSection client:load/>
     <DonationSection donationArray = {donationData} client:load/>
 
 </Layout>

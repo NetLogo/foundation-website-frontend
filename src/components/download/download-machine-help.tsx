@@ -1,6 +1,6 @@
   const MachineHelp = ({ platformMachine, machineLink, otherplatform1, otherplatform2 }: { platformMachine: string , machineLink: string, otherplatform1?: string,  otherplatform2?: string}) => {
     return (
-        <div className="text-start ps-3">
+        <div className=" container text-start ps-3">
             <p className="pt-1 font-inter">
             Don't know what {platformMachine} you're using? Figure it out{" "}
             <a href={machineLink}

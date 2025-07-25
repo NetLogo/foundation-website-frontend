@@ -172,16 +172,8 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
       alert("Download link not found");
       return;
     } else {
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.download = "";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      setTimeout(() => {
-        window.location.href = "/thankyou";
-      }, 500);
+      const encodedURL = btoa(downloadUrl);
+      window.location.href = "/thankyou?download_url=" + encodedURL;
     }
   };
 
@@ -323,6 +315,11 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
 };
 
 export { DownloadForm };
+
+
+//URL query parameter encoded
+//Javascript to decode, download and ajavascript to put that as the link to go to in the a href beneath thanks for donwlading
+//Take care of edge case
 
 
 ///

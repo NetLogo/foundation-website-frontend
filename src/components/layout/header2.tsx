@@ -20,60 +20,97 @@ if (window.location.pathname !== homePath) {
 const Header = ({ navData }: HeaderProps) => {
   useEffect(() => {
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
+
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom font-inter">
-      <div className="container d-flex justify-content-between align-items-center">
-      
-        <div className="d-flex align-items-center">
-          <button
-            className="navbar-toggler order-1 order-lg-2 me-2"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarContent"
-            aria-controls="navbarContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+    <div className="container-fluid">
+      <nav className="w-100 navbar navbar-expand-lg navbar-light bg-light border-bottom font-inter">
+        <div className="container d-flex align-items-center justify-content-around">
+          <div className="d-flex align-items-center">
+            <button
+              className="navbar-toggler order-1 order-lg-2 me-2"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarContent"
+              aria-controls="navbarContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
 
-          <a className="navbar-brand fw-bold order-2 order-lg-1" href="/">
-            <img src={NetLogoOrgLogo.src} alt="NetLogo Logo" width="175" />
+            <a className="navbar-brand fw-bold order-2 order-lg-1" href="/">
+              <img src={NetLogoOrgLogo.src} alt="NetLogo Logo" width="175" />
+            </a>
+          </div>
+          <div className="d-none d-lg-block flex-grow-1 text-center">
+            <ul className="navbar-nav justify-content-end">
+              {navData.map((section, i) => (
+                <li key={i} className="nav-item dropdown fw-semibold px-3">
+                  <a
+                    className="nav-link"
+                    onClick={NavigateHome}
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="true"
+                  >
+                    {section.name}
+                  </a>
+                  <ul className="dropdown-menu">
+                    {section.items.map((item, j) => (
+                      <li key={`item-${j}`}>
+                        <a className="dropdown-item header-link long-item" href={item.url}>
+                          {item.display_title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* <div>
+            Hi
+          </div>
+          <div>
+            Hi
+          </div> */}
+          <a className="d-lg-none btn btn-primary" onClick={NavigateToDonate} role="button">
+            Donate
+          </a>
+          <div className="collapse navbar-collapse" id="navbarContent">
+            <ul className="d-lg-none navbar-nav mx-auto d-flex justify-content-between text-start pt-2">
+              {navData.map((section, i) => (
+                <li key={i} className="nav-item mx-5 dropdown fw-semibold">
+                  <a
+                    className="nav-link"
+                    onClick={NavigateHome}
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="true"
+                  >
+                    {section.name}
+                  </a>
+                  <ul className="list-unstyled ps-3">
+                    {section.items.map((item, j) => (
+                      <li key={`item-${j}`}>
+                        <a className="dropdown-item header-link long-item" href={item.url}>
+                          {item.display_title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <a className="d-none d-lg-block btn btn-primary mx-5" onClick={NavigateToDonate} role="button">
+            Donate
           </a>
         </div>
-        <div className="collapse navbar-collapse" id="navbarContent">
-          <ul className="navbar-nav mx-auto d-flex justify-content-between">
-            {navData.map((section, i) => (
-              <li key={i} className="nav-item mx-5 dropdown">
-                <a
-                  className="nav-link"
-                  onClick={NavigateHome}
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="true"
-                >
-                  {section.name}
-                </a>
-                <ul className="dropdown-menu">
-                  {section.items.map((item, j) => (
-                    <li key={`${j}`}>
-                      <a className="dropdown-item header-link long-item" href={item.url}>
-                        {item.display_title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <a className="btn btn-primary ms-2" onClick={NavigateToDonate} role="button">
-          Donate
-        </a>
-      </div>
-    </nav>
+      </nav>
+    </div>
   )
 };
 

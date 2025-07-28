@@ -84,7 +84,7 @@ const Header = ({ navData }: HeaderProps) => {
               {navData.map((section, i) => (
                 <li key={i} className="nav-item mx-5 dropdown fw-semibold">
                   <a
-                    className="nav-link"
+                    className="nav-link d-inline-block px-1"
                     onClick={NavigateHome}
                     role="button"
                     data-bs-toggle="dropdown"
@@ -95,7 +95,7 @@ const Header = ({ navData }: HeaderProps) => {
                   <ul className="list-unstyled ps-3">
                     {section.items.map((item, j) => (
                       <li key={`item-${j}`}>
-                        <a className="dropdown-item header-link long-item" href={item.url}>
+                        <a className="dropdown-item header-link long-item collapse-item" href={item.url}>
                           {item.display_title}
                         </a>
                       </li>

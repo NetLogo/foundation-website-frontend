@@ -279,3 +279,21 @@
         margin-top: 0;
     }
 }
+
+.nav-link {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.nav-link:hover {
+  background-color: #D4D4D4;
+}
+
+.collapse-item {
+  padding: 0.2rem 0.5rem !important;
+  border-radius: 0.25rem !important;
+}
+
+.collapse-item:hover {
+  background-color: #D4D4D4 !important;
+}

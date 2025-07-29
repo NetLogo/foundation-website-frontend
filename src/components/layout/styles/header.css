@@ -297,3 +297,8 @@
 .collapse-item:hover {
   background-color: #D4D4D4 !important;
 }
+
+#navbarContent {
+  max-height: 375px;
+  overflow-y: auto;
+}

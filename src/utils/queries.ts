@@ -127,6 +127,14 @@ const queries = {
     }
   `,
 
+  aboutContent: gql`
+  query getAbout {
+    about {
+      body
+    }
+  }
+  `,
+
   netLogoVersions: gql`
     query GetNetLogoVersions {
       netlogo_versions {

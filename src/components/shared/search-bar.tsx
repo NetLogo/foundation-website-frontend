@@ -7,7 +7,7 @@ interface SearchbarProps {
 }
 
 const Searchbar = ({ headerRef }: SearchbarProps) => {
-    const [isCompact, setIsCompact] = useState(false)
+    const [isCompact, setIsCompact] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
     const searchBarRef = useRef<HTMLDivElement>(null);

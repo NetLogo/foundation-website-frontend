@@ -71,13 +71,15 @@ const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
   }, [image_entries]);
 
   return (
-    <div className="image-column-container">
+    <div className="image-column-container gap-3 gap-lg-2">
       {currentImageId && (
         <img
           key={currentImageId} // Add key to force re-render when image changes
           className="current-column-image"
           src={createImageURL(currentImageId)}
           alt={images_object[currentImageId]}
+          height="464"
+          width="686"
         />
       )}
       <div className="column-container">
@@ -218,7 +220,7 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
   return (
     <div className="splash-section">
       <div className="splash-content">
-        <div className="category-buttons">
+        <div className="category-buttons gap-2">
           {introData.map((tab, index) => (
             <button
               key={index}

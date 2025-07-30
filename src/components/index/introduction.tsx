@@ -6,6 +6,7 @@ import { IntroSplash } from "./intro-splash";
 import LogoText from "../../assets/logo-text.svg";
 import IntroTurtles from "../../assets/intro-turtles.svg";
 import "./styles/introduction.css";
+import { NavigateToDonate } from "../../utils/url-utils";
 
 interface IntroProps {
   intro_data: Introduction;
@@ -28,13 +29,13 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
 
   return (
     <div className="w-100 bg-white pt-2">
-      <div className="container py-4">
-        <div className="row align-items-center gx-5">
-          <div className="col-md-6 d-flex align-items-center gap-2">
+      <div className="container py-5">
+        <div className="row align-items-center gx-5 gap-3 gap-lg-0">
+          <div className="col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end gap-2">
               <img
                 src={IntroTurtles.src}
                 alt="NetLogo Turtles"
-                className="ms-5 intro-turtles"
+                className="intro-turtles"
               />
               <img
                 src={LogoText.src}
@@ -43,15 +44,22 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
               />
           </div>
 
-          <div className="col-md-6 d-flex flex-column gap-4">
-            <ReactMarkdown className="fs-5 fw-medium lh-base text-start font-inter">
+          <div className="col-md-10 col-lg-6 mx-auto d-flex flex-column mt-1">
+            <ReactMarkdown className="fs-5 fw-medium lh-base text-start font-inter text-center text-lg-start">
               {intro_data.description}
             </ReactMarkdown>
-            <div className="d-flex flex-column align-items-center button-data">
-              <button type="button" className="btn btn-primary btn-lg font-inter fw-bold fs-6" data-bs-toggle="button" onClick={scrollToGetNetLogo}>
-                GET NETLOGO
-              </button>
-              <p className="text-muted mt-1 mb-0 font-inter">100% Free</p>
+            <div className="d-flex flex-row gap-2 mx-auto mx-lg-0">
+              <div className="d-flex flex-column align-items-center button-data">
+                <button type="button" className="btn btn-primary btn-lg font-inter fw-bold fs-6" data-bs-toggle="button" onClick={scrollToGetNetLogo}>
+                  GET NETLOGO
+                </button>
+                <p className="text-muted mt-1 mb-0 font-inter">100% Free</p>
+              </div>
+              <div className="d-flex flex-column align-items-center button-data">
+                <button type="button" style={{width: "8rem"}} className="btn btn-secondary btn-lg font-inter fw-bold fs-6" data-bs-toggle="button" onClick={NavigateToDonate}>
+                  Donate
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -32,7 +32,7 @@ const ItemCard = ({
   };
   const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
   return (
-    <div className="card shadow-sm rounded-4 m-2 p-4" style={{ backgroundColor: card_color, width: "18rem" }}>
+    <div className="card shadow-sm rounded-4 m-2 p-4" style={{ backgroundColor: card_color, width: "100%"}}>
       <div className="d-flex align-items-center mb-3 gap-3">
         <img
           src={`${backend_url}/assets/${image_key}`}
@@ -42,7 +42,7 @@ const ItemCard = ({
         />
         <h5 className="fw-bold mb-0 font-inter">{title}</h5>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 flex-grow-1">
         <ReactMarkdown className="text-start small font-inter">
           {description}
         </ReactMarkdown>

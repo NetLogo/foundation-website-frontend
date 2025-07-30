@@ -30,15 +30,27 @@
 }
 
 .intro-turtles {
-  width: 160px;
+  width: 128px; /* lg-size * 0.8 */
   margin-bottom: 0;
   /* Remove bottom margin */
 }
 
+
 .intro-logo-text {
   margin-top: -5px;
   /* Use negative margin to pull it closer to the turtles */
-  width: 350px;
+  width: 288px; /* lg-size * 0.8 */
+}
+
+@media (min-width: 1024px) {
+  .intro-turtles {
+    width: 140px;
+    /* Adjust width for larger screens */
+  }
+  .intro-logo-text {
+    width: 345px;
+    /* Adjust width for larger screens */
+  }
 }
 
 /* Text Section */

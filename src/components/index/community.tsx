@@ -93,7 +93,7 @@ const Community = ({
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "center",
-                gap: "2%",
+                gap: "0.7rem",
               }}
               className="community-netlogo-content"
             >

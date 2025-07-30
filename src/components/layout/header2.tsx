@@ -26,7 +26,7 @@ const Header = ({ navData }: HeaderProps) => {
   return (
     <div className="container-fluid">
       <nav className="w-100 navbar navbar-expand-lg navbar-light bg-light border-bottom font-inter">
-        <div className="container d-flex align-items-center justify-content-around">
+        <div className="container d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center">
             <button
               className="navbar-toggler order-1 order-lg-2 me-2"

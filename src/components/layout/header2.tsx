@@ -23,6 +23,24 @@ const Header = ({ navData }: HeaderProps) => {
 
   }, []);
 
+  useEffect(() => {
+  const navbar = document.querySelector('.navbar') as HTMLElement;
+  const mainContainer = document.getElementById('mainContainer');
+
+  if (navbar && mainContainer) {
+    const resizeObserver = new ResizeObserver(() => {
+      mainContainer.style.paddingTop = `${navbar.offsetHeight}px`;
+    });
+
+    resizeObserver.observe(navbar);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }
+}, []);
+
+
   return (
     <div className="container-fluid">
       <nav className="w-100 navbar navbar-expand-lg navbar-light bg-light border-bottom font-inter fixed-top">
@@ -50,7 +68,6 @@ const Header = ({ navData }: HeaderProps) => {
                 <li key={i} className="nav-item dropdown fw-semibold px-3">
                   <a
                     className="nav-link"
-                    onClick={NavigateHome}
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="true"

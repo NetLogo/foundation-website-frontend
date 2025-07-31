@@ -25,6 +25,14 @@
 }
 
 /* ===== Category Navigation ===== */
+.scroll-overflow-indicator {
+  display: none;
+}
+
+.category-buttons-container {
+  display: contents;
+}
+
 .category-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -232,6 +240,18 @@
   font-weight: 500;
 }
 
+@keyframes bop-right {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 /* ===== Responsive Styles ===== */
 @media (max-width: 1024px) {
   /* Fix category buttons on small screens */
@@ -244,15 +264,56 @@
     max-height: unset;
   }
 
-  .category-buttons {
-    flex-direction: column;
+  .category-buttons-container {
     width: 100%;
+    position: relative;
+    display: block;
+  }
+
+  .category-buttons {
+    max-width: 100%;
+    width: 100%;
+
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    
+    overflow-x: auto;
+  }
+  
+  .scroll-overflow-indicator {
+    content: '';
+    position: absolute;
+    
+    top: 0;
+
+    width: 4rem;
+    height: 100%;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .scroll-overflow-indicator.left {
+    left: 0;
+    background: linear-gradient(to left, transparent, #ffffff);
+  }
+
+  .scroll-overflow-indicator.right {
+    right: 0;
+    background: linear-gradient(to right, transparent, #ffffff);
   }
 
   .category-button {
     width: 100%;
     text-align: center;
     flex-direction: row;
+    white-space: nowrap;
   }
 
   .featured-item-container {

@@ -71,13 +71,15 @@ const ImagesColumn = ({ title, image_entries }: ImagesColumnProps) => {
   }, [image_entries]);
 
   return (
-    <div className="image-column-container">
+    <div className="image-column-container gap-3 gap-lg-2">
       {currentImageId && (
         <img
           key={currentImageId} // Add key to force re-render when image changes
           className="current-column-image"
           src={createImageURL(currentImageId)}
           alt={images_object[currentImageId]}
+          height="464"
+          width="686"
         />
       )}
       <div className="column-container">
@@ -141,6 +143,45 @@ const LinksColumn = ({ title, link_entries }: LinksColumnProps) => {
     </div>
   );
 };
+
+const useScrollOverflowIndicators = () => {
+  const leftIndicatorRef = React.useRef<HTMLDivElement>(null);
+  const rightIndicatorRef = React.useRef<HTMLDivElement>(null);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  
+  useLayoutEffect(() => {
+    const container = containerRef.current;
+    const leftIndicator = leftIndicatorRef.current;
+    const rightIndicator = rightIndicatorRef.current;
+
+    if (container && leftIndicator && rightIndicator) {
+      const handleScroll = () => {
+        const isOverflowing = container.scrollWidth > container.clientWidth;
+        const isScrolledToStart = container.scrollLeft === 0;
+        const isScrolledToEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth;
+        leftIndicator.style.opacity = isOverflowing && !isScrolledToStart ? "1" : "0";
+        rightIndicator.style.opacity = isOverflowing && !isScrolledToEnd ? "1" : "0";
+      };
+
+      handleScroll(); // Initial check
+      container.addEventListener("scroll", handleScroll);
+      window.addEventListener("resize", handleScroll);
+
+      return () => {
+        container.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", handleScroll);
+        leftIndicator.style.opacity = "0";
+        rightIndicator.style.opacity = "0";
+      };
+    }
+  }, [leftIndicatorRef, rightIndicatorRef, containerRef]);
+
+  return {
+    leftIndicatorRef,
+    rightIndicatorRef,
+    containerRef,
+  };
+}
 
 // Main component
 const IntroSplash = ({ page_data }: IntroSplashProps) => {
@@ -215,20 +256,32 @@ const IntroSplash = ({ page_data }: IntroSplashProps) => {
     }
   };
 
+  // UI hooks
+  const {
+    leftIndicatorRef,
+    rightIndicatorRef,
+    containerRef,
+  } = useScrollOverflowIndicators();
+
   return (
     <div className="splash-section">
       <div className="splash-content">
-        <div className="category-buttons">
-          {introData.map((tab, index) => (
-            <button
-              key={index}
-              className={`category-button ${currentTab === tab.title ? "active" : ""}`}
-              onClick={() => setCurrentTab(tab.title)}
-            >
-              {tab.title}
-            </button>
-          ))}
+        <div className="category-buttons-container">
+          <div className="category-buttons gap-2" ref={containerRef}>
+            <span className="scroll-overflow-indicator left" ref={leftIndicatorRef} />
+            {introData.map((tab, index) => (
+              <button
+                key={index}
+                className={`category-button ${currentTab === tab.title ? "active" : ""}`}
+                onClick={() => setCurrentTab(tab.title)}
+              >
+                {tab.title}
+              </button>
+            ))}
+          </div>
+          <span className="scroll-overflow-indicator right" ref={rightIndicatorRef} />
         </div>
+
 
         <div className="featured-item-description">
             <ReactMarkdown>{currentTabData?.description || ""}</ReactMarkdown>

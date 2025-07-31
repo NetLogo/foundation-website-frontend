@@ -19,14 +19,15 @@ if (window.location.pathname !== homePath) {
 
 const Header = ({ navData }: HeaderProps) => {
   useEffect(() => {
+    // @ts-expect-error We don't really need to worry
+    // about the exposure here.
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
-
   }, []);
 
   return (
     <div className="container-fluid">
       <nav className="w-100 navbar navbar-expand-lg navbar-light bg-light border-bottom font-inter">
-        <div className="container d-flex align-items-center justify-content-around">
+        <div className="container d-flex align-items-center justify-content-between">
           <div className="d-flex align-items-center">
             <button
               className="navbar-toggler order-1 order-lg-2 me-2"

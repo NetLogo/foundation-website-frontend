@@ -131,3 +131,13 @@
     text-decoration: none;
     color: black;
 }
+
+@media (max-width: 1024px) {
+    .footer-content-row-back {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-content-row-vert-cont {
+        width: 100%;
+    }
+}

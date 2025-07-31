@@ -189,3 +189,9 @@
   line-height: 150%; /* 1.3125rem */
   height: 6.5rem;
 }
+
+@media (max-width: 1024px) {
+  .community-item {
+    width: 100%;
+  }
+}

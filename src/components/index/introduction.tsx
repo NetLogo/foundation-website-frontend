@@ -32,16 +32,18 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
       <div className="container py-5">
         <div className="row align-items-center gx-5 gap-3 gap-lg-0">
           <div className="col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end gap-2">
-              <img
-                src={IntroTurtles.src}
-                alt="NetLogo Turtles"
-                className="intro-turtles"
-              />
-              <img
-                src={LogoText.src}
-                alt="NetLogo"
-                className="intro-logo-text"
-              />
+              <div className="intro-logo-container">
+                <img
+                  src={IntroTurtles.src}
+                  alt="NetLogo Turtles"
+                  className="intro-turtles"
+                />
+                <img
+                  src={LogoText.src}
+                  alt="NetLogo"
+                  className="intro-logo-text"
+                />
+              </div>
           </div>
 
           <div className="col-md-10 col-lg-6 mx-auto d-flex flex-column mt-1">

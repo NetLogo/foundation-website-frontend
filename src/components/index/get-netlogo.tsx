@@ -40,10 +40,11 @@ const ItemCard = ({
           className="rounded"
           style={{ width: "4rem" }}
         />
-        <h5 className="fw-bold mb-0 font-inter">{title}</h5>
+        <h4 className="fw-bold mb-0 font-inter">{title}</h4>
       </div>
-      <div className="mb-4 flex-grow-1">
-        <ReactMarkdown className="text-start small font-inter">
+      <div className="mb-4 flex-grow-1" style={{ fontSize: "1.125rem", lineHeight: "1.5" }}>
+        <ReactMarkdown 
+          className="text-start font-inter">
           {description}
         </ReactMarkdown>
       </div>

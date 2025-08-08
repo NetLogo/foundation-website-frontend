@@ -118,6 +118,7 @@
   gap: 0.94rem;
   width: 18.125rem;
   align-items: left;
+  max-height: none;
 }
 
 .bordered {
@@ -187,7 +188,6 @@
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 1.3125rem */
-  height: 6.5rem;
 }
 
 @media (max-width: 1024px) {

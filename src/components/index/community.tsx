@@ -48,7 +48,7 @@ const CommunityCard = ({
         <img className={imageClass} src={`${backend_url}/assets/${icon}`} />
         <span className="community-item-title"> {title} </span>
       </div>
-      <div className="community-item-descript" style={{ fontSize: "1.325rem", lineHeight: "1.5" }}>
+      <div className="community-item-descript">
         <ReactMarkdown>{description}</ReactMarkdown>{" "}
       </div>
       <div className="button-container">

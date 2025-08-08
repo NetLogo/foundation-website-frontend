@@ -119,6 +119,7 @@
   width: 18.125rem;
   align-items: left;
   max-height: none;
+  justify-content: space-between;
 }
 
 .bordered {
@@ -131,6 +132,7 @@
 .button-container {
   display: flex;
   justify-content: center;
+  margin-top: auto;
 }
 
 .community-item-header {
@@ -184,10 +186,10 @@
   color: var(--Dark-1, #28293d);
   text-align: left;
   font-family: Inter;
-  font-size: 0.875rem;
+  font-size: 1.15rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 1.3125rem */
+  line-height: 1.5; /* 1.3125rem */
 }
 
 @media (max-width: 1024px) {

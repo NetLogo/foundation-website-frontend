@@ -55,7 +55,7 @@ const CommunityCard = ({
         <Button
           colorClass="blue-button"
           padding="0.75rem 2.5rem"
-          fontSize="0.875rem"
+          fontSize="1.125rem"
           text="GO"
           onClick={() => pageRedirect(link)}
         />

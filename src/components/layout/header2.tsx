@@ -55,13 +55,14 @@ const Header = ({ navData }: HeaderProps) => {
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="true"
+                    style={{fontSize:"18px"}}
                   >
                     {section.name}
                   </a>
                   <ul className="dropdown-menu">
                     {section.items.map((item, j) => (
                       <li key={`item-${j}`}>
-                        <a className="dropdown-item header-link long-item" href={item.url}>
+                        <a className="dropdown-item header-link long-item py-2" href={item.url} style={{fontSize:"18px"}}>
                           {item.display_title}
                         </a>
                       </li>
@@ -71,13 +72,8 @@ const Header = ({ navData }: HeaderProps) => {
               ))}
             </ul>
           </div>
-          {/* <div>
-            Hi
-          </div>
-          <div>
-            Hi
-          </div> */}
-          <a className="d-lg-none btn btn-primary" onClick={NavigateToDonate} role="button">
+
+          <a className="d-lg-none btn btn-primary fs-5 fw-semibold" onClick={NavigateToDonate} role="button">
             Donate
           </a>
           <div className="collapse navbar-collapse" id="navbarContent">
@@ -90,13 +86,17 @@ const Header = ({ navData }: HeaderProps) => {
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="true"
+                    style={{fontSize:"18px"}}
                   >
                     {section.name}
                   </a>
                   <ul className="list-unstyled ps-3">
                     {section.items.map((item, j) => (
                       <li key={`item-${j}`}>
-                        <a className="dropdown-item header-link long-item" href={item.url}>
+                        <a 
+                          className="dropdown-item header-link long-item py-1" 
+                          href={item.url}
+                          style={{fontSize:"18px"}}>
                           {item.display_title}
                         </a>
                       </li>
@@ -106,7 +106,7 @@ const Header = ({ navData }: HeaderProps) => {
               ))}
             </ul>
           </div>
-          <a className="d-none d-lg-block btn btn-primary mx-5" onClick={NavigateToDonate} role="button">
+          <a className="d-none d-lg-block btn btn-primary mx-5 fs-5 fw-semibold" onClick={NavigateToDonate} role="button">
             Donate
           </a>
         </div>

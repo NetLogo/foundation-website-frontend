@@ -51,7 +51,15 @@ const ItemCard = ({
 
       <div className="text-center">
         <button
-          className="btn btn-primary fw-semibold font-inter px-4 py-2"
+          className="btn btn-primary fw-semibold font-inter py-2 text-center"
+          style={{
+            width: "8rem",
+            height: "2.5rem",
+            fontSize: "1.2rem",
+            lineHeight: "1.3rem",
+            textAlign: "center",
+            textWrap: "nowrap"
+          }}
           onClick={() => pageRedirect(link)}
         >
           {button_text ?? "GET"}

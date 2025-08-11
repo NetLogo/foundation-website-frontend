@@ -20,7 +20,7 @@
   border-radius: 15px;
   padding-top: 10px;
   height: fit-content;
-  max-height: 700px;
+  max-height: none;
   padding-bottom: 24px;
 }
 

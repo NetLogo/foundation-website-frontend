@@ -1,4 +1,4 @@
-const e=(o,...t)=>o.reduce((i,r,n)=>`${i}${r}${n in t?String(t[n]):""}`,""),a={introduction:e`
+const e=(n,...t)=>n.reduce((i,r,o)=>`${i}${r}${o in t?String(t[o]):""}`,""),a={introduction:e`
     query {
       introduction {
         title
@@ -104,6 +104,12 @@ const e=(o,...t)=>o.reduce((i,r,n)=>`${i}${r}${n in t?String(t[n]):""}`,""),a={i
         }
       }
     }
+  `,aboutContent:e`
+  query getAbout {
+    about {
+      body
+    }
+  }
   `,netLogoVersions:e`
     query GetNetLogoVersions {
       netlogo_versions {

@@ -24,10 +24,28 @@ const Header = ({ navData }: HeaderProps) => {
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
   }, []);
 
+  useEffect(() => {
+  const navbar = document.querySelector('.navbar') as HTMLElement;
+  const mainContainer = document.getElementById('mainContainer');
+
+  if (navbar && mainContainer) {
+    const resizeObserver = new ResizeObserver(() => {
+      mainContainer.style.paddingTop = `${navbar.offsetHeight}px`;
+    });
+
+    resizeObserver.observe(navbar);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }
+}, []);
+
+
   return (
     <div className="container-fluid">
-      <nav className="w-100 navbar navbar-expand-lg navbar-light bg-light border-bottom font-inter">
-        <div className="container d-flex align-items-center justify-content-between">
+      <nav className="w-100 navbar navbar-expand-lg navbar-light bg-light border-bottom font-inter fixed-top">
+        <div className="container d-flex align-items-center justify-content-around">
           <div className="d-flex align-items-center">
             <button
               className="navbar-toggler order-1 order-lg-2 me-2"
@@ -51,7 +69,6 @@ const Header = ({ navData }: HeaderProps) => {
                 <li key={i} className="nav-item dropdown fw-semibold px-3">
                   <a
                     className="nav-link"
-                    onClick={NavigateHome}
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="true"
@@ -81,7 +98,7 @@ const Header = ({ navData }: HeaderProps) => {
               {navData.map((section, i) => (
                 <li key={i} className="nav-item mx-5 dropdown fw-semibold">
                   <a
-                    className="nav-link"
+                    className="nav-link d-inline-block px-1"
                     onClick={NavigateHome}
                     role="button"
                     data-bs-toggle="dropdown"
@@ -93,6 +110,7 @@ const Header = ({ navData }: HeaderProps) => {
                   <ul className="list-unstyled ps-3">
                     {section.items.map((item, j) => (
                       <li key={`item-${j}`}>
+
                         <a 
                           className="dropdown-item header-link long-item py-1" 
                           href={item.url}

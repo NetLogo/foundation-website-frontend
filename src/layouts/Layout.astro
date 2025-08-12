@@ -40,7 +40,7 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <Header client:load navData={navigation_sections} />
-    <div class="container-fluid">
+    <div class="container-fluid" id="mainContainer">
       <main>
         <slot />
       </main>

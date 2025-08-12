@@ -12,37 +12,27 @@ const MailingList = () => {
     }
 
     return(
-        <div className="mailing-list-section">
-            <div className="mailing-list-body">
-                 <div className="mailing-list-content">
-                     <div className="mailing-list-text-cont">
-                         <span className="mailing-list-title">
-                             Join our mailing list! 
-                         </span>
-                         <span className="mailing-list-descript">
-                             {"Join the NetLogo mailing list to keep up-to-date with what's happening in the NetLogo Community!"}
-                         </span>
-                     </div>
+        <div className="container w-100 py-5 font-inter" id="mailing-container">
+            <div className="row justify-content-center align-items-center">
+                <div className="col-lg-6 ps-5 pb-3 mx-auto">
+                    <h1 className="fw-bold text-start">Join our mailing list!</h1>
+                    <p className="fs-6 fw-medium description-text text-start">Join the NetLogo mailing list to keep up-to-date with what's happening in the NetLogo Community!</p>
+                </div>
+                <div className="col-lg-6 d-flex flex-column align-items-center align-items-lg-start">
+                    <input type="text" className="form-control w-75 mb-3" placeholder="First Name"></input>
+                    <input type="text" className="form-control w-75 mb-3" placeholder="Last Name"></input>
+                    <input type="email" className="form-control w-75 mb-3" placeholder="Email"></input>
 
-                     <div className="mailing-list-input-cont">
-                        <span className="mailing-list-input-text">
-                            YOUR EMAIL
-                        </span>
-                        <input 
-                            className="mailing-list-input-input"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <Button 
-                            colorClass="blue-button"
-                            padding="0.75rem 1.5rem"
-                            fontSize="0.875rem"
-                            text="JOIN"
-                            onClick={handleJoin}
-                        />
-                     </div>
-                 </div>
+                <Button 
+                    colorClass="blue-button"
+                    padding="0.75rem 1.5rem"
+                    fontSize="0.875rem"
+                    text="JOIN"
+                    onClick={handleJoin}
+                />
+                </div>
             </div>
+
         </div>
     )
 }

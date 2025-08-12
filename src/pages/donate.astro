@@ -5,10 +5,13 @@ import DonationSection from "../components/download/donation-section.tsx";
 
 const api = new NetLogoApi();
 
-const donationData = await api.getDonationData()
-
+const donationData = await api.getDonationData();
 ---
 
-<Layout show_footer_buttons={false}>
-    <DonationSection donationArray = {donationData} client:load/>
+<Layout
+    show_footer_buttons={false}
+    title="NetLogo donations"
+    description="NetLogo donation page"
+>
+    <DonationSection donationArray={donationData} client:load />
 </Layout>

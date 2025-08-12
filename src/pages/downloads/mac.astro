@@ -15,10 +15,16 @@ const pageData = await api.getDownloadPageData();
     title="NetLogo Download for Mac"
     description="NetLogo download page"
 >
-    <DownloadSection downloadData={pageData["netlogo_versions"]} devOs="Mac" client:load />
-    <MachineHelp platformMachine="Mac" 
-    machineLink="https://support.apple.com/en-us/116943"
-    otherplatform1="Windows"
-    otherplatform2="Linux" />
+    <DownloadSection
+        downloadData={pageData["netlogo_versions"]}
+        devOs="Mac"
+        client:load
+    />
+    <MachineHelp
+        platformMachine="Mac"
+        machineLink="https://macreports.com/how-to-know-if-your-mac-has-apple-silicon-or-intel-chip/"
+        otherplatform1="Windows"
+        otherplatform2="Linux"
+    />
     <DonationSection donationArray={pageData["donation_data"]} client:load />
 </Layout>

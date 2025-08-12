@@ -19,8 +19,9 @@ if (window.location.pathname !== homePath) {
 
 const Header = ({ navData }: HeaderProps) => {
   useEffect(() => {
+    // @ts-expect-error We don't really need to worry
+    // about the exposure here.
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
-
   }, []);
 
   useEffect(() => {

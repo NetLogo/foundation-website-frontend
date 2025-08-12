@@ -3,13 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import { ContactSection } from "../components/contact/contact-page";
 import NetLogoApi from "../utils/api.js";
 
-
-
 const api = new NetLogoApi();
 const results = await api.getContact();
 ---
 
-<Layout>
+<Layout
+    title="NetLogo Contact"
+    description="Information for how to contact NetLogo"
+>
     <!-- <h1>Contact</h1> -->
-    <ContactSection ContactData={results} client:load/>
+    <ContactSection ContactData={results} client:load />
 </Layout>

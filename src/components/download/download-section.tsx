@@ -33,7 +33,7 @@ const DownloadSection = ({ downloadData, devOs }: DownloadSectionProps) => {
           />
         </div>
         <div className="col-lg-6 justify-content-center mt-4 ps-5">
-          <div className="text-start">
+          <div className="text-start" style={{fontSize:"18px"}}>
             <p>
               {"Most computers can run NetLogo (see "}
               <a

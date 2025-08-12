@@ -33,7 +33,7 @@ interface ReferenceSectionProps {
 const ReferenceSection = ({ pageData }: ReferenceSectionProps) => {
   console.log("Page Data:", pageData[0]); // Log the pageData to check its structure
   return (
-    <div className="references-container">
+    <div className="references-container pt-4">
       <h1>References</h1>
 
       <p>This page lists publications that have used or cited NetLogo software and/or models.</p>
@@ -63,7 +63,7 @@ const ReferenceSection = ({ pageData }: ReferenceSectionProps) => {
           <h3>{item.year}</h3>
           <ul id='reference-entries'>
 
-            {item.references.map((reference, refIndex) => (
+            {(item.references.sort((a, b) => a.text.localeCompare(b.text))).map((reference, refIndex) => (
               <li
                 key={refIndex}
                 className={reference.is_ccl ? "is_ccl" : ""}

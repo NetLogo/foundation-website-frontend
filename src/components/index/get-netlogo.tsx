@@ -40,17 +40,26 @@ const ItemCard = ({
           className="rounded"
           style={{ width: "4rem" }}
         />
-        <h5 className="fw-bold mb-0 font-inter">{title}</h5>
+        <h4 className="fw-bold mb-0 font-inter">{title}</h4>
       </div>
-      <div className="mb-4 flex-grow-1">
-        <ReactMarkdown className="text-start small font-inter">
+      <div className="mb-4 flex-grow-1" style={{ fontSize: "1.125rem", lineHeight: "1.5" }}>
+        <ReactMarkdown 
+          className="text-start font-inter">
           {description}
         </ReactMarkdown>
       </div>
 
       <div className="text-center">
         <button
-          className="btn btn-primary fw-semibold font-inter px-4 py-2"
+          className="btn btn-primary fw-semibold font-inter py-2 text-center"
+          style={{
+            width: "8rem",
+            height: "2.5rem",
+            fontSize: "1.2rem",
+            lineHeight: "1.3rem",
+            textAlign: "center",
+            textWrap: "nowrap"
+          }}
           onClick={() => pageRedirect(link)}
         >
           {button_text ?? "GET"}

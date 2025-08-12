@@ -58,7 +58,19 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
                 <p className="text-muted mt-1 mb-0 font-inter">100% Free</p>
               </div>
               <div className="d-flex flex-column align-items-center button-data">
-                <button type="button" style={{width: "8rem"}} className="btn btn-secondary btn-lg font-inter fw-bold fs-6" data-bs-toggle="button" onClick={NavigateToDonate}>
+                <button
+                  type="button"
+                  style={{
+                    width: "8rem",
+                    height: "2.6rem", // set fixed height
+                    fontSize: "1.2rem", // bigger font size
+                    lineHeight: "1rem", // control text spacing
+                    overflow: "hidden" // prevent content from spilling
+                  }}
+                  className="btn btn-secondary btn-lg font-inter fw-bold"
+                  data-bs-toggle="button"
+                  onClick={NavigateToDonate}
+                >
                   Donate
                 </button>
               </div>

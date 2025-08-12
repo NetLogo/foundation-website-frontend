@@ -37,12 +37,12 @@
 }
 
 .section-descript {
-    color: var(--Dark-3, #8F90A6);
+    color: var(--Dark-3, #7b7c96);
     /* txt/medium/semi */
     font-family: Inter;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 800;
     line-height: 150%; /* 1.6875rem */
     margin-top: 1rem;
 }

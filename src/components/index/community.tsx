@@ -48,14 +48,14 @@ const CommunityCard = ({
         <img className={imageClass} src={`${backend_url}/assets/${icon}`} />
         <span className="community-item-title"> {title} </span>
       </div>
-      <span className="community-item-descript">
+      <div className="community-item-descript">
         <ReactMarkdown>{description}</ReactMarkdown>{" "}
-      </span>
+      </div>
       <div className="button-container">
         <Button
           colorClass="blue-button"
           padding="0.75rem 2.5rem"
-          fontSize="0.875rem"
+          fontSize="1.125rem"
           text="GO"
           onClick={() => pageRedirect(link)}
         />

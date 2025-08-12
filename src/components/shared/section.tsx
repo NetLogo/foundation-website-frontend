@@ -25,7 +25,7 @@ const Section = ({ sectionTitle, sectionDescript, sectionGap, sectionPaddingBot,
                 <div className="section-header">
                     <span className="section-title ms-n2">{sectionTitle}</span>
                     {/* Changed from span to div and using normalized text */}
-                    <div className="section-descript ms-n2">{normalizedDescript}</div>
+                    <div className="section-descript ms-n2 text-start">{normalizedDescript}</div>
                  </div>
                 {body} 
                 {moreButton && 

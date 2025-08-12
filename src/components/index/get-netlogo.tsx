@@ -95,7 +95,7 @@ const GetNetLogo = ({ page_data, section_color }: GetNetLogoProps) => {
           <div className="row justify-content-center">
 
             {page_data.map((item) => (
-              <div key={item.title} className="col-md-4 d-flex justify-content-center">
+              <div key={item.title} className="col-lg-4 d-flex justify-content-center">
                 <ItemCard
                   title={item.title}
                   description={item.content}

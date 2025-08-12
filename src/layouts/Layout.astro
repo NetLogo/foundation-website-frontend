@@ -22,6 +22,7 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google tag (gtag.js) -->
     <script
       type="text/partytown"
@@ -39,7 +40,7 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <Header client:load navData={navigation_sections} />
-    <div class="container-fluid">
+    <div class="container-fluid" id="mainContainer">
       <main>
         <slot />
       </main>

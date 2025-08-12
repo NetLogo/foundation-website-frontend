@@ -59,8 +59,9 @@ function Body({
         page_data={community}
         section_color={color_palette[1]}
       />
+
       {/* <FeaturedPartners featured_partners={featured_partners} /> */}
-      {/* <MailingList /> */}
+      <MailingList />
     </div>
   );
 }

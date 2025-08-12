@@ -104,6 +104,10 @@ export interface AnnouncementEntry {
   content: string;
 }
 
+export interface AboutEntry {
+  body: string;
+}
+
 export interface ReferenceEntry {
   year: number;
   reference: string;
@@ -226,6 +230,11 @@ class NetLogoAPI {
   async getAnnouncements() {
     const result = await this.graphqlFetchData<{ announcements: AnnouncementEntry[] }>(queries.mainAnnouncements);
     return result.announcements;
+  }
+
+  async getAboutContent () {
+    const dict = await this.graphqlFetchData<{ about: AboutEntry[] }>(queries.aboutContent);
+    return dict.about
   }
 
   async getReferences() {

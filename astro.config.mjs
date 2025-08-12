@@ -8,5 +8,10 @@ export default defineConfig({
     react(),
     partytown({ config: { forward: ['dataLayer.push'] } })
   ],
+
+  redirects: {
+    '/downloads': '/download'
+  },
+
   site: 'https://www.netlogo.org/',
 });

@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { Announcement } from "../layout/announcement";
 import { Intro } from "./introduction";
 import { WhyNetLogo } from "./why-netlogo";
+import { Newsfeed } from "./newsfeed";
 import { GetNetLogo } from "./get-netlogo";
 import { Community } from "./community";
 import { FeaturedPartners } from "./featured-partners";
@@ -53,6 +54,7 @@ function Body({
 
       <Intro intro_data={introduction} intro_splash_data={intro_splash} />
       {/* <WhyNetLogo page_data={why_netlogo} /> */}
+      <Newsfeed />
       <GetNetLogo page_data={get_netlogo} section_color={color_palette[0]} />
       <Community
         communityPosts={communityContent}

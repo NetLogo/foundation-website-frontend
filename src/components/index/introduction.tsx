@@ -62,10 +62,10 @@ const Intro = ({ intro_data, intro_splash_data }: IntroProps) => {
                   type="button"
                   style={{
                     width: "8rem",
-                    height: "2.6rem", // set fixed height
-                    fontSize: "1.2rem", // bigger font size
-                    lineHeight: "1rem", // control text spacing
-                    overflow: "hidden" // prevent content from spilling
+                    height: "2.6rem",
+                    fontSize: "1.2rem",
+                    lineHeight: "1rem",
+                    overflow: "hidden"
                   }}
                   className="btn btn-secondary btn-lg font-inter fw-bold"
                   data-bs-toggle="button"

@@ -1,37 +1,96 @@
 import "./styles/mailing-list.css";
 import { Button } from "./button";
-import React, { useState } from 'react';
+import React, { useState, type FormEvent, type ChangeEvent } from 'react';
+import NetLogoAPI from "../../utils/api";
 /** force commit */
 
-const MailingList = () => {
-    const [email, setEmail] = useState("");
 
-    const handleJoin = () => {
-        setEmail(""); // Clear the input field
-        //HANDLE ADDING THE EMAIL TO THE LIST 
+export interface MailingData {
+  last_name: string;
+  first_name: string;
+  email: string;
+  ip: string;
+  country: string;
+  time_stamp: string;
+}
+
+
+const getFormattedTimestamp = () => {
+  const now = new Date();
+  const pad = (n: number) => String(n).padStart(2, '0');
+
+  const year = now.getFullYear();
+  const month = pad(now.getMonth() + 1); // Months are 0-indexed
+  const day = pad(now.getDate());
+  const hour = pad(now.getHours());
+  const minute = pad(now.getMinutes());
+  const second = pad(now.getSeconds());
+
+  return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+}
+
+
+const MailingList = () => {
+    const [mailingData, setMailingData] = useState<MailingData>({
+        last_name: "",
+        first_name: "",
+        email: "",
+        ip: "",
+        country: "",
+        time_stamp: "",
+    });
+
+    // Handle all input changes
+    const handleInputChange = (
+        e: ChangeEvent<HTMLInputElement>
+        ) => {
+        // track name, value, and type of input
+        const { name, value, type } = e.target;
+
+        // Update form data with new value
+        setMailingData({
+            ...mailingData,
+            [name]: value
+        });
+    };
+
+    const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const api = new NetLogoAPI();
+
+        await fetch('https://ipapi.co/json/')
+            .then(res => res.json())
+            .then(data => {
+            mailingData.ip = data.ip;
+            mailingData.country = data.country_name;
+            mailingData.time_stamp = getFormattedTimestamp();
+            });
+
+        const result = api.sendMailingForm(mailingData);
+
     }
 
     return(
         <div className="container w-100 py-5 font-inter" id="mailing-container">
-            <div className="row justify-content-center align-items-center">
-                <div className="col-lg-6 ps-5 pb-3 mx-auto">
-                    <h1 className="fw-bold text-start">Join our mailing list!</h1>
-                    <p className="fs-6 fw-medium description-text text-start">Join the NetLogo mailing list to keep up-to-date with what's happening in the NetLogo Community!</p>
-                </div>
-                <div className="col-lg-6 d-flex flex-column align-items-center align-items-lg-start">
-                    <input type="text" className="form-control w-75 mb-3" placeholder="First Name"></input>
-                    <input type="text" className="form-control w-75 mb-3" placeholder="Last Name"></input>
-                    <input type="email" className="form-control w-75 mb-3" placeholder="Email"></input>
+            <form onSubmit={handleFormSubmission}>
+                <div className="row justify-content-center align-items-center">
+                    <div className="col-lg-6 ps-5 pb-3 mx-auto">
+                        <h1 className="fw-bold text-start">Join our mailing list!</h1>
+                        <p className="fs-6 fw-medium description-text text-start">Join the NetLogo mailing list to keep up-to-date with what's happening in the NetLogo Community!</p>
+                    </div>
+                    <div className="col-lg-6 d-flex flex-column align-items-center align-items-lg-start">
+                        <input type="text" name="first_name" className="form-control w-75 mb-3" placeholder="First Name" onChange={handleInputChange}></input>
+                        <input type="text" name="last_name" className="form-control w-75 mb-3" placeholder="Last Name" onChange={handleInputChange}></input>
+                        <input type="email" name="email" className="form-control w-75 mb-3" placeholder="Email" onChange={handleInputChange}></input>
 
-                <Button 
-                    colorClass="blue-button"
-                    padding="0.75rem 1.5rem"
-                    fontSize="0.875rem"
-                    text="JOIN"
-                    onClick={handleJoin}
-                />
+
+                        <div className="d-grid col-3">
+                            <button className="btn btn-primary" type="submit">Join</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
 
         </div>
     )

@@ -31,6 +31,9 @@ const getFormattedTimestamp = () => {
 
 
 const MailingList = () => {
+
+    const [statusCode, setStatusCode] = useState<number | null>(null);
+
     const [mailingData, setMailingData] = useState<MailingData>({
         last_name: "",
         first_name: "",
@@ -69,6 +72,23 @@ const MailingList = () => {
 
         const result = api.sendMailingForm(mailingData);
 
+        const result_status = (await result).status
+        // return result_status
+        // console.log('hi')
+        // console.log((await result).status)
+
+        setStatusCode(result_status);
+
+          if (result_status === 200) {
+            setMailingData({
+            last_name: "",
+            first_name: "",
+            email: "",
+            ip: "",
+            country: "",
+            time_stamp: "",
+            });
+        }
     }
 
     return(
@@ -77,12 +97,12 @@ const MailingList = () => {
                 <div className="row justify-content-center align-items-center">
                     <div className="col-lg-6 ps-5 pb-3 mx-auto">
                         <h1 className="fw-bold text-start">Join our mailing list!</h1>
-                        <p className="fs-6 fw-medium description-text text-start">Join the NetLogo mailing list to keep up-to-date with what's happening in the NetLogo Community!</p>
+                        <p className="fw-medium description-text text-start" style={{fontSize:"18px"}}>Join the NetLogo mailing list to keep up-to-date with what's happening in the NetLogo Community!</p>
                     </div>
                     <div className="col-lg-6 d-flex flex-column align-items-center align-items-lg-start">
-                        <input type="text" name="first_name" className="form-control w-75 mb-3" placeholder="First Name" onChange={handleInputChange}></input>
-                        <input type="text" name="last_name" className="form-control w-75 mb-3" placeholder="Last Name" onChange={handleInputChange}></input>
-                        <input type="email" name="email" className="form-control w-75 mb-3" placeholder="Email" onChange={handleInputChange}></input>
+                        <input type="text" name="first_name" value={mailingData.first_name} className="form-control w-75 mb-3" placeholder="First Name" onChange={handleInputChange}></input>
+                        <input type="text" name="last_name" value={mailingData.last_name} className="form-control w-75 mb-3" placeholder="Last Name" onChange={handleInputChange}></input>
+                        <input type="email" name="email" value={mailingData.email} className="form-control w-75 mb-3" placeholder="Email" onChange={handleInputChange}></input>
 
 
                         <div className="d-grid col-3">
@@ -91,6 +111,12 @@ const MailingList = () => {
                     </div>
                 </div>
             </form>
+            {statusCode === 200 && (
+                <p className="text-success mt-3 fw-semibold" style={{fontSize:"18px"}}>You have successfully joined the mailing list!</p>
+            )}
+            {statusCode && statusCode !== 200 && (
+                <p className="text-danger mt-3 fw-semibold" style={{fontSize:"18px"}}>Something went wrong. Please try again.</p>
+            )}
 
         </div>
     )

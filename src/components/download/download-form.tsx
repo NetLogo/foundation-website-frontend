@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import "./styles/download-form.css";
 import { type NetLogoVersion } from "../../utils/api";
+import { getFormattedTimestamp } from "../../utils/datetime-utils";
 import NetLogoAPI from "../../utils/api";
 
 // Define interface for form data
@@ -42,19 +43,7 @@ const DetectOS = () => {
   return os;
 }
 
-const getFormattedTimestamp = () => {
-  const now = new Date();
-  const pad = (n: number) => String(n).padStart(2, '0');
 
-  const year = now.getFullYear();
-  const month = pad(now.getMonth() + 1); // Months are 0-indexed
-  const day = pad(now.getDate());
-  const hour = pad(now.getHours());
-  const minute = pad(now.getMinutes());
-  const second = pad(now.getSeconds());
-
-  return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-}
 
 const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
 

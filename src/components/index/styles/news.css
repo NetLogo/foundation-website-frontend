@@ -33,7 +33,7 @@
     line-height: 150%; /* 1.6875rem */
 }
 
-.x-bsky-col {
+.news-scroll-col {
     height: 400px;        
     overflow-y: auto;     
     overflow-x: auto;

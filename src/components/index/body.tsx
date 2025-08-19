@@ -8,6 +8,7 @@ import { Community } from "./community";
 import { FeaturedPartners } from "./featured-partners";
 import { MailingList } from "../shared/mailing-list";
 import type { CommunityPost } from "./community";
+import type { NewsEntry } from "../../utils/api";
 import type { Event } from "./event-display";
 import "./styles/body.css";
 
@@ -20,6 +21,7 @@ interface BodyProps {
   publications: Event[];
   communityContent: CommunityPost[];
   siteData: AllData;
+  newsData: NewsEntry[];
 }
 
 function Body({
@@ -29,6 +31,7 @@ function Body({
   publications,
   communityContent,
   siteData,
+  newsData,
 }: BodyProps) {
   const {
     introduction,
@@ -54,7 +57,7 @@ function Body({
 
       <Intro intro_data={introduction} intro_splash_data={intro_splash} />
       {/* <WhyNetLogo page_data={why_netlogo} /> */}
-      <Newsfeed />
+      <Newsfeed NewsData={newsData}/>
       <GetNetLogo page_data={get_netlogo} section_color={color_palette[0]} />
       <Community
         communityPosts={communityContent}

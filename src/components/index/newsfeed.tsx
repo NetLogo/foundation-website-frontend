@@ -1,9 +1,26 @@
 import { Section } from "../shared/section";
 import ReactMarkdown from 'react-markdown';
 import "./styles/news.css";
+import { useState } from "react";
 
 
-const Newsfeed = () => {
+interface NewsItem {
+  id: number;
+  title: string;
+  date: string;
+  body: string;
+}
+
+interface NewsSectionProps {
+  NewsData: NewsItem[];
+}
+
+const Newsfeed = ({ NewsData } : NewsSectionProps) => {
+    const [visibleCount, setVisibleCount] = useState(3);
+
+    const handleLoadMore = () => {
+        setVisibleCount((prev) => prev + 3);
+    };
     return (
         <div className="container-fluid text-start font-inter" style={{ backgroundColor: "white", paddingLeft: "10rem", paddingRight: "10rem" }}>
             <h1 className="fw-bold" style={{ fontSize: "3rem" }}>News and Social Media</h1>
@@ -11,7 +28,44 @@ const Newsfeed = () => {
             <div className="row mt-4 pb-5">
                 <div className="col-md-6 pe-4">
                     <h2 className="fw-bold mb-3">Official News</h2>
-                    <p className="text-muted">Coming soon...</p>
+                    <div className="news-scroll-col">
+                        {NewsData.slice(0, visibleCount).map((item) => {
+                            const formattedDate = new Intl.DateTimeFormat("en-US", {
+                            month: "long",
+                            day: "numeric",
+                            year: "numeric",
+                            }).format(new Date(item.date));
+
+                            return (
+                            <div key={item.id} className="mb-3 p-3 border rounded bg-white shadow-sm">
+                                <h5 className="fw-bold mb-1">{item.title}</h5>
+                                <h6 className="text-muted d-block mb-2">{formattedDate}</h6>
+                                <ReactMarkdown className="mb-0"
+                                components={{
+                                    img: ({ node, ...props }) => (
+                                    <div 
+                                    className="pt-3"
+                                    style={{ textAlign: "center" }}>
+                                    <img
+                                    {...props}
+                                    style={{maxHeight: "275px", width: "auto", maxWidth: "100%", display: "inline-block",}}
+                                    />
+                                    </div>),
+                                }}
+                                >
+                                    {item.body}
+                                </ReactMarkdown>
+                            </div>
+                            );
+                        })}
+                        {visibleCount < NewsData.length && (
+                            <div className="text-center mt-3">
+                                <button className="btn btn-outline-primary" onClick={handleLoadMore}>
+                                Load more news
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 </div>
 
 
@@ -20,7 +74,7 @@ const Newsfeed = () => {
 
                 <div className="col-md-6 ps-4">
                     <h2 className="fw-bold mb-3">On Bluesky (and on X)</h2>
-                    <div className="x-bsky-col">
+                    <div className="news-scroll-col">
                         <bsky-embed
                             username="netlogo.bsky.social"
                             search="netlogo.bsky.social"

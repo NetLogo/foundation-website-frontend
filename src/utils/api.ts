@@ -104,6 +104,13 @@ export interface AnnouncementEntry {
   content: string;
 }
 
+export interface NewsEntry {
+  id: number;
+  title: string;
+  date: string;
+  body: string;
+}
+
 export interface AboutEntry {
   body: string;
 }
@@ -230,6 +237,11 @@ class NetLogoAPI {
   async getAnnouncements() {
     const result = await this.graphqlFetchData<{ announcements: AnnouncementEntry[] }>(queries.mainAnnouncements);
     return result.announcements;
+  }
+
+  async getNews() {
+    const result = await this.graphqlFetchData<{ official_news: NewsEntry[] }>(queries.officialNews);
+    return result.official_news;
   }
 
   async getAboutContent () {

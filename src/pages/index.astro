@@ -16,6 +16,7 @@ const competitions: Event[] = await api.fetchData("/items/competitions");
 const publications: Event[] = await api.fetchData("/items/publications");
 
 const siteData = await api.getMainPageData();
+const newsData = await api.getNews();
 
 const fetchImageFromLink = async (url: string) => {
   try {
@@ -103,6 +104,7 @@ const communityContent2 = await fetchCommunityData();
     publications={publications}
     communityContent={communityContent2}
     siteData={siteData}
+    newsData={newsData}
   />
   <!-- <Intro
         intro_data={introduction}

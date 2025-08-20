@@ -37,8 +37,8 @@ const Newsfeed = ({ NewsData } : NewsSectionProps) => {
                             }).format(new Date(item.date));
 
                             return (
-                            <div key={item.id} className="mb-3 p-3 border rounded bg-white shadow-sm">
-                                <h5 className="fw-bold mb-1">{item.title}</h5>
+                            <div key={item.id} className="mb-3 p-3 border-bottom border-2 bg-white">
+                                <h4 className="fw-bold mb-1">{item.title}</h4>
                                 <h6 className="text-muted d-block mb-2">{formattedDate}</h6>
                                 <ReactMarkdown className="mb-0"
                                 components={{
@@ -59,8 +59,8 @@ const Newsfeed = ({ NewsData } : NewsSectionProps) => {
                             );
                         })}
                         {visibleCount < NewsData.length && (
-                            <div className="text-center mt-3">
-                                <button className="btn btn-outline-primary" onClick={handleLoadMore}>
+                            <div className="text-center mt-3 pt-3">
+                                <button className="btn btn-primary fw-bold" onClick={handleLoadMore}>
                                 Load more news
                                 </button>
                             </div>

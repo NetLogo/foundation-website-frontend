@@ -9,11 +9,11 @@
             here</a>.
             </p>
             <p className="pt-3 font-inter">
-            NetLogo works for{" "}
+            NetLogo also works for{" "}
             <a href={`/downloads/${otherplatform1.toLowerCase()}`} className="text-decoration-none">{otherplatform1}</a>
             {" "} and {" "}
             <a href={`/downloads/${otherplatform2.toLowerCase()}`} className="text-decoration-none">{otherplatform2}</a>
-            , too.
+            .
             </p>
         </div>
     );

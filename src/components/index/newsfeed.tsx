@@ -22,11 +22,11 @@ const Newsfeed = ({ NewsData } : NewsSectionProps) => {
         setVisibleCount((prev) => prev + 3);
     };
     return (
-        <div className="container-fluid text-start font-inter" style={{ backgroundColor: "white", paddingLeft: "10rem", paddingRight: "10rem" }}>
-            <h1 className="fw-bold" style={{ fontSize: "3rem" }}>News and Social Media</h1>
+        <div className="container-fluid text-start font-inter px-3 custom-lg-padding" style={{backgroundColor: "white"}}>
+            <h1 className="fw-bold display-5">News and Social Media</h1>
 
             <div className="row mt-4 pb-5">
-                <div className="col-md-6 pe-4">
+                <div className="col-lg-6 pe-lg-4 pb-lg-0 pb-5">
                     <h2 className="fw-bold mb-3">Official News</h2>
                     <div className="news-scroll-col">
                         {NewsData.slice(0, visibleCount).map((item) => {
@@ -72,7 +72,7 @@ const Newsfeed = ({ NewsData } : NewsSectionProps) => {
 
 
 
-                <div className="col-md-6 ps-4">
+                <div className="col-lg-6 pe-lg-4 pb-lg-0 pb-5">
                     <h2 className="fw-bold mb-3">On Bluesky (and on X)</h2>
                     <div className="news-scroll-col">
                         <bsky-embed

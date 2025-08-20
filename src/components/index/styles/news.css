@@ -43,3 +43,14 @@
     padding: 5px;  
     box-sizing: border-box;
 }
+
+.font-inter {
+    font-family: Inter;
+}
+
+@media (min-width: 992px) {
+  .custom-lg-padding {
+    padding-left: 8rem !important;
+    padding-right: 8rem !important;
+  }
+}

@@ -23,7 +23,7 @@ const Section = ({ sectionTitle, sectionDescript, sectionGap, sectionPaddingBot,
         <div className="page-section-cont" style={{ backgroundColor: `${backgroundColor}`}}>
             <div className="page-section" style={{ gap: `${sectionGap}rem`, paddingBottom: `${sectionPaddingBot}rem` }} >
                 <div className="section-header">
-                    <span className="section-title ms-n2">{sectionTitle}</span>
+                    <div className="section-title ms-n2">{sectionTitle}</div>
                     {/* Changed from span to div and using normalized text */}
                     <div className="section-descript ms-n2 text-start">{normalizedDescript}</div>
                  </div>

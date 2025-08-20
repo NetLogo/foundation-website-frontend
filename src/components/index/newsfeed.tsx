@@ -59,7 +59,7 @@ const Newsfeed = ({ NewsData } : NewsSectionProps) => {
                             );
                         })}
                         {visibleCount < NewsData.length && (
-                            <div className="text-center mt-3 pt-3">
+                            <div className="text-center mt-3 py-3">
                                 <button className="btn btn-primary fw-bold" onClick={handleLoadMore}>
                                 Load more news
                                 </button>

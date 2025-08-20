@@ -83,7 +83,7 @@ const GetNetLogo = ({ page_data, section_color }: GetNetLogoProps) => {
   }, []);
 
   return (
-    <div className="container" id="get-netlogo">
+    <div className="container-fluid" id="get-netlogo">
       <Section
         sectionTitle="Get NetLogo"
         sectionDescript="There are five different products in NetLogo. Find the one that suits your need."

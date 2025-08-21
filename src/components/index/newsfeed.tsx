@@ -23,11 +23,11 @@ const Newsfeed = ({ NewsData } : NewsSectionProps) => {
     };
     return (
         <div className="container-fluid text-start font-inter px-3 custom-lg-padding" style={{backgroundColor: "white"}}>
-            <h1 className="fw-bold display-5">News and Social Media</h1>
+            <h1 className="fw-bold display-5" style={{color: "#555770"}}>News and Social Media</h1>
 
             <div className="row mt-4 pb-5">
                 <div className="col-lg-6 pe-lg-4 pb-lg-0 pb-5">
-                    <h2 className="fw-bold mb-3">Official News</h2>
+                    <h2 className="fw-bold mb-3" style={{color: "#555770"}}>Official News</h2>
                     <div className="news-scroll-col">
                         {NewsData.slice(0, visibleCount).map((item) => {
                             const formattedDate = new Intl.DateTimeFormat("en-US", {
@@ -73,7 +73,7 @@ const Newsfeed = ({ NewsData } : NewsSectionProps) => {
 
 
                 <div className="col-lg-6 pe-lg-4 pb-lg-0 pb-5">
-                    <h2 className="fw-bold mb-3">On Bluesky (and on X)</h2>
+                    <h2 className="fw-bold mb-3" style={{color: "#555770"}}>On Bluesky (and on X)</h2>
                     <div className="news-scroll-col">
                         <bsky-embed
                             username="netlogo.bsky.social"

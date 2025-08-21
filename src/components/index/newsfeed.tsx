@@ -73,7 +73,14 @@ const Newsfeed = ({ NewsData }: NewsSectionProps) => {
 
 
                 <div className="col-lg-6 pe-lg-4 pb-lg-0 pb-5">
-                    <h2 className="fw-bold mb-3" style={{color: "#555770"}}>On Bluesky (and on X)</h2>
+                    <div className="mb-3" style={{color: "#555770"}}>
+                        <h2 className="fw-bold" style={{ display: "inline", marginRight: "0.5em", }}>
+                            On <a href="https://bsky.app/profile/netlogo.bsky.social" target="blank" style={{textDecoration: "none"}}>Bluesky</a>
+                        </h2>
+                        <h5 className="" style={{ display: "inline" }}>
+                        (and <a href="https://x.com/netlogo" target="blank" style={{textDecoration: "none"}}>on X</a>)
+                        </h5>
+                    </div>
                     <div className="news-scroll-col">
                         <bsky-embed
                             username="netlogo.bsky.social"

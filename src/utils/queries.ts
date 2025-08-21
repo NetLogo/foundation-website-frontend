@@ -102,7 +102,17 @@ const queries = {
       content
     }
   }
-`,
+  `,
+
+  officialNews: gql`
+  query getNews {
+    official_news (sort: ["-date"]){
+      title
+      date
+      body
+    }
+  }
+  `,
 
   referenceData: gql`
   query getReferences {

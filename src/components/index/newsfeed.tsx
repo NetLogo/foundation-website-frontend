@@ -5,17 +5,17 @@ import { useState } from "react";
 
 
 interface NewsItem {
-  id: number;
-  title: string;
-  date: string;
-  body: string;
+    id: number;
+    title: string;
+    date: string;
+    body: string;
 }
 
 interface NewsSectionProps {
-  NewsData: NewsItem[];
+    NewsData: NewsItem[];
 }
 
-const Newsfeed = ({ NewsData } : NewsSectionProps) => {
+const Newsfeed = ({ NewsData }: NewsSectionProps) => {
     const [visibleCount, setVisibleCount] = useState(3);
 
     const handleLoadMore = () => {
@@ -31,37 +31,37 @@ const Newsfeed = ({ NewsData } : NewsSectionProps) => {
                     <div className="news-scroll-col">
                         {NewsData.slice(0, visibleCount).map((item) => {
                             const formattedDate = new Intl.DateTimeFormat("en-US", {
-                            month: "long",
-                            day: "numeric",
-                            year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                                year: "numeric",
                             }).format(new Date(item.date));
 
                             return (
-                            <div key={item.id} className="mb-3 p-3 border-bottom border-2 bg-white">
-                                <h4 className="fw-bold mb-1">{item.title}</h4>
-                                <h6 className="text-muted d-block mb-2">{formattedDate}</h6>
-                                <ReactMarkdown className="mb-0"
-                                components={{
-                                    img: ({ node, ...props }) => (
-                                    <div 
-                                    className="pt-3"
-                                    style={{ textAlign: "center" }}>
-                                    <img
-                                    {...props}
-                                    style={{maxHeight: "275px", width: "auto", maxWidth: "100%", display: "inline-block",}}
-                                    />
-                                    </div>),
-                                }}
-                                >
-                                    {item.body}
-                                </ReactMarkdown>
-                            </div>
+                                <div key={item.id} className="mb-3 p-3 border-bottom border-2 bg-white">
+                                    <h4 className="fw-bold mb-1">{item.title}</h4>
+                                    <h6 className="text-muted d-block mb-2">{formattedDate}</h6>
+                                    <ReactMarkdown className="mb-0"
+                                        components={{
+                                            img: ({ node, ...props }) => (
+                                                <div
+                                                    className="pt-3"
+                                                    style={{ textAlign: "center" }}>
+                                                    <img
+                                                        {...props}
+                                                        style={{ maxHeight: "275px", width: "auto", maxWidth: "100%", display: "inline-block", }}
+                                                    />
+                                                </div>),
+                                        }}
+                                    >
+                                        {item.body}
+                                    </ReactMarkdown>
+                                </div>
                             );
                         })}
                         {visibleCount < NewsData.length && (
                             <div className="text-center mt-3 py-3">
                                 <button className="btn btn-primary fw-bold" onClick={handleLoadMore}>
-                                Load more news
+                                    Load more news
                                 </button>
                             </div>
                         )}

@@ -2,6 +2,7 @@ import { type AnnouncementObj } from "../components/layout/announcement";
 import { GraphQLClient } from "graphql-request";
 import queries from "./queries";
 import { type FormData } from "../components/download/download-form";
+import { type MailingData } from "../components/shared/mailing-list";
 
 // Types for the API responses
 interface ApiResponse<T> {
@@ -335,6 +336,22 @@ class NetLogoAPI {
 
     return response;
   }
+
+  async sendMailingForm(MailingData: MailingData) {
+    const url = this.baseUrl + "/items/mailing_subscribers";
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(MailingData),
+    });
+
+    return response;
+  }
 }
+
+
 
 export default NetLogoAPI;

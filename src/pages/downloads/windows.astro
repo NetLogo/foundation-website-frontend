@@ -12,14 +12,20 @@ const pageData = await api.getDownloadPageData();
 
 <Layout
     show_footer_buttons={false}
-    title="NetLogo Download fo Windows"
+    title="NetLogo Download for Windows"
     description="NetLogo download page"
 >
-    <DownloadSection downloadData={pageData["netlogo_versions"]} devOs="Windows" client:load />
-    <MachineHelp platformMachine="Windows machine" 
-    machineLink="https://support.microsoft.com/en-us/topic/determine-whether-your-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system-1b03ca69-ac5e-4b04-827b-c0c47145944b"
-    otherplatform1="Mac"
-    otherplatform2="Linux" />
+    <DownloadSection
+        downloadData={pageData["netlogo_versions"]}
+        devOs="Windows"
+        client:load
+    />
+    <MachineHelp
+        platformMachine="Windows machine"
+        machineLink="https://support.microsoft.com/en-us/topic/determine-whether-your-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system-1b03ca69-ac5e-4b04-827b-c0c47145944b"
+        otherplatform1="Mac"
+        otherplatform2="Linux"
+    />
 
     <DonationSection donationArray={pageData["donation_data"]} client:load />
 </Layout>

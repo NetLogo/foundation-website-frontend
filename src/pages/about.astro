@@ -7,9 +7,6 @@ const api = new NetLogoAPI();
 const aboutdata = await api.getAboutContent();
 ---
 
-<Layout
-    title="About NetLogo"
-    description="NetLogo Abouts Page"
->
+<Layout title="About NetLogo" description="NetLogo About Page">
     <AboutSection AboutData={aboutdata} client:load />
 </Layout>

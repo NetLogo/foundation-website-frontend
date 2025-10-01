@@ -145,6 +145,14 @@ const queries = {
   }
   `,
 
+  campaignContent: gql`
+  query getCampaign {
+    campaign {
+      body
+    }
+  }
+  `,
+
   netLogoVersions: gql`
     query GetNetLogoVersions {
       netlogo_versions {

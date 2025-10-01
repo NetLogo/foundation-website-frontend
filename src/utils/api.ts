@@ -116,6 +116,10 @@ export interface AboutEntry {
   body: string;
 }
 
+export interface CampaignEntry {
+  body: string;
+}
+
 export interface ReferenceEntry {
   year: number;
   reference: string;
@@ -230,7 +234,7 @@ class NetLogoAPI {
     );
   }
 
-  async getContact () {
+  async getContact() {
     const dict = await this.graphqlFetchData<{ contact_data: ContactItem[] }>(queries.contacts);
     return dict.contact_data
   }
@@ -245,16 +249,21 @@ class NetLogoAPI {
     return result.official_news;
   }
 
-  async getAboutContent () {
+  async getAboutContent() {
     const dict = await this.graphqlFetchData<{ about: AboutEntry[] }>(queries.aboutContent);
     return dict.about
   }
 
+  async getCampaignContent() {
+    const dict = await this.graphqlFetchData<{ campaign: CampaignEntry[] }>(queries.campaignContent);
+    return dict.campaign
+  }
+
   async getReferences() {
-    const references: {'References': ReferenceEntry[]} =  await this.graphqlFetchData<{'References': ReferenceEntry[]}>(queries.referenceData);
+    const references: { 'References': ReferenceEntry[] } = await this.graphqlFetchData<{ 'References': ReferenceEntry[] }>(queries.referenceData);
 
 
-    // ***new fix stores is ccl and the refrence not jsut ref 
+    // ***new fix stores is ccl and the refrence not jsut ref
     let groupedReferences: Map<number, { reference: string; is_ccl: boolean }[]> = new Map();
 
     //let groupedReferences: Map<number, string[]> = new Map();
@@ -262,7 +271,7 @@ class NetLogoAPI {
     // Loop through the references and group them by year
     references['References'].forEach((item) => {
       const year = item.year; // Convert year to string for the key
-      
+
       // Check if the year already exists in the map
       if (!groupedReferences.has(year)) {
         // If not, create a new entry with an empty array
@@ -270,12 +279,12 @@ class NetLogoAPI {
       }
       //data is not consistent
       //indexing data that i cant work with it
-      //how did i organize data from directus 
+      //how did i organize data from directus
       //The issue is inconsistent data indexing or formatting when calling the getReferences() method and attempting to process or display the data. The line:
-      //suggests that your grouped data may not be properly returned, consumed, or structured. 
+      //suggests that your grouped data may not be properly returned, consumed, or structured.
 
-      // add some console log stmts in the api and make sure it get the data how you expect the go to typesript file 
-      
+      // add some console log stmts in the api and make sure it get the data how you expect the go to typesript file
+
 
 
 
@@ -288,9 +297,9 @@ class NetLogoAPI {
         reference: item.reference,
         is_ccl: item.is_ccl
       });
-      
+
     })
-    // *** new fix 3: return in coreect strucure 
+    // *** new fix 3: return in coreect strucure
     //console.log('Grouped References:', groupedReferences);
     //return groupedReferences;
 
@@ -299,12 +308,12 @@ class NetLogoAPI {
       year,
       references: refs
     }));
-    
+
     //console.log('Grouped References:', groupedArray);
     return groupedArray;
-    
 
-    
+
+
 
     //return references['References']
   }

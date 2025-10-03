@@ -83,31 +83,27 @@ const MailingList = () => {
 
     return (
         <div className="container w-100 py-5 font-inter" id="mailing-container">
-            <form onSubmit={handleFormSubmission}>
-                <div className="row justify-content-center align-items-center">
-                    <div className="col-lg-6 ps-5 pb-3 mx-auto">
-                        <h1 className="fw-bold text-start">Join our mailing list!</h1>
-                        <p className="fw-medium description-text text-start" style={{ fontSize: "18px" }}>Join the NetLogo mailing list to keep up-to-date with what's happening in the NetLogo Community!</p>
-                    </div>
-                    <div className="col-lg-6 d-flex flex-column align-items-center align-items-lg-start">
-                        <input type="text" name="first_name" value={mailingData.first_name} className="form-control w-75 mb-3" placeholder="First Name" onChange={handleInputChange}></input>
-                        <input type="text" name="last_name" value={mailingData.last_name} className="form-control w-75 mb-3" placeholder="Last Name" onChange={handleInputChange}></input>
-                        <input type="email" name="email" value={mailingData.email} className="form-control w-75 mb-3" placeholder="Email" onChange={handleInputChange}></input>
 
-
-                        <div className="d-grid col-3">
-                            <button className="btn btn-primary" type="submit">Join</button>
-                        </div>
-                    </div>
+            <div className="row justify-content-center align-items-center">
+                <div className="col-lg-6 ps-5 pb-3 mx-auto">
+                    <h1 className="fw-bold text-start">Join our mailing list!</h1>
+                    <p className="fw-medium description-text text-start" style={{ fontSize: "18px" }}>Join the NetLogo mailing list to keep up-to-date with what's happening in the NetLogo Community!</p>
                 </div>
-            </form>
-            {statusCode === 200 && (
-                <p className="text-success mt-3 fw-semibold" style={{ fontSize: "18px" }}>You have successfully joined the mailing list!</p>
-            )}
-            {statusCode && statusCode !== 200 && (
-                <p className="text-danger mt-3 fw-semibold" style={{ fontSize: "18px" }}>Something went wrong. Please try again.</p>
-            )}
-            <MauticMailingList />
+                <div className="col-lg-6 d-flex flex-column align-items-center align-items-lg-start">
+                    {/* <input type="text" name="first_name" value={mailingData.first_name} className=" " placeholder="First Name" onChange={handleInputChange}></input>
+                    <input type="text" name="last_name" value={mailingData.last_name} className="form-control w-75 mb-3" placeholder="Last Name" onChange={handleInputChange}></input>
+                    <input type="email" name="email" value={mailingData.email} className="form-control w-75 mb-3" placeholder="Email" onChange={handleInputChange}></input>
+
+
+                    <div className="d-grid col-3">
+                        <button className="btn btn-primary" type="submit">Join</button>
+                    </div> */}
+                    <MauticMailingList />
+                </div>
+
+            </div>
+
+
         </div>
     )
 }

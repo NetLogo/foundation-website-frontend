@@ -107,6 +107,7 @@ const queries = {
   officialNews: gql`
   query getNews {
     official_news (sort: ["-date"]){
+      id
       title
       date
       body

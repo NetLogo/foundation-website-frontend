@@ -1,6 +1,7 @@
 import "./styles/mailing-list.css";
 import { Button } from "./button";
 import React, { useState, type FormEvent, type ChangeEvent } from 'react';
+import { MauticMailingList } from "../shared/mautic-mailing-list";
 import NetLogoAPI from "../../utils/api";
 import { getFormattedTimestamp } from "../../utils/datetime-utils";
 /** force commit */
@@ -106,7 +107,7 @@ const MailingList = () => {
             {statusCode && statusCode !== 200 && (
                 <p className="text-danger mt-3 fw-semibold" style={{ fontSize: "18px" }}>Something went wrong. Please try again.</p>
             )}
-
+            <MauticMailingList />
         </div>
     )
 }

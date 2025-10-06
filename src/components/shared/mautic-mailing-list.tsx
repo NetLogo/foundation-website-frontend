@@ -1,9 +1,10 @@
 import "./styles/mautic-form.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const MauticMailingList = () => {
     const formRef = useRef(null);
     const iframeRef = useRef(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         if (typeof window === "undefined") return;
@@ -31,16 +32,20 @@ const MauticMailingList = () => {
     useEffect(() => {
         const form = formRef.current;
         const iframe = iframeRef.current;
+
         if (!form || !iframe) return;
 
 
 
         const handleIframeLoad = () => {
 
+
+            setIsSubmitting(false); // stop loading spinner
+
             // Show success message when iframe loads (meaning form submitted)
             const messageDiv = document.getElementById('mauticform_emaillistsignup_message');
             if (messageDiv) {
-                messageDiv.innerHTML = '<div style="color: green; padding: 10px;">Thank you for subscribing!</div>';
+                messageDiv.innerHTML = '<div style="color: green; padding: 10px;">Thank you for subscribing! You should get a confirmation email shortly.</div>';
                 messageDiv.style.display = 'block';
             }
             // Clear any errors
@@ -55,6 +60,9 @@ const MauticMailingList = () => {
         const handleSubmit = (e) => {
             e.preventDefault();
             e.stopPropagation();
+
+            // Show loading spinner
+            setIsSubmitting(true);
 
             // Set the form to submit to the hidden iframe
             form.setAttribute('target', 'mautic-response-iframe');
@@ -97,19 +105,56 @@ const MauticMailingList = () => {
                 <div className="mauticform-innerform">
                     <div className="mauticform-page-wrapper mauticform-page-1" data-mautic-form-page="1">
                         <div id="mauticform_emaillistsignup_first_name" className="mauticform-row mauticform-text mauticform-field-1 mauticform-required" data-validate="first_name" data-validation-type="text">
-                            <input type="text" name="mauticform[first_name]" id="mauticform_input_emaillistsignup_first_name" placeholder="First Name" className="form-control w-75 mb-3"></input>
-                            <span className="mauticform-errormsg" style={{ display: 'none' }}>This is required.</span>
+                            <input
+                                type="text"
+                                name="mauticform[first_name]"
+                                id="mauticform_input_emaillistsignup_first_name"
+                                placeholder="First Name"
+                                className="form-control w-75 mb-3"
+                                required
+                                disabled={isSubmitting}
+                            />
                         </div>
                         <div id="mauticform_emaillistsignup_last_name" className="mauticform-row mauticform-text mauticform-field-2 mauticform-required" data-validate="last_name" data-validation-type="text">
-                            <input type="text" name="mauticform[last_name]" id="mauticform_input_emaillistsignup_last_name" placeholder="Last Name" className="form-control w-75 mb-3"></input>
-                            <span className="mauticform-errormsg" style={{ display: 'none' }}>This is required.</span>
+                            <input
+                                type="text"
+                                name="mauticform[last_name]"
+                                id="mauticform_input_emaillistsignup_last_name"
+                                placeholder="Last Name"
+                                className="form-control w-75 mb-3"
+                                required
+                                disabled={isSubmitting}
+                            />
                         </div>
                         <div id="mauticform_emaillistsignup_email" className="mauticform-row mauticform-email mauticform-field-3 mauticform-required" data-validate="email" data-validation-type="email">
-                            <input type="email" name="mauticform[email]" id="mauticform_input_emaillistsignup_email" placeholder="Email" className="form-control w-75 mb-3"></input>
-                            <span className="mauticform-errormsg" style={{ display: 'none' }}>please add a valid email</span>
+                            <input
+                                type="email"
+                                name="mauticform[email]"
+                                id="mauticform_input_emaillistsignup_email"
+                                placeholder="Email"
+                                className="form-control w-75 mb-3"
+                                required
+                                disabled={isSubmitting}
+                            />
                         </div>
                         <div id="mauticform_emaillistsignup_submit" className="d-grid col-3 mauticform-row mauticform-button-wrapper mauticform-field-4">
-                            <button className="btn btn-primary" name="mauticform[submit]" value="1" id="mauticform_input_emaillistsignup_submit" type="submit">Join</button>
+                            <button
+                                className="btn btn-primary"
+                                name="mauticform[submit]"
+                                value="1"
+                                id="mauticform_input_emaillistsignup_submit"
+                                type="submit"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? (
+                                    <>
+                                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                        Submitting...
+                                    </>
+                                ) : (
+                                    'Join'
+                                )}
+                            </button>
                         </div>
                     </div>
                 </div>

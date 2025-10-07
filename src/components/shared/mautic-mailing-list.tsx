@@ -6,6 +6,7 @@ const MauticMailingList = () => {
     const iframeRef = useRef(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    // Load the Mautic SDK
     useEffect(() => {
         if (typeof window === "undefined") return;
 
@@ -28,17 +29,36 @@ const MauticMailingList = () => {
         document.head.appendChild(script);
     }, []);
 
-    // Intercept form submission to use hidden iframe
+    // Function to handle button click outside the form to submit it
+    const handleButtonClick = () => {
+        const form = formRef.current;
+        if (!form) return;
+
+        // Check HTML5 form validity
+        if (!form.checkValidity()) {
+            form.reportValidity(); // This will show validation messages
+            return;
+        }
+
+        // Show loading spinner
+        setIsSubmitting(true);
+
+        // Set the form to submit to the hidden iframe
+        form.setAttribute('target', 'mautic-response-iframe');
+
+        // Submit the form (it will load in the iframe)
+        form.submit();
+    };
+
+
+    // Handle form submission which returns into an Iframe (when Iframe loads)
     useEffect(() => {
         const form = formRef.current;
         const iframe = iframeRef.current;
 
         if (!form || !iframe) return;
 
-
-
         const handleIframeLoad = () => {
-
 
             setIsSubmitting(false); // stop loading spinner
 
@@ -53,29 +73,13 @@ const MauticMailingList = () => {
             if (errorDiv) {
                 errorDiv.style.display = 'none';
             }
-            // Optionally reset the form
+            // Reset the form
             form.reset();
         };
 
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
-            // Show loading spinner
-            setIsSubmitting(true);
-
-            // Set the form to submit to the hidden iframe
-            form.setAttribute('target', 'mautic-response-iframe');
-
-            // Submit the form (it will load in the iframe)
-            form.submit();
-        };
-
-        form.addEventListener('submit', handleSubmit);
         iframe.addEventListener('load', handleIframeLoad);
 
         return () => {
-            form.removeEventListener('submit', handleSubmit);
             iframe.removeEventListener('load', handleIframeLoad);
         };
     }, []);
@@ -122,7 +126,6 @@ const MauticMailingList = () => {
                                 id="mauticform_input_emaillistsignup_last_name"
                                 placeholder="Last Name"
                                 className="form-control w-75 mb-3"
-                                required
                                 disabled={isSubmitting}
                             />
                         </div>
@@ -137,31 +140,30 @@ const MauticMailingList = () => {
                                 disabled={isSubmitting}
                             />
                         </div>
-                        <div id="mauticform_emaillistsignup_submit" className="d-grid col-3 mauticform-row mauticform-button-wrapper mauticform-field-4">
-                            <button
-                                className="btn btn-primary"
-                                name="mauticform[submit]"
-                                value="1"
-                                id="mauticform_input_emaillistsignup_submit"
-                                type="submit"
-                                disabled={isSubmitting}
-                            >
-                                {isSubmitting ? (
-                                    <>
-                                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                                        Submitting...
-                                    </>
-                                ) : (
-                                    'Join'
-                                )}
-                            </button>
-                        </div>
+
                     </div>
                 </div>
                 <input type="hidden" name="mauticform[formId]" id="mauticform_emaillistsignup_id" value="2"></input>
                 <input type="hidden" name="mauticform[return]" id="mauticform_emaillistsignup_return" value=""></input>
                 <input type="hidden" name="mauticform[formName]" id="mauticform_emaillistsignup_name" value="emaillistsignup"></input>
             </form>
+            <div className="d-grid col-3">
+                <button
+                    onClick={handleButtonClick}
+                    className="btn btn-primary"
+                    type="button"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? (
+                        <>
+                            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            Submitting...
+                        </>
+                    ) : (
+                        'Join'
+                    )}
+                </button>
+            </div>
         </div>
     );
 }

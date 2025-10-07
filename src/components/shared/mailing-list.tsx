@@ -1,6 +1,6 @@
 import "./styles/mailing-list.css";
 import { Button } from "./button";
-import React, { useState, type FormEvent, type ChangeEvent } from 'react';
+import React, { useState, type FormEvent, type ChangeEvent, useRef } from 'react';
 import { MauticMailingList } from "../shared/mautic-mailing-list";
 import NetLogoAPI from "../../utils/api";
 import { getFormattedTimestamp } from "../../utils/datetime-utils";
@@ -23,6 +23,15 @@ export interface MailingData {
 const MailingList = () => {
 
     const [statusCode, setStatusCode] = useState<number | null>(null);
+    const [submitForm, setSubmitForm] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const formRef = useRef(null);
+    const handleSubmit = () => {
+        if (formRef.current) {
+            formRef.current.submit();
+        }
+    };
 
     const [mailingData, setMailingData] = useState<MailingData>({
         last_name: "",

@@ -22,13 +22,13 @@ const Newsfeed = ({ NewsData }: NewsSectionProps) => {
         setVisibleCount((prev) => prev + 3);
     };
     return (
-        <div className="container-fluid text-start font-inter px-3 custom-lg-padding" style={{backgroundColor: "white"}}>
-            <h1 className="fw-bold display-5" style={{color: "#555770"}}>News and Social Media</h1>
+        <div className="container-fluid text-start font-inter px-3 custom-lg-padding" style={{ backgroundColor: "white" }} id="news-and-social">
+            <h1 className="fw-bold display-5" style={{ color: "#555770" }}>News and Social Media</h1>
 
             <div className="row mt-4 pb-5">
                 <div className="col-lg-6 pe-lg-4 pb-lg-0 pb-5">
-                    <h2 className="fw-bold mb-3" style={{color: "#555770"}}>Official News</h2>
-                    <div className="news-scroll-col">
+                    <h2 className="fw-bold mb-3" style={{ color: "#555770" }}>Official News</h2>
+                    <div className="news-scroll-col" >
                         {NewsData.slice(0, visibleCount).map((item) => {
                             const formattedDate = new Intl.DateTimeFormat("en-US", {
                                 month: "long",
@@ -73,12 +73,12 @@ const Newsfeed = ({ NewsData }: NewsSectionProps) => {
 
 
                 <div className="col-lg-6 pe-lg-4 pb-lg-0 pb-5">
-                    <div className="mb-3" style={{color: "#555770"}}>
+                    <div className="mb-3" style={{ color: "#555770" }}>
                         <h2 className="fw-bold" style={{ display: "inline", marginRight: "0.5em", }}>
-                            On <a href="https://bsky.app/profile/netlogo.bsky.social" target="blank" style={{textDecoration: "none"}}>Bluesky</a>
+                            On <a href="https://bsky.app/profile/netlogo.bsky.social" target="blank" style={{ textDecoration: "none" }}>Bluesky</a>
                         </h2>
                         <h5 className="" style={{ display: "inline" }}>
-                        (and <a href="https://x.com/netlogo" target="blank" style={{textDecoration: "none"}}>on X</a>)
+                            (and <a href="https://x.com/netlogo" target="blank" style={{ textDecoration: "none" }}>on X</a>)
                         </h5>
                     </div>
                     <div className="news-scroll-col">

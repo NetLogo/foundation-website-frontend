@@ -15,7 +15,8 @@ import NetLogoAPI from "../../utils/api";
 export interface FormData {
   version: string;
   platform: string;
-  name: string;
+  first_name: string;
+  last_name: string;
   organization: string;
   email: string;
   subscribe: boolean;
@@ -43,6 +44,46 @@ const DetectOS = () => {
   return os;
 }
 
+const submitToMautic = (data: FormData) => {
+  // Create a hidden form with the Mautic data and submit it.
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://ccl.northwestern.edu/mautic/form/submit?formId=2';
+  form.target = 'mautic-hidden-iframe'; // Submit to hidden iframe
+  form.style.display = 'none';
+
+  // Add form fields
+  const fields = {
+    'mauticform[first_name]': data.first_name,
+    'mauticform[last_name]': data.last_name,
+    'mauticform[email]': data.email,
+    'mauticform[formId]': '2',
+    'mauticform[return]': '',
+    'mauticform[formName]': 'emaillistsignup'
+  };
+
+  Object.entries(fields).forEach(([name, value]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+  });
+
+  // Create hidden iframe if it doesn't exist
+  let iframe = document.querySelector('iframe[name="mautic-hidden-iframe"]');
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.name = 'mautic-hidden-iframe';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+  }
+
+  // Append form and submit
+  document.body.appendChild(form);
+  form.submit();
+
+};
 
 
 const backend_url = import.meta.env.PUBLIC_BACKEND_URL;
@@ -57,7 +98,8 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     version: "",
     platform: "",
-    name: "",
+    first_name: "",
+    last_name: "",
     organization: "",
     email: "",
     subscribe: true,
@@ -86,7 +128,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     )?.download_links;
 
     return downloadLinks?.map((link) => [link.platform, link.subplatform, Boolean(link.primary), link.platform_icon.icon.id]) || [];
-    // return downloadLinks?.map((link) => link.platform);
+
   }, [formData.version]);
 
   useEffect(() => {
@@ -123,16 +165,19 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     e: MouseEvent<HTMLButtonElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({...formData,
+    setFormData({
+      ...formData,
       [name]: value,
     });
-
-    // window.location.href = "/thankyou"; 
 
   }
 
   const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (formData.subscribe) {
+      submitToMautic(formData);
+    }
 
     // Send form data to backend
     const api = new NetLogoAPI();
@@ -170,16 +215,62 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     <div className="download-form">
       <form onSubmit={handleFormSubmission} className="font-inter mt-1">
         <div className="mb-3 row my-4">
-          <label htmlFor="name" className="col-sm-3 col-form-label fs-5 fw-semibold">Name</label>
+          <label htmlFor="first_name" className="col-sm-3 col-form-label fs-5 fw-semibold">First Name</label>
           <div className="col-sm-9">
             <input
               type="text"
               className="form-control"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="first_name"
+              name="first_name"
+              value={formData.first_name}
+              onChange={handleInputChange}
+              required={formData.subscribe}
+              onInvalid={(e) => e.target.setCustomValidity('Required if "update me" is checked below')}
+              onInput={(e) => e.target.setCustomValidity('')} // Clear on input
+            />
+          </div>
+        </div>
+        <div className="mb-3 row my-4">
+          <label htmlFor="last_name" className="col-sm-3 col-form-label fs-5 fw-semibold">Last Name</label>
+          <div className="col-sm-9">
+            <input
+              type="text"
+              className="form-control"
+              id="last_name"
+              name="last_name"
+              value={formData.last_name}
               onChange={handleInputChange}
             />
+          </div>
+        </div>
+        <div className="mb-3 row my-4">
+          <label htmlFor="email" className="col-sm-3 col-form-label fs-5 fw-semibold">Email</label>
+          <div className="col-sm-9">
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required={formData.subscribe}
+              onInvalid={(e) => e.target.setCustomValidity('Required if "update me" is checked below')}
+              onInput={(e) => e.target.setCustomValidity('')} // Clear on input
+            />
+
+            <div className="form-check mt-2">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="subscribe"
+                name="subscribe"
+                checked={formData.subscribe}
+                onChange={handleInputChange}
+              />
+              <label className="form-check-label small" htmlFor="subscribe">
+                Update me on NetLogo news (including new releases)
+              </label>
+            </div>
           </div>
         </div>
         <div className="mb-3 row my-4">
@@ -193,34 +284,6 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
               value={formData.organization}
               onChange={handleInputChange}
             />
-          </div>
-        </div>
-
-        <div className="mb-3 row my-4">
-          <label htmlFor="email" className="col-sm-3 col-form-label fs-5 fw-semibold">Email</label>
-          <div className="col-sm-9">
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-
-            <div className="form-check mt-2">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="subscribe"
-                name="subscribe"
-                checked={formData.subscribe}
-                onChange={handleInputChange}
-              />
-              <label className="form-check-label small" htmlFor="subscribe">
-                Update me on the newest releases of NetLogo
-              </label>
-            </div>
           </div>
         </div>
         <div className="mb-3 row my-4">
@@ -280,23 +343,20 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
           </div>
         </div>
         <div className="d-flex flex-row gap-2">
-        {platforms?.map(([name, subname, primary_link, img_id]) =>
-          devOs && name.includes(devOs) && primary_link === true ? (
-            <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
-              <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
-            </button>
-            // <a href="/thankyou" type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
-            //   <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
-            // </a>
-          ) : devOs && name.includes(devOs)? (
-            <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
-              <img src={createImageURL(img_id || "")} className="button-icon"/> Download {subname}
-            </button>
-          ) : null
-        )}
+          {platforms?.map(([name, subname, primary_link, img_id]) =>
+            devOs && name.includes(devOs) && primary_link === true ? (
+              <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
+                <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}
+              </button>
+
+            ) : devOs && name.includes(devOs) ? (
+              <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
+                <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}
+              </button>
+            ) : null
+          )}
         </div>
 
-        {/* <OtherOS devOs={devOs} /> */}
         <div className="detail-row"></div>
       </form>
     </div>
@@ -305,15 +365,3 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
 
 export { DownloadForm };
 
-
-//URL query parameter encoded
-//Javascript to decode, download and ajavascript to put that as the link to go to in the a href beneath thanks for donwlading
-//Take care of edge case
-
-
-///
-/// Move description to the right with smaller turtle image
-//  default .input-group sizes
-//  comment textarea needs to be smaller ---------
-//  default cehkbox to true ----------
-//

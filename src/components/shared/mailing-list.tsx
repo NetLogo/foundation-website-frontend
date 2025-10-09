@@ -1,98 +1,10 @@
 import "./styles/mailing-list.css";
-import { Button } from "./button";
-import React, { useState, type FormEvent, type ChangeEvent, useRef } from 'react';
 import { MauticMailingList } from "../shared/mautic-mailing-list";
-import NetLogoAPI from "../../utils/api";
-import { getFormattedTimestamp } from "../../utils/datetime-utils";
-/** force commit */
-
-
-export interface MailingData {
-    last_name: string;
-    first_name: string;
-    email: string;
-    ip: string;
-    country: string;
-    time_stamp: string;
-}
-
-
-
 
 
 const MailingList = () => {
-
-    const [statusCode, setStatusCode] = useState<number | null>(null);
-    const [submitForm, setSubmitForm] = useState(null);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const formRef = useRef(null);
-    const handleSubmit = () => {
-        if (formRef.current) {
-            formRef.current.submit();
-        }
-    };
-
-    const [mailingData, setMailingData] = useState<MailingData>({
-        last_name: "",
-        first_name: "",
-        email: "",
-        ip: "",
-        country: "",
-        time_stamp: "",
-    });
-
-    // Handle all input changes
-    const handleInputChange = (
-        e: ChangeEvent<HTMLInputElement>
-    ) => {
-        // track name, value, and type of input
-        const { name, value, type } = e.target;
-
-        // Update form data with new value
-        setMailingData({
-            ...mailingData,
-            [name]: value
-        });
-    };
-
-    const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        const api = new NetLogoAPI();
-
-        await fetch('https://ipapi.co/json/')
-            .then(res => res.json())
-            .then(data => {
-                mailingData.ip = data.ip;
-                mailingData.country = data.country_name;
-                mailingData.time_stamp = getFormattedTimestamp();
-            });
-
-        const result = api.sendMailingForm(mailingData);
-
-        const result_status = (await result).status
-        // return result_status
-        // console.log('hi')
-        // console.log((await result).status)
-
-        setStatusCode(result_status);
-
-        if (result_status === 200) {
-            setMailingData({
-                last_name: "",
-                first_name: "",
-                email: "",
-                ip: "",
-                country: "",
-                time_stamp: "",
-            });
-        }
-    }
-
     return (
         <div className="container w-100 py-5 font-inter" id="mailing-container">
-
             <div className="row justify-content-center align-items-center">
                 <div className="col-lg-6 ps-5 pb-3 mx-auto">
                     <h1 className="fw-bold text-start">Join our mailing list!</h1>
@@ -101,10 +13,7 @@ const MailingList = () => {
                 <div className="col-lg-6 d-flex flex-column align-items-center align-items-lg-start">
                     <MauticMailingList />
                 </div>
-
             </div>
-
-
         </div>
     )
 }

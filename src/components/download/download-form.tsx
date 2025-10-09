@@ -45,7 +45,7 @@ const DetectOS = () => {
 }
 
 const submitToMautic = (data: FormData) => {
-  // Create a hidden form
+  // Create a hidden form with the Mautic data and submit it.
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = 'https://ccl.northwestern.edu/mautic/form/submit?formId=2';
@@ -128,7 +128,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     )?.download_links;
 
     return downloadLinks?.map((link) => [link.platform, link.subplatform, Boolean(link.primary), link.platform_icon.icon.id]) || [];
-    // return downloadLinks?.map((link) => link.platform);
+
   }, [formData.version]);
 
   useEffect(() => {
@@ -365,15 +365,3 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
 
 export { DownloadForm };
 
-
-//URL query parameter encoded
-//Javascript to decode, download and ajavascript to put that as the link to go to in the a href beneath thanks for donwlading
-//Take care of edge case
-
-
-///
-/// Move description to the right with smaller turtle image
-//  default .input-group sizes
-//  comment textarea needs to be smaller ---------
-//  default cehkbox to true ----------
-//

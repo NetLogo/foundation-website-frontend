@@ -172,6 +172,22 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
 
   }
 
+  // Add this useEffect after your other state declarations
+  useEffect(() => {
+    if (!formData.subscribe) {
+      // Clear custom validity messages when subscribe is unchecked
+      const firstNameInput = document.getElementById('first_name') as HTMLInputElement;
+      const emailInput = document.getElementById('email') as HTMLInputElement;
+
+      if (firstNameInput) {
+        firstNameInput.setCustomValidity('');
+      }
+      if (emailInput) {
+        emailInput.setCustomValidity('');
+      }
+    }
+  }, [formData.subscribe]);
+
   const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

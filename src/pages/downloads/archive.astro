@@ -19,7 +19,16 @@ const description = 'Archive of previous NetLogo versions';
 	<ArchivePage title={title}>
 		<p>
 			{description}. See <a href='https://docs.netlogo.org/versions.html'>release notes</a> for details on version differences
+			<br />
+			(Mac OS X users wanting to use NetLogo versions prior to 5.0.4, please <a
+				href='https://ccl.northwestern.edu/netlogo/mountain-lion.shtml'>read this</a
+			>)
 		</p>
-		<VersionList versions={versions as VersionEntryProps[]} />
+		<VersionList
+			client:load
+			versions={versions as VersionEntryProps[]}
+			accentColor='var(--Primary-color, #FB6055)'
+			lineColor='#d4d9df'
+		/>
 	</ArchivePage>
 </Layout>

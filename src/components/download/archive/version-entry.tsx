@@ -8,33 +8,63 @@ interface VersionEntryProps {
     href?: string;
     // Optional flags indicating special version types
     flags?: VersionFlag[];
+    // Optional short description (0-2 sentences) or list of key features
+    blurb?: string | string[];
 }
 
-const VersionEntry = ({ version, releaseDate, flags = [], href }: VersionEntryProps) => {
+const VersionEntry = ({ version, releaseDate, flags = [], href, blurb }: VersionEntryProps) => {
     const formattedDate = releaseDate ? formatReleaseDate(releaseDate) : undefined;
+
     return (
-        <p>
-            <a href={href}>NetLogo {version}</a> {formattedDate && `(Released ${formattedDate})`}
-            {flags.map((flag) => (
-                <VersionFlagBadge key={flag} flag={flag} />
-            ))}
-        </p>
+        <>
+            <a href={href}>NetLogo {version}</a>
+            {formattedDate && (
+                <span className="timeline-date">{formattedDate}</span>
+            )}
+            {flags.length > 0 && (
+                <span className="mt-1">
+                    {flags.map((flag) => (
+                        <VersionFlagBadge key={flag} flag={flag} />
+                    ))}
+                </span>
+            )}
+            <Blurb text={blurb} />
+        </>
     )
 }
 
+// Blurb Component
+const Blurb = ({ text }: { text: string | string[] | undefined }) => {
+    if (!text) return null;
+
+    if (Array.isArray(text) && text.length > 0) {
+        return (
+            <ul className="timeline-blurb-list">
+                {text.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </ul>
+        );
+    }
+
+    return <p className="timeline-description">{text}</p>;
+};
+
 // VersionFlagBadge Subcomponent
-type VersionFlag = 'BETA' | 'RC' | 'REVISION';
+type VersionFlag = 'BETA' | 'RC' | 'REVISION' | 'LATEST';
 
 const versionFlagStyles: { [key in VersionFlag]: string } = {
     BETA: "badge bg-warning text-dark me-1 ms-2",
-    RC: "badge bg-info text-dark me-1 ms-2",
+    RC: "badge bg-info me-1 ms-2",
     REVISION: "badge bg-secondary me-1 ms-2",
+    LATEST: "badge bg-success me-1 ms-2",
 };
 
 const versionFlagTexts: { [key in VersionFlag]: string } = {
     BETA: "Beta",
     RC: "Release Candidate",
     REVISION: "Revision",
+    LATEST: "Latest",
 };
 
 
@@ -51,5 +81,5 @@ const formatReleaseDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
 };
 
-export type { VersionEntryProps };
+export type { VersionEntryProps, VersionFlag };
 export default VersionEntry;

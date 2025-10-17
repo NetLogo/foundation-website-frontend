@@ -15,7 +15,7 @@ ul.timeline:before {
 	left: var(--timeline-line-left, 29px);
 	width: 2px;
 	height: 100%;
-	z-index: 400;
+	z-index: -1;
 }
 
 ul.timeline > li {
@@ -34,7 +34,7 @@ ul.timeline > li:before {
 	left: var(--timeline-dot-left, 20px);
 	width: var(--timeline-dot-size, 20px);
 	height: var(--timeline-dot-size, 20px);
-	z-index: 400;
+	z-index: 400 !important;
 }
 
 ul.timeline > li a {

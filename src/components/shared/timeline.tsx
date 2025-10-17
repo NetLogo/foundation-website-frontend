@@ -1,5 +1,6 @@
-import React from 'react';
+import type { FC, ReactNode, CSSProperties } from 'react';
 import './styles/timeline.css';
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 export interface TimelineItemData {
     title: string;
@@ -10,10 +11,10 @@ export interface TimelineItemData {
 
 interface TimelineItemProps {
     item?: TimelineItemData;
-    children?: React.ReactNode;
+    children?: ReactNode;
 }
 
-export const TimelineItem: React.FC<TimelineItemProps> = ({ item, children }) => {
+export const TimelineItem: FC<TimelineItemProps> = ({ item, children }) => {
     if (!item && !children) {
         return null;
     }
@@ -45,16 +46,18 @@ export interface TimelineProps {
     lineColor?: string;
     dotSize?: number;
     dotBorderWidth?: number;
-    children?: React.ReactNode;
+    children?: ReactNode;
 }
 
-export const Timeline: React.FC<TimelineProps> = ({
+export const Timeline: FC<TimelineProps> = ({
     accentColor = '#22c0e8',
     lineColor = '#d4d9df',
     dotSize = 20,
     dotBorderWidth = 3,
     children,
 }) => {
+    const [animationParent] = useAutoAnimate<HTMLUListElement>();
+
     const timelineStyle = {
         '--timeline-accent-color': accentColor,
         '--timeline-line-color': lineColor,
@@ -62,10 +65,10 @@ export const Timeline: React.FC<TimelineProps> = ({
         '--timeline-dot-border-width': `${dotBorderWidth}px`,
         '--timeline-line-left': `${(dotSize / 2) + 9}px`,
         '--timeline-dot-left': `${(dotSize / 2)}px`,
-    } as React.CSSProperties;
+    } as CSSProperties;
 
     return (
-        <ul className="timeline" style={timelineStyle}>
+        <ul className="timeline" style={timelineStyle} ref={animationParent}>
             {children}
         </ul>
     );

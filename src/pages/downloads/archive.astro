@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NetLogoApi from '../../utils/api.js';
+
+import versions from './versions.json';
+
+import VersionList from '../../components/download/archive/version-list';
+import ArchivePage from '../../components/download/archive/archive-page';
+import type { VersionEntryProps } from '../../components/download/archive/version-entry';
+
+const api = new NetLogoApi();
+const pageData = await api.getResourcesData();
+
+const title = 'NetLogo Download Archive';
+const description = 'Archive of previous NetLogo versions';
+---
+
+<Layout show_footer_buttons={false} title={title} description={description}>
+	<ArchivePage title={title}>
+		<p>
+			{description}. See <a href='https://docs.netlogo.org/versions.html'>release notes</a> for details on version differences
+		</p>
+		<VersionList versions={versions as VersionEntryProps[]} />
+	</ArchivePage>
+</Layout>

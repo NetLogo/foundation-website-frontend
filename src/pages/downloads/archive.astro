@@ -2,14 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 import NetLogoApi from '../../utils/api.js';
 
-import versions from './versions.json';
+import versions from './archive/versions.json';
 
 import VersionList from '../../components/download/archive/version-list';
 import ArchivePage from '../../components/download/archive/archive-page';
 import type { VersionEntryProps } from '../../components/download/archive/version-entry';
-
-const api = new NetLogoApi();
-const pageData = await api.getResourcesData();
 
 const title = 'NetLogo Download Archive';
 const description = 'Archive of previous NetLogo versions';

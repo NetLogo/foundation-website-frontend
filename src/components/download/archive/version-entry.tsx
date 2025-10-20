@@ -51,13 +51,15 @@ const Blurb = ({ text }: { text: string | string[] | undefined }) => {
 };
 
 // VersionFlagBadge Subcomponent
-type VersionFlag = 'BETA' | 'RC' | 'REVISION' | 'LATEST';
+type VersionFlag = 'BETA' | 'RC' | 'REVISION' | 'LATEST' | "MILESTONE" | "PREVIEW";
 
 const versionFlagStyles: { [key in VersionFlag]: string } = {
     BETA: "badge bg-warning text-dark me-1 ms-2",
     RC: "badge bg-info me-1 ms-2",
     REVISION: "badge bg-secondary me-1 ms-2",
     LATEST: "badge bg-success me-1 ms-2",
+    MILESTONE: "badge bg-primary me-1 ms-2",
+    PREVIEW: "badge bg-dark me-1 ms-2",
 };
 
 const versionFlagTexts: { [key in VersionFlag]: string } = {
@@ -65,6 +67,8 @@ const versionFlagTexts: { [key in VersionFlag]: string } = {
     RC: "Release Candidate",
     REVISION: "Revision",
     LATEST: "Latest",
+    MILESTONE: "Milestone",
+    PREVIEW: "Preview",
 };
 
 

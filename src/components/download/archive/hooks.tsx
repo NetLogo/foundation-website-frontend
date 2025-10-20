@@ -5,7 +5,7 @@ export function useVersionFilter(
     versions: VersionEntryProps[],
 ) {
     // flagsFilter contains flags to HIDE (not show)
-    const [flagsFilter, setFlagsFilter] = useState<Set<VersionFlag>>(new Set(['BETA']));
+    const [flagsFilter, setFlagsFilter] = useState<Set<VersionFlag>>(new Set(['BETA', "MILESTONE", "RC"]));
 
     const toggleFlagFilter = (flag: VersionFlag) => {
         console.log('Toggling flag filter for:', flag);

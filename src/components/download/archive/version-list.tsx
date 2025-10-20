@@ -14,11 +14,23 @@ const VersionList = ({ versions, accentColor, lineColor }: VersionListProps) => 
 
     return (
         <>
-            <div className='d-flex gap-4'>
+            <div className='d-lg-flex gap-4'>
                 <FilterCheckbox
                     flag="BETA"
                     label="Show Beta Versions"
                     isHidden={flagsFilter.has('BETA')}
+                    onToggle={toggleFlagFilter}
+                />
+                <FilterCheckbox
+                    flag="MILESTONE"
+                    label="Show Milestone Versions"
+                    isHidden={flagsFilter.has('MILESTONE')}
+                    onToggle={toggleFlagFilter}
+                />
+                <FilterCheckbox
+                    flag="RC"
+                    label="Show Release Candidates"
+                    isHidden={flagsFilter.has('RC')}
                     onToggle={toggleFlagFilter}
                 />
                 <FilterCheckbox

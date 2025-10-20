@@ -1,0 +1,787 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<style type="text/css">
+			body {
+				background: white;
+				font-family: arial, helvetica, geneva, swiss, sans-serif;
+			}
+			h1 {
+				text-align: center;
+			}
+		</style>
+		<title>NetLogo 2.0.1 Downloads</title>
+
+		<!-- -->
+		<!-- -->
+		<!-- -->
+		<script type="text/JavaScript">
+			function whatPlatform()
+			{
+
+				plat="other"
+
+				thisAgent = navigator.userAgent.toLowerCase()
+
+				// the order of the names is important, since these are not nested ifs
+
+				if (thisAgent.indexOf("win") != -1)
+				{
+					plat="win"
+				}
+				if (thisAgent.indexOf("95") != -1)
+				{
+					plat="win"
+				}
+				if (thisAgent.indexOf("98") != -1)
+				{
+					plat="win"
+				}
+				if (thisAgent.indexOf("nt") != -1)
+				{
+					plat="win"
+				}
+
+
+				if (thisAgent.indexOf("mac") != -1)
+				{
+					plat="mac"
+					var MacOSXPlugIn = navigator.plugins["Default Plugin Carbon.cfm"];
+					if (MacOSXPlugIn || thisAgent.indexOf("omniweb") != -1
+					                 || thisAgent.indexOf("mac os x") != -1 )
+					{
+						//Change value to true to enable the applet for Mac OS X
+						//This variable has been introduced to this page as the support for
+						//applets on Mac OS X has been questionable.
+						enableAppletForMacOSX = true
+						plat="macosx"
+					}
+				}
+
+				if (thisAgent.indexOf("sun") != -1)
+				{
+					plat="solaris"
+				}
+				if (thisAgent.indexOf("solaris") != -1)
+				{
+					plat="solaris"
+				}
+				if (thisAgent.indexOf("aix") != -1)
+				{
+					plat="aix"
+				}
+				if (thisAgent.indexOf("ibm") != -1)
+				{
+					plat="aix"
+				}
+				if (thisAgent.indexOf("dec") != -1)
+				{
+					plat="digitalunix"
+				}
+				if (thisAgent.indexOf("osf") != -1)
+				{
+					plat="digitalunix"
+				}
+
+				if (thisAgent.indexOf("digital") != -1)
+				{
+					plat="digitalunix"
+				}
+				if (thisAgent.indexOf("hp") != -1)
+				{
+					plat="hpux"
+				}
+				if (thisAgent.indexOf("unix") != -1)
+				{
+					plat="unix"
+				}
+				if (thisAgent.indexOf("sco") != -1)
+				{
+					plat="sco"
+				}
+				if (thisAgent.indexOf("bsd") != -1)
+				{
+					plat="bsd"
+				}
+				if (thisAgent.indexOf("free") != -1)
+				{
+					plat="freebsd"
+				}
+				if (thisAgent.indexOf("open") != -1)
+				{
+					plat="openbsd"
+				}
+				if (thisAgent.indexOf("netbsd") != -1)
+				{
+					plat="netbsd"
+				}
+				if (thisAgent.indexOf("linux") != -1)
+				{
+					plat="linux"
+				}
+				if (thisAgent.indexOf("reliant") != -1)
+				{
+					plat="reliant"
+				}
+
+				if (thisAgent.indexOf("sgi") != -1)
+				{
+					plat="irix"
+				}
+				if (thisAgent.indexOf("silicon") != -1)
+				{
+					plat="irix"
+				}
+				if (thisAgent.indexOf("irix") != -1)
+				{
+					plat="irix"
+				}
+				if (thisAgent.indexOf("os/390") != -1)
+				{
+					plat="os390"
+				}
+
+
+				// now determine what platforms are available, and reset the chosen platform based on whether the platform is available
+				// if you want the user to get a message that the desired platform is NOT available, set the fallback "plat" to "notavailable"
+				// the order is important, as it indicated the fallback order
+				// every platform above, must have a fall back below
+
+				platAvail="notavailable"
+
+
+				platAvail="win"
+
+				if ((plat=="win") && (platAvail!="win"))
+				{
+					plat="other"
+				}
+
+
+				platAvail="macosx"
+
+				if ((plat=="macosx") && (platAvail!="macosx"))
+				{
+					plat="unix"
+				}
+
+
+				platAvail="mac"
+
+				if ((plat=="mac") && (platAvail!="mac"))
+				{
+					plat="other"
+				}
+
+
+				platAvail="solaris"
+
+				if ((plat=="solaris") && (platAvail!="solaris"))
+				{
+					plat="unix"
+				}
+
+
+				platAvail="aix"
+
+				if ((plat=="aix") && (platAvail!="aix"))
+				{
+					plat="unix"
+				}
+
+
+				if ((plat=="digitalunix") && (platAvail!="digitalunix"))
+				{
+					plat="unix"
+				}
+
+
+				platAvail="hpux"
+
+				if ((plat=="hpux") && (platAvail!="hpux"))
+				{
+					plat="unix"
+				}
+
+
+				if ((plat=="sco") && (platAvail!="sco"))
+				{
+					plat="unix"
+				}
+
+
+				if ((plat=="freebsd") && (platAvail!="freebsd"))
+				{
+					plat="bsd"
+				}
+
+
+				if ((plat=="openbsd") && (platAvail!="openbsd"))
+				{
+					plat="bsd"
+				}
+
+
+				if ((plat=="netbsd") && (platAvail!="netbsd"))
+				{
+					plat="bsd"
+				}
+
+
+				if ((plat=="bsd") && (platAvail!="bsd"))
+				{
+					plat="unix"
+				}
+
+
+				platAvail="linux"
+
+				if ((plat=="linux") && (platAvail!="linux"))
+				{
+					plat="unix"
+				}
+
+
+				if ((plat=="reliant") && (platAvail!="reliant"))
+				{
+					plat="unix"
+				}
+
+
+				if ((plat=="irix") && (platAvail!="irix"))
+				{
+					plat="unix"
+				}
+
+
+				if ((plat=="os390") && (platAvail!="os390"))
+				{
+					plat="unix"
+				}
+
+
+				platAvail="unix"
+
+				if ((plat=="unix") && (platAvail!="unix"))
+				{
+					plat="other"
+				}
+
+
+				platAvail="other"
+
+				if ((plat=="other") && (platAvail!="other"))
+				{
+					plat="notavailable"
+				}
+
+			}
+
+
+			function platformButtons()
+			{
+				document.writeln("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\" size=\"3\">")
+
+				if (plat=="win")
+				{
+					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
+					document.write("<form method=\"get\" action=\"")
+
+					document.write("https://ccl.northwestern.edu/netlogo/2.0.1/InstData/Windows/VM/NetLogo1.0Installer.exe\">")
+					//
+
+					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (13.5M) for Windows (includes Java VM)\" >")
+					//
+					document.writeln("<br><\/form>")
+					document.writeln("Enable Java in your browser to install directly from the web.<br>")
+				}
+
+
+
+				if (plat=="mac")
+				{
+					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
+					document.write("<form method=\"get\" action=\"")
+
+					document.write("https://ccl.northwestern.edu/netlogo/2.0.1/InstData/MacOS/VM/NetLogo1.0Installer.bin\">")
+					//
+
+					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (12.5M) for Mac OS (includes Java VM)\" ><br>")
+					//
+					document.writeln("<br><\/form>")
+				}
+
+
+
+				if (plat=="macosx")
+				{
+					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
+					document.write("<form method=\"get\" action=\"")
+
+					document.write("https://ccl.northwestern.edu/netlogo/2.0.1/InstData/MacOSX/NetLogo1.0Installer.sit\">")
+					//
+
+					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.2M) for Mac OS X (without Java VM)\" ><br>")
+					//
+					if( enableAppletForMacOSX )
+					{
+						document.writeln("<br><\/form>")
+						document.writeln("Enable Java in your browser to install directly from the web.<br>")
+					}
+				}
+
+
+
+				if (plat=="linux")
+				{
+					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
+					document.write("<form method=\"get\" action=\"")
+
+					document.write("https://ccl.northwestern.edu/netlogo/2.0.1/InstData/Unix/Linux/NetLogo1_0Installer.bin\">")
+					//
+
+					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (41.2M) for Linux (includes Java VM)\" ><br>")
+					//
+					document.writeln("<br><\/form>")
+					document.writeln("Enable Java in your browser to install directly from the web.<br>")
+				}
+
+
+
+
+				if (plat=="unix")
+				{
+					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
+					document.write("<form method=\"get\" action=\"")
+
+					document.write("https://ccl.northwestern.edu/netlogo/2.0.1/InstData/Unix/Others/NetLogo1_0Installer.bin\">")
+					//
+
+					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.5M) for Unix\" ><br>")
+					//
+					document.writeln("<br><\/form>")
+					document.writeln("Enable Java in your browser to install directly from the web.<br>")
+				}
+
+				if (plat=="other")
+				{
+					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
+					document.write("<form method=\"get\" action=\"")
+
+					document.write("https://ccl.northwestern.edu/netlogo/2.0.1/InstData/Java/NetLogo1_0Installer.jar\">")
+					//
+
+					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.4M)\" ><br>")
+					//
+					document.writeln("<br><\/form>")
+				}
+				if (plat=="notavailable")
+				{
+					document.writeln("<b>There is no installer available for your platform.<br>")
+					document.writeln("Please select an alternate platform below.<\/b><br>")
+				}
+
+				document.writeln("<\/font>")
+			}
+
+			function setArchiveFile()
+			{
+				if (plat!="macosx" || ( plat=="macosx" && enableAppletForMacOSX ))
+				{
+					if (plat!="mac")
+					{
+						document.writeln("<applet codebase=\"https://ccl.northwestern.edu/netlogo/2.0.1/InstData\" archive=\"WebInst.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
+					}
+					if (plat=="mac")
+					{
+						document.writeln("<applet codebase=\"https://ccl.northwestern.edu/netlogo/2.0.1/InstData\" archive=\"WebInstMac.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
+					}
+				}
+			}
+
+			function displayMarker(whatPlat)
+			{
+				if (whatPlat==plat)
+				{
+					document.write("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\" color=\"green\"><b>&gt<\/b><\/font>") ;
+				}
+			}
+
+
+			function setPlatFont(whatPlat)
+			{
+
+				if (whatPlat==plat)
+				{
+					document.write("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\" color=\"green\"><b>")
+				}
+				else
+				{
+					document.write("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\">")
+				}
+			}
+
+			function endPlatFont(whatPlat)
+			{
+				if (whatPlat==plat)
+				{
+					document.write("<\/b><\/font>")
+				}
+				else
+				{
+					document.write("<\/font>")
+				}
+			}
+
+			whatPlatform()
+			// -->
+		</script>
+
+		<!-- -->
+		<!-- -->
+		<!-- -->
+	</head>
+
+	<body>
+		<a name="top"></a>
+
+		<p align="center"><img src="/static_assets/downloads/archive/title-legacy.gif" alt="NetLogo banner" /></p>
+		<p align="center"></p>
+		<table width="520" cellpadding="0" cellspacing="0" border="0" align="center">
+			<tr>
+				<td>
+					<h1 align="center">NetLogo 2.0.1 Downloads</h1>
+
+					<p align="center">
+						<font size="-1"><b>Notes for Windows users:</b></font>
+					</p>
+					<ul>
+						<li>
+							<font size="-1"
+								>NetLogo runs fastest and is most reliable on the Sun 1.4.2 VM. Therefore we strongly recommend the
+								"Includes Java VM" option. (Questions? See <a href="#windows">below</a>.)</font
+							>
+						</li>
+
+						<li>
+							<font size="-1"
+								>If you are running anti-virus software there may be a long pause (as much as two minutes) near the end
+								of the download process.</font
+							>
+						</li>
+					</ul>
+
+					<p></p>
+					<hr />
+				</td>
+			</tr>
+		</table>
+
+		<table border="0" cellpadding="0" cellspacing="10" align="center">
+			<tr>
+				<td></td>
+				<td></td>
+				<td valign="top"><b>Platform</b></td>
+				<td valign="top">
+					<center>
+						<b> includes Java VM<br />(recommended) </b>
+					</center>
+				</td>
+				<td></td>
+				<td valign="top">
+					<center>
+						<b> without Java VM </b>
+					</center>
+				</td>
+				<td></td>
+				<td valign="top">
+					<center>
+						<b>Details</b>
+					</center>
+				</td>
+			</tr>
+
+			<tr>
+				<td valign="bottom">
+					<div align="left">
+						<script type="text/javascript">
+							<!--
+
+							displayMarker('win');
+							// -->
+						</script>
+					</div>
+				</td>
+				<td align="center" valign="middle">
+					<img alt="" height="16" width="26" src="https://ccl.northwestern.edu/netlogo/2.0.1/InstData/images/win.gif" />
+				</td>
+				<td valign="bottom">
+					<div align="left">
+						<script type="text/javascript">
+							<!--
+
+							setPlatFont('win');
+							// -->
+						</script>
+						Windows
+						<script type="text/javascript">
+							<!--
+
+							endPlatFont('win');
+							// -->
+						</script>
+					</div>
+				</td>
+				<td valign="bottom">
+					<center>
+						<a href="https://ccl.northwestern.edu/netlogo/2.0.1/InstData/Windows/VM/NetLogo2.0.1Installer.exe"
+							>Download (21.6 MB)</a
+						>
+					</center>
+				</td>
+				<td valign="bottom"></td>
+				<td valign="bottom">
+					<center>
+						<a href="https://ccl.northwestern.edu/netlogo/2.0.1/InstData/Windows/NoVM/NetLogo2.0.1Installer.exe"
+							>Download (9.3 MB)</a
+						>
+					</center>
+				</td>
+				<td valign="bottom"></td>
+				<td valign="bottom">
+					<center>
+						<a href="#windows">View</a>
+					</center>
+				</td>
+			</tr>
+
+			<tr>
+				<td valign="bottom">
+					<div align="left">
+						<script type="text/javascript">
+							<!--
+
+							displayMarker('macosx');
+							// -->
+						</script>
+					</div>
+				</td>
+				<td align="center" valign="middle">
+					<img
+						alt=""
+						height="16"
+						width="26"
+						src="https://ccl.northwestern.edu/netlogo/2.0.1/InstData/images/macosx.gif"
+					/>
+				</td>
+				<td valign="bottom">
+					<div align="left">
+						<script type="text/javascript">
+							<!--
+
+							setPlatFont('macosx');
+							// -->
+						</script>
+						Mac OS X
+						<script type="text/javascript">
+							<!--
+
+							endPlatFont('macosx');
+
+							// -->
+						</script>
+					</div>
+				</td>
+				<td valign="bottom"></td>
+				<td valign="bottom"></td>
+				<td valign="bottom">
+					<center>
+						<a href="https://ccl.northwestern.edu/netlogo/2.0.1/NetLogo%202.0.1.dmg">Download (8.8 MB)</a>
+					</center>
+				</td>
+				<td valign="bottom"></td>
+				<td valign="bottom">
+					<center>
+						<a href="#macosx">View</a>
+					</center>
+				</td>
+			</tr>
+
+			<tr>
+				<td valign="bottom">
+					<div align="left">
+						<script type="text/javascript">
+							<!--
+
+							displayMarker('other');
+							// -->
+						</script>
+					</div>
+				</td>
+				<td valign="bottom">
+					<img alt="" height="16" width="26" src="/static_assets/downloads/archive/os-other.gif" />
+				</td>
+				<td valign="bottom">
+					<div align="left">
+						<script type="text/javascript">
+							<!--
+
+							setPlatFont('other');
+							// -->
+						</script>
+						Other Java-enabled Platforms
+						<script type="text/javascript">
+							<!--
+
+							endPlatFont('other');
+							// -->
+						</script>
+					</div>
+				</td>
+				<td valign="bottom"></td>
+				<td valign="bottom"></td>
+				<td valign="bottom">
+					<center>
+						<a href="netlogo-2.0.1.tar.gz">Download (8.2 MB)</a>
+					</center>
+				</td>
+				<td valign="bottom"></td>
+				<td valign="bottom">
+					<center>
+						<a href="#other">View</a>
+					</center>
+				</td>
+			</tr>
+		</table>
+
+		<p align="center"></p>
+		<table width="600" cellpadding="0" cellspacing="0" border="0" align="center">
+			<tr>
+				<td>
+					<!--  WINDOWS  -->
+					<p></p>
+					<hr />
+
+					<div align="left">
+						<p>
+							<font size="5"><a name="windows"></a>Windows Details:</font><br />
+						</p>
+
+						<ul>
+							<li>We strongly recommend the "includes Java VM" download option.</li>
+							<li>
+								Choosing this download option installs Sun's 1.4.2 VM for NetLogo's private use only. Other programs on
+								your system are not affected.
+							</li>
+							<li>NetLogo runs faster and is more reliable on this VM than any other VM.</li>
+							<li>
+								Even if you have downloaded NetLogo before, you should still choose "Includes Java VM". The bundled VM
+								is not shared between different versions of NetLogo.
+							</li>
+							<li>
+								You should only choose the "without Java VM" download if either:
+								<ul>
+									<li>
+										You have already, separately and independently from any NetLogo download, installed the Sun 1.4.2 VM
+										on your system yourself.
+									</li>
+
+									<li>You are certain you wish to try using a VM other than our recommended VM.</li>
+								</ul>
+							</li>
+						</ul>
+
+						<p>
+							<font size="2"
+								><br />
+								(<a href="#top">Go To Top</a>)</font
+							>
+						</p>
+					</div>
+
+					<!--  MACOSX  -->
+					<center>
+						<p></p>
+						<hr />
+					</center>
+					<div align="left">
+						<p>
+							<font size="5"><a name="macosx"></a>Mac OS X Details:</font><br />
+						</p>
+
+						<ul>
+							<li>
+								On OS X 10.2, NetLogo requires Java 1.4.1 Update 1, which is available from Apple via Software Update.
+							</li>
+						</ul>
+
+						<p>
+							<font size="2"
+								><br />
+								(<a href="#top">Go To Top</a>)</font
+							>
+						</p>
+					</div>
+
+					<!--  OTHER  -->
+
+					<center>
+						<p></p>
+						<hr />
+					</center>
+					<div align="left">
+						<p>
+							<font size="5"><a name="other"></a>Other Platform Details:</font><br />
+						</p>
+					</div>
+
+					<div align="left">
+						<ul>
+							<li>
+								Be sure you have Java 1.4.1 or later installed. Newer Java versions such as 1.4.2 should work even
+								better. You can download Java from <a href="http://java.sun.com/getjava/">Sun's site</a>.
+							</li>
+							<li>
+								The download is in the form of a <tt>.tar.gz</tt> file. You may untar this file into any directory.
+							</li>
+
+							<li>
+								Once untarred, the NetLogo application is in the <tt>NetLogo.jar</tt> file in the
+								<tt>netlogo-2.0.1</tt> folder.
+							</li>
+							<li>
+								The method for starting the application may be different depending on your operating system and Java
+								virtual machine. You may be able to just double-click the <tt>NetLogo.jar</tt>
+								file in your file manager. Or, a typical sequence of commands on a Unix-style machine would be:
+								<pre>
+cd netlogo-2.0.1
+java -jar NetLogo.jar</pre
+								>
+							</li>
+
+							<li>For the computer HubNet client, substitute <tt>HubNet.jar</tt> for <tt>NetLogo.jar</tt>.</li>
+						</ul>
+
+						<p>
+							<font size="2"
+								><br />
+								(<a href="#top">Go To Top</a>)</font
+							>
+						</p>
+					</div>
+
+					<hr />
+					<font size="2">
+						Installers created with InstallAnywhere.<br />
+						InstallAnywhere is a registered trademark of Zero G Software, Inc.<br />
+						Mac OS X is a registered trademark of Apple Computer, Inc.<br />
+						Java is a trademark of Sun Microsystems, Inc.<br />
+						Windows is a registered trademark of Microsoft Corporation.<br />
+						All other marks are properties of their respective owners.<br />
+					</font>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

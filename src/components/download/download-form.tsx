@@ -351,7 +351,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
               <a
                 target="_blank"
                 className="form-ref"
-                href="https://ccl.northwestern.edu/netlogo/oldversions.shtml"
+                href="/downloads/archive"
               >
                 {"here"}
               </a>
@@ -380,4 +380,3 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
 };
 
 export { DownloadForm };
-

@@ -288,7 +288,7 @@
 					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
 					document.write("<form method=\"get\" action=\"")
 
-					document.write("https://ccl.northwestern.edu/netlogo/2.1/InstData/Windows/VM/NetLogo1.0Installer.exe\">")
+					document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/InstData/Windows/VM/NetLogo1.0Installer.exe\">")
 					//
 
 					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (13.5M) for Windows (includes Java VM)\" >")
@@ -304,7 +304,7 @@
 					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
 					document.write("<form method=\"get\" action=\"")
 
-					document.write("https://ccl.northwestern.edu/netlogo/2.1/InstData/MacOS/VM/NetLogo1.0Installer.bin\">")
+					document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/InstData/MacOS/VM/NetLogo1.0Installer.bin\">")
 					//
 
 					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (12.5M) for Mac OS (includes Java VM)\" ><br>")
@@ -319,7 +319,7 @@
 					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
 					document.write("<form method=\"get\" action=\"")
 
-					document.write("https://ccl.northwestern.edu/netlogo/2.1/InstData/MacOSX/NetLogo1.0Installer.sit\">")
+					document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/InstData/MacOSX/NetLogo1.0Installer.sit\">")
 					//
 
 					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.2M) for Mac OS X (without Java VM)\" ><br>")
@@ -338,7 +338,7 @@
 					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
 					document.write("<form method=\"get\" action=\"")
 
-					document.write("https://ccl.northwestern.edu/netlogo/2.1/InstData/Unix/Linux/NetLogo1_0Installer.bin\">")
+					document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/InstData/Unix/Linux/NetLogo1_0Installer.bin\">")
 					//
 
 					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (41.2M) for Linux (includes Java VM)\" ><br>")
@@ -355,7 +355,7 @@
 					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
 					document.write("<form method=\"get\" action=\"")
 
-					document.write("https://ccl.northwestern.edu/netlogo/2.1/InstData/Unix/Others/NetLogo1_0Installer.bin\">")
+					document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/InstData/Unix/Others/NetLogo1_0Installer.bin\">")
 					//
 
 					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.5M) for Unix\" ><br>")
@@ -369,7 +369,7 @@
 					document.writeln("<b>Recommended installer for your platform...<\/b><br>")
 					document.write("<form method=\"get\" action=\"")
 
-					document.write("https://ccl.northwestern.edu/netlogo/2.1/InstData/Java/NetLogo1_0Installer.jar\">")
+					document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/InstData/Java/NetLogo1_0Installer.jar\">")
 					//
 
 					document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.4M)\" ><br>")
@@ -391,11 +391,11 @@
 				{
 					if (plat!="mac")
 					{
-						document.writeln("<applet codebase=\"https://ccl.northwestern.edu/netlogo/2.1/InstData\" archive=\"WebInst.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
+						document.writeln("<applet codebase=\"https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/InstData\" archive=\"WebInst.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
 					}
 					if (plat=="mac")
 					{
-						document.writeln("<applet codebase=\"https://ccl.northwestern.edu/netlogo/2.1/InstData\" archive=\"WebInstMac.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
+						document.writeln("<applet codebase=\"https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/InstData\" archive=\"WebInstMac.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
 					}
 				}
 			}
@@ -520,7 +520,7 @@ only for users of computer HubNet.  Most users should use our
 					</div>
 				</td>
 				<td align="center" valign="middle">
-					<img alt="" height="16" width="26" src="https://ccl.northwestern.edu/netlogo/2.1/InstData/images/win.gif" />
+					<img alt="" height="16" width="26" src="/static_assets/downloads/archive/os-win.gif" />
 				</td>
 				<td valign="bottom">
 					<div align="left">
@@ -541,7 +541,8 @@ only for users of computer HubNet.  Most users should use our
 				</td>
 				<td valign="bottom">
 					<center>
-						<a href="https://ccl.northwestern.edu/netlogo/2.1/InstData/Windows/VM/NetLogo2.1Installer.exe"
+						<a
+							href="https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/InstData/Windows/VM/NetLogo2.1Installer.exe"
 							>Download (24.4 MB)</a
 						>
 					</center>
@@ -549,7 +550,8 @@ only for users of computer HubNet.  Most users should use our
 				<td valign="bottom"></td>
 				<td valign="bottom">
 					<center>
-						<a href="https://ccl.northwestern.edu/netlogo/2.1/InstData/Windows/NoVM/NetLogo2.1Installer.exe"
+						<a
+							href="https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/InstData/Windows/NoVM/NetLogo2.1Installer.exe"
 							>Download (12.0 MB)</a
 						>
 					</center>
@@ -574,12 +576,7 @@ only for users of computer HubNet.  Most users should use our
 					</div>
 				</td>
 				<td align="center" valign="middle">
-					<img
-						alt=""
-						height="16"
-						width="26"
-						src="https://ccl.northwestern.edu/netlogo/2.1/InstData/images/macosx.gif"
-					/>
+					<img alt="" height="16" width="26" src="/static_assets/downloads/archive/os-x.gif" />
 				</td>
 				<td valign="bottom">
 					<div align="left">
@@ -603,7 +600,7 @@ only for users of computer HubNet.  Most users should use our
 				<td valign="bottom"></td>
 				<td valign="bottom">
 					<center>
-						<a href="https://ccl.northwestern.edu/netlogo/2.1/NetLogo%202.1.dmg">Download (11.7 MB)</a>
+						<a href="https://netlogo-download.s3.us-east-1.amazonaws.com/2.1/NetLogo%202.1.dmg">Download (11.7 MB)</a>
 					</center>
 				</td>
 				<td valign="bottom"></td>
@@ -626,7 +623,7 @@ only for users of computer HubNet.  Most users should use our
 					</div>
 				</td>
 				<td valign="bottom">
-					<img alt="" height="16" width="26" src="/static_assets/downloads/archive/os-other.gif" />
+					<img alt="" height="25" width="26" src="/static_assets/downloads/archive/os-java.png" />
 				</td>
 				<td valign="bottom">
 					<div align="left">

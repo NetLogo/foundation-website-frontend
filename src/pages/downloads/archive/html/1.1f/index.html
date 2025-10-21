@@ -282,7 +282,7 @@ function platformButtons()
 		document.writeln("<b>Recommended installer for your platform...</b><br>")
 		document.write("<form method=\"get\" action=\"")
 
-		document.write("https://ccl.northwestern.edu/netlogo/1.1f/InstData/Windows/VM/NetLogo1.0Installer.exe\">")
+		document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Windows/VM/NetLogo1.0Installer.exe\">")
 		//
 
 		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (13.5M) for Windows (includes Java VM)\" >")
@@ -298,7 +298,7 @@ function platformButtons()
 		document.writeln("<b>Recommended installer for your platform...</b><br>")
 		document.write("<form method=\"get\" action=\"")
 
-		document.write("https://ccl.northwestern.edu/netlogo/1.1f/InstData/MacOS/VM/NetLogo1.0Installer.bin\">")
+		document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/MacOS/VM/NetLogo1.0Installer.bin\">")
 		//
 
 		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (12.5M) for Mac OS (includes Java VM)\" ><br>")
@@ -313,7 +313,7 @@ function platformButtons()
 		document.writeln("<b>Recommended installer for your platform...</b><br>")
 		document.write("<form method=\"get\" action=\"")
 
-		document.write("https://ccl.northwestern.edu/netlogo/1.1f/InstData/MacOSX/NetLogo1.0Installer.sit\">")
+		document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/MacOSX/NetLogo1.0Installer.sit\">")
 		//
 
 		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.2M) for Mac OS X (without Java VM)\" ><br>")
@@ -332,7 +332,7 @@ function platformButtons()
 		document.writeln("<b>Recommended installer for your platform...</b><br>")
 		document.write("<form method=\"get\" action=\"")
 
-		document.write("https://ccl.northwestern.edu/netlogo/1.1f/InstData/Unix/Linux/NetLogo1_0Installer.bin\">")
+		document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Unix/Linux/NetLogo1_0Installer.bin\">")
 		//
 
 		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (41.2M) for Linux (includes Java VM)\" ><br>")
@@ -349,7 +349,7 @@ function platformButtons()
 		document.writeln("<b>Recommended installer for your platform...</b><br>")
 		document.write("<form method=\"get\" action=\"")
 
-		document.write("https://ccl.northwestern.edu/netlogo/1.1f/InstData/Unix/Others/NetLogo1_0Installer.bin\">")
+		document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Unix/Others/NetLogo1_0Installer.bin\">")
 		//
 
 		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.5M) for Unix\" ><br>")
@@ -363,7 +363,7 @@ function platformButtons()
 		document.writeln("<b>Recommended installer for your platform...</b><br>")
 		document.write("<form method=\"get\" action=\"")
 
-		document.write("https://ccl.northwestern.edu/netlogo/1.1f/InstData/Java/NetLogo1_0Installer.jar\">")
+		document.write("https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Java/NetLogo1_0Installer.jar\">")
 		//
 
 		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.4M)\" ><br>")
@@ -385,11 +385,11 @@ function setArchiveFile()
 	{
 		if (plat!="mac")
 		{
-			document.writeln("<applet codebase=\"https://ccl.northwestern.edu/netlogo/1.1f/InstData\" archive=\"WebInst.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
+			document.writeln("<applet codebase=\"https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData\" archive=\"WebInst.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
 		}
 		if (plat=="mac")
 		{
-			document.writeln("<applet codebase=\"https://ccl.northwestern.edu/netlogo/1.1f/InstData\" archive=\"WebInstMac.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
+			document.writeln("<applet codebase=\"https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData\" archive=\"WebInstMac.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
 		}
 	}
 }
@@ -502,7 +502,7 @@ HREF="#windows">below</a>.)
               </script>
               </div>
           </td>
-          <td align="center" valign="center"><img height="16" width="26" src="https://ccl.northwestern.edu/netlogo/1.1f/InstData/images/win.gif"></td>
+          <td align="center" valign="center"><img height="16" width="26" src="/static_assets/downloads/archive/os-win.gif"></td>
           <td valign="bottom">
             <div align="left">
 
@@ -524,7 +524,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/Windows/VM/NetLogo1.1Installer.exe">
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Windows/VM/NetLogo1.1Installer.exe">
               Download
               (13.2M)
                </a></center>
@@ -534,7 +534,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/Windows/NoVM/NetLogo1.1Installer.exe">
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Windows/NoVM/NetLogo1.1Installer.exe">
               Download
               (8.4M)
                </a></center>
@@ -562,7 +562,7 @@ HREF="#windows">below</a>.)
               </script>
               </div>
           </td>
-          <td align="center" valign="center"><img height="16" width="26" src="/static_assets/downloads/archive/os-mac.gif"></td>
+          <td align="center" valign="center"><img alt="" height="16" width="26" src="/static_assets/downloads/archive/os-mac-legacy.gif" /></td>
           <td valign="bottom">
             <div align="left">
 
@@ -585,7 +585,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/MacOS/VM/NetLogo1.1Installer.bin">
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/MacOS/VM/NetLogo1.1Installer.bin">
               Download
               (12.2M)
                </a></center>
@@ -595,7 +595,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/MacOS/NoVM/NetLogo1.1Installer.bin"> Download
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/MacOS/NoVM/NetLogo1.1Installer.bin"> Download
               (8.4M)
                </a></center>
 
@@ -620,7 +620,7 @@ HREF="#windows">below</a>.)
               </script>
               </div>
           </td>
-          <td align="center" valign="center"><img height="16" width="26" src="https://ccl.northwestern.edu/netlogo/1.1f/InstData/images/macosx.gif"></td>
+          <td align="center" valign="center"><img alt="" height="16" width="26" src="/static_assets/downloads/archive/os-x.gif" /></td>
           <td valign="bottom">
             <div align="left">
 
@@ -646,7 +646,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/MacOSX/NetLogo1.1Installer.sit"> Download
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/MacOSX/NetLogo1.1Installer.sit"> Download
               (8.3M)
                </a></center>
 
@@ -671,7 +671,7 @@ HREF="#windows">below</a>.)
               </script>
               </div>
           </td>
-          <td align="center" valign="center"><img height="16" width="14" src="https://ccl.northwestern.edu/netlogo/1.1f/InstData/images/linux.gif"></td>
+          <td align="center" valign="center"><img height="16" width="24" src="/static_assets/downloads/archive/os-other.gif"></td>
           <td valign="bottom">
             <div align="left">
 
@@ -693,7 +693,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/Unix/Linux/NetLogo1_1Installer.bin"> Download
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Unix/Linux/NetLogo1_1Installer.bin"> Download
               (40.9M)
                </a></center>
 
@@ -702,7 +702,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/Unix/Others/NetLogo1_1Installer.bin"> Download
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Unix/Others/NetLogo1_1Installer.bin"> Download
               (8.2M)
                </a></center>
 
@@ -753,7 +753,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/Unix/Others/NetLogo1_1Installer.bin"> Download
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Unix/Others/NetLogo1_1Installer.bin"> Download
               (8.2M)
                </a></center>
 
@@ -805,7 +805,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/Unix/Others/NetLogo1_1Installer.bin"> Download
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Unix/Others/NetLogo1_1Installer.bin"> Download
               (8.2M)
                </a></center>
 
@@ -857,7 +857,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/Unix/Others/NetLogo1_1Installer.bin"> Download
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Unix/Others/NetLogo1_1Installer.bin"> Download
               (8.2M)
                </a></center>
 
@@ -906,7 +906,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/Unix/Others/NetLogo1_1Installer.bin"> Download
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Unix/Others/NetLogo1_1Installer.bin"> Download
               (8.2M)
                </a></center>
 
@@ -931,7 +931,7 @@ HREF="#windows">below</a>.)
               </script>
               </div>
           </td>
-          <td valign="bottom"><img height="16" width="26" src="/static_assets/downloads/archive/os-other.gif"></td>
+          <td valign="bottom"><img alt="" height="25" width="26" src="/static_assets/downloads/archive/os-java.png" />
           <td valign="bottom">
             <div align="left">
 
@@ -956,7 +956,7 @@ HREF="#windows">below</a>.)
           <td valign="bottom">
 
             <center>
-               <a href="https://ccl.northwestern.edu/netlogo/1.1f/InstData/Java/NetLogo1_1Installer.jar"> Download
+               <a href="https://netlogo-download.s3.us-east-1.amazonaws.com/1.1f/InstData/Java/NetLogo1_1Installer.jar"> Download
               (8.1M)
                </a></center>
 

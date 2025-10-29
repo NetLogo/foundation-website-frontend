@@ -125,6 +125,12 @@ const e=(n,...t)=>n.reduce((i,r,o)=>`${i}${r}${o in t?String(t[o]):""}`,""),a={i
       body
     }
   }
+  `,netlogoCon2026Content:e`
+  query getNetlogoCon2026 {
+    netlogo_con_2026 {
+      body
+    }
+  }
   `,netLogoVersions:e`
     query GetNetLogoVersions {
       netlogo_versions {

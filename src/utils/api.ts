@@ -268,7 +268,7 @@ class NetLogoAPI {
   }
 
   async getReferences() {
-    const references: { 'References': ReferenceEntry[] } = await this.graphqlFetchData<{ 'References': ReferenceEntry[] }>(queries.netlogoCon2026Content);
+    const references: { 'References': ReferenceEntry[] } = await this.graphqlFetchData<{ 'References': ReferenceEntry[] }>(queries.referenceData);
 
 
     // ***new fix stores is ccl and the refrence not jsut ref

@@ -154,6 +154,14 @@ const queries = {
   }
   `,
 
+  netlogoCon2026Content: gql`
+  query getNetlogoCon2026 {
+    netlogo_con_2026 {
+      body
+    }
+  }
+  `,
+
   netLogoVersions: gql`
     query GetNetLogoVersions {
       netlogo_versions {

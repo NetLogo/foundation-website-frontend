@@ -2,7 +2,6 @@ import { type AnnouncementObj } from "../components/layout/announcement";
 import { GraphQLClient } from "graphql-request";
 import queries from "./queries";
 import { type FormData } from "../components/download/download-form";
-import { type MailingData } from "../components/shared/mailing-list";
 
 // Types for the API responses
 interface ApiResponse<T> {
@@ -117,6 +116,10 @@ export interface AboutEntry {
 }
 
 export interface CampaignEntry {
+  body: string;
+}
+
+export interface NetlogoCon2026Entry {
   body: string;
 }
 
@@ -250,17 +253,22 @@ class NetLogoAPI {
   }
 
   async getAboutContent() {
-    const dict = await this.graphqlFetchData<{ about: AboutEntry[] }>(queries.aboutContent);
+    const dict = await this.graphqlFetchData<{ about: AboutEntry }>(queries.aboutContent);
     return dict.about
   }
 
   async getCampaignContent() {
-    const dict = await this.graphqlFetchData<{ campaign: CampaignEntry[] }>(queries.campaignContent);
+    const dict = await this.graphqlFetchData<{ campaign: CampaignEntry }>(queries.campaignContent);
     return dict.campaign
   }
 
+  async getNetLogoCon2026Content() {
+    const dict = await this.graphqlFetchData<{ netlogo_con_2026: NetlogoCon2026Entry }>(queries.netlogoCon2026Content);
+    return dict.netlogo_con_2026
+  }
+
   async getReferences() {
-    const references: { 'References': ReferenceEntry[] } = await this.graphqlFetchData<{ 'References': ReferenceEntry[] }>(queries.referenceData);
+    const references: { 'References': ReferenceEntry[] } = await this.graphqlFetchData<{ 'References': ReferenceEntry[] }>(queries.netlogoCon2026Content);
 
 
     // ***new fix stores is ccl and the refrence not jsut ref
@@ -341,20 +349,6 @@ class NetLogoAPI {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    });
-
-    return response;
-  }
-
-  async sendMailingForm(MailingData: MailingData) {
-    const url = this.baseUrl + "/items/mailing_subscribers";
-
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(MailingData),
     });
 
     return response;

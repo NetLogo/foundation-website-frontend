@@ -4,12 +4,12 @@ import { AboutSection } from "../components/about/about-page";
 import NetLogoAPI from "../utils/api";
 
 const api = new NetLogoAPI();
-const campaigndata = await api.getCampaignContent();
+const campaignData = await api.getCampaignContent();
 ---
 
 <Layout
     title="NetLogo Center Campaign"
     description="About The NetLogo Center Campaign"
 >
-    <AboutSection AboutData={campaigndata} client:load />
+    <AboutSection AboutData={campaignData} client:load />
 </Layout>

@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { AboutSection } from "../components/about/about-page";
+import NetLogoAPI from "../utils/api";
+
+const api = new NetLogoAPI();
+const conferenceData = await api.getNetLogoCon2026Content();
+---
+
+<Layout title="About NetLogo" description="NetLogo About Page">
+    <AboutSection AboutData={conferenceData} client:load />
+</Layout>

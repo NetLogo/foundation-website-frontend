@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Announcement } from "../layout/announcement";
 import { Intro } from "./introduction";
 import { WhyNetLogo } from "./why-netlogo";
@@ -46,6 +46,14 @@ function Body({
   const color_palette = ["#F2F2F2", "white"];
 
   const [showAnnouncement, setShowAnnouncement] = useState(!!announcement);
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) el.scrollIntoView();
+    }
+  }, []);
+
   return (
     <div className="body">
       {showAnnouncement && (
@@ -57,7 +65,7 @@ function Body({
 
       <Intro intro_data={introduction} intro_splash_data={intro_splash} />
       {/* <WhyNetLogo page_data={why_netlogo} /> */}
-      <Newsfeed NewsData={newsData}/>
+      <Newsfeed NewsData={newsData} />
       <GetNetLogo page_data={get_netlogo} section_color={color_palette[0]} />
       <Community
         communityPosts={communityContent}

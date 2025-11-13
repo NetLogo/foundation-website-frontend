@@ -355,26 +355,13 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
                 <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}
               </button>
             ) : devOs && name.includes(devOs) && subname.includes("32-bit") ? (
-              <button type="submit" className="p-0 m-0 border-0 bg-transparent text-primary mx-4 mt-2" name="platform" key={name} value={name} onClick={handleClickChange}>
-                <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}
+              <button type="submit" className="p-0 m-0 border-0 bg-transparent mx-4 mt-2" name="platform" key={name} value={name} onClick={handleClickChange}>
+                <img src={createImageURL(img_id || "")} className="button-icon" /> <span className="text-primary"> Download {subname}</span> (rare)
               </button>
             ) : null
 
           )}
         </div>
-
-        {platforms?.map(([name, subname]) => {
-          if (devOs && name.includes(devOs) && subname.includes("32-bit")) {
-            return <div className="d-flex flex-row align-items-center gap-2 dl32" key={name}>
-              <span>For 32-bit machines (rare):</span>
-              <button type="submit" className="btn btn-outline-primary btn-sm" name="platform" key={name} value={name} onClick={handleClickChange}>
-                Download {subname}
-              </button>
-            </div>
-          } else {
-            return null;
-          }
-        })}
 
         <div className="detail-row"></div>
       </form>

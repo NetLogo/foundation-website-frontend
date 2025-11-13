@@ -160,6 +160,14 @@
   height: auto;
 }
 
+.btn-primary .button-icon {
+  filter: brightness(2);
+}
+
 .btn-ht {
   min-height: 50px;
+}
+
+.dl32 {
+  margin-left: 5px;
 }

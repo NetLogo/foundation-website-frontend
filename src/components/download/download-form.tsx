@@ -342,6 +342,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
         <div>
           <span className="mr-10"><b>Version {formData.version} </b></span><span className="form-text mx-2">previous versions <a target="_blank" className="form-ref" href="https://ccl.northwestern.edu/netlogo/oldversions.shtml">here</a></span>
         </div>
+
         <div className="d-flex flex-row gap-2">
           {platforms?.map(([name, subname, primary_link, img_id]) =>
             devOs && name.includes(devOs) && primary_link === true ? (
@@ -358,8 +359,22 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
                 <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}
               </button>
             ) : null
+
           )}
         </div>
+
+        {platforms?.map(([name, subname]) => {
+          if (devOs && name.includes(devOs) && subname.includes("32-bit")) {
+            return <div className="d-flex flex-row align-items-center gap-2 dl32" key={name}>
+              <span>For 32-bit machines (rare):</span>
+              <button type="submit" className="btn btn-outline-primary btn-sm" name="platform" key={name} value={name} onClick={handleClickChange}>
+                Download {subname}
+              </button>
+            </div>
+          } else {
+            return null;
+          }
+        })}
 
         <div className="detail-row"></div>
       </form>

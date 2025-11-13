@@ -12,13 +12,19 @@ const pageData = await api.getDownloadPageData();
 
 <Layout
     show_footer_buttons={false}
-    title="NetLogo Download for Linux"
+    title="NetLogo Download"
     description="NetLogo download page"
 >
-    <DownloadSection downloadData={pageData["netlogo_versions"]} devOs="Linux" client:load />
-    <MachineHelp platformMachine="Linux machine" 
-    machineLink="https://www.howtogeek.com/198615/how-to-check-if-your-linux-system-is-32-bit-or-64-bit/"
-    otherplatform1="Windows"
-    otherplatform2="Mac" />
+    <DownloadSection
+        downloadData={pageData["netlogo_versions"]}
+        devOs="Linux"
+        client:load
+    />
+    <MachineHelp
+        platformMachine="Linux machine"
+        machineLink="https://www.howtogeek.com/198615/how-to-check-if-your-linux-system-is-32-bit-or-64-bit/"
+        otherplatform1="Windows"
+        otherplatform2="Mac"
+    />
     <DonationSection donationArray={pageData["donation_data"]} client:load />
 </Layout>

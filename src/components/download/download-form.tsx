@@ -102,7 +102,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     last_name: "",
     organization: "",
     email: "",
-    subscribe: true,
+    subscribe: false,
     comments: "",
     ip: "",
     country: "",
@@ -223,7 +223,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
       return;
     } else {
       const encodedURL = btoa(downloadUrl);
-      window.location.href = "/thankyou?download_url=" + encodedURL;
+      window.location.href = `/thankyou?download_url=${encodedURL}&signed_up=${formData.subscribe}`;
     }
   };
 
@@ -231,7 +231,11 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     <div className="download-form">
       <form onSubmit={handleFormSubmission} className="font-inter mt-1">
         <div className="mb-3 row my-4">
-          <label htmlFor="first_name" className="col-sm-3 col-form-label fs-5 fw-semibold">First Name</label>
+          <label htmlFor="first_name" className="col-sm-3 col-form-label fs-5p1 fw-semibold">
+            First Name{formData.subscribe && (
+              <span className="text-danger ms-1">*</span>
+            )}
+          </label>
           <div className="col-sm-9">
             <input
               type="text"
@@ -247,7 +251,11 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
           </div>
         </div>
         <div className="mb-3 row my-4">
-          <label htmlFor="last_name" className="col-sm-3 col-form-label fs-5 fw-semibold">Last Name</label>
+          <label htmlFor="last_name" className="col-sm-3 col-form-label fs-5p1 fw-semibold">
+            Last Name{formData.subscribe && (
+              <span className="text-danger ms-1">*</span>
+            )}
+          </label>
           <div className="col-sm-9">
             <input
               type="text"
@@ -260,7 +268,11 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
           </div>
         </div>
         <div className="mb-3 row my-4">
-          <label htmlFor="email" className="col-sm-3 col-form-label fs-5 fw-semibold">Email</label>
+          <label htmlFor="email" className="col-sm-3 col-form-label fs-5p1 fw-semibold">
+            Email{formData.subscribe && (
+              <span className="text-danger ms-1">*</span>
+            )}
+          </label>
           <div className="col-sm-9">
             <input
               type="email"
@@ -290,7 +302,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
           </div>
         </div>
         <div className="mb-3 row my-4">
-          <label htmlFor="organization" className="col-sm-3 col-form-label fs-5 fw-semibold">Organization</label>
+          <label htmlFor="organization" className="col-sm-3 col-form-label fs-5p1 fw-semibold">Organization</label>
           <div className="col-sm-9">
             <input
               type="text"
@@ -303,7 +315,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
           </div>
         </div>
         <div className="mb-3 row my-4">
-          <label htmlFor="comments" className="col-sm-3 col-form-label fs-5 fw-semibold">
+          <label htmlFor="comments" className="col-sm-3 col-form-label fs-5p1 fw-semibold">
             Comments
           </label>
           <div className="col-sm-9">
@@ -327,69 +339,29 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
             </div>
           </div>
         </div>
-        <div className="mb-3 row my-4">
-          <label htmlFor="version" className="col-sm-3 col-form-label fs-5 fw-semibold">
-            Version
-          </label>
-          <div className="col-auto d-flex flex-row gap-3">
-            <select
-              className="form-select form-select-sl w-auto"
-              id="version"
-              name="version"
-              value={formData.version}
-              onChange={handleInputChange}
-              aria-describedby="versionInfo"
-            >
-              {netLogoVersions.map((version) => (
-                <option key={version} value={version}>
-                  {`NetLogo ${version}`}
-                </option>
-              ))}
-            </select>
-            <div id="versionInfo" className="form-text mt-2">
-              {"Previous versions "}
-              <a
-                target="_blank"
-                className="form-ref"
-                href="https://ccl.northwestern.edu/netlogo/oldversions.shtml"
-              >
-                {"here"}
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="d-flex flex-row gap-2 justify-content-center">
-          {platforms?.map(([name, subname, primary_link, img_id]) => {
-            if (devOs && name.includes(devOs) && !subname.includes("32-bit")) {
-              const suffix = subname.includes("64-bit") ? "NetLogo" : subname;
-              return (primary_link === true) ? (
-                <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
-                  <img src={createImageURL(img_id || "")} className="button-icon" /> Download {suffix}
-                </button>
-              ) : (
-                <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
-                  <img src={createImageURL(img_id || "")} className="button-icon" /> Download {suffix}
-                </button>
-              );
-            } else {
-              return null;
-            }
-          }
-          )}
+        <div>
+          <span className="mr-10"><b>Version {formData.version} </b></span><span className="form-text mx-2">previous versions <a target="_blank" className="form-ref" href="https://ccl.northwestern.edu/netlogo/oldversions.shtml">here</a></span>
         </div>
 
-        {platforms?.map(([name, subname]) => {
-          if (devOs && name.includes(devOs) && subname.includes("32-bit")) {
-            return <div className="d-flex flex-row align-items-center gap-2 dl32" key={name}>
-              <span>For 32-bit machines (rare):</span>
-              <button type="submit" className="btn btn-outline-primary btn-sm" name="platform" key={name} value={name} onClick={handleClickChange}>
-                Download {subname}
+        <div className="d-flex flex-row gap-2">
+          {platforms?.map(([name, subname, primary_link, img_id]) =>
+            devOs && name.includes(devOs) && primary_link === true ? (
+              <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
+                <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}
               </button>
-            </div>
-          } else {
-            return null;
-          }
-        })}
+
+            ) : devOs && name.includes(devOs) && !subname.includes("32-bit") ? (
+              <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
+                <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}
+              </button>
+            ) : devOs && name.includes(devOs) && subname.includes("32-bit") ? (
+              <button type="submit" className="p-0 m-0 border-0 bg-transparent mx-4 mt-2" name="platform" key={name} value={name} onClick={handleClickChange}>
+                <img src={createImageURL(img_id || "")} className="button-icon" /> <span className="text-primary"> Download {subname}</span> (rare)
+              </button>
+            ) : null
+
+          )}
+        </div>
 
         <div className="detail-row"></div>
       </form>

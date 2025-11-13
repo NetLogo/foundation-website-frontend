@@ -39,3 +39,7 @@ h5,
 h6 {
   margin-bottom: 16px;
 }
+
+.fs-5p1 {
+  font-size: 1.2rem !important;
+}

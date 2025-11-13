@@ -160,6 +160,10 @@
   height: auto;
 }
 
+.btn-primary .button-icon {
+  filter: brightness(2);
+}
+
 .btn-ht {
   min-height: 50px;
 }

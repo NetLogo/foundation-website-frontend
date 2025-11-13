@@ -358,20 +358,38 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
             </div>
           </div>
         </div>
-        <div className="d-flex flex-row gap-2">
-          {platforms?.map(([name, subname, primary_link, img_id]) =>
-            devOs && name.includes(devOs) && primary_link === true ? (
-              <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
-                <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}
-              </button>
-
-            ) : devOs && name.includes(devOs) ? (
-              <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
-                <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}
-              </button>
-            ) : null
+        <div className="d-flex flex-row gap-2 justify-content-center">
+          {platforms?.map(([name, subname, primary_link, img_id]) => {
+            if (devOs && name.includes(devOs) && !subname.includes("32-bit")) {
+              const suffix = subname.includes("64-bit") ? "NetLogo" : subname;
+              return (primary_link === true) ? (
+                <button type="submit" className="mt-4 mb-3 btn btn-primary btn-lg d-flex align-items-center gap-2" name="platform" key={name} value={name} onClick={handleClickChange}>
+                  <img src={createImageURL(img_id || "")} className="button-icon" /> Download {suffix}
+                </button>
+              ) : (
+                <button type="submit" className="mt-4 mb-3 btn btn-outline-primary btn-lg btn-ht" name="platform" key={name} value={name} onClick={handleClickChange}>
+                  <img src={createImageURL(img_id || "")} className="button-icon" /> Download {suffix}
+                </button>
+              );
+            } else {
+              return null;
+            }
+          }
           )}
         </div>
+
+        {platforms?.map(([name, subname]) => {
+          if (devOs && name.includes(devOs) && subname.includes("32-bit")) {
+            return <div className="d-flex flex-row align-items-center gap-2 dl32" key={name}>
+              <span>For 32-bit machines (rare):</span>
+              <button type="submit" className="btn btn-outline-primary btn-sm" name="platform" key={name} value={name} onClick={handleClickChange}>
+                Download {subname}
+              </button>
+            </div>
+          } else {
+            return null;
+          }
+        })}
 
         <div className="detail-row"></div>
       </form>

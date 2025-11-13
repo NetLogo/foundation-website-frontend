@@ -6,8 +6,7 @@ import NetLogoApi from "../utils/api.js";
 
 const api = new NetLogoApi();
 
-const donationData = await api.getDonationData()
-
+const donationData = await api.getDonationData();
 ---
 
 <Layout
@@ -15,7 +14,6 @@ const donationData = await api.getDonationData()
     title="Thanks for Downloading NetLogo"
     description="NetLogo Downloading Thank You Page"
 >
-    <ThankYouSection client:load/>
-    <DonationSection donationArray = {donationData} client:load/>
-
+    <ThankYouSection client:load />
+    <DonationSection donationArray={donationData} client:load />
 </Layout>

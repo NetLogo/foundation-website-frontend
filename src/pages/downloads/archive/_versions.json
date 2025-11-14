@@ -1,563 +1,584 @@
 [
-    {
-        "version": "7.0.0",
-        "releaseDate": "September 2025",
-        "href": "/downloads/archive/7.0.0/",
-        "blurb": [
-            "New modernized GUI with light, dark, and classic modes",
-            "New .nlogox XML file format for better extensibility",
-            "Enhanced widget tools for easier model authoring",
-            "Improved customization with more preferences and settings"
-        ],
-        "flags": [
-            "LATEST"
-        ]
-    },
-    {
-        "version": "7.0.0-beta2",
-        "releaseDate": "July 2025",
-        "href": "/downloads/archive/7.0.0-beta2/",
-        "flags": [
-            "BETA"
-        ]
-    },
-    {
-        "version": "7.0.0-beta1",
-        "releaseDate": "May 2025",
-        "href": "/downloads/archive/7.0.0-beta1/",
-        "flags": [
-            "BETA"
-        ]
-    },
-    {
-        "version": "6.4.0",
-        "releaseDate": "November 2023",
-        "href": "/downloads/archive/6.4.0/",
-        "blurb": "Major BehaviorSpace upgrade with sub-experiments, conditional measurements, and pause/resume capabilities."
-    },
-    {
-        "version": "6.4.0-beta1",
-        "releaseDate": "October 2023",
-        "href": "/downloads/archive/6.4.0-beta1/",
-        "flags": [
-            "BETA"
-        ]
-    },
-    {
-        "version": "6.3.0",
-        "releaseDate": "September 2022",
-        "href": "/downloads/archive/6.3.0/",
-        "blurb": "Upgraded from Java 8 to Java 17 for improved performance and security."
-    },
-    {
-        "version": "6.2.2",
-        "releaseDate": "December 2021",
-        "href": "/downloads/archive/6.2.2/"
-    },
-    {
-        "version": "6.2.1",
-        "releaseDate": "October 2021",
-        "href": "/downloads/archive/6.2.1/"
-    },
-    {
-        "version": "6.2.0",
-        "releaseDate": "December 2020",
-        "href": "/downloads/archive/6.2.0/",
-        "blurb": [
-            "Pop-out code tab for side-by-side view",
-            "Time extension now bundled",
-            "View2.5D extension significantly upgraded"
-        ]
-    },
-    {
-        "version": "6.1.1",
-        "releaseDate": "September 2019",
-        "href": "/downloads/archive/6.1.1/"
-    },
-    {
-        "version": "6.1.0",
-        "releaseDate": "May 2019",
-        "href": "/downloads/archive/6.1.0/",
-        "blurb": [
-            "Extension Manager for easy installation and updates",
-            "Python extension now bundled",
-            "Variadic ifelse and ifelse-value primitives"
-        ]
-    },
-    {
-        "version": "6.0.4",
-        "releaseDate": "June 2018",
-        "href": "/downloads/archive/6.0.4/"
-    },
-    {
-        "version": "6.0.3",
-        "releaseDate": "March 2018",
-        "href": "/downloads/archive/6.0.3/"
-    },
-    {
-        "version": "6.0.2",
-        "releaseDate": "August 2017",
-        "href": "/downloads/archive/6.0.2/"
-    },
-    {
-        "version": "6.0.2-RC1",
-        "releaseDate": "March 2017",
-        "href": "/downloads/archive/6.0.2-RC1/",
-        "flags": [
-            "RC"
-        ]
-    },
-    {
-        "version": "6.0.1",
-        "releaseDate": "March 2017",
-        "href": "/downloads/archive/6.0.1/"
-    },
-    {
-        "version": "6.0.1-M1",
-        "href": "/downloads/archive/6.0.1-M1/",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "6.0.1-RC1",
-        "releaseDate": "March 2017",
-        "href": "/downloads/archive/6.0.1-RC1/",
-        "flags": [
-            "RC"
-        ]
-    },
-    {
-        "version": "6.0",
-        "releaseDate": "December 2016",
-        "href": "/downloads/archive/6.0.0/",
-        "blurb": [
-            "Anonymous procedures replace tasks",
-            "LevelSpace extension for multi-level modeling",
-            "Code autocompletion and folding",
-            "Enhanced link reporters"
-        ]
-    },
-    {
-        "version": "6.0-BETA2",
-        "href": "/downloads/archive/6.0-BETA2/",
-        "releaseDate": "November 2016",
-        "flags": [
-            "BETA"
-        ]
-    },
-    {
-        "version": "6.0-BETA1",
-        "href": "/downloads/archive/6.0-BETA1/",
-        "releaseDate": "October 2016",
-        "flags": [
-            "BETA"
-        ]
-    },
-    {
-        "version": "6.0beta",
-        "href": "/downloads/archive/6.0beta/",
-        "releaseDate": "May 2016",
-        "flags": [
-            "BETA"
-        ]
-    },
-    {
-        "version": "6.0-M9",
-        "href": "/downloads/archive/6.0-M9/",
-        "releaseDate": "July 2016",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "6.0-M8",
-        "href": "/downloads/archive/6.0-M8/",
-        "releaseDate": "June 2016",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "6.0-M7",
-        "href": "/downloads/archive/6.0-M7/",
-        "releaseDate": "May 2016",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "6.0-M6",
-        "href": "/downloads/archive/6.0-M6/",
-        "releaseDate": "May 2016",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "6.0-M5",
-        "href": "/downloads/archive/6.0-M5/",
-        "releaseDate": "April 2016",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "6.0-M4",
-        "href": "/downloads/archive/6.0-M4/",
-        "releaseDate": "April 2016",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "6.0-M3",
-        "href": "/downloads/archive/6.0-M3/",
-        "releaseDate": "March 2016",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "6.0-M2",
-        "href": "/downloads/archive/6.0-M2/",
-        "releaseDate": "March 2016",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "6.0-M1",
-        "href": "/downloads/archive/6.0-M1/",
-        "releaseDate": "December 2015",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "6.0-CONSTRUCTIONISM-2016-PREVIEW",
-        "href": "/downloads/archive/6.0-CONSTRUCTIONISM-2016-PREVIEW/",
-        "releaseDate": "December 2015",
-        "flags": [
-            "PREVIEW"
-        ]
-    },
-    {
-        "version": "5.3.1",
-        "href": "/downloads/archive/5.3.1/",
-        "releaseDate": "February 2016"
-    },
-    {
-        "version": "5.3.1-RC3",
-        "href": "/downloads/archive/5.3.1-RC3/",
-        "releaseDate": "February 2016",
-        "flags": [
-            "RC"
-        ]
-    },
-    {
-        "version": "5.3.1-RC2",
-        "href": "/downloads/archive/5.3.1-RC2/",
-        "releaseDate": "February 2016",
-        "flags": [
-            "RC"
-        ]
-    },
-    {
-        "version": "5.3.1-RC1",
-        "href": "/downloads/archive/5.3.1-RC1/",
-        "releaseDate": "January 2016",
-        "flags": [
-            "RC"
-        ]
-    },
-    {
-        "version": "5.3",
-        "releaseDate": "December 2015",
-        "href": "/downloads/archive/5.3.0/",
-        "blurb": "Mathematica Link included and tested with Mathematica 10."
-    },
-    {
-        "version": "5.3-RC1",
-        "href": "/downloads/archive/5.3-RC1/",
-        "releaseDate": "December 2015",
-        "flags": [
-            "RC"
-        ]
-    },
-    {
-        "version": "5.2.1",
-        "releaseDate": "October 2015",
-        "href": "/downloads/archive/5.2.1/"
-    },
-    {
-        "version": "5.2",
-        "releaseDate": "April 2015",
-        "href": "/downloads/archive/5.2.0/",
-        "blurb": [
-            "CSV and Palette extensions included",
-            "Network extension with support for many file types",
-            "HSB color primitives updated"
-        ]
-    },
-    {
-        "version": "5.2.0-RC5",
-        "href": "/downloads/archive/5.2.0-RC5/",
-        "flags": [
-            "RC"
-        ]
-    },
-    {
-        "version": "5.2.0-RC4",
-        "href": "/downloads/archive/5.2.0-RC4/",
-        "flags": [
-            "RC"
-        ]
-    },
-    {
-        "version": "5.2-RC3",
-        "href": "/downloads/archive/5.2-RC3/",
-        "flags": [
-            "RC"
-        ]
-    },
-    {
-        "version": "5.2-RC2",
-        "href": "/downloads/archive/5.2-RC2/",
-        "flags": [
-            "RC"
-        ]
-    },
-    {
-        "version": "5.1.0",
-        "releaseDate": "July 2014",
-        "href": "/downloads/archive/5.1.0/",
-        "blurb": "New network extension bundled with NetLogo."
-    },
-    {
-        "version": "5.1.0-M2",
-        "href": "/downloads/archive/5.1.0-M2/",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "5.1.0-M1",
-        "href": "/downloads/archive/5.1.0-M1/",
-        "flags": [
-            "MILESTONE"
-        ]
-    },
-    {
-        "version": "5.0.5",
-        "releaseDate": "December 2013",
-        "href": "/downloads/archive/5.0.5/"
-    },
-    {
-        "version": "5.0.4",
-        "releaseDate": "March 2013",
-        "href": "/downloads/archive/5.0.4/"
-    },
-    {
-        "version": "5.0.3",
-        "releaseDate": "October 2012",
-        "href": "/downloads/archive/5.0.3/"
-    },
-    {
-        "version": "5.0.2",
-        "releaseDate": "July 2012",
-        "href": "/downloads/archive/5.0.2/"
-    },
-    {
-        "version": "5.0.1",
-        "releaseDate": "April 2012",
-        "href": "/downloads/archive/5.0.1/"
-    },
-    {
-        "version": "5.0",
-        "releaseDate": "February 2012",
-        "href": "/downloads/archive/5.0.0/",
-        "blurb": [
-            "Open source with GPL license",
-            "Tasks for first-class functions and closures",
-            "Rich formatting in Info tabs using Markdown",
-            "GUI localized in Spanish, Russian, and Chinese"
-        ]
-    },
-    {
-        "version": "4.1.3",
-        "releaseDate": "April 2011",
-        "href": "/downloads/archive/4.1.3/"
-    },
-    {
-        "version": "4.1.2",
-        "releaseDate": "December 2010",
-        "href": "/downloads/archive/4.1.2/"
-    },
-    {
-        "version": "4.1.1",
-        "releaseDate": "August 2010",
-        "href": "/downloads/archive/4.1.1/"
-    },
-    {
-        "version": "4.1",
-        "releaseDate": "December 2009",
-        "href": "/downloads/archive/4.1.0/",
-        "blurb": [
-            "Parallel BehaviorSpace",
-            "Controlling API for embedding NetLogo",
-            "Automatic code indenter"
-        ]
-    },
-    {
-        "version": "4.0.5",
-        "releaseDate": "December 2009",
-        "href": "/downloads/archive/4.0.5/"
-    },
-    {
-        "version": "4.0.4",
-        "releaseDate": "November 2008",
-        "href": "/downloads/archive/4.0.4/"
-    },
-    {
-        "version": "4.0.3",
-        "releaseDate": "August 2008",
-        "href": "/downloads/archive/4.0.3/"
-    },
-    {
-        "version": "4.0.2",
-        "releaseDate": "December 2007",
-        "href": "/downloads/archive/4.0.2/"
-    },
-    {
-        "version": "4.0.1",
-        "releaseDate": "October 2007",
-        "href": "/downloads/archive/4.0.1/"
-    },
-    {
-        "version": "4.0",
-        "releaseDate": "September 2007",
-        "href": "/downloads/archive/4.0.0/",
-        "blurb": [
-            "Link agents introduced",
-            "Tick counter and view update modes",
-            "Models run faster with JVM byte code compilation"
-        ]
-    },
-    {
-        "version": "3.1.5",
-        "releaseDate": "December 2007",
-        "href": "/downloads/archive/3.1.5/"
-    },
-    {
-        "version": "3.1.4",
-        "releaseDate": "February 2007",
-        "href": "/downloads/archive/3.1.4/"
-    },
-    {
-        "version": "3.1.3",
-        "releaseDate": "September 2006",
-        "href": "/downloads/archive/3.1.3/"
-    },
-    {
-        "version": "3.1.2",
-        "releaseDate": "August 2006",
-        "href": "/downloads/archive/3.1.2/"
-    },
-    {
-        "version": "3.1.1",
-        "releaseDate": "June 2006",
-        "href": "/downloads/archive/3.1.1/"
-    },
-    {
-        "version": "3.1",
-        "releaseDate": "April 2006",
-        "href": "/downloads/archive/3.1.0/",
-        "blurb": "Topologies with optional wrapping at world edges."
-    },
-    {
-        "version": "3.0.2",
-        "releaseDate": "November 2005",
-        "href": "/downloads/archive/3.0.2/"
-    },
-    {
-        "version": "3.0.1",
-        "releaseDate": "November 2005",
-        "href": "/downloads/archive/3.0.1/"
-    },
-    {
-        "version": "3.0",
-        "releaseDate": "September 2005",
-        "href": "/downloads/archive/3.0.0/",
-        "blurb": [
-            "3D view for 2D models",
-            "System Dynamics Modeler",
-            "Drawing layer and GoGo extension"
-        ]
-    },
-    {
-        "version": "2.1",
-        "releaseDate": "December 2004",
-        "href": "/downloads/archive/2.1.0/",
-        "blurb": "Action keys to trigger buttons by keypresses and QuickTime movie export."
-    },
-    {
-        "version": "2.0.2",
-        "releaseDate": "August 2004",
-        "href": "/downloads/archive/2.0.2/"
-    },
-    {
-        "version": "2.0.1",
-        "releaseDate": "May 2004",
-        "href": "/downloads/archive/2.0.1/"
-    },
-    {
-        "version": "2.0",
-        "releaseDate": "December 2003",
-        "href": "/downloads/archive/2.0.2/",
-        "blurb": "Fast, flicker-free, non-grid-based graphics system."
-    },
-    {
-        "version": "1.3.1",
-        "releaseDate": "September 2003",
-        "href": "/downloads/archive/1.3.1/"
-    },
-    {
-        "version": "1.3",
-        "releaseDate": "June 2003",
-        "href": "/downloads/archive/1.3/"
-    },
-    {
-        "version": "1.2.1",
-        "releaseDate": "May 2003",
-        "href": "/downloads/archive/1.2.1/"
-    },
-    {
-        "version": "1.2",
-        "href": "/downloads/archive/1.2/"
-    },
-    {
-        "version": "1.1 Revision F",
-        "releaseDate": "November 2002",
-        "flags": [
-            "REVISION"
-        ],
-        "href": "/downloads/archive/1.1f/"
-    },
-    {
-        "version": "1.1",
-        "href": "/downloads/archive/1.1/"
-    },
-    {
-        "version": "1.0 Revision D",
-        "releaseDate": "April 2002",
-        "flags": [
-            "REVISION"
-        ],
-        "href": "/downloads/archive/1.0d/"
-    },
-    {
-        "version": "1.0",
-        "href": "/downloads/archive/1.0/"
-    }
+  {
+    "version": "7.0.3-beta1",
+    "releaseDate": "November 2025",
+    "href": "/downloads/archive/7.0.3-beta1/",
+    "blurb": [],
+    "flags": [
+      "BETA"
+    ]
+  },
+  {
+    "version": "7.0.2",
+    "releaseDate": "October 2025",
+    "href": "/downloads/archive/7.0.2/",
+    "blurb": [],
+    "flags": [
+      "LATEST"
+    ]
+  },
+  {
+    "version": "7.0.1",
+    "releaseDate": "October 2025",
+    "href": "/downloads/archive/7.0.1/",
+    "blurb": []
+  },
+  {
+    "version": "7.0.0",
+    "releaseDate": "September 2025",
+    "href": "/downloads/archive/7.0.0/",
+    "blurb": [
+      "New modernized GUI with light, dark, and classic modes",
+      "New .nlogox XML file format for better extensibility",
+      "Enhanced widget tools for easier model authoring",
+      "Improved customization with more preferences and settings"
+    ]
+  },
+  {
+    "version": "7.0.0-beta2",
+    "releaseDate": "July 2025",
+    "href": "/downloads/archive/7.0.0-beta2/",
+    "flags": [
+      "BETA"
+    ]
+  },
+  {
+    "version": "7.0.0-beta1",
+    "releaseDate": "May 2025",
+    "href": "/downloads/archive/7.0.0-beta1/",
+    "flags": [
+      "BETA"
+    ]
+  },
+  {
+    "version": "6.4.0",
+    "releaseDate": "November 2023",
+    "href": "/downloads/archive/6.4.0/",
+    "blurb": "Major BehaviorSpace upgrade with sub-experiments, conditional measurements, and pause/resume capabilities."
+  },
+  {
+    "version": "6.4.0-beta1",
+    "releaseDate": "October 2023",
+    "href": "/downloads/archive/6.4.0-beta1/",
+    "flags": [
+      "BETA"
+    ]
+  },
+  {
+    "version": "6.3.0",
+    "releaseDate": "September 2022",
+    "href": "/downloads/archive/6.3.0/",
+    "blurb": "Upgraded from Java 8 to Java 17 for improved performance and security."
+  },
+  {
+    "version": "6.2.2",
+    "releaseDate": "December 2021",
+    "href": "/downloads/archive/6.2.2/"
+  },
+  {
+    "version": "6.2.1",
+    "releaseDate": "October 2021",
+    "href": "/downloads/archive/6.2.1/"
+  },
+  {
+    "version": "6.2.0",
+    "releaseDate": "December 2020",
+    "href": "/downloads/archive/6.2.0/",
+    "blurb": [
+      "Pop-out code tab for side-by-side view",
+      "Time extension now bundled",
+      "View2.5D extension significantly upgraded"
+    ]
+  },
+  {
+    "version": "6.1.1",
+    "releaseDate": "September 2019",
+    "href": "/downloads/archive/6.1.1/"
+  },
+  {
+    "version": "6.1.0",
+    "releaseDate": "May 2019",
+    "href": "/downloads/archive/6.1.0/",
+    "blurb": [
+      "Extension Manager for easy installation and updates",
+      "Python extension now bundled",
+      "Variadic ifelse and ifelse-value primitives"
+    ]
+  },
+  {
+    "version": "6.0.4",
+    "releaseDate": "June 2018",
+    "href": "/downloads/archive/6.0.4/"
+  },
+  {
+    "version": "6.0.3",
+    "releaseDate": "March 2018",
+    "href": "/downloads/archive/6.0.3/"
+  },
+  {
+    "version": "6.0.2",
+    "releaseDate": "August 2017",
+    "href": "/downloads/archive/6.0.2/"
+  },
+  {
+    "version": "6.0.2-RC1",
+    "releaseDate": "March 2017",
+    "href": "/downloads/archive/6.0.2-RC1/",
+    "flags": [
+      "RC"
+    ]
+  },
+  {
+    "version": "6.0.1",
+    "releaseDate": "March 2017",
+    "href": "/downloads/archive/6.0.1/"
+  },
+  {
+    "version": "6.0.1-M1",
+    "href": "/downloads/archive/6.0.1-M1/",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "6.0.1-RC1",
+    "releaseDate": "March 2017",
+    "href": "/downloads/archive/6.0.1-RC1/",
+    "flags": [
+      "RC"
+    ]
+  },
+  {
+    "version": "6.0",
+    "releaseDate": "December 2016",
+    "href": "/downloads/archive/6.0.0/",
+    "blurb": [
+      "Anonymous procedures replace tasks",
+      "LevelSpace extension for multi-level modeling",
+      "Code autocompletion and folding",
+      "Enhanced link reporters"
+    ]
+  },
+  {
+    "version": "6.0-BETA2",
+    "href": "/downloads/archive/6.0-BETA2/",
+    "releaseDate": "November 2016",
+    "flags": [
+      "BETA"
+    ]
+  },
+  {
+    "version": "6.0-BETA1",
+    "href": "/downloads/archive/6.0-BETA1/",
+    "releaseDate": "October 2016",
+    "flags": [
+      "BETA"
+    ]
+  },
+  {
+    "version": "6.0beta",
+    "href": "/downloads/archive/6.0beta/",
+    "releaseDate": "May 2016",
+    "flags": [
+      "BETA"
+    ]
+  },
+  {
+    "version": "6.0-M9",
+    "href": "/downloads/archive/6.0-M9/",
+    "releaseDate": "July 2016",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "6.0-M8",
+    "href": "/downloads/archive/6.0-M8/",
+    "releaseDate": "June 2016",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "6.0-M7",
+    "href": "/downloads/archive/6.0-M7/",
+    "releaseDate": "May 2016",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "6.0-M6",
+    "href": "/downloads/archive/6.0-M6/",
+    "releaseDate": "May 2016",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "6.0-M5",
+    "href": "/downloads/archive/6.0-M5/",
+    "releaseDate": "April 2016",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "6.0-M4",
+    "href": "/downloads/archive/6.0-M4/",
+    "releaseDate": "April 2016",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "6.0-M3",
+    "href": "/downloads/archive/6.0-M3/",
+    "releaseDate": "March 2016",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "6.0-M2",
+    "href": "/downloads/archive/6.0-M2/",
+    "releaseDate": "March 2016",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "6.0-M1",
+    "href": "/downloads/archive/6.0-M1/",
+    "releaseDate": "December 2015",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "6.0-CONSTRUCTIONISM-2016-PREVIEW",
+    "href": "/downloads/archive/6.0-CONSTRUCTIONISM-2016-PREVIEW/",
+    "releaseDate": "December 2015",
+    "flags": [
+      "PREVIEW"
+    ]
+  },
+  {
+    "version": "5.3.1",
+    "href": "/downloads/archive/5.3.1/",
+    "releaseDate": "February 2016"
+  },
+  {
+    "version": "5.3.1-RC3",
+    "href": "/downloads/archive/5.3.1-RC3/",
+    "releaseDate": "February 2016",
+    "flags": [
+      "RC"
+    ]
+  },
+  {
+    "version": "5.3.1-RC2",
+    "href": "/downloads/archive/5.3.1-RC2/",
+    "releaseDate": "February 2016",
+    "flags": [
+      "RC"
+    ]
+  },
+  {
+    "version": "5.3.1-RC1",
+    "href": "/downloads/archive/5.3.1-RC1/",
+    "releaseDate": "January 2016",
+    "flags": [
+      "RC"
+    ]
+  },
+  {
+    "version": "5.3",
+    "releaseDate": "December 2015",
+    "href": "/downloads/archive/5.3.0/",
+    "blurb": "Mathematica Link included and tested with Mathematica 10."
+  },
+  {
+    "version": "5.3-RC1",
+    "href": "/downloads/archive/5.3-RC1/",
+    "releaseDate": "December 2015",
+    "flags": [
+      "RC"
+    ]
+  },
+  {
+    "version": "5.2.1",
+    "releaseDate": "October 2015",
+    "href": "/downloads/archive/5.2.1/"
+  },
+  {
+    "version": "5.2",
+    "releaseDate": "April 2015",
+    "href": "/downloads/archive/5.2.0/",
+    "blurb": [
+      "CSV and Palette extensions included",
+      "Network extension with support for many file types",
+      "HSB color primitives updated"
+    ]
+  },
+  {
+    "version": "5.2.0-RC5",
+    "href": "/downloads/archive/5.2.0-RC5/",
+    "flags": [
+      "RC"
+    ]
+  },
+  {
+    "version": "5.2.0-RC4",
+    "href": "/downloads/archive/5.2.0-RC4/",
+    "flags": [
+      "RC"
+    ]
+  },
+  {
+    "version": "5.2-RC3",
+    "href": "/downloads/archive/5.2-RC3/",
+    "flags": [
+      "RC"
+    ]
+  },
+  {
+    "version": "5.2-RC2",
+    "href": "/downloads/archive/5.2-RC2/",
+    "flags": [
+      "RC"
+    ]
+  },
+  {
+    "version": "5.1.0",
+    "releaseDate": "July 2014",
+    "href": "/downloads/archive/5.1.0/",
+    "blurb": "New network extension bundled with NetLogo."
+  },
+  {
+    "version": "5.1.0-M2",
+    "href": "/downloads/archive/5.1.0-M2/",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "5.1.0-M1",
+    "href": "/downloads/archive/5.1.0-M1/",
+    "flags": [
+      "MILESTONE"
+    ]
+  },
+  {
+    "version": "5.0.5",
+    "releaseDate": "December 2013",
+    "href": "/downloads/archive/5.0.5/"
+  },
+  {
+    "version": "5.0.4",
+    "releaseDate": "March 2013",
+    "href": "/downloads/archive/5.0.4/"
+  },
+  {
+    "version": "5.0.3",
+    "releaseDate": "October 2012",
+    "href": "/downloads/archive/5.0.3/"
+  },
+  {
+    "version": "5.0.2",
+    "releaseDate": "July 2012",
+    "href": "/downloads/archive/5.0.2/"
+  },
+  {
+    "version": "5.0.1",
+    "releaseDate": "April 2012",
+    "href": "/downloads/archive/5.0.1/"
+  },
+  {
+    "version": "5.0",
+    "releaseDate": "February 2012",
+    "href": "/downloads/archive/5.0.0/",
+    "blurb": [
+      "Open source with GPL license",
+      "Tasks for first-class functions and closures",
+      "Rich formatting in Info tabs using Markdown",
+      "GUI localized in Spanish, Russian, and Chinese"
+    ]
+  },
+  {
+    "version": "4.1.3",
+    "releaseDate": "April 2011",
+    "href": "/downloads/archive/4.1.3/"
+  },
+  {
+    "version": "4.1.2",
+    "releaseDate": "December 2010",
+    "href": "/downloads/archive/4.1.2/"
+  },
+  {
+    "version": "4.1.1",
+    "releaseDate": "August 2010",
+    "href": "/downloads/archive/4.1.1/"
+  },
+  {
+    "version": "4.1",
+    "releaseDate": "December 2009",
+    "href": "/downloads/archive/4.1.0/",
+    "blurb": [
+      "Parallel BehaviorSpace",
+      "Controlling API for embedding NetLogo",
+      "Automatic code indenter"
+    ]
+  },
+  {
+    "version": "4.0.5",
+    "releaseDate": "December 2009",
+    "href": "/downloads/archive/4.0.5/"
+  },
+  {
+    "version": "4.0.4",
+    "releaseDate": "November 2008",
+    "href": "/downloads/archive/4.0.4/"
+  },
+  {
+    "version": "4.0.3",
+    "releaseDate": "August 2008",
+    "href": "/downloads/archive/4.0.3/"
+  },
+  {
+    "version": "4.0.2",
+    "releaseDate": "December 2007",
+    "href": "/downloads/archive/4.0.2/"
+  },
+  {
+    "version": "4.0.1",
+    "releaseDate": "October 2007",
+    "href": "/downloads/archive/4.0.1/"
+  },
+  {
+    "version": "4.0",
+    "releaseDate": "September 2007",
+    "href": "/downloads/archive/4.0.0/",
+    "blurb": [
+      "Link agents introduced",
+      "Tick counter and view update modes",
+      "Models run faster with JVM byte code compilation"
+    ]
+  },
+  {
+    "version": "3.1.5",
+    "releaseDate": "December 2007",
+    "href": "/downloads/archive/3.1.5/"
+  },
+  {
+    "version": "3.1.4",
+    "releaseDate": "February 2007",
+    "href": "/downloads/archive/3.1.4/"
+  },
+  {
+    "version": "3.1.3",
+    "releaseDate": "September 2006",
+    "href": "/downloads/archive/3.1.3/"
+  },
+  {
+    "version": "3.1.2",
+    "releaseDate": "August 2006",
+    "href": "/downloads/archive/3.1.2/"
+  },
+  {
+    "version": "3.1.1",
+    "releaseDate": "June 2006",
+    "href": "/downloads/archive/3.1.1/"
+  },
+  {
+    "version": "3.1",
+    "releaseDate": "April 2006",
+    "href": "/downloads/archive/3.1.0/",
+    "blurb": "Topologies with optional wrapping at world edges."
+  },
+  {
+    "version": "3.0.2",
+    "releaseDate": "November 2005",
+    "href": "/downloads/archive/3.0.2/"
+  },
+  {
+    "version": "3.0.1",
+    "releaseDate": "November 2005",
+    "href": "/downloads/archive/3.0.1/"
+  },
+  {
+    "version": "3.0",
+    "releaseDate": "September 2005",
+    "href": "/downloads/archive/3.0.0/",
+    "blurb": [
+      "3D view for 2D models",
+      "System Dynamics Modeler",
+      "Drawing layer and GoGo extension"
+    ]
+  },
+  {
+    "version": "2.1",
+    "releaseDate": "December 2004",
+    "href": "/downloads/archive/2.1.0/",
+    "blurb": "Action keys to trigger buttons by keypresses and QuickTime movie export."
+  },
+  {
+    "version": "2.0.2",
+    "releaseDate": "August 2004",
+    "href": "/downloads/archive/2.0.2/"
+  },
+  {
+    "version": "2.0.1",
+    "releaseDate": "May 2004",
+    "href": "/downloads/archive/2.0.1/"
+  },
+  {
+    "version": "2.0",
+    "releaseDate": "December 2003",
+    "href": "/downloads/archive/2.0.2/",
+    "blurb": "Fast, flicker-free, non-grid-based graphics system."
+  },
+  {
+    "version": "1.3.1",
+    "releaseDate": "September 2003",
+    "href": "/downloads/archive/1.3.1/"
+  },
+  {
+    "version": "1.3",
+    "releaseDate": "June 2003",
+    "href": "/downloads/archive/1.3/"
+  },
+  {
+    "version": "1.2.1",
+    "releaseDate": "May 2003",
+    "href": "/downloads/archive/1.2.1/"
+  },
+  {
+    "version": "1.2",
+    "href": "/downloads/archive/1.2/"
+  },
+  {
+    "version": "1.1 Revision F",
+    "releaseDate": "November 2002",
+    "flags": [
+      "REVISION"
+    ],
+    "href": "/downloads/archive/1.1f/"
+  },
+  {
+    "version": "1.1",
+    "href": "/downloads/archive/1.1/"
+  },
+  {
+    "version": "1.0 Revision D",
+    "releaseDate": "April 2002",
+    "flags": [
+      "REVISION"
+    ],
+    "href": "/downloads/archive/1.0d/"
+  },
+  {
+    "version": "1.0",
+    "href": "/downloads/archive/1.0/"
+  }
 ]

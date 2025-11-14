@@ -340,7 +340,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
           </div>
         </div>
         <div>
-          <span className="mr-10"><b>Version {formData.version} </b></span><span className="form-text mx-2">previous versions <a target="_blank" className="form-ref" href="https://ccl.northwestern.edu/netlogo/oldversions.shtml">here</a></span>
+          <span className="mr-10"><b>Version {formData.version} </b></span><span className="form-text mx-2">previous versions <a target="_blank" className="form-ref" href="/downloads/archive">here</a></span>
         </div>
 
         <div className="d-flex flex-row gap-2">
@@ -370,4 +370,3 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
 };
 
 export { DownloadForm };
-

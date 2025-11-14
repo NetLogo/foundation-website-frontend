@@ -1,0 +1,34 @@
+---
+import versions from './_versions.json';
+import DownloadLatestBanner from '../../../components/download/archive/download-latest-banner';
+
+const { version } = Astro.params;
+const versionData = versions.find((v) => v.version === version);
+const isLatest = versionData?.flags?.includes('LATEST') ?? false;
+
+export function getStaticPaths() {
+	return versions.map((versionData) => ({
+		params: { version: versionData.href.split('/').filter(Boolean).pop() },
+	}));
+}
+
+const allHtmlFiles = await import.meta.glob('./html/*/index.html', { eager: true, as: 'raw' });
+const legacyHTML = allHtmlFiles[`./html/${version}/index.html`];
+---
+
+<head>
+	<link rel='icon' type='image/png' href='/favicon/favicon-96x96.png' sizes='96x96' />
+	<link rel='icon' type='image/svg+xml' href='/favicon/favicon.svg' />
+	<link rel='shortcut icon' href='/favicon/favicon.ico' />
+	<link rel='apple-touch-icon' sizes='180x180' href='/favicon/apple-touch-icon.png' />
+	<meta name='apple-mobile-web-app-title' content='NetLogo' />
+	<link rel='manifest' href='/favicon/site.webmanifest' />
+	<script async src='https://www.googletagmanager.com/gtag/js?id=G-5L2W88N305' is:inline></script>
+	<script src='/static_assets/downloads/archive/analytics/gtag.js' is:inline></script>
+	<meta name='netlogo:version' content={version} />
+</head>
+
+<DownloadLatestBanner isLatest={isLatest} />
+<Fragment set:html={legacyHTML} />
+
+<script src='/static_assets/downloads/archive/analytics/download.js' defer type='module' is:inline></script>

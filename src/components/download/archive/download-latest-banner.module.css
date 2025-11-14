@@ -1,0 +1,65 @@
+.banner {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	gap: 1rem;
+
+	position: relative;
+
+	padding: 1rem;
+	margin: 1rem auto 2.5rem auto;
+
+	color: inherit;
+	background-color: #ffed29;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+
+	text-decoration: none;
+
+	height: auto;
+	max-width: min(90%, 600px);
+
+	user-select: none;
+	transition: transform 0.2s;
+}
+.banner::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 10px;
+	height: 100%;
+	background-color: #e11818;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	transition: border-color 0.2s;
+}
+.banner:hover,
+.banner:focus {
+	transform: translateY(-2px);
+	outline: none;
+}
+.logo {
+	height: 100%;
+	max-height: 70px;
+	max-width: 50%;
+}
+.decorate-as-link {
+	text-decoration: underline;
+	color: blue;
+}
+.text {
+	line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+	.banner {
+		flex-direction: column;
+		text-align: center;
+		gap: 0.5rem;
+	}
+	.logo {
+		max-width: 80%;
+		height: auto;
+	}
+}

@@ -115,6 +115,10 @@ export interface AboutEntry {
   body: string;
 }
 
+export interface EducatorsEntry {
+  body: string;
+}
+
 export interface CampaignEntry {
   body: string;
 }
@@ -255,6 +259,11 @@ class NetLogoAPI {
   async getAboutContent() {
     const dict = await this.graphqlFetchData<{ about: AboutEntry }>(queries.aboutContent);
     return dict.about
+  }
+
+  async getEducatorsContent() {
+    const dict = await this.graphqlFetchData<{ educators: EducatorsEntry }>(queries.educatorsContent);
+    return dict.educators
   }
 
   async getCampaignContent() {

@@ -146,6 +146,14 @@ const queries = {
   }
   `,
 
+  educatorsContent: gql`
+  query getEducators {
+    educators {
+      body
+    }
+  }
+  `,
+
   campaignContent: gql`
   query getCampaign {
     campaign {

@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { AboutSection } from "../components/about/about-page";
+import NetLogoAPI from "../utils/api";
+
+const api = new NetLogoAPI();
+const educatorsData = await api.getEducatorsContent();
+---
+
+<Layout title="NetLogo for Educators" description="About NetLogo for Educators">
+    <AboutSection AboutData={educatorsData} client:load />
+</Layout>

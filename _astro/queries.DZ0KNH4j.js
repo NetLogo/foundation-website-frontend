@@ -119,6 +119,12 @@ const e=(n,...t)=>n.reduce((i,r,o)=>`${i}${r}${o in t?String(t[o]):""}`,""),a={i
       body
     }
   }
+  `,educatorsContent:e`
+  query getEducators {
+    educators {
+      body
+    }
+  }
   `,campaignContent:e`
   query getCampaign {
     campaign {

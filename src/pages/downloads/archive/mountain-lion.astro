@@ -1,0 +1,51 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const title = 'NetLogo OS X Compatibility Info';
+---
+
+<Layout title={title}>
+	<div class='text-start pt-4 px-5 ms-auto me-auto w-75'>
+		<h1>NetLogo OS X 10.8 and later Compatibility Info</h1>
+
+		<p>Depending on your system settings, installation of NetLogo may be blocked by Apple's "Gatekeeper" feature.</p>
+
+		<h2>NetLogo versions before 5.0.4</h2>
+
+		<p>
+			If you try to install older NetLogo versions on OS X 10.8 or later, when you try to open the disk image you'll get
+			a rather alarming-seeming dialog that says NetLogo is "damaged and can't be opened. You should move it to the
+			trash." The OS is wrong; the application is fine. In order to open the disk image, you just need to open System
+			Preferences, go to the Security &amp; Privacy panel, and change the "Allow applications downloaded from:" setting
+			for Gatekeeper to "Anywhere".
+
+			<h2>NetLogo versions since 5.0.4</h2>
+
+			<p>
+				Versions of NetLogo 5.0.4 and later will still be blocked if your Gatekeeper is set to "Mac Store App" only, but
+				instead of Gatekeeper telling you that the file is damaged, it will tell you that it was not downloaded from the
+				app store. Setting your Gatekeeper to "Mac App Store and identified developers" will permit installation.
+
+				<p>
+					The first time you open NetLogo, you will see a dialog informing you that "NetLogo is an application
+					downloaded from the Internet. Are you sure you want to open it?" Clicking "Open" will dismiss the dialog and
+					prevent it from showing when launching NetLogo in the future.
+
+					<p>
+						Note that NetLogo should be installed and launched for the first time by the same account (one with
+						administrator privileges). Gatekeeper appears to prevent non-administrator users from opening applications
+						downloaded from the internet.
+
+						<h2>About Gatekeeper</h2>
+
+						<p>
+							For more details, see <a href='https://support.apple.com/en-us/HT202491'>this Apple support document</a>.
+
+							<p>(<a href='oldversions.shtml'>return to download page</a>)</p>
+						</p>
+					</p>
+				</p>
+			</p>
+		</p>
+	</div>
+</Layout>

@@ -327,6 +327,10 @@ class NetLogoAPI {
     }));
 
     //console.log('Grouped References:', groupedArray);
+
+    // sort the array by year in descending order
+    groupedArray.sort((a, b) => b.year - a.year);
+
     return groupedArray;
 
 

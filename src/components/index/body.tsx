@@ -74,7 +74,7 @@ function Body({
       />
 
       {/* <FeaturedPartners featured_partners={featured_partners} /> */}
-      <MailingList />
+      {/* <MailingList /> */}
     </div>
   );
 }

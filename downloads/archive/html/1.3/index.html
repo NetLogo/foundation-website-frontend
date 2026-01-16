@@ -1,0 +1,831 @@
+<!DOCTYPE html><html>
+<head>
+<style>
+body {
+  background: white;
+  font-family: arial, helvetica, geneva, swiss, sans-serif ;
+}
+h1 {
+  text-align: center ;
+}
+</style>
+<title>NetLogo 1.3 Downloads</title>
+<script>
+function whatPlatform()
+{
+
+	plat="other"
+
+	thisAgent = navigator.userAgent.toLowerCase()
+
+	// the order of the names is important, since these are not nested ifs
+
+	if (thisAgent.indexOf("win") != -1)
+	{
+		plat="win"
+	}
+	if (thisAgent.indexOf("95") != -1)
+	{
+		plat="win"
+	}
+	if (thisAgent.indexOf("98") != -1)
+	{
+		plat="win"
+	}
+	if (thisAgent.indexOf("nt") != -1)
+	{
+		plat="win"
+	}
+
+
+	if (thisAgent.indexOf("mac") != -1)
+	{
+		plat="mac"
+		var MacOSXPlugIn = navigator.plugins["Default Plugin Carbon.cfm"];
+		if (MacOSXPlugIn || thisAgent.indexOf("omniweb") != -1
+		                 || thisAgent.indexOf("mac os x") != -1 )
+		{
+			//Change value to true to enable the applet for Mac OS X
+			//This variable has been introduced to this page as the support for
+			//applets on Mac OS X has been questionable.
+			enableAppletForMacOSX = true
+			plat="macosx"
+		}
+	}
+
+	if (thisAgent.indexOf("sun") != -1)
+	{
+		plat="solaris"
+	}
+	if (thisAgent.indexOf("solaris") != -1)
+	{
+		plat="solaris"
+	}
+	if (thisAgent.indexOf("aix") != -1)
+	{
+		plat="aix"
+	}
+	if (thisAgent.indexOf("ibm") != -1)
+	{
+		plat="aix"
+	}
+	if (thisAgent.indexOf("dec") != -1)
+	{
+		plat="digitalunix"
+	}
+	if (thisAgent.indexOf("osf") != -1)
+	{
+		plat="digitalunix"
+	}
+
+	if (thisAgent.indexOf("digital") != -1)
+	{
+		plat="digitalunix"
+	}
+	if (thisAgent.indexOf("hp") != -1)
+	{
+		plat="hpux"
+	}
+	if (thisAgent.indexOf("unix") != -1)
+	{
+		plat="unix"
+	}
+	if (thisAgent.indexOf("sco") != -1)
+	{
+		plat="sco"
+	}
+	if (thisAgent.indexOf("bsd") != -1)
+	{
+		plat="bsd"
+	}
+	if (thisAgent.indexOf("free") != -1)
+	{
+		plat="freebsd"
+	}
+	if (thisAgent.indexOf("open") != -1)
+	{
+		plat="openbsd"
+	}
+	if (thisAgent.indexOf("netbsd") != -1)
+	{
+		plat="netbsd"
+	}
+	if (thisAgent.indexOf("linux") != -1)
+	{
+		plat="linux"
+	}
+	if (thisAgent.indexOf("reliant") != -1)
+	{
+		plat="reliant"
+	}
+
+	if (thisAgent.indexOf("sgi") != -1)
+	{
+		plat="irix"
+	}
+	if (thisAgent.indexOf("silicon") != -1)
+	{
+		plat="irix"
+	}
+	if (thisAgent.indexOf("irix") != -1)
+	{
+		plat="irix"
+	}
+	if (thisAgent.indexOf("os/390") != -1)
+	{
+		plat="os390"
+	}
+
+
+	// now determine what platforms are available, and reset the chosen platform based on whether the platform is available
+	// if you want the user to get a message that the desired platform is NOT available, set the fallback "plat" to "notavailable"
+	// the order is important, as it indicated the fallback order
+	// every platform above, must have a fall back below
+
+	platAvail="notavailable"
+
+
+	platAvail="win"
+
+	if ((plat=="win") && (platAvail!="win"))
+	{
+		plat="other"
+	}
+
+
+	platAvail="macosx"
+
+	if ((plat=="macosx") && (platAvail!="macosx"))
+	{
+		plat="unix"
+	}
+
+
+	platAvail="mac"
+
+	if ((plat=="mac") && (platAvail!="mac"))
+	{
+		plat="other"
+	}
+
+
+	platAvail="solaris"
+
+	if ((plat=="solaris") && (platAvail!="solaris"))
+	{
+		plat="unix"
+	}
+
+
+	platAvail="aix"
+
+	if ((plat=="aix") && (platAvail!="aix"))
+	{
+		plat="unix"
+	}
+
+
+	if ((plat=="digitalunix") && (platAvail!="digitalunix"))
+	{
+		plat="unix"
+	}
+
+
+	platAvail="hpux"
+
+	if ((plat=="hpux") && (platAvail!="hpux"))
+	{
+		plat="unix"
+	}
+
+
+	if ((plat=="sco") && (platAvail!="sco"))
+	{
+		plat="unix"
+	}
+
+
+	if ((plat=="freebsd") && (platAvail!="freebsd"))
+	{
+		plat="bsd"
+	}
+
+
+	if ((plat=="openbsd") && (platAvail!="openbsd"))
+	{
+		plat="bsd"
+	}
+
+
+	if ((plat=="netbsd") && (platAvail!="netbsd"))
+	{
+		plat="bsd"
+	}
+
+
+	if ((plat=="bsd") && (platAvail!="bsd"))
+	{
+		plat="unix"
+	}
+
+
+	platAvail="linux"
+
+	if ((plat=="linux") && (platAvail!="linux"))
+	{
+		plat="unix"
+	}
+
+
+	if ((plat=="reliant") && (platAvail!="reliant"))
+	{
+		plat="unix"
+	}
+
+
+	if ((plat=="irix") && (platAvail!="irix"))
+	{
+		plat="unix"
+	}
+
+
+	if ((plat=="os390") && (platAvail!="os390"))
+	{
+		plat="unix"
+	}
+
+
+	platAvail="unix"
+
+	if ((plat=="unix") && (platAvail!="unix"))
+	{
+		plat="other"
+	}
+
+
+	platAvail="other"
+
+	if ((plat=="other") && (platAvail!="other"))
+	{
+		plat="notavailable"
+	}
+
+}
+
+
+function platformButtons()
+{
+	document.writeln("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\" size=\"3\">")
+
+	if (plat=="win")
+	{
+		document.writeln("<b>Recommended installer for your platform...</b><br>")
+		document.write("<form method=\"get\" action=\"")
+
+		document.write("https://downloads.netlogo.org/1.3/InstData/Windows/VM/NetLogo1.0Installer.exe\">")
+		//
+
+		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (13.5M) for Windows (includes Java VM)\" >")
+		//
+		document.writeln("<br></form>")
+		document.writeln("Enable Java in your browser to install directly from the web.<br>")
+	}
+
+
+
+	if (plat=="mac")
+	{
+		document.writeln("<b>Recommended installer for your platform...</b><br>")
+		document.write("<form method=\"get\" action=\"")
+
+		document.write("https://downloads.netlogo.org/1.3/InstData/MacOS/VM/NetLogo1.0Installer.bin\">")
+		//
+
+		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (12.5M) for Mac OS (includes Java VM)\" ><br>")
+		//
+		document.writeln("<br></form>")
+	}
+
+
+
+	if (plat=="macosx")
+	{
+		document.writeln("<b>Recommended installer for your platform...</b><br>")
+		document.write("<form method=\"get\" action=\"")
+
+		document.write("https://downloads.netlogo.org/1.3/InstData/MacOSX/NetLogo1.0Installer.sit\">")
+		//
+
+		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.2M) for Mac OS X (without Java VM)\" ><br>")
+		//
+		if( enableAppletForMacOSX )
+		{
+			document.writeln("<br></form>")
+			document.writeln("Enable Java in your browser to install directly from the web.<br>")
+		}
+	}
+
+
+
+	if (plat=="linux")
+	{
+		document.writeln("<b>Recommended installer for your platform...</b><br>")
+		document.write("<form method=\"get\" action=\"")
+
+		document.write("https://downloads.netlogo.org/1.3/InstData/Unix/Linux/NetLogo1_0Installer.bin\">")
+		//
+
+		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (41.2M) for Linux (includes Java VM)\" ><br>")
+		//
+		document.writeln("<br></form>")
+		document.writeln("Enable Java in your browser to install directly from the web.<br>")
+	}
+
+
+
+
+	if (plat=="unix")
+	{
+		document.writeln("<b>Recommended installer for your platform...</b><br>")
+		document.write("<form method=\"get\" action=\"")
+
+		document.write("https://downloads.netlogo.org/1.3/InstData/Unix/Others/NetLogo1_0Installer.bin\">")
+		//
+
+		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.5M) for Unix\" ><br>")
+		//
+		document.writeln("<br></form>")
+		document.writeln("Enable Java in your browser to install directly from the web.<br>")
+	}
+
+	if (plat=="other")
+	{
+		document.writeln("<b>Recommended installer for your platform...</b><br>")
+		document.write("<form method=\"get\" action=\"")
+
+		document.write("https://downloads.netlogo.org/1.3/InstData/Java/NetLogo1_0Installer.jar\">")
+		//
+
+		document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (8.4M)\" ><br>")
+		//
+		document.writeln("<br></form>")
+	}
+	if (plat=="notavailable")
+	{
+		document.writeln("<b>There is no installer available for your platform.<br>")
+		document.writeln("Please select an alternate platform below.</b><br>")
+	}
+
+	document.writeln("</font>")
+}
+
+function setArchiveFile()
+{
+	if (plat!="macosx" || ( plat=="macosx" && enableAppletForMacOSX ))
+	{
+		if (plat!="mac")
+		{
+			document.writeln("<applet codebase=\"https://downloads.netlogo.org/1.3/InstData\" archive=\"WebInst.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
+		}
+		if (plat=="mac")
+		{
+			document.writeln("<applet codebase=\"https://downloads.netlogo.org/1.3/InstData\" archive=\"WebInstMac.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
+		}
+	}
+}
+
+function displayMarker(whatPlat)
+{
+	if (whatPlat==plat)
+	{
+		document.write("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\" color=\"green\"><b>&gt</b></font>") ;
+	}
+}
+
+
+function setPlatFont(whatPlat)
+{
+
+	if (whatPlat==plat)
+	{
+		document.write("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\" color=\"green\"><b>")
+	}
+	else
+	{
+		document.write("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\">")
+	}
+}
+
+function endPlatFont(whatPlat)
+{
+	if (whatPlat==plat)
+	{
+		document.write("</b></font>")
+	}
+	else
+	{
+		document.write("</font>")
+	}
+}
+
+whatPlatform()
+// -->
+</script>
+
+
+</head>
+
+<body>
+
+<a name="top"></a>
+
+<p align="center"><IMG src="/static_assets/downloads/archive/title-legacy.gif" ALT="NetLogo banner">
+<p align="center"><table width="520" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td>
+
+<h1 align="center">NetLogo 1.3 Downloads</h1>
+
+<p align="center">
+
+<font size="-1">
+
+<p><B>Attention Windows users:</B>
+<UL>
+<LI>NetLogo runs fastest and is most reliable with the IBM 1.1 VM.  Therefore we strongly
+recommend the "Includes Java VM" option.  (Questions?  See <A
+HREF="#windows">below</a>.)
+<LI>If you are running anti-virus software there may be a long pause
+(as much as two minutes) near the end of the download process.
+</UL>
+
+<p><B>Attention Mac OS X users:</B>
+<UL>
+<LI>If you are installing under Mac OS X, you must choose the Mac
+    OS X download.  The installer for Mac OS 8 or 9 does not work
+    properly on OS X.
+</UL>
+
+</font>
+
+<p><hr>
+
+</td></tr></table>
+
+
+      <table border="0" cellpadding="0" cellspacing="10" align="center">
+        <tr>
+          <td></td>
+          <td></td>
+          <td valign=top><b>Platform</b> </td>
+          <td valign=top>
+            <center>
+              <b>
+              includes Java VM<br>(recommended)
+               </b></center>
+          </td>
+          <td></td>
+          <td valign=top>
+            <center>
+              <b>
+              without Java VM
+               </b></center>
+          </td>
+          <td></td>
+          <td valign=top>
+            <center>
+              <b>Details</b></center>
+          </td>
+        </tr>
+        <br>
+
+
+        <tr>
+          <td valign="bottom">
+            <div align="left">
+              <script>
+              <!--
+
+  displayMarker("win")
+              // -->
+              </script>
+              </div>
+          </td>
+          <td align="center" valign="center"><img height="16" width="26" src="/static_assets/downloads/archive/os-win.gif"></td>
+          <td valign="bottom">
+            <div align="left">
+
+              <script>
+              <!--
+
+  setPlatFont("win")
+              // -->
+              </script>
+              Windows
+              <script>
+              <!--
+
+  endPlatFont("win")
+              // -->
+              </script>
+              </div>
+          </td>
+          <td valign="bottom">
+
+            <center>
+               <a href="https://downloads.netlogo.org/1.3/InstData/Windows/VM/NetLogo1.3Installer.exe">Download (15.3 MB)</a></center>
+
+            </td>
+          <td valign="bottom"></td>
+          <td valign="bottom">
+
+            <center>
+               <a href="https://downloads.netlogo.org/1.3/InstData/Windows/NoVM/NetLogo1.3Installer.exe">Download (10.4 MB)</a></center>
+
+            </td>
+          <td valign="bottom"></td>
+          <td valign="bottom">
+            <center>
+              <a href="#windows">View</a></center>
+          </td>
+        </tr>
+
+
+
+
+
+        <tr>
+          <td valign="bottom">
+            <div align="left">
+              <script>
+              <!--
+
+  displayMarker("macosx")
+              // -->
+              </script>
+              </div>
+          </td>
+          <td align="center" valign="center"><img alt="" height="16" width="26" src="/static_assets/downloads/archive/os-x.gif" /></td>
+          <td valign="bottom">
+            <div align="left">
+
+              <script>
+              <!--
+
+  setPlatFont("macosx")
+              // -->
+              </script>
+              Mac OS X
+              <script>
+              <!--
+
+  endPlatFont("macosx")
+
+              // -->
+              </script>
+              </div>
+          </td>
+          <td valign="bottom">
+            </td>
+          <td valign="bottom"></td>
+          <td valign="bottom">
+
+            <center>
+               <a href="https://downloads.netlogo.org/1.3/NetLogo%201.3.dmg">Download (9.7 MB)</a></center>
+
+            </td>
+          <td valign="bottom"></td>
+          <td valign="bottom">
+            <center>
+              <a href="#macosx">View</a></center>
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td valign="bottom">
+            <div align="left">
+              <script>
+              <!--
+
+  displayMarker("mac")
+              // -->
+              </script>
+              </div>
+          </td>
+          <td align="center" valign="center"><img alt="" height="16" width="26" src="/static_assets/downloads/archive/os-mac-legacy.gif" /></td>
+          <td valign="bottom">
+            <div align="left">
+
+              <script>
+              <!--
+
+  setPlatFont("mac")
+              // -->
+              </script>
+              Mac OS 8 or 9
+              <script>
+              <!--
+
+  endPlatFont("mac")
+
+              // -->
+              </script>
+              </div>
+          </td>
+          <td valign="bottom">
+
+            <center>
+               <a href="https://downloads.netlogo.org/1.3/InstData/MacOS/VM/NetLogo1.3Installer.bin">Download (14.3 MB)</a></center>
+
+            </td>
+          <td valign="bottom"></td>
+          <td valign="bottom">
+
+            <center>
+               <a href="https://downloads.netlogo.org/1.3/InstData/MacOS/NoVM/NetLogo1.3Installer.bin">Download (10.5 MB)</a></center>
+
+            </td>
+          <td valign="bottom"></td>
+          <td valign="bottom">
+            <center>
+              <a href="#mac">View</a></center>
+          </td>
+        </tr>
+
+
+
+        <tr>
+          <td valign="bottom">
+            <div align="left">
+              <script>
+              <!--
+
+  displayMarker("other")
+              // -->
+              </script>
+              </div>
+          </td>
+          <td valign="bottom"><img alt="" height="25" width="26" src="/static_assets/downloads/archive/os-java.png" />
+          <td valign="bottom">
+            <div align="left">
+
+              <script>
+              <!--
+
+  setPlatFont("other")
+              // -->
+              </script>
+              Other Java-enabled Platforms
+              <script>
+              <!--
+
+  endPlatFont("other")
+              // -->
+              </script>
+              </div>
+          </td>
+          <td valign="bottom">
+            </td>
+          <td valign="bottom"></td>
+          <td valign="bottom">
+
+            <center>
+               <a href="https://downloads.netlogo.org/1.3/netlogo-1.3.tar.gz">Download (7.1 MB)</a></center>
+
+            </td>
+          <td valign="bottom"></td>
+          <td valign="bottom">
+            <center>
+              <a href="#other">View</a></center>
+          </td>
+        </tr>
+
+
+
+      </table></b>
+
+<p align="center"><table width="600" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td>
+
+
+<!--  WINDOWS  -->
+      <p>
+      <hr>
+
+    <div align="left">
+      <p><font size="5"><a name="windows"></a>Windows Details:</font><br>
+
+      <ul>
+        <li>We strongly recommend the "includes Java VM" download option.
+        <li>Choosing this download option installs IBM's 1.1.8 VM for NetLogo's private use only.  Other programs on your system are not affected.
+        <li>NetLogo runs much faster on this VM than any other VM,
+            and is more reliable.
+        <li>Even if you have downloaded NetLogo before, you should still choose "Includes Java VM".  The bundled VM is not shared between different versions of NetLogo.
+        <li>You should only choose the "without Java VM" download if either:
+<ul>
+
+<LI>You have already, separately and independently from any NetLogo
+    download, installed the IBM 1.1 VM on your system yourself.
+
+<LI>You are certain you wish to try using a VM other than our
+    recommended VM.
+
+</UL>
+
+</ul>
+</font>
+        <p><font size="2"><br>
+        (<a href="#top">Go To Top</a>)</font>
+    </div>
+
+
+
+<!--  MACOSX  -->
+    <center>
+      <p>
+      <hr>
+
+    </center>
+    <div align="left">
+      <p><font size="5"><a name="macosx"></a>Mac OS X Details:</font><br>
+
+      <ul>
+          <li>Once downloaded, NetLogo may be run either as a native OS X application, or in the Classic environment.
+        </ul>
+        <p><font size="2"><br>
+        (<a href="#top">Go To Top</a>)</font>
+      </ul>
+    </div>
+
+
+<!--  MACOS  -->
+    <center>
+      <p>
+      <hr>
+
+    </center>
+    <div align="left">
+      <p><font size="5"><a name="mac"></a>Mac OS 8 or 9 Details:</font><br>
+
+      <ul>
+          <li>After downloading, double-click</font><font size="4"><b><code>&nbsp;NetLogo1.3Installer</code></b></font>
+          <li>If you do not already have Macintosh Runtime for Java version 2.2.5 on your system, or if you are not sure, be sure to download the package above which includes it.</font>
+          <li>The installer is MacBinary encoded and will be automatically decoded after downloading.<br>
+          If it does not, you can decode it using <a href="http://www.aladdinsys.com/expander/index.html">StuffIt Expander 4.5 or later</a>.</font>
+        </ul>
+        <p><font size="2"><br>
+        (<a href="#top">Go To Top</a>)</font>
+      </ul>
+    </div>
+
+
+
+<!--  OTHER  -->
+
+    <center>
+      <p>
+      <hr>
+
+    </center>
+    <div align="left">
+      <p><font size="5"><a name="other"></a>Other Platform Details:</font><br>
+
+    </div>
+    <div align="left">
+      <ul>
+          <li>Be sure you have Java 1.1.8 or later installed.  Newer Java versions such as 1.3, 1.4, or 1.4.1 should work even better.  You can download Java from <a href="http://java.sun.com/getjava/">Sun's site</a>.</font>
+	  <li>The download is in the form of a <tt>.tar.gz</TT> file.
+              You may untar this file into any directory.
+	  <li>Once untarred, the NetLogo application is in the <TT>NetLogo.jar</TT> file in the <TT>netlogo-1.3</TT> folder.
+	  <li>The method for starting the application may be different
+              depending on your operating system and Java virtual machine.
+              You may be able to just double-click the <TT>NetLogo.jar</TT>
+              file in your file manager.
+              Or, a typical sequence of commands on a Unix-style machine would be:
+<PRE>
+cd netlogo-1.3
+java -jar NetLogo.jar</PRE>
+         <li>For the computer HubNet client, substitute <TT>HubNet.jar</TT>
+             for <TT>NetLogo.jar</TT>.
+        </ul>
+        <p><font size="2"><br>
+        (<a href="#top">Go To Top</a>)</font>
+    </div>
+
+
+
+<hr>
+<font size="2">
+Installers created with InstallAnywhere.<br>
+InstallAnywhere is a registered trademark of Zero G Software, Inc.<br>
+Mac OS is a registered trademark of Apple Computer, Inc.<br>
+Java is a trademark of Sun Microsystems, Inc.<br>
+Windows is a registered trademark of Microsoft Corporation.<br>
+All other marks are properties of their respective owners.<br>
+</font>
+
+</td></tr></table>
+
+
+
+</body>
+</html>

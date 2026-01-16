@@ -1,0 +1,121 @@
+<!DOCTYPE html><head><link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96"><link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg"><link rel="shortcut icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"><meta name="apple-mobile-web-app-title" content="NetLogo"><link rel="manifest" href="/favicon/site.webmanifest"><script async src="https://www.googletagmanager.com/gtag/js?id=G-5L2W88N305"></script><script src="/static_assets/downloads/archive/analytics/gtag.js"></script><meta name="netlogo:version" content="5.1.0-M2"><script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.11.2 - MIT QwikDev */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,l,d,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(d=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(l=setTimeout(v,(null==s?void 0:s.fallbackTimeout)||1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.11.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<d.length;n++)(o=r.createElement("script")).innerHTML=d[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(l)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script></head> <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<style type="text/css">
+			body {
+				background: white;
+				font-family: arial, helvetica, geneva, swiss, sans-serif;
+			}
+			h1 {
+				text-align: center;
+			}
+		</style>
+		<title>NetLogo 5.1.0-M2 for Windows without bundled Java</title>
+	</head>
+
+	<body>
+		<p align="center"><img src="/static_assets/downloads/archive/title.jpg" alt="" /></p>
+
+		<p align="center"></p>
+		<table width="520" cellpadding="0" cellspacing="0" border="0" align="center">
+			<tr>
+				<td>
+					<h1 align="center">NetLogo 5.1.0-M2<br />for Windows</h1>
+					<h2 align="center">(without bundled Java)</h2>
+					<h2 align="center">INTERIM DEVEL BUILD</h2>
+				</td>
+			</tr>
+		</table>
+
+		<p align="center"></p>
+		<table width="600" cellpadding="0" cellspacing="0" border="0" align="center">
+			<tr>
+				<td>
+					<!-- this needs to be kept in sync with docs/requirements.html -->
+
+					<p>
+						<b
+							>Most Windows users should choose the NetLogo download with bundled Java, available from the
+							<a href="../">main download page</a>.</b
+						>
+					</p>
+
+					<p>There are two reasons you might want to use the download on this page instead:</p>
+
+					<ol>
+						<li>You want a smaller download so it arrives faster and uses up less space on your hard drive.</li>
+
+						<li>
+							For specific technical reasons of your own, you want to run NetLogo using a different Java than the one we
+							bundle.
+						</li>
+					</ol>
+
+					<p>
+						If you think the download on this page might be appropriate for you, please read the following technical
+						information.
+					</p>
+
+					<p>
+						<b
+							>Even if you already have Java installed on your computer, using that Java may make NetLogo run slowly.</b
+						>
+					</p>
+
+					<p>
+						For maximum performance, NetLogo uses a special option called the &ldquo;server&rdquo; VM. The default Java
+						Runtime Environment (JRE) installer from Oracle does not install this option. It is only included in
+						Oracle&rsquo;s Java Development Kit (JDK).
+					</p>
+
+					<p>
+						If you are not a Java developer, then you probably have the JRE, not the JDK, and if you use it with
+						NetLogo, models may run somewhat slower.
+					</p>
+
+					<p></p>
+					<hr />
+					<table border="0" cellpadding="0" cellspacing="10" align="center">
+						<tr>
+							<td valign="bottom"></td>
+							<td align="center" valign="top">
+								<img alt="" height="16" width="26" src="/static_assets/downloads/archive/os-win.gif" />
+							</td>
+							<td valign="top"><b>Windows</b></td>
+							<td valign="bottom"></td>
+							<td valign="bottom"></td>
+							<td valign="top">
+								<center>
+									<a href="https://downloads.netlogo.org/5.1.0-M2/NetLogo5.1.0-M2Installer_NoVM.exe"> Download</a>
+									(84M)
+								</center>
+							</td>
+							<td valign="bottom"></td>
+						</tr>
+					</table>
+
+					<p></p>
+					<hr />
+
+					<p><b>Notes:</b><br /></p>
+
+					<ul>
+						<li>
+							Certain anti-virus software may cause a long pause (as much as a minute or longer) near the end of the
+							download process.
+						</li>
+					</ul>
+
+					<p>
+						<i
+							>Problems downloading? Write
+							<a href="mailto:ccl-tech@ccl.northwestern.edu">ccl-tech@ccl.northwestern.edu</a>.
+						</i>
+					</p>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

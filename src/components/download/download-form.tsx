@@ -332,9 +332,9 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
               For a response, write
               <a
                 className="form-ref ms-1"
-                href="mailto:feedback@ccl.northwestern.edu"
+                href="mailto:netlogo@northwestern.edu"
               >
-                feedback@ccl.northwestern.edu
+                netlogo@northwestern.edu
               </a>
             </div>
           </div>

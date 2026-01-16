@@ -126,7 +126,6 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     const downloadLinks = versions.find(
       (version) => version.version === formData.version
     )?.download_links;
-
     return downloadLinks?.map((link) => [link.platform, link.subplatform, Boolean(link.primary), link.platform_icon.icon.id]) || [];
 
   }, [formData.version]);
@@ -204,7 +203,10 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
         formData.ip = data.ip;
         formData.country = data.country_name;
         formData.time_stamp = getFormattedTimestamp();
-      });
+      }).catch(() => {
+        // This is just so the form still works even if ipapi blocks us (e.g., when testing download pages, we can get blocked for too many requests)
+      }
+      )
 
     const result = api.sendDownloadForm(formData);
 
@@ -216,7 +218,6 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     const downloadUrl = downloadVersion?.download_links.find(
       (link) => link.platform === formData.platform
     )?.download_url;
-
 
     if (!downloadUrl) {
       alert("Download link not found");
@@ -355,8 +356,8 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
                 <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}
               </button>
             ) : devOs && name.includes(devOs) && subname.includes("32-bit") ? (
-              <button type="submit" className="p-0 m-0 border-0 bg-transparent mx-4 mt-2" name="platform" key={name} value={name} onClick={handleClickChange}>
-                <img src={createImageURL(img_id || "")} className="button-icon" /> <span className="text-primary"> Download {subname}</span> (rare)
+              <button type="submit" className="p-0 m-0 border-0 bg-transparent mx-4 mt-2 text-primary" name="platform" key={name} value={name} onClick={handleClickChange}>
+                <img src={createImageURL(img_id || "")} className="button-icon" /> Download {subname}(rare)
               </button>
             ) : null
 

@@ -33,13 +33,13 @@ const DownloadSection = ({ downloadData, devOs }: DownloadSectionProps) => {
           />
         </div>
         <div className="col-lg-6 justify-content-center mt-4 ps-5">
-          <div className="text-start" style={{fontSize:"18px"}}>
+          <div className="text-start" style={{ fontSize: "18px" }}>
             <p>
               {"Most computers can run NetLogo (see "}
               <a
                 target="_blank"
                 className="form-ref"
-                href="https://ccl.northwestern.edu/netlogo/requirements.html"
+                href="https://docs.netlogo.org/requirements.html"
               >
                 system requirements
               </a>
@@ -61,7 +61,7 @@ const DownloadSection = ({ downloadData, devOs }: DownloadSectionProps) => {
               <a
                 target="_blank"
                 className="form-ref"
-                href="https://ccl.northwestern.edu/netlogo/transition.html"
+                href="https://docs.netlogo.org/transition.html"
               >
                 {"Transition Guide"}
               </a>

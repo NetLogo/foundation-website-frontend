@@ -8,25 +8,24 @@ const MauticMailingList = () => {
 
     // Load the Mautic SDK
     useEffect(() => {
-        if (typeof window === "undefined") return;
 
-        if (window.MauticSDK) {
-            window.MauticSDK.onLoad?.();
-            return;
+        if (typeof MauticSDKLoaded == 'undefined') {
+            var MauticSDKLoaded = true;
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://mautic.netlogo.org/media/js/mautic-form.js?vc695fc54';
+            script.onload = function () {
+                MauticSDK.onLoad();
+            };
+            head.appendChild(script);
+            var MauticDomain = 'https://mautic.netlogo.org';
+            var MauticLang = {
+                'submittingMessage': "Please wait..."
+            }
+        } else if (typeof MauticSDK != 'undefined') {
+            MauticSDK.onLoad();
         }
-
-        window.MauticSDKLoaded = true;
-        window.MauticDomain = "https://ccl.northwestern.edu/mautic";
-        window.MauticLang = { submittingMessage: "Please wait..." };
-
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.async = true;
-        script.src = "https://ccl.northwestern.edu/mautic/media/js/mautic-form.js";
-        script.onload = () => {
-            window.MauticSDK?.onLoad?.();
-        };
-        document.head.appendChild(script);
     }, []);
 
     // Function to handle button click outside the form to submit it
@@ -99,7 +98,7 @@ const MauticMailingList = () => {
                 autoComplete="off"
                 role="form"
                 method="post"
-                action="https://ccl.northwestern.edu/mautic/form/submit?formId=2"
+                action="https://mautic.netlogo.org/form/submit?formId=2"
                 id="mauticform_emaillistsignup"
                 data-mautic-form="emaillistsignup"
                 encType="multipart/form-data"

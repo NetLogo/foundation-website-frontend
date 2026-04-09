@@ -48,7 +48,7 @@ const submitToMautic = (data: FormData) => {
   // Create a hidden form with the Mautic data and submit it.
   const form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'https://ccl.northwestern.edu/mautic/form/submit?formId=2';
+  form.action = 'https://mautic.netlogo.org/form/submit?formId=2';
   form.target = 'mautic-hidden-iframe'; // Submit to hidden iframe
   form.style.display = 'none';
 
@@ -194,9 +194,6 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
       submitToMautic(formData);
     }
 
-    // Send form data to backend
-    const api = new NetLogoAPI();
-
     await fetch('https://ipapi.co/json/')
       .then(res => res.json())
       .then(data => {
@@ -208,7 +205,14 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
       }
       )
 
-    const result = api.sendDownloadForm(formData);
+    // Send form data to backend — await so the request completes before we navigate
+    const api = new NetLogoAPI();
+    await api.sendDownloadForm(formData);
+
+    // Give the Mautic iframe POST a moment to flush before navigation tears down the page
+    if (formData.subscribe) {
+      await new Promise((resolve) => setTimeout(resolve, 300));
+    }
 
     //Go to download Link
     const downloadVersion = versions.find(

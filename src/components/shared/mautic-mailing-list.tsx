@@ -2,30 +2,40 @@ import "./styles/mautic-form.css";
 import { useEffect, useRef, useState } from "react";
 
 const MauticMailingList = () => {
-    const formRef = useRef(null);
-    const iframeRef = useRef(null);
+    const formRef = useRef<HTMLFormElement>(null);
+    const iframeRef = useRef<HTMLIFrameElement>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     // Load the Mautic SDK
     useEffect(() => {
+        (window as any).MauticDomain = 'https://mautic.netlogo.org';
+        (window as any).MauticLang = { submittingMessage: "Please wait..." };
 
-        if (typeof MauticSDKLoaded == 'undefined') {
-            var MauticSDKLoaded = true;
-            var head = document.getElementsByTagName('head')[0];
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = 'https://mautic.netlogo.org/media/js/mautic-form.js?vc695fc54';
-            script.onload = function () {
-                MauticSDK.onLoad();
-            };
-            head.appendChild(script);
-            var MauticDomain = 'https://mautic.netlogo.org';
-            var MauticLang = {
-                'submittingMessage': "Please wait..."
-            }
-        } else if (typeof MauticSDK != 'undefined') {
-            MauticSDK.onLoad();
+        // If the SDK is already loaded (e.g., from a prior mount), just re-init.
+        if (typeof (window as any).MauticSDK !== 'undefined') {
+            (window as any).MauticSDK.onLoad();
+            return;
         }
+
+        // If the script tag is already in the DOM but hasn't finished loading yet, don't add it again.
+        const scriptSrc = 'https://mautic.netlogo.org/media/js/mautic-form.js?vc695fc54';
+        if (document.querySelector(`script[src="${scriptSrc}"]`)) {
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = scriptSrc;
+        script.onload = function () {
+            // The Mautic script auto-initializes itself on load, so calling
+            // onLoad() here is optional. Guard it so a parse/init failure
+            // doesn't cascade into a second error.
+            const sdk = (window as any).MauticSDK;
+            if (sdk && typeof sdk.onLoad === 'function') {
+                sdk.onLoad();
+            }
+        };
+        document.head.appendChild(script);
     }, []);
 
     // Function to handle button click outside the form to submit it

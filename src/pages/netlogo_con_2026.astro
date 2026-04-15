@@ -7,6 +7,9 @@ const api = new NetLogoAPI();
 const conferenceData = await api.getNetLogoCon2026Content();
 ---
 
-<Layout title="About NetLogo" description="NetLogo About Page">
+<Layout
+    title="NetLogo Conference 2026"
+    description="NetLogo Conference 2026 Information"
+>
     <AboutSection AboutData={conferenceData} client:load />
 </Layout>

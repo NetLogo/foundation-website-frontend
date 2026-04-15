@@ -64,29 +64,7 @@ const Footer = ({ navData, show_buttons = true }: FooterProps) => {
   return (
     <div className="footer-section">
       <div className="footer-body">
-        {show_buttons && (
-          <div className="footer-get-cont">
-            <div>
-              <Button
-                colorClass="blue-button"
-                padding="0.875rem 2rem"
-                fontSize="1rem"
-                text="GET NETLOGO"
-                style={{ width: "12rem" }}
-                onClick={scrollToGetNetLogo}
-              />
 
-              <Button
-                colorClass="light-button"
-                padding="0.875rem 2rem"
-                fontSize="1rem"
-                text="DONATE"
-                style={{ width: "12rem" }}
-                onClick={() => NavigateToDonate()}
-              />
-            </div>
-          </div>
-        )}
 
         <div className="footer-line"></div>
 

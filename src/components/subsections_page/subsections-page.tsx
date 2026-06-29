@@ -31,7 +31,7 @@ const PageSection = ({ sectionTitle, sectionContent }: PageSectionProps) => {
 
 const SubsectionsPage = ({ pageData, pageTitle}: SubsectionsPageProps) => {
   return (
-    <div className="subsections-page">
+    <div className="subsections-page py-5">
       <h1 className="page-title">{pageTitle}</h1>
       <TableOfContents pageData={pageData} />
       <div>

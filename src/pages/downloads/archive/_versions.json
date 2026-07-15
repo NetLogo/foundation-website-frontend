@@ -1,5 +1,20 @@
 [
   {
+    "version": "7.0.4",
+    "releaseDate": "May 2026",
+    "href": "/downloads/archive/7.0.4/",
+    "blurb": [],
+    "flags": [
+      "LATEST"
+    ]
+  },
+  {
+    "version": "7.0.3",
+    "releaseDate": "December 2025",
+    "href": "/downloads/archive/7.0.3/",
+    "blurb": []
+  },
+  {
     "version": "7.0.3-beta1",
     "releaseDate": "November 2025",
     "href": "/downloads/archive/7.0.3-beta1/",
@@ -12,10 +27,7 @@
     "version": "7.0.2",
     "releaseDate": "October 2025",
     "href": "/downloads/archive/7.0.2/",
-    "blurb": [],
-    "flags": [
-      "LATEST"
-    ]
+    "blurb": []
   },
   {
     "version": "7.0.1",

@@ -1,4 +1,4 @@
-  const MachineHelp = ({ platformMachine, machineLink, otherplatform1, otherplatform2 }: { platformMachine: string , machineLink: string, otherplatform1?: string,  otherplatform2?: string}) => {
+  const MachineHelp = ({ platformMachine, machineLink, otherplatform1, otherplatform2, which }: { platformMachine: string , machineLink: string, otherplatform1?: string, otherplatform2?: string, which: string }) => {
     return (
         <div className=" container text-start ps-3">
             <p className="pt-1 font-inter">
@@ -10,9 +10,9 @@
             </p>
             <p className="pt-3 font-inter">
             NetLogo also works for{" "}
-            <a href={`/downloads/${otherplatform1.toLowerCase()}`} className="text-decoration-none">{otherplatform1}</a>
+            <a href={`/${which}/${otherplatform1.toLowerCase()}`} className="text-decoration-none">{otherplatform1}</a>
             {" "} and {" "}
-            <a href={`/downloads/${otherplatform2.toLowerCase()}`} className="text-decoration-none">{otherplatform2}</a>
+            <a href={`/${which}/${otherplatform2.toLowerCase()}`} className="text-decoration-none">{otherplatform2}</a>
             .
             </p>
         </div>

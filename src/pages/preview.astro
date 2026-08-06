@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Redirecting...">
+  <script>
+    const userAgent = navigator.userAgent;
+    let os = null;
+
+    if (userAgent.includes("Win")) os = "windows";
+    else if (userAgent.includes("Mac")) os = "mac";
+    else if (userAgent.includes("Linux")) os = "linux";
+
+    if (os) {
+      window.location.href = `/preview/${os}`;
+    } else {
+      window.location.href = `/preview/options`;
+    }
+  </script>
+  <p>Redirecting to your device's download page...</p>
+</Layout>

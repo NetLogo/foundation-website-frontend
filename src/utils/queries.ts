@@ -282,6 +282,34 @@ const queries = {
       }
     }
   `,
+
+  previewPageData: gql`
+    query GetPreviewPageData {
+      preview_netlogo_versions {
+        version
+        download_links {
+          platform
+          download_url
+          primary
+          subplatform
+          platform_icon {
+            icon {
+              id
+            }
+          }
+        }
+      }
+      donation_data {
+        title
+        text
+        image {
+          id
+        }
+        url
+      }
+    }
+  `,
+
   donationData: gql`
     query GetDonationData {
       donation_data{

@@ -25,6 +25,7 @@ const pageData = await api.getDownloadPageData();
         machineLink="https://www.howtogeek.com/198615/how-to-check-if-your-linux-system-is-32-bit-or-64-bit/"
         otherplatform1="Windows"
         otherplatform2="Mac"
+        which="downloads"
     />
     <DonationSection donationArray={pageData["donation_data"]} client:load />
 </Layout>

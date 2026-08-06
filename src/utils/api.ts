@@ -178,6 +178,11 @@ export interface DownloadPageData {
   donation_data: DonationData[];
 }
 
+export interface PreviewPageData {
+  preview_netlogo_versions: NetLogoVersion[];
+  donation_data: DonationData[];
+}
+
 export interface PageEntry {
   section_title: string;
   section_content: string;
@@ -224,6 +229,12 @@ class NetLogoAPI {
   async getDownloadPageData() {
     return await this.graphqlFetchData<DownloadPageData>(
       queries.downloadPageData
+    );
+  }
+
+  async getPreviewPageData() {
+    return await this.graphqlFetchData<PreviewPageData>(
+      queries.previewPageData
     );
   }
 

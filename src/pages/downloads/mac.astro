@@ -25,6 +25,7 @@ const pageData = await api.getDownloadPageData();
         machineLink="https://macreports.com/how-to-know-if-your-mac-has-apple-silicon-or-intel-chip/"
         otherplatform1="Windows"
         otherplatform2="Linux"
+        which="downloads"
     />
     <DonationSection donationArray={pageData["donation_data"]} client:load />
 </Layout>

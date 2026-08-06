@@ -7,7 +7,7 @@ import DonationSection from "../../components/download/donation-section";
 
 const api = new NetLogoApi();
 
-const pageData = await api.getDownloadPageData();
+const pageData = await api.getPreviewPageData();
 ---
 
 <Layout
@@ -16,7 +16,7 @@ const pageData = await api.getDownloadPageData();
     description="NetLogo download page"
 >
     <DownloadSection
-        downloadData={pageData["netlogo_versions"]}
+        downloadData={pageData["preview_netlogo_versions"]}
         devOs="Windows"
         client:load
     />
@@ -25,7 +25,7 @@ const pageData = await api.getDownloadPageData();
         machineLink="https://support.microsoft.com/en-us/topic/determine-whether-your-computer-is-running-a-32-bit-version-or-64-bit-version-of-the-windows-operating-system-1b03ca69-ac5e-4b04-827b-c0c47145944b"
         otherplatform1="Mac"
         otherplatform2="Linux"
-        which="downloads"
+        which="preview"
     />
 
     <DonationSection donationArray={pageData["donation_data"]} client:load />

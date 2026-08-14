@@ -1,0 +1,1 @@
+import"./hoisted.BScVxmeO.js";const i=navigator.userAgent;let e=null;i.includes("Win")?e="windows":i.includes("Mac")?e="mac":i.includes("Linux")&&(e="linux");e?window.location.href=`/preview/${e}`:window.location.href="/preview/options";

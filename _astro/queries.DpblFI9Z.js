@@ -242,6 +242,31 @@ const e=(n,...t)=>n.reduce((i,r,o)=>`${i}${r}${o in t?String(t[o]):""}`,""),a={i
         url
       }
     }
+  `,previewPageData:e`
+    query GetPreviewPageData {
+      preview_netlogo_versions {
+        version
+        download_links {
+          platform
+          download_url
+          primary
+          subplatform
+          platform_icon {
+            icon {
+              id
+            }
+          }
+        }
+      }
+      donation_data {
+        title
+        text
+        image {
+          id
+        }
+        url
+      }
+    }
   `,donationData:e`
     query GetDonationData {
       donation_data{

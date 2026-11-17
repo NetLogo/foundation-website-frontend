@@ -11,6 +11,7 @@ import { type NetLogoVersion } from "../../utils/api";
 import { getFormattedTimestamp } from "../../utils/datetime-utils";
 import NetLogoAPI from "../../utils/api";
 import { lookupVisitorLocation, type IpSource } from "../../utils/visitor-location";
+import { trackEvent } from "../../utils/analytics";
 
 // Define interface for form data
 export interface FormData {
@@ -134,6 +135,10 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
   }, [formData.version]);
 
   useEffect(() => {
+    trackEvent("download_page_view");
+  }, []);
+
+  useEffect(() => {
     const os = DetectOS();
     if (!os) return;
     const matchedPlatform = platforms.find((p) => p.indexOf(os) != -1) || platforms[0];
@@ -192,6 +197,12 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
 
   const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    trackEvent("download_submit", {
+      version: formData.version,
+      platform: formData.platform,
+      subscribe: formData.subscribe ? "yes" : "no",
+    });
 
     if (formData.subscribe) {
       submitToMautic(formData);

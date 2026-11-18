@@ -6,7 +6,7 @@ import partytown from '@astrojs/partytown';
 export default defineConfig({
   integrations: [
     react(),
-    partytown({ config: { forward: ['dataLayer.push'] } })
+    partytown({ config: { forward: ['dataLayer.push', 'gtag'] } })
   ],
 
   redirects: {

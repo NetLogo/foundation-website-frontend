@@ -10,6 +10,8 @@ import "./styles/download-form.css";
 import { type NetLogoVersion } from "../../utils/api";
 import { getFormattedTimestamp } from "../../utils/datetime-utils";
 import NetLogoAPI from "../../utils/api";
+import { lookupVisitorLocation, type IpSource } from "../../utils/visitor-location";
+import { trackEvent } from "../../utils/analytics";
 
 // Define interface for form data
 export interface FormData {
@@ -21,8 +23,10 @@ export interface FormData {
   email: string;
   subscribe: boolean;
   comments: string;
-  ip: string;
-  country: string;
+  ip: string | null;
+  country: string | null;
+  ip_source: IpSource;
+  country_source: IpSource;
   time_stamp: string;
 }
 
@@ -104,8 +108,10 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     email: "",
     subscribe: false,
     comments: "",
-    ip: "",
-    country: "",
+    ip: null,
+    country: null,
+    ip_source: "none",
+    country_source: "none",
     time_stamp: "",
   });
 
@@ -129,6 +135,10 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     return downloadLinks?.map((link) => [link.platform, link.subplatform, Boolean(link.primary), link.platform_icon.icon.id]) || [];
 
   }, [formData.version]);
+
+  useEffect(() => {
+    trackEvent("download_page_view");
+  }, []);
 
   useEffect(() => {
     const os = DetectOS();
@@ -190,20 +200,22 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
   const handleFormSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    trackEvent("download_submit", {
+      version: formData.version,
+      platform: formData.platform,
+      subscribe: formData.subscribe ? "yes" : "no",
+    });
+
     if (formData.subscribe) {
       submitToMautic(formData);
     }
 
-    await fetch('https://ipapi.co/json/')
-      .then(res => res.json())
-      .then(data => {
-        formData.ip = data.ip;
-        formData.country = data.country_name;
-        formData.time_stamp = getFormattedTimestamp();
-      }).catch(() => {
-        // This is just so the form still works even if ipapi blocks us (e.g., when testing download pages, we can get blocked for too many requests)
-      }
-      )
+    const location = await lookupVisitorLocation();
+    formData.ip = location.ip;
+    formData.country = location.country;
+    formData.ip_source = location.ip_source;
+    formData.country_source = location.country_source;
+    formData.time_stamp = getFormattedTimestamp();
 
     // Send form data to backend — await so the request completes before we navigate
     const api = new NetLogoAPI();

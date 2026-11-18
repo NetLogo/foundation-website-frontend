@@ -26,6 +26,7 @@ export interface FormData {
   ip: string | null;
   country: string | null;
   ip_source: IpSource;
+  country_source: IpSource;
   time_stamp: string;
 }
 
@@ -110,6 +111,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     ip: null,
     country: null,
     ip_source: "none",
+    country_source: "none",
     time_stamp: "",
   });
 
@@ -212,6 +214,7 @@ const DownloadForm = ({ versions, devOs }: DownloadFormProps) => {
     formData.ip = location.ip;
     formData.country = location.country;
     formData.ip_source = location.ip_source;
+    formData.country_source = location.country_source;
     formData.time_stamp = getFormattedTimestamp();
 
     // Send form data to backend — await so the request completes before we navigate

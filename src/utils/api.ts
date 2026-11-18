@@ -365,7 +365,7 @@ class NetLogoAPI {
   }
 
   async sendDownloadForm(formData: FormData) {
-    const url = this.baseUrl + "/items/download_responses";
+    const url = this.baseUrl + "/flows/trigger/2d515352-02bd-4583-aad1-ca962cd429d5";
 
     const response = await fetch(url, {
       method: "POST",

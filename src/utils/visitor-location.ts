@@ -4,15 +4,8 @@ export interface VisitorLocation {
   ip: string | null;
   country: string | null;
   ip_source: IpSource;
+  country_source: IpSource;
 }
-
-const countryName = (code: string): string | null => {
-  try {
-    return new Intl.DisplayNames(["en"], { type: "region" }).of(code) ?? null;
-  } catch {
-    return null;
-  }
-};
 
 const fromCloudflare = async (): Promise<VisitorLocation | null> => {
   const res = await fetch("/cdn-cgi/trace");
@@ -25,7 +18,7 @@ const fromCloudflare = async (): Promise<VisitorLocation | null> => {
   const ip = fields.get("ip");
   if (!ip) return null;
   const loc = fields.get("loc");
-  return { ip, country: loc ? countryName(loc) : null, ip_source: "cloudflare" };
+  return { ip, country: loc || null, ip_source: "cloudflare", country_source: "cloudflare" };
 };
 
 const fromIpapi = async (): Promise<VisitorLocation | null> => {
@@ -33,7 +26,7 @@ const fromIpapi = async (): Promise<VisitorLocation | null> => {
   if (!res.ok) return null;
   const data = await res.json();
   if (typeof data.ip !== "string" || !data.ip) return null;
-  return { ip: data.ip, country: data.country_name || null, ip_source: "ipapi" };
+  return { ip: data.ip, country: data.country || null, ip_source: "ipapi", country_source: "ipapi" };
 };
 
 export const lookupVisitorLocation = async (): Promise<VisitorLocation> => {
@@ -44,5 +37,5 @@ export const lookupVisitorLocation = async (): Promise<VisitorLocation> => {
     } catch {
     }
   }
-  return { ip: null, country: null, ip_source: "none" };
+  return { ip: null, country: null, ip_source: "none", country_source: "none" };
 };
